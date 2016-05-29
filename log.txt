@@ -1,1 +1,1 @@
-[00:00:06][INFO] Engine shutting down (closed by "X" on window)
+[00:00:31][INFO] Engine shutting down (closed by "X" on window)

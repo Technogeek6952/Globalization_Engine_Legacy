@@ -1,4 +1,7 @@
 ----------Changelog----------
+----------v1.2.1_a02---------
+-Better FPS limiting system - can keep 60fps stable
+-Various minor improvements
 ----------v1.2.1_a01b--------
 -Implementation of z-ordering (I think the last missing feature from v1.0)
 -Start commiting to git repo

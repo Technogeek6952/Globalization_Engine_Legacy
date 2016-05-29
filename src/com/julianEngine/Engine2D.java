@@ -45,6 +45,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public static String versionID = "v1.2_a03";
 	public static JDFMaster masterFile;
 	public static ArrayList<JDFPlugin> pluginFiles;
+	
 	/*--------Private Static Variables------*/
 	private static final long serialVersionUID = -7981520978541595849L;
 	static boolean engineStarted = false; //set to true when the first instance of Engine2D is created. Prevents plugins from creating a second instance
@@ -170,21 +171,24 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			new Thread("Render Loop"){
 				public void run(){
 					try{
+						long start;
+						long avgStart = System.currentTimeMillis();
+						float fpsTotal = 0;
+						double avgFPS = 0;
 						int renders = 0;
-						long lastCheck = System.currentTimeMillis();
 						while(true){
 							if(!paused){
 								synchronized(mainView){
+									start = System.nanoTime();
 									mainCamera.renderPerspective(mainView, bufferStrategy);
-									if((System.currentTimeMillis()-lastCheck)>500){
-										float fps = (float) (renders/.5);
-										if(ref.isVisible()){
-											fpsText.setText("FPS: "+fps);
-										}
-										lastCheck = System.currentTimeMillis();
-										renders=0;
-									}
+									fpsTotal += 1/(float)((float)(System.nanoTime()-start)/(float)1000000000);
 									renders++;
+									if(System.currentTimeMillis()-avgStart>500){
+										avgFPS = fpsTotal/renders;
+										if(ref.isVisible()&&fpsText!=null){
+											fpsText.setText("FPS: "+(double)((int)(avgFPS*1000))/(double)1000);
+										}
+									}
 								}
 							}
 						}
@@ -308,7 +312,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			ready = true;
 			for(Shape s:world.getShapes()){
 				if(!s.isReady()){
-					Log.warn("Still waiting for ready status from: "+s);
+					Log.debug("Still waiting for ready status from: "+s);
 					ready = false;
 					break;
 				}

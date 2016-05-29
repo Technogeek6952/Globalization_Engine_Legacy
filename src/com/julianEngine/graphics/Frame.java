@@ -27,6 +27,7 @@ public class Frame extends JPanel{
 	int height; //height of frame
 	ArrayList<Shape> shapes = new ArrayList<Shape>(); //container for all the shapes to be rendered
 	double renderTimeout = 20; //how long should the program wait before ending the render (to limit FPS and CPU impact) - default is 20 (20ms per render - about 50fps)
+	long renderTimeoutNano = 1000000000; //nanosecond timeout
 	Vector shift = new Vector(0, 0, 0); //vector to shift shapes along if frame is not centered
 	Color backgroundColor;
 	
@@ -46,10 +47,12 @@ public class Frame extends JPanel{
 	
 	public void setTargetFPS(int targetFPS){
 		renderTimeout = 1000/targetFPS;
+		renderTimeoutNano = 1000000000/targetFPS;
 	}
 	
 	public void unlockFPS(){
 		renderTimeout = 0;
+		renderTimeoutNano = 0;
 	}
 	
 	public Point convertPoint(Point point){
@@ -78,7 +81,7 @@ public class Frame extends JPanel{
 	
 	//Render the frame
 	public void render(BufferStrategy bufferStrategy){
-		long start = System.currentTimeMillis(); //get the system time when starting the render
+		long start = System.nanoTime(); //get the system time in nanoseconds when starting the render
 		Graphics2D graphics = (Graphics2D)bufferStrategy.getDrawGraphics(); //get a graphics object to draw to the buffer
 		//draw stuff
 		graphics.setBackground(backgroundColor);
@@ -97,8 +100,14 @@ public class Frame extends JPanel{
 		bufferStrategy.show(); //tell the buffer that we're done drawing, and it can show the frame
 		Toolkit.getDefaultToolkit().sync(); //sync the graphics - may reduce fps, but makes animation smoother?
 		graphics.dispose(); //release memory from the graphics object
-		if(System.currentTimeMillis()-start<renderTimeout){ //if we aren't done with the minimum time for each render, wait
-			try{Thread.sleep((long) (renderTimeout-(System.currentTimeMillis()-start)));}catch(Exception e){Log.warn("Render timeout interrupted...");}
+		if(System.nanoTime()-start<renderTimeoutNano){ //if we aren't done with the minimum time for each render, wait
+			int nanoWait = (int) (renderTimeoutNano-(System.nanoTime()-start));
+			try {
+				Thread.sleep((int)nanoWait/1000000, nanoWait%1000000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
