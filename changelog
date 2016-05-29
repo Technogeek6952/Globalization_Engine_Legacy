@@ -1,0 +1,22 @@
+----------Changelog----------
+----------v1.2.1_a01b--------
+-Implementation of z-ordering (I think the last missing feature from v1.0)
+-Start commiting to git repo
+----------v1.2.1_a01---------
+-Finished implementing shapes (some code still needs to be done with getTopLeftX, etc on
+some shapes that don't use it much)
+-Should be at exact level of functionality as v1.0, but much, MUCH cleaner, and should be
+easy to expand
+----------v1.2_a03-----------
+-Added support for plugins
+	-.jdm for master file, .jdp for plugin file
+		-!!!IMPORTANT!!!: Make sure if any changes were made to the master code, the .jdm 
+		is recompiled - otherwise old code will be running, which can lead to confusion
+	-plugins not working, but master file is
+	-TODO: load plugins, make inter-plugin communication system
+----------v1.2_a02-----------
+-Mostly on-par with v1.0, but much neater
+	-Still need work with sprites and most other 2d objects
+	-infrastructure is complete
+----------v1.2_a01-----------
+-Started from scratch with lessons learned from v1.0
