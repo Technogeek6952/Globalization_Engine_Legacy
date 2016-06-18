@@ -1,6 +1,24 @@
-----------Changelog----------
+----------Changelog - Julian Engine----------
+----------v1.2.4_a02---------
+-Added the beginnings of a parent-child system for shapes
+-still need to convert most things to really use the system
+-Most functionality left unchanged
+-Added custom font class, and let Text and UIButton use it
+----------v1.2.4_a01(-1.2.2_a02)
+-I forgot to update the changelog for several updates, so I'll lump all the changes
+I remember into this section.
+-Fixed bug with the render loop (dirty hack - TODO: actually figure out what's wrong) that
+for some reason blocked the Frame.addMouseListener() and Frame.addMouseMotionListener()
+methods, 
+----------v1.2.2_a01---------
+-This was a very large update, so I might have missed some things
+-Fixed coordinate system
+-Added Progress bar (and progress circle, but that's not finished)
+-Several minor updates and re-coding of some systems
+-General improvements
+-Bug fixing
 ----------v1.2.1_a02---------
--Better FPS limiting system - can keep 60fps stable
+-Better FPS limiting system - can hold 60fps stable
 -Various minor improvements
 ----------v1.2.1_a01b--------
 -Implementation of z-ordering (I think the last missing feature from v1.0)

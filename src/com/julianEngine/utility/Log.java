@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
-import com.julianEngine.Settings;
+import com.julianEngine.config.EngineConstants;;
 
 public class Log {
 	private static long startTime = 0;
@@ -24,9 +24,9 @@ public class Log {
 		int seconds = (int) Math.floorDiv(rawTime, 1000)%60;
 		int minutes = (int) Math.floorDiv(rawTime, 60000)%60;
 		int hours = (int) Math.floorDiv(rawTime, 3600000);
-		String output = String.format("[%02d:%02d:%02d][%s] ", hours, minutes, seconds, logLevel.stringName()) + object;
+		String output = String.format("[%02d:%02d:%02d][%s][%s] ", hours, minutes, seconds, Thread.currentThread().getName(), logLevel.stringName()) + object;
 		
-		switch ((logLevel.isHigherOrEqualTo(Settings.LOGLEVEL_CONSOLE)?0:1)+(logLevel.isHigherOrEqualTo(Settings.LOGLEVEL_FILE)?0:2)){
+		switch ((logLevel.isHigherOrEqualTo(EngineConstants.LOGLEVEL_CONSOLE)?0:1)+(logLevel.isHigherOrEqualTo(EngineConstants.LOGLEVEL_FILE)?0:2)){
 			case 0:
 				break;
 			case 1:
@@ -57,7 +57,7 @@ public class Log {
 	private static void writeToLogFile(String out){
 		List<String> lines = Arrays.asList(out);
 		try {
-			Files.write(Paths.get(Settings.LOGFILE), lines, Charset.forName("UTF-8"));
+			Files.write(Paths.get(EngineConstants.LOGFILE), lines, Charset.forName("UTF-8"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

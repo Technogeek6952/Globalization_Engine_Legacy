@@ -2,11 +2,15 @@ package com.julianEngine.graphics.shapes;
 
 import java.awt.Graphics;
 
+import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.Frame;
 
+/*
+ * The line object, while technically a shape, is mostly used for calculations and math, and so most Shape methods are not defined
+ */
 public class Line implements Shape{
 	/*--------Public Static Variables-------*/
 	
@@ -18,6 +22,7 @@ public class Line implements Shape{
 	Point start;
 	Point end;
 	boolean ready = false;
+	//private Parent parent;
 	
 	/*--------Code--------------------------*/
 	public Line(Point start, Point end){
@@ -47,7 +52,7 @@ public class Line implements Shape{
 	}
 	
 	@Override
-	public void draw(Graphics graphics, int height, Vector shift, Frame frame) {
+	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -88,4 +93,21 @@ public class Line implements Shape{
 		
 	}
 
+	@Override
+	public void centerX(Frame frame) {
+		//int xPos = (frame.getWidth()-this.width)/2;
+		//topLeft = new Point(xPos, topLeft.getY(), topLeft.getZ());
+	}
+
+	@Override
+	public void centerY(Frame frame) {
+		//int yPos = (frame.getWidth()-this.height)/2;
+		//topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
+	}
+
+	@Override
+	public void setParent(Parent p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

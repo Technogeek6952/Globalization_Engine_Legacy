@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
+import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
+import com.julianEngine.graphics.CustomFont;
 import com.julianEngine.graphics.Frame;
 
 public class Text implements Shape{
@@ -23,10 +26,15 @@ public class Text implements Shape{
 	private Color color;
 	private boolean anchored;
 	private Font font;
+	private boolean useCustomFont = false;
+	CustomFont customFont;
 	private int textHeight;
 	private int textWidth;
 	private FontMetrics metrics;
 	private boolean ready = false;
+	private Parent parent;
+	private int wrapWidth;
+	private boolean wrap = false;
 	
 	/*--------Code--------------------------*/
 	//Constructors
@@ -51,6 +59,11 @@ public class Text implements Shape{
 		ready = true;
 	}
 	
+	public void setWidth(int width){ //wraps text if beond width
+		wrapWidth = width;
+		wrap = true;
+	}
+	
 	public int getWidth(){
 		return textWidth;
 	}
@@ -67,6 +80,14 @@ public class Text implements Shape{
 		font = newFont;
 	}
 	
+	public void useCustomFont(boolean b){
+		useCustomFont = b;
+	}
+	
+	public void setCustomFont(CustomFont c){
+		customFont = c;
+	}
+	
 	public void setText(String newText){
 		text = newText;
 		textWidth = metrics.stringWidth(newText);
@@ -76,12 +97,26 @@ public class Text implements Shape{
 		return ready;
 	}
 	
-	public void draw(Graphics graphics, int height, Vector shift, Frame frame) {
-		graphics.setColor(color);
-		graphics.setFont(font);
-		int xPos = Math.round((float)topLeft.getX() + ((anchored)?0:(float)shift.getX()));
-		int yPos = Math.round((float)(height - topLeft.getY()) + ((anchored)?0:(float)shift.getY()) + (2*textHeight));
-		graphics.drawString(text, xPos, yPos);
+	public String getText(){
+		return text;
+	}
+	
+	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
+		if(anchored){
+			
+		}
+		if(!useCustomFont){
+			graphics.setColor(color);
+			graphics.setFont(font);
+			//int xPos = Math.round((float)topLeft.getX() + ((anchored)?0:(float)shift.getX()));
+			//int yPos = Math.round((float)(height - topLeft.getY()) + ((anchored)?0:(float)shift.getY()) + (2*textHeight));
+			Point gfxPoint = parent.getGFXPoint(topLeft.addVector(shift));
+			int xPos = (int) gfxPoint.getX();
+			int yPos = (int) gfxPoint.getY() + this.textHeight;
+			graphics.drawString(text, xPos, yPos);
+		}else{
+			customFont.renderString(topLeft.addVector(shift), (Graphics2D) graphics, text, parent, wrapWidth, wrap);
+		}
 	}
 
 	@Override
@@ -98,8 +133,7 @@ public class Text implements Shape{
 
 	@Override
 	public int getTopLeftZ() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) topLeft.getZ();
 	}
 	
 	public Point getTopLeft() {
@@ -114,4 +148,25 @@ public class Text implements Shape{
 		anchored = b;
 	}
 
+	@Override
+	public void centerX(Frame frame) {
+		if(!useCustomFont){
+			int xPos = (frame.getWidth()-this.textWidth)/2;
+			topLeft = new Point(xPos, topLeft.getY(), topLeft.getZ());
+		}else{
+			int xPos = (frame.getWidth()-this.customFont.getWidthOfString(text))/2;
+			topLeft = new Point(xPos, topLeft.getY(), topLeft.getZ());
+		}
+	}
+
+	@Override
+	public void centerY(Frame frame) {
+		int yPos = (frame.getWidth()-this.textHeight)/2;
+		topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
+	}
+
+	@Override
+	public void setParent(Parent p) {
+		parent = p;
+	}
 }

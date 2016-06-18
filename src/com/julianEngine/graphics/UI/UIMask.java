@@ -5,72 +5,35 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 
+import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
+import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
-import com.julianEngine.graphics.shapes.Line;
-import com.julianEngine.utility.Log;
 
-public class UIMask implements UIElement, MouseMotionListener {
-	/*--------Public Static Variables-------*/
+public abstract class UIMask implements UIElement, MouseListener, MouseMotionListener{
+	protected ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
-	/*--------Private Static Variables------*/
-	
-	/*--------Public Instance Variables-----*/
-	
-	/*--------Private Instance Variables----*/
-	/*
-	 * List of bounds - each entry is a line (representing an edge of a complex shape),
-	 * and a point that tells on which side of the line is considered "in"
-	 * A point is said to be within the mask if it is on the same side of each line as
-	 * the point associated with the given line.
-	 */
-	HashMap<Line, Point> bounds;
-	Frame referenceFrame;
-	boolean mouseInside = false;
-	boolean ready = false;
-	boolean listenerReady = false;
-	
-	/*--------Code--------------------------*/
-	public UIMask(HashMap<Line, Point> bounds, Frame frame){
-		this.bounds = bounds;
-		UIMask ref = this;
-		new Thread("Adding Mask Mouse Listener"){
-			public void run(){
-				frame.addMouseMotionListener(ref);
-				listenerReady = true;
-				Log.trace("UIMask Ready");
-			}
-		}.start();
-		referenceFrame = frame;
-		ready = true;
+	public UIMask(World parent){
+		//forces children to also take a world as a constructor argument. Should be used to figure out if the mask is actually visible, and if it should be rendered
 	}
 	
-	public void setBounds(HashMap<Line, Point> bounds){
-		this.bounds = bounds;
+	public void addUIMaskListener(UIMaskListener l){
+		listeners.add(l);
 	}
 	
-	public boolean isPointInside(Point toTest){
-		for(Line l:bounds.keySet()){
-			if(l.areTwoPointsOnSameSide(bounds.get(l), toTest)){
-				//same side - don't worry
-			}else{
-				return false; //as soon as any check is false, we can exit 
-			}
-		}
-		return true; //if the loop completes without returning, all checks were true, and so the point is inside
-	}
+	public abstract boolean isPointInside(Point toTest);
 	
-	public void draw(Graphics graphics, int height, Vector shift, Frame frame) {
+	public abstract boolean isMouseInside();
+	
+	//Shape Overrides
+	@Override
+	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
+		// TODO Auto-generated method stub
 		
 	}
 
-	public boolean isReady(){
-		return ready&&listenerReady;
-	}
-	
 	@Override
 	public int getTopLeftX() {
 		// TODO Auto-generated method stub
@@ -98,30 +61,89 @@ public class UIMask implements UIElement, MouseMotionListener {
 	@Override
 	public void move(Vector path) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void setAnchored(boolean b) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent e) {
+	public void centerX(Frame frame) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent e) {
-		Point mousePoint = referenceFrame.convertPoint(new Point(e.getX(), e.getY(), 0));
-		if(isPointInside(mousePoint)){
-			
-			mouseInside = true;
-		}else{
-			mouseInside = false;
-		}
+	public void centerY(Frame frame) {
+		// TODO Auto-generated method stub
+		
 	}
 
+	@Override
+	public boolean isReady() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//Child overrides
+	@Override
+	public void setParent(Parent p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	//MouseMotionListener & MouseListener Overrides
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	*/
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	//Listeners
+	public interface UIMaskListener{
+		public void maskClicked();
+		public void mouseEnteredMask();
+		public void mouseLeftMask();
+	}
 }
+

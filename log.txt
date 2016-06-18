@@ -1,1 +1,1 @@
-[00:00:31][INFO] Engine shutting down (closed by "X" on window)
+[00:00:01][pool-2-thread-1][ERROR] Error in render loop: 

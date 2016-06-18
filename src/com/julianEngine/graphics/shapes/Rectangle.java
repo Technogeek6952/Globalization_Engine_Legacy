@@ -2,6 +2,7 @@ package com.julianEngine.graphics.shapes;
 
 import java.awt.Graphics;
 
+import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
@@ -20,6 +21,7 @@ public class Rectangle implements Shape{
 	private double height;
 	private boolean anchored = false;
 	private boolean ready = false;
+	private Parent parent;
 	
 	/*--------Code--------------------------*/
 	public Rectangle(Point topLeft, double lenght, double height, Color color){
@@ -30,10 +32,18 @@ public class Rectangle implements Shape{
 		ready = true;
 	}
 	
-	public void draw(Graphics graphics, int winHeight, Vector shift, Frame frame) {
+	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
+		if(anchored){
+			
+		}
 		graphics.setColor(color);
-		int xPos = Math.round((float)topLeft.getX() + ((anchored)?0:(float)shift.getX()));
-		int yPos = Math.round((float)(winHeight - topLeft.getY()) + ((anchored)?0:(float)shift.getY()));
+		//int xPos = Math.round((float)topLeft.getX() + ((anchored)?0:(float)shift.getX()));
+		//int yPos = Math.round((float)(winHeight - topLeft.getY()) + ((anchored)?0:(float)shift.getY()));
+		
+		Point gfxPoint = parent.getGFXPoint(topLeft);
+		int xPos = (int) gfxPoint.getX();
+		int yPos = (int) gfxPoint.getY();
+		
 		graphics.drawRect(xPos, yPos, Math.round((float)length), Math.round((float)height));
 	}
 	
@@ -75,5 +85,22 @@ public class Rectangle implements Shape{
 	
 	public void setAnchored(boolean b) {
 		anchored = b;
+	}
+	
+	@Override
+	public void centerX(Frame frame) {
+		int xPos = (int) ((frame.getWidth()-this.length)/2);
+		topLeft = new Point(xPos, topLeft.getY(), topLeft.getZ());
+	}
+
+	@Override
+	public void centerY(Frame frame) {
+		int yPos = (int) ((frame.getWidth()-this.height)/2);
+		topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
+	}
+
+	@Override
+	public void setParent(Parent p) {
+		this.parent = p;
 	}
 }

@@ -5,7 +5,7 @@ public interface JDFCommon {
 	 * Run code to initialize the game - the master is always guaranteed to
 	 * load first, and therefore will have its init function run first
 	 */
-	void init();
+	void init(String options);
 	
 	/**
 	 * PostInit begins right after the last plugin in the load order has returned from
@@ -23,7 +23,7 @@ public interface JDFCommon {
 	 * doing complex tasks in response) If more time is needed, it is recommended
 	 * that another thread is notified of the message, and that thread deals with it.
 	 */
-	void messageReceived(String sender);
+	void messageReceived(Object data, String sender);
 	
 	/**
 	 * Get unique ID
