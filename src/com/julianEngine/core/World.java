@@ -128,7 +128,6 @@ public class World implements Parent{
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -145,68 +144,52 @@ public class World implements Parent{
 	//Shape/parent
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
-		// TODO Auto-generated method stub
-		
+		//World shouldn't actually draw anything - it just has to be included because we are inheriting the Shape interface from parent
 	}
 
 	@Override
 	public int getTopLeftX() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getTopLeftY() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getTopLeftZ() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public Point getTopLeft() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void move(Vector path) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void setAnchored(boolean b) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void centerX(Frame frame) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void centerY(Frame frame) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public boolean isReady() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
 	public void setParent(Parent p) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public Camera getActiveCamera(){

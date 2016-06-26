@@ -31,112 +31,78 @@ public abstract class UIMask implements UIElement, MouseListener, MouseMotionLis
 	//Shape Overrides
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
-		// TODO Auto-generated method stub
-		
+		//TODO: draw mask method
 	}
 
 	@Override
 	public int getTopLeftX() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getTopLeftY() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getTopLeftZ() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public Point getTopLeft() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void move(Vector path) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void setAnchored(boolean b) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void centerX(Frame frame) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void centerY(Frame frame) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public boolean isReady() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	//Child overrides
 	@Override
 	public void setParent(Parent p) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	//MouseMotionListener & MouseListener Overrides
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
-	/*
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	//Listeners

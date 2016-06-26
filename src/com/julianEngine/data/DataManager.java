@@ -110,7 +110,7 @@ public class DataManager {
 					try {
 						return ImageIO.read(in);
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						Log.trace("Error getting image from byte stream");
 						e.printStackTrace();
 					}
 				}

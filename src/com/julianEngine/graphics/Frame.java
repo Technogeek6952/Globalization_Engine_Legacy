@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
+import com.julianEngine.utility.Log;
 
 public class Frame extends JPanel{
 	/*--------Public Static Variables-------*/
@@ -147,7 +148,7 @@ public class Frame extends JPanel{
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+					Log.warn("Interrupted while waiting for render lock");
 					e.printStackTrace();
 				}
 				lock.lock();

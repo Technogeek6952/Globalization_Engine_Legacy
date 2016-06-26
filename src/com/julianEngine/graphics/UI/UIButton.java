@@ -300,7 +300,6 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 
 	@Override
 	public Point getGFXPoint(Point p) {
-		// TODO Auto-generated method stub
 		Point btnOrigin = new Point(topLeft.getX(), topLeft.getY()-this.height, 0);
 		//return new Point(0, this.height, 0);
 		Frame contFrame = getContainingFrame();

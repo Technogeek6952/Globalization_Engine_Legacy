@@ -92,32 +92,27 @@ public class ProgressBar implements Shape {
 
 	@Override
 	public int getTopLeftX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)topLeft.getX();
 	}
 
 	@Override
 	public int getTopLeftY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)topLeft.getY();
 	}
 
 	@Override
 	public int getTopLeftZ() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)topLeft.getZ();
 	}
 
 	@Override
 	public Point getTopLeft() {
-		// TODO Auto-generated method stub
-		return null;
+		return topLeft;
 	}
 
 	@Override
 	public void move(Vector path) {
-		// TODO Auto-generated method stub
-
+		topLeft.addVector(path);
 	}
 
 	@Override

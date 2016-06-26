@@ -13,6 +13,7 @@ import java.util.List;
 import com.julianEngine.config.EngineConstants;;
 
 public class Log {
+	//TODO: add colors to output text (http://stackoverflow.com/questions/1448858/how-to-color-system-out-println-output)
 	private static long startTime = 0;
 	static{
 		//gets the system time as soon as Log.java is fist instanced
@@ -62,7 +63,7 @@ public class Log {
 		try {
 			fos = new FileOutputStream(new File(EngineConstants.LOGFILE));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("[LOGGING-ERROR] Logfile could not be opened");
 			e.printStackTrace();
 		}
 	}
@@ -72,7 +73,7 @@ public class Log {
 			fos.write(System.getProperty("line.separator").getBytes());
 			fos.flush();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			System.out.println("[LOGGING-ERROR] could not write to log file");
 			e.printStackTrace();
 		}
 	}

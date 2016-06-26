@@ -22,7 +22,8 @@ public class Line implements Shape{
 	Point start;
 	Point end;
 	boolean ready = false;
-	//private Parent parent;
+	boolean anchored = false;
+	private Parent parent;
 	
 	/*--------Code--------------------------*/
 	public Line(Point start, Point end){
@@ -53,61 +54,51 @@ public class Line implements Shape{
 	
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
-		// TODO Auto-generated method stub
-		
+		//TODO: implement line draw function
 	}
 
+	//Since a line doesn't have a top left, we're just going to use the start point - be aware of this functionality when using the line class
 	@Override
 	public int getTopLeftX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) start.getX();
 	}
 
 	@Override
 	public int getTopLeftY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) start.getY();
 	}
 
 	@Override
 	public int getTopLeftZ() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) start.getZ();
 	}
 
 	@Override
 	public Point getTopLeft() {
-		// TODO Auto-generated method stub
-		return null;
+		return start;
 	}
 
 	@Override
 	public void move(Vector path) {
-		// TODO Auto-generated method stub
-		
+		start.addVector(path);
+		end.addVector(path);
 	}
 
 	@Override
 	public void setAnchored(boolean b) {
-		// TODO Auto-generated method stub
-		
+		anchored = b;
 	}
 
 	@Override
 	public void centerX(Frame frame) {
-		//int xPos = (frame.getWidth()-this.width)/2;
-		//topLeft = new Point(xPos, topLeft.getY(), topLeft.getZ());
 	}
 
 	@Override
 	public void centerY(Frame frame) {
-		//int yPos = (frame.getWidth()-this.height)/2;
-		//topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
 	}
 
 	@Override
 	public void setParent(Parent p) {
-		// TODO Auto-generated method stub
-		
+		parent = p;
 	}
 }

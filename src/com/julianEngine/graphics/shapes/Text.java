@@ -125,14 +125,12 @@ public class Text implements Shape{
 
 	@Override
 	public int getTopLeftX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)topLeft.getX();
 	}
 
 	@Override
 	public int getTopLeftY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)topLeft.getY();
 	}
 
 	@Override

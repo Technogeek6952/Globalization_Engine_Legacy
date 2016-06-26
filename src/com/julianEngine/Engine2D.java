@@ -127,9 +127,10 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				Engine2D engine = new Engine2D("JulianEngine "+versionID);
 				
 				if(args.length > 0 && args[0].equals("--testengine")){ //if the --testengine option was used, test the engine instead of loading the game
+					//FIXME: commented out test engine code - this if statement should be re-written
 					//Test Engine
 					Log.trace("Testing engine...");
-					testEngine(engine);
+					//testEngine(engine);
 				}else{
 					//Load plugins
 					Log.trace("Loading plugins...");
@@ -568,7 +569,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		try {
 			renderLoopExecutor.awaitTermination(1, TimeUnit.SECONDS);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+			Log.trace("Interrupted while waiting for render executor service to shutdown");
 			e1.printStackTrace();
 		}
 		renderLoopExecutor = Executors.newSingleThreadScheduledExecutor();
@@ -579,6 +580,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		}
 	}
 	
+	//XXX: Test engine code. May be useful later, but commented out for now
+	/*
 	private static void testEngine(Engine2D engine){
 		try {
 			World loadingScreen = new World(-1);
@@ -594,7 +597,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			Text loadingText = new Text(new Point(200, 400, -1), "LOADING...", Color.BLACK, new Font("Ariel", Font.PLAIN, 50), engine.mainView);
 			loadingScreen.addShape(loadingText);
 		} catch (IDAlreadyInUseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		engine.mainCamera.moveToWorld(-1);
@@ -615,6 +617,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		engine.mainWorld.addShape(engine.fpsText);
 		*/
 		
+	/*
 		Point buttonTL = new Point(500, 300, 0);
 		UIButton buttonTest = new UIButton(buttonTL, "Button!", Color.BLACK, engine.mainView, engine.mainWorld);
 		engine.mainWorld.addShape(buttonTest);
@@ -676,8 +679,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 
 			@Override
 			public void mouseLeftMask() {
-				// TODO Auto-generated method stub
-				
 			}
 			
 		});
@@ -715,7 +716,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -723,6 +723,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		progressTest.setPercentFilled((float).5);
 		
 	}
+	*/
 	
 	//KeyListener methods
 	@Override
