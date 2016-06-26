@@ -21,6 +21,7 @@ public class World implements Parent{
 	ArrayList<Shape> shapes = new ArrayList<Shape>();
 	ArrayList<Camera> attachedCameras = new ArrayList<Camera>();
 	int activeCamera = 0;
+	LoadExecutor onLoad = null;
 	
 	/*--------Code--------------------------*/
 	//full constructor
@@ -52,6 +53,15 @@ public class World implements Parent{
 	
 	public int getID(){
 		return worldID;
+	}
+	
+	public void setOnLoad(LoadExecutor executor){
+		onLoad = executor;
+	}
+	
+	public void load(){
+		if(onLoad!=null)
+			onLoad.execute();
 	}
 	
 	public void attachCamera(Camera c){
@@ -235,5 +245,10 @@ public class World implements Parent{
 		}else{
 			return null;
 		}
+	}
+	
+	public interface LoadExecutor{
+		//called when the world is loaded - should be used for setting background, playing music, etc
+		public void execute();
 	}
 }

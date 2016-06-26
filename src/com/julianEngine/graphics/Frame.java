@@ -172,6 +172,8 @@ public class Frame extends JPanel{
 	}
 	
 	public void drawFrame(Graphics2D graphics, boolean forceDraw){
+		((Graphics2D)graphics).setBackground(backgroundColor);
+		graphics.clearRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
 		synchronized(this){
 			shapes.sort(new Comparator<Shape>(){
 				public int compare(Shape o1, Shape o2) {

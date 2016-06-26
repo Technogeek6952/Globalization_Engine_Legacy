@@ -1,6 +1,5 @@
 package com.julianEngine.graphics;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -8,6 +7,7 @@ import java.util.HashMap;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.data.DataManager;
+import com.julianEngine.graphics.UI.UIButton;
 import com.julianEngine.utility.Log;
 
 public class CustomFont {
@@ -26,6 +26,11 @@ public class CustomFont {
 		
 	}
 	
+	public void preRenderString(String str, int wrapWidth, boolean wrap, Parent parent){
+		Graphics2D dudGfx = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
+		renderString(new Point(), dudGfx, str, parent, wrapWidth, wrap);
+	}
+	
 	public void renderString(Point topLeft, Graphics2D graphics, String str, Parent parent, int wrapWidth, boolean wrap){
 		if(getWidthOfString(str)==0){
 			Log.trace("0 width");
@@ -36,8 +41,8 @@ public class CustomFont {
 		if(preLoadedStrings.containsKey(str)){
 			graphics.drawImage(preLoadedStrings.get(str), xPos, yPos, null);
 		}else{
-			//xPos = 0;
-			//yPos = 0;
+			xPos = 0;
+			yPos = 0;
 			point.setX(0);
 			point.setY(0);
 			int lineWidth = 0;
@@ -50,63 +55,254 @@ public class CustomFont {
 				e.printStackTrace();
 			}
 			Graphics2D strImgGfx = stringImage.createGraphics();
-			for(char c:str.toCharArray()){
-				BufferedImage charImage;
-				int imgHeight;
-				int imgWidth;
-				int dstWidth;
-				if(c!=' '){
-					charImage = getImageForChar(c);
-					imgHeight = charImage.getHeight();
-					imgWidth = charImage.getWidth();
-					//dstWidth = (int)(imgWidth*((double)this.height/(double)imgHeight));
-					dstWidth = (int)((float)this.height*((float)imgWidth/(float)imgHeight));
-				}else{
-					charImage = null;
-					imgHeight = 0;
-					imgWidth = 0;
-					dstWidth = 0;
-				}
-				switch (c){
-				case ' ':
-					if(lineWidth>wrapWidth && wrap){
-						lineWidth = 0;
-						point.setY(point.getY()+this.height);
-						point.setX(xPos);
+			if(!wrap){
+				for(char c:str.toCharArray()){
+					BufferedImage charImage;
+					int imgHeight;
+					int imgWidth;
+					int dstWidth;
+					if(c!=' '){
+						charImage = getImageForChar(c);
+						imgHeight = charImage.getHeight();
+						imgWidth = charImage.getWidth();
+						dstWidth = (int)((float)this.height*((float)imgWidth/(float)imgHeight));
 					}else{
-						point.setX(point.getX()+this.height/2);
-						lineWidth += this.height/2;
+						charImage = null;
+						imgHeight = 0;
+						imgWidth = 0;
+						dstWidth = 0;
 					}
-					break;
-				case '_':
-					break;
-					/*
-				case '.':
-					dstWidth = imgWidth*((this.height/4)/imgHeight);
-					lineWidth += (wrap)?dstWidth:0;
-					point.setY(point.getY()+(this.height-dstWidth));
-					graphics.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
-					point.setY(yPos);
-					break;
-					*/
-				case '+':
-					dstWidth = imgWidth*((this.height/2)/imgHeight);
-					lineWidth += dstWidth;
-					point.setY(point.getY()+(this.height/4));
-					strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
-					point.setY(yPos);
-					break;
-				case '-':
-					dstWidth = imgWidth*((this.height/2)/imgHeight);
-					lineWidth += dstWidth;
-					point.setY(point.getY()+(this.height/4));
-					strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
-					point.setY(yPos);
-					break;
-				default:
-					lineWidth += dstWidth;
-					strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+this.height, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
-					point.setX(point.getX()+dstWidth+padding);
+					switch (c){
+					case ' ':
+						if(lineWidth>wrapWidth && wrap){
+							lineWidth = 0;
+							point.setY(point.getY()+this.height);
+							point.setX(xPos);
+						}else{
+							point.setX(point.getX()+this.height/2);
+							lineWidth += this.height/2;
+						}
+						break;
+					case '_':
+						break;
+					case '+':
+						dstWidth = imgWidth*((this.height/2)/imgHeight);
+						lineWidth += dstWidth;
+						point.setY(point.getY()+(this.height/4));
+						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+						point.setY(yPos);
+						break;
+					case '-':
+						dstWidth = imgWidth*((this.height/2)/imgHeight);
+						lineWidth += dstWidth;
+						point.setY(point.getY()+(this.height/4));
+						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+						point.setY(yPos);
+						break;
+					default:
+						lineWidth += dstWidth;
+						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+this.height, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+						point.setX(point.getX()+dstWidth+padding);
+					}
+				}
+			}else{
+				stringImage = new BufferedImage(wrapWidth, this.height, BufferedImage.TYPE_INT_ARGB);
+				strImgGfx = stringImage.createGraphics();
+				String[] words = str.split(" ");
+				for(String word:words){
+					if((point.getX()+getWidthOfString(word))>wrapWidth){ //if we're going over the wrap width
+						if(point.getX()>0){ //and we're not the first word (x != 0)
+							//go to new line 
+							yPos = (int) (point.getY()+this.height);
+							point.setY(yPos);
+							point.setX(xPos);
+							BufferedImage oldImage = stringImage.getSubimage(0, 0, stringImage.getWidth(), stringImage.getHeight());
+							stringImage = new BufferedImage(oldImage.getWidth(), stringImage.getHeight()+this.height, BufferedImage.TYPE_INT_ARGB);
+							strImgGfx = stringImage.createGraphics();
+							strImgGfx.drawImage(oldImage, 0, 0, oldImage.getWidth(), oldImage.getHeight(), null);
+							//draw word
+							for(char c:word.toCharArray()){
+								BufferedImage charImage;
+								int imgHeight;
+								int imgWidth;
+								int dstWidth;
+								charImage = getImageForChar(c);
+								imgHeight = charImage.getHeight();
+								imgWidth = charImage.getWidth();
+								dstWidth = (int)((float)this.height*((float)imgWidth/(float)imgHeight));
+								
+								switch (c){
+								case '_':
+									break;
+								case '+':
+									dstWidth = imgWidth*((this.height/2)/imgHeight);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+(this.height/4));
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									break;
+								case '-':
+									dstWidth = imgWidth*((this.height/2)/imgHeight);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+(this.height/4));
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									break;
+								case '.':
+									dstWidth = (int) (.4f*this.height);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+this.height-dstWidth);
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									point.setX(point.getX()+dstWidth);
+									break;
+								case ',':
+									dstWidth = (int) (.5f*this.height);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+this.height-dstWidth);
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									point.setX(point.getX()+dstWidth);
+									break;
+								case '\'':
+									dstWidth = (int) (.5f*this.height);
+									lineWidth += dstWidth;
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setX(point.getX()+dstWidth);
+									break;
+								default:
+									lineWidth += dstWidth;
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+this.height, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setX(point.getX()+dstWidth+padding);
+								}
+							}
+							//add space
+							point.setX(point.getX()+(.5*this.height));
+						}else{ //if, however, we're the first word - just draw the word, and go over the width - the next word should go down
+							if(stringImage.getWidth()>=getWidthOfString(word)){ //if the image is wide enough, just draw the word (skip next code)
+							}else{ //otherwise, make the image wider, then draw
+								BufferedImage oldImage = stringImage.getSubimage(0, 0, stringImage.getWidth(), stringImage.getHeight());
+								stringImage = new BufferedImage(getWidthOfString(word), stringImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
+								strImgGfx = stringImage.createGraphics();
+								strImgGfx.drawImage(oldImage, 0, 0, oldImage.getWidth(), oldImage.getHeight(), null);
+							}
+							//draw word
+							for(char c:word.toCharArray()){
+								BufferedImage charImage;
+								int imgHeight;
+								int imgWidth;
+								int dstWidth;
+								charImage = getImageForChar(c);
+								imgHeight = charImage.getHeight();
+								imgWidth = charImage.getWidth();
+								dstWidth = (int)((float)this.height*((float)imgWidth/(float)imgHeight));
+								
+								switch (c){
+								case '_':
+									break;
+								case '+':
+									dstWidth = imgWidth*((this.height/2)/imgHeight);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+(this.height/4));
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									break;
+								case '-':
+									dstWidth = imgWidth*((this.height/2)/imgHeight);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+(this.height/4));
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									break;
+								case '.':
+									dstWidth = (int) (.4f*this.height);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+this.height-dstWidth);
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									point.setX(point.getX()+dstWidth);
+									break;
+								case ',':
+									dstWidth = (int) (.5f*this.height);
+									lineWidth += dstWidth;
+									point.setY(point.getY()+this.height-dstWidth);
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setY(yPos);
+									point.setX(point.getX()+dstWidth);
+									break;
+								case '\'':
+									dstWidth = (int) (.5f*this.height);
+									lineWidth += dstWidth;
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setX(point.getX()+dstWidth);
+									break;
+								default:
+									lineWidth += dstWidth;
+									strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+this.height, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+									point.setX(point.getX()+dstWidth+padding);
+								}
+							}
+						}
+					}else{ //if we're still within the allowed with, draw the word and add a space
+						//draw word
+						for(char c:word.toCharArray()){
+							BufferedImage charImage;
+							int imgHeight;
+							int imgWidth;
+							int dstWidth;
+							charImage = getImageForChar(c);
+							imgHeight = charImage.getHeight();
+							imgWidth = charImage.getWidth();
+							dstWidth = (int)((float)this.height*((float)imgWidth/(float)imgHeight));
+							
+							switch (c){
+							case '_':
+								break;
+							case '+':
+								dstWidth = imgWidth*((this.height/2)/imgHeight);
+								lineWidth += dstWidth;
+								point.setY(point.getY()+(this.height/4));
+								strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+								point.setY(yPos);
+								break;
+							case '-':
+								dstWidth = imgWidth*((this.height/2)/imgHeight);
+								lineWidth += dstWidth;
+								point.setY(point.getY()+(this.height/4));
+								strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+								point.setY(yPos);
+								break;
+							case '.':
+								dstWidth = (int) (.4f*this.height);
+								lineWidth += dstWidth;
+								point.setY(point.getY()+this.height-dstWidth);
+								strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+								point.setY(yPos);
+								point.setX(point.getX()+dstWidth);
+								break;
+							case ',':
+								dstWidth = (int) (.5f*this.height);
+								lineWidth += dstWidth;
+								point.setY(point.getY()+this.height-dstWidth);
+								strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+								point.setY(yPos);
+								point.setX(point.getX()+dstWidth);
+								break;
+							case '\'':
+								dstWidth = (int) (.5f*this.height);
+								lineWidth += dstWidth;
+								strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+								point.setX(point.getX()+dstWidth);
+								break;
+							default:
+								lineWidth += dstWidth;
+								strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+this.height, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+								point.setX(point.getX()+dstWidth+padding);
+							}
+						}
+						//add space
+						point.setX(point.getX()+(.5*this.height));
+					}
 				}
 			}
 			preLoadedStrings.put(str, stringImage);
@@ -116,9 +312,6 @@ public class CustomFont {
 	
 	public int getWidthOfString(String str){
 		float width = 0;
-		if(str.equals("+")){
-			int w = 0;
-		}
 		for(char c:str.toCharArray()){
 			if(characterWidths.containsKey(c)){
 				width += (float)characterWidths.get(c)*(float)height;

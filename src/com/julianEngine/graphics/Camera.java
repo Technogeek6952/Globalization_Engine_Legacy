@@ -24,10 +24,12 @@ public class Camera {
 	boolean update = false;
 	boolean render = false;
 	Frame frame;
+	World currentWorld;
 	
 	/*--------Code--------------------------*/
 	public Camera(Frame frame){
 		World.getWorldForID(currentID).attachCamera(this);
+		currentWorld = World.getWorldForID(currentID);
 		this.frame = frame;
 	}
 	
@@ -39,6 +41,8 @@ public class Camera {
 			currentID = id;
 			cameraPosition = new Point(0, 0, 0);
 			changedWorld = true;
+			currentWorld = World.getWorldForID(currentID);
+			currentWorld.load();
 		}
 	}
 	

@@ -10,8 +10,8 @@ import com.julianEngine.utility.Log.Level;
 public final class EngineConstants {
 	
 	//constant variables **These should eventually be moved to a system that lets the user set them
-	public static final int width = 1280;
-	public static final int height = 720;
+	public static int width = 1280;
+	public static int height = 720;
 	
 	public static final int bufferFrames = 2;
 	

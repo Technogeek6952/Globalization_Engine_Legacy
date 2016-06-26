@@ -93,6 +93,10 @@ public class Text implements Shape{
 		textWidth = metrics.stringWidth(newText);
 	}
 	
+	public void preRenderText(String text){
+		customFont.preRenderString(text, wrapWidth, wrap, parent);
+	}
+	
 	public boolean isReady(){
 		return ready;
 	}

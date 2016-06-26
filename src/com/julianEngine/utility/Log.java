@@ -1,5 +1,8 @@
 package com.julianEngine.utility;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -54,11 +57,22 @@ public class Log {
 	
 	public static void warn(Object object) { log(Level.WARN, object); }
 	
-	private static void writeToLogFile(String out){
-		List<String> lines = Arrays.asList(out);
+	static FileOutputStream fos;
+	static{
 		try {
-			Files.write(Paths.get(EngineConstants.LOGFILE), lines, Charset.forName("UTF-8"));
-		} catch (IOException e) {
+			fos = new FileOutputStream(new File(EngineConstants.LOGFILE));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private static void writeToLogFile(String out){
+		try {
+			fos.write(out.getBytes());
+			fos.write(System.getProperty("line.separator").getBytes());
+			fos.flush();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

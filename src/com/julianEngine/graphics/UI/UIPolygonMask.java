@@ -126,7 +126,8 @@ public class UIPolygonMask extends UIMask {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseReleased(MouseEvent e) {
+		//Log.trace("Mouse Click detected");
 		//Mouse clicked with the game active
 		if(mouseInside){
 			//if the mouse was inside the mask when it clicked, notify

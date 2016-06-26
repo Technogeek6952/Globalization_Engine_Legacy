@@ -70,6 +70,13 @@ public class Sprite implements Shape{
 				this.imgHeight = frames.get(0).getHeight();
 				this.dstWidth = (int) (imgWidth*scale);
 				this.dstHeight = (int) (imgHeight*scale);
+			}else if(texture.equals("")){
+				BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource("images/misc/Error.png"));
+				this.image = spriteImage;
+				this.imgWidth = spriteImage.getWidth();
+				this.imgHeight = spriteImage.getHeight();
+				this.dstWidth = (int) (imgWidth*scale);
+				this.dstHeight = (int) (imgHeight*scale);
 			}else{
 				Log.error("Unrecognized image format for resource: "+texture);
 			}
@@ -94,6 +101,11 @@ public class Sprite implements Shape{
 				frames = getFramesFromStream(DataManager.getStreamForResource(texture));
 				this.imgWidth = frames.get(0).getWidth();
 				this.imgHeight = frames.get(0).getHeight();
+			}else if(texture.equals("")){
+				BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource("images/misc/Error.png"));
+				this.image = spriteImage;
+				this.imgWidth = spriteImage.getWidth();
+				this.imgHeight = spriteImage.getHeight();
 			}else{
 				Log.error("Unrecognized image format for resource: "+texture);
 			}
@@ -124,6 +136,11 @@ public class Sprite implements Shape{
 				frames = getFramesFromStream(DataManager.getStreamForResource(texture));
 				this.imgWidth = frames.get(0).getWidth();
 				this.imgHeight = frames.get(0).getHeight();
+			}else if(texture.equals("")){
+				BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource("images/misc/Error.png"));
+				this.image = spriteImage;
+				this.imgWidth = spriteImage.getWidth();
+				this.imgHeight = spriteImage.getHeight();
 			}else{
 				Log.error("Unrecognized image format for resource: "+texture);
 			}

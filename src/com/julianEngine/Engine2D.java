@@ -10,8 +10,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -34,6 +37,10 @@ import com.julianEngine.core.World.WorldWaitListener;
 import com.julianEngine.data.DataManager;
 import com.julianEngine.data.JDFMaster;
 import com.julianEngine.data.JDFPlugin;
+import com.julianEngine.data.PreInitializer;
+import com.julianEngine.data.pluginCommunication.JDFMessageManager;
+import com.julianEngine.data.pluginCommunication.JDFMessageReceiver;
+import com.julianEngine.data.pluginCommunication.JDFMessageSender;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.UI.UIBitmapMask;
@@ -45,6 +52,7 @@ import com.julianEngine.graphics.shapes.Rectangle;
 import com.julianEngine.graphics.shapes.Sprite;
 import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
+import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 
 /**
  * Julian Engine v1.2 - coded in Java with default libraries. Successor to v1.0
@@ -53,56 +61,56 @@ import com.julianEngine.utility.Log;
  */
 public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	/*--------Public Static Variables-------*/
-	public static String versionID = "v1.2.4_a03";
-	public static JDFMaster masterFile;
-	public static ArrayList<JDFPlugin> pluginFiles;
-	public static boolean debugMode = true;
+	public static String versionID = "v1.2.4_a03"; //Engine version
+	public static JDFMaster masterFile; //Variable holder for the master plugin file (see JDFMaster)
+	public static ArrayList<JDFPlugin> pluginFiles; //ArrayList holder for each plugin file (see JDFPlugin)
+	public static boolean debugMode = true; //Should the engine be run in debug mode (set to false for release)
 	
 	/*--------Private Static Variables------*/
-	private static final long serialVersionUID = -7981520978541595849L;
+	private static final long serialVersionUID = -7981520978541595849L; //Serial Version UID for serializing the engine for save files and the like
 	private static boolean engineStarted = false; //set to true when the first instance of Engine2D is created. Prevents plugins from creating a second instance
-	private static Engine2D engineReference;
-	private static boolean showLoadBar = false;
+	private static Engine2D engineReference; //static reference to the engine - only one instance can be created, and this points to it
+	private static boolean showLoadBar = false; //should the detailed loading bar be shown?
+	private static boolean initializerAgreement = false; //Have all the plugins agreed on an initializer? See code in main() for more details
+	private static PreInitializer proposedInitializer; //Variable holder for the initializer currently being proposed (see above and main())
 	
 	/*--------Public Instance Variables-----*/
-	public World mainWorld;
-	public Camera mainCamera;
-	public Text fpsText;
-	public Frame mainView = new Frame(1080, 720);
+	public World mainWorld; //Variable holder for the main world (populated by master file - usually a title screen of some sort)
+	public Camera mainCamera; //Variable holder for the camera rendering the window
+	public Frame mainView = new Frame(1080, 720); //Variable holder for the frame that the camera renders to, and is displayed in the window
 	
 	/*--------Private Instance Variables----*/
-	private BufferStrategy bufferStrategy;
-	private boolean paused = false;
-	//private boolean loading = true;
-	private int fpsLock = 60;
-	private ArrayList<EngineLoadListener> loadListeners = new ArrayList<EngineLoadListener>();
-	private boolean consoleActive = false;
+	private BufferStrategy bufferStrategy; //buffer strategy for the frame - renders two frames in advanced to improve performance
+	private boolean paused = false; //is the game paused?
+	private int fpsLock = 60; //default fps lock - used in constructor to set up render loop
+	private ArrayList<EngineLoadListener> loadListeners = new ArrayList<EngineLoadListener>(); //list of parties who are interested in the loading state of the game
+	private boolean consoleActive = false; //is the console active (THIS SHOULD BE TAKEN UP BY THE MASTER FILE, AND EVENTUALLY REMOVED)
 		//settings for render loop (fps)
-	private int renders = 0;
-	private long lastUpdateNano = System.nanoTime();
-	private ScheduledExecutorService renderLoopExecutor = Executors.newSingleThreadScheduledExecutor();
-	private Runnable renderLoop = new Runnable(){
-		public void run() {
-			if(!paused){
-				try{
-					mainCamera.renderPerspective(mainView, bufferStrategy);
-					renders++;
-					
-					if((System.nanoTime()-lastUpdateNano)>250000000){
-						long timePassed = System.nanoTime()-lastUpdateNano;
-						lastUpdateNano = System.nanoTime();
-						double fps = ((float)renders/(double)((double)timePassed/1000000000f));
-						mainCamera.setFPS((float) fps);
-						renders = 0;
-					}
-				}catch(Exception e){
-					Log.error("Error in render loop: ");
-					e.printStackTrace();
+	private int renders = 0; //holder for how many times the frame has been drawn since last check
+	private long lastUpdateNano = System.nanoTime(); //system time at the last check
+	private ScheduledExecutorService renderLoopExecutor = Executors.newSingleThreadScheduledExecutor(); //holder for the executor service that runs the render loop at regular intervals
+	//Anonymous class for the render loop stored in a runnable object
+	private Runnable renderLoop = () -> {
+		if(!paused){
+			try{
+				mainCamera.renderPerspective(mainView, bufferStrategy);
+				renders++;
+				
+				if((System.nanoTime()-lastUpdateNano)>250000000){
+					long timePassed = System.nanoTime()-lastUpdateNano;
+					lastUpdateNano = System.nanoTime();
+					double fps = ((float)renders/(double)((double)timePassed/1000000000f));
+					mainCamera.setFPS((float) fps);
+					renders = 0;
 				}
+			}catch(Exception e){
+				Log.error("Error in render loop: ");
+				e.printStackTrace();
 			}
 		}
 		
 	};
+	
 	/*--------Code--------------------------*/
 	/**Entry point for application. Creates engine, loads plugins, and then hands opperation off
 	 * to master plugin file. if first arg is equal to "--testengine" no plugins will be loaded,
@@ -111,18 +119,16 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	 * @throws MultipleMasterFilesFoundException 
 	**/
 	public static void main(String[] args){
+		//Rename the thread. This has two purposes: first to help find errors during debugging, and also to print in the log
 		Thread.currentThread().setName("ENGINE-main");
 		try{
 			try {
 				//Create the engine
 				Engine2D engine = new Engine2D("JulianEngine "+versionID);
 				
-				engine.mainCamera.forceRender();
-				
-				if(args.length > 0 && args[0].equals("--testengine")){
+				if(args.length > 0 && args[0].equals("--testengine")){ //if the --testengine option was used, test the engine instead of loading the game
 					//Test Engine
 					Log.trace("Testing engine...");
-					
 					testEngine(engine);
 				}else{
 					//Load plugins
@@ -133,80 +139,123 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 					
 					//Log if either masterFile or pluginFiles is null (null masterFile is an error)
 					if(masterFile==null){
+						//we should get an exception if there were any errors loading the master file (i.e. no master file, or multiple), so this should never run,
+						//and if we see this error in the log before a crash, we know something is very wrong
 						Log.fatal("Unknown error while loading master file (null pointer)");
-						System.exit(-1);
+						System.exit(-1); //shutdown the program with an error code
 					}
 					
-					if(pluginFiles==null){
+					if(pluginFiles==null){ //if we don't have any plugin files loaded, tell the user and proceed
 						Log.info("No plugin files found - proceeding without");
 					}
 					
-					//REPLACE WITH SOME WAY OF GETTING PLUGIN FILES TO LOAD RESOURCES
-					Thread.currentThread().setName("DATA_MANAGER-loadfile"); //indicate thread is now being used to load the data file
-					DataManager.loadDataFile("./Data/Globalization.jrf");
-					Thread.currentThread().setName("ENGINE-main");
+					//!!!!!!!!!!!PLUGIN INITIALIZER AGREEMENT CODE!!!!!!!!!!!!!!!//
+					//WARNING: IF NOT USED PROPERY, THIS CAN TURN INTO AN INFINITE LOOP (IF NO PLUGINS CAN AGREE ON AN INITIALIZER)!!!!!!!!!!
+					//Inform plugins that we intend to initialize with the master plugin
+					proposedInitializer = masterFile; //propose to use the master plugin file for the initializer
+					Log.trace("Proposing Pre-Initializer");
+					while(!initializerAgreement){ //loop until an initializer is decided on
+						initializerAgreement = true; //if this isn't set to false by the end, we can assume an initializer was agreed on
+						
+						//boradcast our intention to use whatever initializer is being proposed
+						JDFMessageManager.broadcastMessage(String.format("proposed-initializer:%s", proposedInitializer.getName()), new JDFMessageSender(){
+							//anonymous class to represent the engine as a message sender
+							@Override
+							public String getName() {
+								return "Engine2D loader";
+							}
+	
+							@Override
+							public void replyReceived(String originalMessage, byte[] reply, JDFMessageReceiver receiver) {
+								//If we get a reply to our message, we need to deal with it - usually a reply means that a plugin doesn't agree on the initializer
+								Log.trace(receiver.getName()+" disagrees with chosen initializer"); //tell the user what's happening
+								initializerAgreement = false; //we don't agree anymore, make sure to update the boolean
+								String msgReply = new String(reply); //turn the reply into a string to check the first bit
+								ByteArrayInputStream replyStream = new ByteArrayInputStream(reply); //if the first bit is good, we need to have a stream for the rest of the data
+								if(msgReply.startsWith("alternate-initializer:")){ //if the plugin is in fact proposing a new initializer, we need to get that initializer
+									//new initializer proposed
+									for(int i=0;i<"alternate-initializer:".length();i++){
+										replyStream.read(); //dump bytes corresponding to the string, we only need the bits for the object
+									}
+									
+									//the rest of the data should be a serialized PreInitializer
+									try {
+										ObjectInputStream initializerStream = new ObjectInputStream(replyStream); //create an object stream from the byte stream
+										proposedInitializer = (PreInitializer) initializerStream.readObject(); //read the serialized object
+									} catch (Exception e) {
+										//If we get an exception, the byte stream was likely corrupted, or not formed properly by the plugin
+										Log.error("Could not read pre-initializer object proposed by"+receiver.getName());
+										e.printStackTrace();
+									}
+								}
+							}
+						});
+					}
 					
-					World loadingScreen = new World(-1);
-					Thread.currentThread().setName(masterFile.getPluginID()+"-loadScreen");
-					loadingScreen = masterFile.createLoadingScreen(loadingScreen, engine.mainView);
-					Thread.currentThread().setName("ENGINE-main");
 					
-					engine.mainCamera.forceRender();
+					//after leaving the loop we now have an initializer that all plugins agree on
 					
-					ProgressBar loadingBar = new ProgressBar(new Point(20, 100, 5), 300, 25);
-					Text loadingText = new Text(new Point(20, 120, 5), "", Color.WHITE, new Font("Ariel", Font.PLAIN, 12), engine.mainView);
+					Thread.currentThread().setName("ENGINE-preInitializer"); //change the name of the thread - for debug and log
+					proposedInitializer.preInit(); //use the agreed upon initializer to initialize the game
+					Thread.currentThread().setName("ENGINE-main"); //set the thread name back to ENGINE-main
+					
+					//LOADING SCREEN CODE
+					World loadingScreen = new World(-1); //create a new world for the loading screen
+					Thread.currentThread().setName(masterFile.getPluginID()+"-loadScreen"); //change the thread name to signify we're getting the load screen
+					loadingScreen = masterFile.createLoadingScreen(loadingScreen, engine.mainView); //ask the master file for the load screen
+					Thread.currentThread().setName("ENGINE-main"); //change thread name back
+					
+					ProgressBar loadingBar = new ProgressBar(new Point(20, 100, 5), 300, 25); //create a progress bar for detailed loading progress
+					Text loadingText = new Text(new Point(20, 120, 5), "", Color.WHITE, new Font("Ariel", Font.PLAIN, 12), engine.mainView); //text to display loading progress on
+					
+					//set up and stylize loading bar and loading text
 					loadingBar.setBarColor(Color.WHITE);
 					loadingBar.setBorderColor(Color.WHITE);
 					loadingBar.centerX(engine.mainView);
 					loadingText.centerX(engine.mainView);
 					
-					if(showLoadBar||debugMode){
+					if(showLoadBar||debugMode){ //if we should show the loading bar, or if we are in debug name, add it to the loading screen
 						loadingScreen.addShape(loadingBar);
 						loadingScreen.addShape(loadingText);
 					}
 					
-					engine.mainCamera.forceRender();
+					Thread customLoadThread; //thread to run custom loading code in - we put this in a new thread so we can limit the time spent on it, and keep load times low
 					
-					Thread customLoadThread;
+					engine.mainCamera.moveToWorld(loadingScreen.getID()); //put the camera in the loading screen, to render it
+					World.waitForWorldToBeReady(World.getWorldForID(loadingScreen.getID())); //wait for the loading screen to be ready, so we're not showing nothing when the game opens
+					engine.setVisible(true); //once the loading screen is ready, show the window
 					
-					engine.mainCamera.moveToWorld(loadingScreen.getID());
-					World.waitForWorldToBeReady(World.getWorldForID(loadingScreen.getID()));
-					engine.setVisible(true);
-					
-					engine.mainCamera.forceRender();
-					
-					customLoadThread = new Thread(){
+					//Set the custom loading thread to 10% - since the code is loaded. We don't set the loading bar here because
+					//it tracks the individual progress of each task
+					customLoadThread = new Thread(){ //reset the load thread to the following code
 						public void run(){
 							for(EngineLoadListener l:engine.loadListeners){
-								l.setLoadingPercentage((float) .1);
+								l.setLoadingPercentage((float) .1); //for each party interested in engine loading percentage, set the percenatge to 10%
 							}
 						}
 					};
 					customLoadThread.start();
-					customLoadThread.join(1000);
+					customLoadThread.join(1000); //start thread, and wait a maximum of 1 second for it to finish (so custom loaders don't hold us up)
 					
-					engine.mainCamera.forceRender();
 					
-					//run init
-					
-					loadingBar.setPercentFilled((float) 0);
+					//INITIALIZE PLUGINS
+					loadingBar.setPercentFilled((float) 0); //since we're starting a new task, set the loading bar to 0 and set the text to our current task
 					loadingText.setText("Initializing Plugins...");
-					loadingText.centerX(engine.mainView);
+					loadingText.centerX(engine.mainView); //re-center text since it changed
 					
-					Thread.currentThread().setName(masterFile.getPluginID()+"-init");
-					masterFile.init((args.length>0)?args[0]:""); //run master init first
-					if(pluginFiles!=null){
-						for(JDFPlugin plugin:pluginFiles){
-							Thread.currentThread().setName(plugin.getPluginID()+"-init");
-							plugin.init((args.length>0)?args[0]:""); //init each plugin file in order
+					Thread.currentThread().setName(masterFile.getPluginID()+"-init"); //change the thread name to show we're in init for the master file
+					masterFile.init((args.length>0)?args[0]:""); //run master init first with the first argument if it exists
+					if(pluginFiles!=null){ //if we have any plugins
+						for(JDFPlugin plugin:pluginFiles){ //for each loaded plugin:
+							Thread.currentThread().setName(plugin.getPluginID()+"-init"); //set the thread name to signal we're initing a plugin
+							plugin.init((args.length>0)?args[0]:""); //init each plugin with the first argument if it exists
 						}
 					}
-					Thread.currentThread().setName("ENGINE-main");
+					Thread.currentThread().setName("ENGINE-main"); //when we're done go back to our thread name
 					
-					engine.mainCamera.forceRender();
+					loadingBar.setPercentFilled((float) 1); //we're done, so set the bar to 100%
 					
-					loadingBar.setPercentFilled((float) 1);
-					
+					//set custom loading percentage to 30%
 					customLoadThread = new Thread(){
 						public void run(){
 							for(EngineLoadListener l:engine.loadListeners){
@@ -215,18 +264,16 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 						}
 					};
 					customLoadThread.start();
-					customLoadThread.join(1000);
+					customLoadThread.join(1000); //again wait a max of 1 second
 					
-					engine.mainCamera.forceRender();
 					
-					//run postInit
-					
-					loadingBar.setPercentFilled((float) 0);
+					//POST-INIT PLUGINS
+					loadingBar.setPercentFilled((float) 0); //set loading bar
 					loadingText.setText("Post-Initializing Plugins...");
 					loadingText.centerX(engine.mainView);
 					
 					Thread.currentThread().setName(masterFile.getPluginID()+"-postInit");
-					masterFile.postInit();
+					masterFile.postInit(); //run postInit for master first
 					if(pluginFiles!=null){
 						for(JDFPlugin plugin:pluginFiles){
 							Thread.currentThread().setName(plugin.getPluginID()+"-postInit");
@@ -234,8 +281,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 						}
 					}
 					Thread.currentThread().setName("ENGINE-main");
-					
-					engine.mainCamera.forceRender();
 					
 					loadingBar.setPercentFilled((float) 1);
 					
@@ -384,7 +429,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			
 			mainCamera.showFPS(true);
 			//renderLoopExecutor.scheduleAtFixedRate(renderLoop, 0, 1000000000/60, TimeUnit.NANOSECONDS); //runs loop at ~60Hz
-			setFPSTarget(60);
+			setFPSTarget(fpsLock);
 			
 			Log.trace("Render loop set up");
 		}else{
@@ -443,7 +488,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			}
 		});
 		
-		//Throw an exception if there are more than 1 .jdm files, or if there are 0 ,jdm files
+		//Throw an exception if there are more than 1 .jdm files, or if there are 0 .jdm files
 		if(dataFiles==null){
 			throw new NoMasterDataFileFoundException();
 		}else if(dataFiles.length>1){
@@ -477,7 +522,32 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	
 	//returns an ArrayList of plugin files - in order based on load order - and checks for dependencies
 	private static ArrayList<JDFPlugin> loadPluginFiles(){
-		return null;
+		ArrayList<JDFPlugin> loadedPlugins = new ArrayList<JDFPlugin>();
+		File dataDir = new File("./Data"); //points to /Data directory
+		
+		//Get an array of files in the data directory that end in .jdp (Julian Data Plugin)
+		File[] dataFiles = dataDir.listFiles(new FileFilter(){
+			public boolean accept(File file){
+				return file.getPath().toLowerCase().endsWith(".jdp");
+			}
+		});
+		
+		for(File dataFile:dataFiles){
+			try {
+				URL[] importURL = {dataFile.toURI().toURL()};
+				URLClassLoader classLoader = new URLClassLoader(importURL);
+				ServiceLoader<JDFPlugin> masterLoader = ServiceLoader.load(JDFPlugin.class, classLoader);
+				Iterator<JDFPlugin> plugins = masterLoader.iterator();
+				while(plugins.hasNext()){
+					loadedPlugins.add(plugins.next());
+				}
+				
+			} catch (MalformedURLException e) {
+				Log.error("Error loading the master plugin file:");
+				e.printStackTrace();
+			}
+		}
+		return loadedPlugins;
 	}
 	
 	public BufferedImage pauseGame(){
@@ -505,7 +575,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		if(target<=0){
 			renderLoopExecutor.scheduleAtFixedRate(renderLoop, 0, 1, TimeUnit.NANOSECONDS);
 		}else{
-			renderLoopExecutor.scheduleAtFixedRate(renderLoop, 0, 1000000000/60, TimeUnit.NANOSECONDS);
+			renderLoopExecutor.scheduleAtFixedRate(renderLoop, 0, 1000000000/target, TimeUnit.NANOSECONDS);
 		}
 	}
 	
@@ -539,9 +609,11 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		testSprite.setGifFPS(10);
 		engine.mainWorld.addShape(testSprite);
 		
+		/*
 		Point textTL = new Point(500, 400, 0);
 		engine.fpsText = new Text(textTL, "TESTING", Color.BLACK, new Font("Ariel", Font.PLAIN, 20), engine.mainView);
 		engine.mainWorld.addShape(engine.fpsText);
+		*/
 		
 		Point buttonTL = new Point(500, 300, 0);
 		UIButton buttonTest = new UIButton(buttonTL, "Button!", Color.BLACK, engine.mainView, engine.mainWorld);
@@ -620,6 +692,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		//mouse position indicator
 		Point mousePosTextTL = new Point(0, 720, 0);
 		Text mousePosText = new Text(mousePosTextTL, "Mouse is at: (N/A, N/A)", engine.mainView);
+		
 		new Thread("mouse position update thread"){
 			public void run(){
 				while (true){

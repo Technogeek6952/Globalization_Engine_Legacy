@@ -1,1 +1,666 @@
-[00:00:01][pool-2-thread-1][ERROR] Error in render loop: 
+[00:00:00][ENGINE-main][INFO] Engine Starting - Hello World! - version: v1.2.4_a03
+[00:00:00][ENGINE-main][TRACE] Main window set up
+[00:00:00][ENGINE-main][TRACE] Main viewport set up
+[00:00:00][ENGINE-main][TRACE] Main world set up
+[00:00:00][ENGINE-main][TRACE] Main camera set up
+[00:00:00][ENGINE-main][TRACE] Render loop set up
+[00:00:00][ENGINE-main][TRACE] Loading plugins...
+[00:00:00][ENGINE-main][TRACE] Loading resource file: ./Data/Globalization.jrf
+[00:00:00][ENGINE-main][TRACE] Checksum passed
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Algerian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 232 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 42
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Argentine CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3802 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Namibian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 246 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 35
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Dutch Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 180 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 40
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Australian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 246 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/#.png
+[00:00:00][ENGINE-main][TRACE] Image read is 168 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 33
+[00:00:00][ENGINE-main][TRACE] Reading file: images/maps/World Map.png
+[00:00:00][ENGINE-main][TRACE] Image read is 45001 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/1.png
+[00:00:00][ENGINE-main][TRACE] Image read is 162 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/J.png
+[00:00:00][ENGINE-main][TRACE] Image read is 185 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/N.png
+[00:00:00][ENGINE-main][TRACE] Image read is 176 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Italian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 177 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/h_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Ethiopean Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 249 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/2.png
+[00:00:00][ENGINE-main][TRACE] Image read is 173 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 42
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Balkan CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3540 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 40
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Belgian CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3167 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Chilean Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 212 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Argentine Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 212 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/o_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 170 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/T.png
+[00:00:00][ENGINE-main][TRACE] Image read is 190 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Israeli Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 207 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/A.png
+[00:00:00][ENGINE-main][TRACE] Image read is 173 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/'.png
+[00:00:00][ENGINE-main][TRACE] Image read is 166 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/Q.png
+[00:00:00][ENGINE-main][TRACE] Image read is 197 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 42
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/German CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 6640 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 41
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Algerian CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3843 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/British Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 282 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/q_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/S.png
+[00:00:00][ENGINE-main][TRACE] Image read is 174 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/0.png
+[00:00:00][ENGINE-main][TRACE] Image read is 174 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/P.png
+[00:00:00][ENGINE-main][TRACE] Image read is 186 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Pakistani Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 226 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 36
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/German Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 175 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/Ã.png
+[00:00:00][ENGINE-main][TRACE] Image read is 198 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 45
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Argentine CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3689 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Malaysian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 228 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 33
+[00:00:00][ENGINE-main][TRACE] Reading file: images/interface/Logo.png
+[00:00:00][ENGINE-main][TRACE] Image read is 1480 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 44
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/American CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 6625 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Belgian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 174 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 36
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Indian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 209 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/H.png
+[00:00:00][ENGINE-main][TRACE] Image read is 169 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Botswanan Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/W.png
+[00:00:00][ENGINE-main][TRACE] Image read is 188 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/l_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 162 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 43
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/South African Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 242 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/7.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/b_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/6.png
+[00:00:00][ENGINE-main][TRACE] Image read is 176 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/D.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/R.png
+[00:00:00][ENGINE-main][TRACE] Image read is 179 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/O.png
+[00:00:00][ENGINE-main][TRACE] Image read is 174 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Filipino Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 234 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 40
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Indonesian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 173 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/:.png
+[00:00:00][ENGINE-main][TRACE] Image read is 157 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Turkish Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 222 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/c_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 164 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 36
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Kenyan Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 248 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 42
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Botswanan CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 2015 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Balkcan Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 179 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/x_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 160 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Balkan CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 2822 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/d_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 185 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/+.png
+[00:00:00][ENGINE-main][TRACE] Image read is 184 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/!.png
+[00:00:00][ENGINE-main][TRACE] Image read is 166 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/(.png
+[00:00:00][ENGINE-main][TRACE] Image read is 190 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Swedish Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 185 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 46
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Central American Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 230 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/e_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 184 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 41
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/American CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 6627 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/8.png
+[00:00:00][ENGINE-main][TRACE] Image read is 172 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Sound File (WAV)
+[00:00:00][ENGINE-main][TRACE] Header Size: 30
+[00:00:00][ENGINE-main][TRACE] Reading file: sounds/music/Theme.wav
+[00:00:00][ENGINE-main][TRACE] Image read is 12173356 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 42
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Brazilian CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 2750 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/K.png
+[00:00:00][ENGINE-main][TRACE] Image read is 163 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 45
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Brazilian CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 2693 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/V.png
+[00:00:00][ENGINE-main][TRACE] Image read is 185 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Chinese Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 202 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/j_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 189 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/L.png
+[00:00:00][ENGINE-main][TRACE] Image read is 186 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Nigerian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 178 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 42
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Scandinavian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 185 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/F.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/Z.png
+[00:00:00][ENGINE-main][TRACE] Image read is 170 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/w_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 184 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 46
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Australian CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3436 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/4.png
+[00:00:00][ENGINE-main][TRACE] Image read is 190 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/E.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Colombian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 177 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Moroccan Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 223 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Russian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 177 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/Ä.png
+[00:00:00][ENGINE-main][TRACE] Image read is 175 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/%.png
+[00:00:00][ENGINE-main][TRACE] Image read is 197 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/C.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 43
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Belgian CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3090 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 36
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/French Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 177 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Brazilian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 267 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 34
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Thai Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 186 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/f_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 185 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/?.png
+[00:00:00][ENGINE-main][TRACE] Image read is 194 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/g_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 46
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/South African CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 4787 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/I.png
+[00:00:00][ENGINE-main][TRACE] Image read is 162 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/k_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 186 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/Y.png
+[00:00:00][ENGINE-main][TRACE] Image read is 187 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/t_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 192 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 44
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Algerian CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3896 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/,.png
+[00:00:00][ENGINE-main][TRACE] Image read is 166 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 41
+[00:00:00][ENGINE-main][TRACE] Reading file: images/bitmaps/America Bitmap.png
+[00:00:00][ENGINE-main][TRACE] Image read is 2125 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Peruvian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 274 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/G.png
+[00:00:00][ENGINE-main][TRACE] Image read is 182 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/5.png
+[00:00:00][ENGINE-main][TRACE] Image read is 179 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/;.png
+[00:00:00][ENGINE-main][TRACE] Image read is 161 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Animated Image File (GIF)
+[00:00:00][ENGINE-main][TRACE] Header Size: 43
+[00:00:00][ENGINE-main][TRACE] Reading file: images/interface/Loading Screen.gif
+[00:00:00][ENGINE-main][TRACE] Image read is 59388 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 39
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/German CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 6472 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 43
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Australian CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3411 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 45
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Botswanan CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 1816 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/B.png
+[00:00:00][ENGINE-main][TRACE] Image read is 176 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/z_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 170 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/i_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 173 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/u_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 162 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Spanish Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 207 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/n_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 178 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/M.png
+[00:00:00][ENGINE-main][TRACE] Image read is 176 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/a_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 190 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Lebanese Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 206 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/9.png
+[00:00:00][ENGINE-main][TRACE] Image read is 177 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/m_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 190 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Madagasi Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 178 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/3.png
+[00:00:00][ENGINE-main][TRACE] Image read is 172 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 42
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/South Korean Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 273 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Mexican Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 261 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/v_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 162 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/Á.png
+[00:00:00][ENGINE-main][TRACE] Image read is 195 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/=.png
+[00:00:00][ENGINE-main][TRACE] Image read is 164 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Canadian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 227 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 40
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Venezuelan Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 209 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/y_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 167 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Egyptian Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 202 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/r_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 183 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 35
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Saudi Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 245 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 37
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Emirati Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 183 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 43
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/New Zealander Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 232 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/s_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 174 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/".png
+[00:00:00][ENGINE-main][TRACE] Image read is 167 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Animated Image File (GIF)
+[00:00:00][ENGINE-main][TRACE] Header Size: 32
+[00:00:00][ENGINE-main][TRACE] Reading file: images/misc/Untitled.gif
+[00:00:00][ENGINE-main][TRACE] Image read is 211 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/U.png
+[00:00:00][ENGINE-main][TRACE] Image read is 163 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 49
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/South African CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 4778 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/X.png
+[00:00:00][ENGINE-main][TRACE] Image read is 164 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/-.png
+[00:00:00][ENGINE-main][TRACE] Image read is 158 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/..png
+[00:00:00][ENGINE-main][TRACE] Image read is 155 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 18
+[00:00:00][ENGINE-main][TRACE] Reading file: font/).png
+[00:00:00][ENGINE-main][TRACE] Image read is 189 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/American Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 112 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 38
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Japanese Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 209 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 46
+[00:00:00][ENGINE-main][TRACE] Reading file: images/flags/Eastern European Flag.png
+[00:00:00][ENGINE-main][TRACE] Image read is 173 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 19
+[00:00:00][ENGINE-main][TRACE] Reading file: font/p_.png
+[00:00:00][ENGINE-main][TRACE] Image read is 186 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 41
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Canadian CEO.png
+[00:00:00][ENGINE-main][TRACE] Image read is 3454 bytes
+[00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
+[00:00:00][ENGINE-main][TRACE] Header Size: 44
+[00:00:00][ENGINE-main][TRACE] Reading file: images/portraits/Canadian CEO SS.png
+[00:00:00][ENGINE-main][TRACE] Image read is 2827 bytes
+[00:00:00][ENGINE-main][TRACE] finished parsing data file
+[00:00:00][Thread-3][TRACE] UIMask Ready
+[00:00:00][ENGINE-main][TRACE] Proposing Pre-Initializer
+[00:00:00][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
+[00:00:00][ENGINE-preInitializer][TRACE] Globalization pre-init
+[00:00:00][game_globalization-init][INFO] Globalization Master File Init
+[00:00:00][Thread-7][TRACE] UIMask Ready
+[00:00:01][Thread-8][TRACE] UIMask Ready
+[00:00:01][Thread-9][TRACE] UIMask Ready
+[00:00:01][Thread-10][TRACE] UIMask Ready
+[00:00:01][Thread-11][TRACE] UIMask Ready
+[00:00:01][Thread-12][TRACE] UIMask Ready
+[00:00:01][Thread-13][TRACE] UIMask Ready
+[00:00:01][Thread-14][TRACE] UIMask Ready
+[00:00:01][Thread-15][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-15][TRACE] UI Mask Ready (bitmap)
+[00:00:01][Thread-16][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-16][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-postInit][INFO] Globalization Master File Post Init
+[00:00:01][ENGINE-main][TRACE] about to make title screen
+[00:00:01][game_globalization-createMainScreen][TRACE] starting makeing title screen
+[00:00:01][game_globalization-createMainScreen][TRACE] about to make ceo portrait
+[00:00:01][Thread-19][TRACE] UIMask Ready
+[00:00:01][Thread-20][TRACE] UIMask Ready
+[00:00:01][Thread-21][TRACE] UIMask Ready
+[00:00:01][Thread-22][TRACE] UIMask Ready
+[00:00:01][Thread-23][TRACE] UIMask Ready
+[00:00:01][Thread-24][TRACE] UIMask Ready
+[00:00:01][Thread-25][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-25][TRACE] UI Mask Ready (bitmap)
+[00:00:01][ENGINE-main][TRACE] made title screen
+[00:00:02][game_globalization-main][INFO] Globalization Master File Init Game
+[00:00:09][AWT-EventQueue-0][INFO] Engine shutting down

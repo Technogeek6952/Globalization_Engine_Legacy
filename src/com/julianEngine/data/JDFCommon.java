@@ -15,17 +15,6 @@ public interface JDFCommon {
 	void postInit();
 	
 	/**
-	 * Function called whenever another plugin or the engine sends a message to
-	 * the plugin. These messages can be ignored, but it is recommended one
-	 * does something with each message, even if it is only being printed out to
-	 * the console. Please note that in order to keep the system working, messages
-	 * should be taken care of relatively quickly (i.e no calculating or otherwise
-	 * doing complex tasks in response) If more time is needed, it is recommended
-	 * that another thread is notified of the message, and that thread deals with it.
-	 */
-	void messageReceived(Object data, String sender);
-	
-	/**
 	 * Get unique ID
 	 * @return
 	 * String pluginID - the unique ID for the plugin

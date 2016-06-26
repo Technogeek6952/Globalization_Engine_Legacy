@@ -11,7 +11,8 @@ import com.julianEngine.graphics.Frame;
  * has complete control over the engine. The master file does
  * not have any dependencies.
  */
-public interface JDFMaster extends JDFCommon{
+public interface JDFMaster extends JDFCommon, PreInitializer{
+	
 	/**
 	 * Create a loading screen to display while the game is loading. Shouldn't include
 	 * any intensive functions (so the screen can appear soon after being launched) -
