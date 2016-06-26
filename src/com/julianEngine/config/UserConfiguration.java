@@ -9,6 +9,11 @@ import java.util.HashMap;
 import com.julianEngine.utility.Log;
 
 public class UserConfiguration {
+	
+	//TODO: make a robust config system
+	//TODO: save to file ability
+	//TODO: load from file at start
+	
 	private static HashMap<String, Boolean> booleans = new HashMap<String, Boolean>();
 	private static HashMap<String, String> strings = new HashMap<String, String>();
 	private static HashMap<String, Integer> integers = new HashMap<String, Integer>();
@@ -25,7 +30,7 @@ public class UserConfiguration {
 				String line = "";
 				while(fileStream.available()>0){
 					char nextChar = (char) fileStream.read();
-					if(nextChar!='\0')
+					if(nextChar!='\0'&&nextChar!='\n')
 						line += nextChar;
 					else
 						lines.add(line);
@@ -34,7 +39,7 @@ public class UserConfiguration {
 				
 				//parse lines
 				for(String s:lines){
-					if(!s.startsWith("--")){ //ignore '--' for comments
+					if(!s.startsWith("#")){ //ignore '#' for comments
 						switch(s.charAt(1)){ //look at second char (between [ and ] at start of line)
 						
 						}

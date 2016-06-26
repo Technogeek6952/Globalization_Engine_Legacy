@@ -3,19 +3,20 @@ package com.julianEngine.utility;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-
 import com.julianEngine.config.EngineConstants;;
 
 public class Log {
 	//TODO: add colors to output text (http://stackoverflow.com/questions/1448858/how-to-color-system-out-println-output)
 	private static long startTime = 0;
+	static FileOutputStream fos;
 	static{
+		try {
+			fos = new FileOutputStream(new File(EngineConstants.Defaults.LOGFILE));
+		} catch (FileNotFoundException e) {
+			System.out.println("[LOGGING-ERROR] Logfile could not be opened");
+			e.printStackTrace();
+		}
+		
 		//gets the system time as soon as Log.java is fist instanced
 		//In order for the times appearing on logs to be accurate, the
 		//program must log something at the start of execution (Hello world message)
@@ -28,9 +29,9 @@ public class Log {
 		int seconds = (int) Math.floorDiv(rawTime, 1000)%60;
 		int minutes = (int) Math.floorDiv(rawTime, 60000)%60;
 		int hours = (int) Math.floorDiv(rawTime, 3600000);
-		String output = String.format("[%02d:%02d:%02d][%s][%s] ", hours, minutes, seconds, Thread.currentThread().getName(), logLevel.stringName()) + object;
+		String output = String.format("[%02d:%02d:%02d][%s][%s] ", hours, minutes, seconds, Thread.currentThread().getName(), logLevel.flavoredName()) + object;
 		
-		switch ((logLevel.isHigherOrEqualTo(EngineConstants.LOGLEVEL_CONSOLE)?0:1)+(logLevel.isHigherOrEqualTo(EngineConstants.LOGLEVEL_FILE)?0:2)){
+		switch ((logLevel.isHigherOrEqualTo(EngineConstants.Defaults.LOGLEVEL_CONSOLE)?0:1)+(logLevel.isHigherOrEqualTo(EngineConstants.Defaults.LOGLEVEL_FILE)?0:2)){
 			case 0:
 				break;
 			case 1:
@@ -58,15 +59,6 @@ public class Log {
 	
 	public static void warn(Object object) { log(Level.WARN, object); }
 	
-	static FileOutputStream fos;
-	static{
-		try {
-			fos = new FileOutputStream(new File(EngineConstants.LOGFILE));
-		} catch (FileNotFoundException e) {
-			System.out.println("[LOGGING-ERROR] Logfile could not be opened");
-			e.printStackTrace();
-		}
-	}
 	private static void writeToLogFile(String out){
 		try {
 			fos.write(out.getBytes());
@@ -79,21 +71,23 @@ public class Log {
 	}
 	
 	public enum Level {
-		ALL(Integer.MAX_VALUE, "ALL"),
-		FATAL(6, "FATAL"),
-		ERROR(5, "ERROR"),
-		WARN(4, "WARNING"),
-		INFO(3, "INFO"),
-		DEBUG(2, "DEBUG"),
-		TRACE(1, "TRACE"),
-		OFF(Integer.MIN_VALUE, "OFF");
+		ALL(Integer.MAX_VALUE, "ALL", "ALL"),
+		FATAL(6, "FATAL", "FATAL"),
+		ERROR(5, "ERROR", "ERROR"),
+		WARN(4, "WARNING", "WARNING"),
+		INFO(3, "INFO", "INFO"),
+		DEBUG(2, "DEBUG", "DEBUG"),
+		TRACE(1, "TRACE", "TRACE"),
+		OFF(Integer.MIN_VALUE, "OFF", "OFF");
 		
 		private final int level;
 		private final String string;
+		private final String flavoredString;
 		
-		private Level(int i, String name){
+		private Level(int i, String name, String flavoredName){
 			level = i;
 			string = name;
+			flavoredString = flavoredName; //colored text, if I can get that working
 		}
 		
 		public boolean isHigherOrEqualTo(Level level){
@@ -110,6 +104,10 @@ public class Log {
 		
 		public String stringName(){
 			return string;
+		}
+		
+		public String flavoredName(){
+			return flavoredString;
 		}
 		
 		public static String nameFor(Level level){

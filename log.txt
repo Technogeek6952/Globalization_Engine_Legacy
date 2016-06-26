@@ -656,9 +656,9 @@
 [00:00:02][Thread-19][TRACE] UIMask Ready
 [00:00:02][Thread-20][TRACE] UIMask Ready
 [00:00:02][Thread-21][TRACE] UIMask Ready
-[00:00:02][Thread-24][TRACE] UIMask Ready
-[00:00:02][Thread-23][TRACE] UIMask Ready
 [00:00:02][Thread-22][TRACE] UIMask Ready
+[00:00:02][Thread-23][TRACE] UIMask Ready
+[00:00:02][Thread-24][TRACE] UIMask Ready
 [00:00:02][Thread-25][TRACE] UI bitmap mask about to ask for listener
 [00:00:02][Thread-25][TRACE] UI Mask Ready (bitmap)
 [00:00:02][ENGINE-main][TRACE] made title screen
