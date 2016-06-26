@@ -370,6 +370,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			Log.info("Engine Starting - Hello World! - version: " + versionID);
 			
 			//vars from config file
+			UserConfiguration.loadFile("./engine.config");
 			int width = UserConfiguration.getInt("Frame-width", EngineConstants.Defaults.width);
 			int height = UserConfiguration.getInt("Frame-height", EngineConstants.Defaults.height);
 			

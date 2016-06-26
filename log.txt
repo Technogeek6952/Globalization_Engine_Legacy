@@ -1,4 +1,8 @@
 [00:00:00][ENGINE-main][INFO] Engine Starting - Hello World! - version: v1.2.5_a05
+[00:00:00][ENGINE-main][TRACE] config file int: Frame-width
+[00:00:00][ENGINE-main][TRACE] Value: 1280
+[00:00:00][ENGINE-main][TRACE] config file int: Frame-height
+[00:00:00][ENGINE-main][TRACE] Value: 720
 [00:00:00][ENGINE-main][TRACE] Main window set up
 [00:00:00][ENGINE-main][TRACE] Main viewport set up
 [00:00:00][ENGINE-main][TRACE] Main world set up
@@ -654,9 +658,9 @@
 [00:00:02][game_globalization-createMainScreen][TRACE] starting makeing title screen
 [00:00:02][game_globalization-createMainScreen][TRACE] about to make ceo portrait
 [00:00:02][Thread-19][TRACE] UIMask Ready
+[00:00:02][Thread-22][TRACE] UIMask Ready
 [00:00:02][Thread-20][TRACE] UIMask Ready
 [00:00:02][Thread-21][TRACE] UIMask Ready
-[00:00:02][Thread-22][TRACE] UIMask Ready
 [00:00:02][Thread-23][TRACE] UIMask Ready
 [00:00:02][Thread-24][TRACE] UIMask Ready
 [00:00:02][Thread-25][TRACE] UI bitmap mask about to ask for listener

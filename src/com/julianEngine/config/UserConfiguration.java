@@ -3,6 +3,7 @@ package com.julianEngine.config;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -30,18 +31,48 @@ public class UserConfiguration {
 				String line = "";
 				while(fileStream.available()>0){
 					char nextChar = (char) fileStream.read();
-					if(nextChar!='\0'&&nextChar!='\n')
+					if(nextChar!='\0'&&nextChar!='\n'&&nextChar!='\r')
 						line += nextChar;
-					else
+					else{
 						lines.add(line);
+						line = "";
+					}
 				}
+				lines.add(line);
 				fileStream.close();
 				
 				//parse lines
 				for(String s:lines){
-					if(!s.startsWith("#")){ //ignore '#' for comments
+					if(!s.startsWith("#")&&!s.equals("")&&s!=null){ //ignore '#' for comments
 						switch(s.charAt(1)){ //look at second char (between [ and ] at start of line)
-						
+						case 'b':
+							break;
+						case 's':
+							break;
+						case 'i':
+							String name = (String) s.subSequence(3, s.indexOf('=', 3));
+							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+							String value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
+							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+							int actualValue = 0;
+							try{ 
+								actualValue = Integer.parseInt(value);
+								Log.trace("config file int: "+name);
+								Log.trace("Value: "+actualValue);
+								integers.put(name, actualValue);
+							}catch(NumberFormatException e){
+								Log.error("Int corrupted - no value assigned");
+							}
+							break;
+						case 'd':
+							break;
+						case 'f':
+							break;
+						case 'c':
+							break;
+						default:
+							Log.trace("unrecognized type: "+s.charAt(1));
+							break;
 						}
 					}
 				}
@@ -51,6 +82,16 @@ public class UserConfiguration {
 			}
 		}else{
 			Log.trace("Error loading config file: "+path);
+		}
+	}
+	
+	public static void writeFile(String path){
+		File file = new File(path);
+		try {
+			FileOutputStream writer = new FileOutputStream(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
