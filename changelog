@@ -1,4 +1,17 @@
 ----------Changelog - Julian Engine----------
+----------a1.2.6-------------
+-Slight change to version numbers: replaced starting 'v' to an 'a' to indicate alpha version - change to 'b' at beta
+	-For better smoothness with git, third part of version number should go up on a major release, and an _# will increment after each
+	 merge from build to develop.
+-Update to configuration system:
+	-EngineConstants houses the default values for critical variables 
+	-engine.config in the root dir of the engine will be loaded by UserConfiguration (called by Engine2D constructor)
+	-UserConfiguration has methods and static variables for managing constants read from configuration files
+	-in a config file '#' will be ignored, the line is formated as such: [*]name = value
+		-* - the type of variable (b, i, s, c, d, f)
+		-name = name of variable
+		-value = value of variable
+		-spaces are optional
 ----------v1.2.5_a05---------
 -I skipped adding entries for a few versions, a lot of work was done - some that I didn't remember until I realized it wasn't in previous patch notes. I considered adding two full version numbers, 
  but decided not to in the end, and opted for just adding a few build numbers on the end of the new version number. I'm the lead (and only) programmer. I can decide what version this is.
