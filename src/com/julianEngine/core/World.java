@@ -234,4 +234,9 @@ public class World implements Parent{
 		//called when the world is loaded - should be used for setting background, playing music, etc
 		public void execute();
 	}
+
+	@Override
+	public Point getRealPointForRelativePoint(Point p) {
+		return p;
+	}
 }

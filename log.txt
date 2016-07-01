@@ -1,4 +1,4 @@
-[00:00:00][ENGINE-main][INFO] Engine Starting - Hello World! - version: v1.2.5_a05
+[00:00:00][ENGINE-main][INFO] Engine Starting - Hello World! - version: a1.2.6
 [00:00:00][ENGINE-main][TRACE] config file int: Frame-width
 [00:00:00][ENGINE-main][TRACE] Value: 1280
 [00:00:00][ENGINE-main][TRACE] config file int: Frame-height
@@ -637,33 +637,52 @@
 [00:00:00][ENGINE-main][TRACE] Image read is 2827 bytes
 [00:00:00][ENGINE-main][TRACE] finished parsing data file
 [00:00:00][Thread-3][TRACE] UIMask Ready
+[00:00:00][Thread-4][TRACE] UIMask Ready
+[00:00:00][Thread-5][TRACE] UIMask Ready
+[00:00:00][Thread-6][TRACE] UIMask Ready
+[00:00:00][Thread-7][TRACE] UIMask Ready
+[00:00:00][Thread-8][TRACE] UIMask Ready
+[00:00:00][Thread-9][TRACE] UIMask Ready
+[00:00:00][ENGINE-main][TRACE] No registered file for: font/É.png
+[00:00:00][ENGINE-main][WARNING] unknown char, replacing with ?
 [00:00:00][ENGINE-main][TRACE] Proposing Pre-Initializer
 [00:00:00][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
 [00:00:00][ENGINE-preInitializer][TRACE] Globalization pre-init
 [00:00:00][game_globalization-init][INFO] Globalization Master File Init
-[00:00:00][Thread-7][TRACE] UIMask Ready
-[00:00:01][Thread-8][TRACE] UIMask Ready
-[00:00:01][Thread-9][TRACE] UIMask Ready
-[00:00:01][Thread-10][TRACE] UIMask Ready
-[00:00:01][Thread-11][TRACE] UIMask Ready
-[00:00:01][Thread-12][TRACE] UIMask Ready
-[00:00:01][Thread-13][TRACE] UIMask Ready
-[00:00:01][Thread-14][TRACE] UIMask Ready
-[00:00:01][Thread-15][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-15][TRACE] UI Mask Ready (bitmap)
-[00:00:01][Thread-16][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-16][TRACE] UI Mask Ready (bitmap)
+[00:00:00][Thread-13][TRACE] UIMask Ready
+[00:00:00][Thread-14][TRACE] UI bitmap mask about to ask for listener
+[00:00:00][Thread-14][TRACE] UI Mask Ready (bitmap)
+[00:00:00][Thread-15][TRACE] UI bitmap mask about to ask for listener
+[00:00:00][Thread-15][TRACE] UI Mask Ready (bitmap)
+[00:00:00][Thread-16][TRACE] UIMask Ready
+[00:00:00][Thread-17][TRACE] UIMask Ready
+[00:00:01][Thread-18][TRACE] UIMask Ready
+[00:00:01][Thread-19][TRACE] UIMask Ready
+[00:00:01][Thread-20][TRACE] UIMask Ready
+[00:00:01][Thread-21][TRACE] UIMask Ready
+[00:00:01][Thread-22][TRACE] UIMask Ready
+[00:00:01][Thread-23][TRACE] UIMask Ready
 [00:00:01][game_globalization-postInit][INFO] Globalization Master File Post Init
 [00:00:02][ENGINE-main][TRACE] about to make title screen
 [00:00:02][game_globalization-createMainScreen][TRACE] starting makeing title screen
 [00:00:02][game_globalization-createMainScreen][TRACE] about to make ceo portrait
-[00:00:02][Thread-19][TRACE] UIMask Ready
-[00:00:02][Thread-22][TRACE] UIMask Ready
-[00:00:02][Thread-20][TRACE] UIMask Ready
-[00:00:02][Thread-21][TRACE] UIMask Ready
-[00:00:02][Thread-23][TRACE] UIMask Ready
-[00:00:02][Thread-24][TRACE] UIMask Ready
-[00:00:02][Thread-25][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-25][TRACE] UI Mask Ready (bitmap)
+[00:00:02][Thread-26][TRACE] UIMask Ready
+[00:00:02][Thread-27][TRACE] UIMask Ready
+[00:00:02][Thread-28][TRACE] UIMask Ready
+[00:00:02][Thread-29][TRACE] UIMask Ready
+[00:00:02][Thread-30][TRACE] UIMask Ready
+[00:00:02][Thread-31][TRACE] UIMask Ready
+[00:00:02][Thread-32][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-32][TRACE] UI Mask Ready (bitmap)
 [00:00:02][ENGINE-main][TRACE] made title screen
 [00:00:02][game_globalization-main][INFO] Globalization Master File Init Game
+[00:00:04][AWT-EventQueue-0][TRACE] START NEW GAME!
+[00:00:05][pool-2-thread-1][TRACE] No registered file for: font/É.png
+[00:00:05][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:00:06][AWT-EventQueue-0][TRACE] City button clicked
+[00:00:07][AWT-EventQueue-0][TRACE] City button clicked
+[00:00:07][AWT-EventQueue-0][TRACE] City button clicked
+[00:00:08][AWT-EventQueue-0][TRACE] City button clicked
+[00:00:08][AWT-EventQueue-0][TRACE] City button clicked
+[00:00:09][AWT-EventQueue-0][TRACE] City button clicked
+[00:00:14][Thread-36][TRACE] UIMask Ready

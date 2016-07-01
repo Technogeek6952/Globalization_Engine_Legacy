@@ -6,6 +6,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import com.julianEngine.Engine2D;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
@@ -49,7 +50,7 @@ public class Text implements Shape{
 		this.color = color;
 		this.font = font;
 		
-		Graphics g = frame.getGraphics();
+		Graphics g = Engine2D.getInstance().mainView.getGraphics();
 		g.setFont(font);
 		FontMetrics metrics = g.getFontMetrics();
 		this.metrics = metrics;

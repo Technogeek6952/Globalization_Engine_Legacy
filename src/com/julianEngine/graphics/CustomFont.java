@@ -362,6 +362,10 @@ public class CustomFont {
 		}catch (Exception e){
 			
 		}
+		if(img==null){
+			img = DataManager.getImageForURI("font/?.png");
+			Log.warn("unknown char, replacing with ?");
+		}
 		return img;
 	}
 }

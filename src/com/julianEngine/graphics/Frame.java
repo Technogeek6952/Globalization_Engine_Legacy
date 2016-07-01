@@ -45,7 +45,7 @@ public class Frame extends JPanel{
 	/*--------Code--------------------------*/
 	//default constructor - uses default size of 256x256px
 	public Frame(){
-		this(1080, 720); //default size of 256x256px
+		this(1080, 720); //default size of 1080x720px
 	}
 	
 	//full constructor

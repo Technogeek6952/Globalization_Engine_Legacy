@@ -42,6 +42,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	private boolean renderToolTip = false; //has the button been moused over for long enough to render the tooltip
 	private int toolTipTimeout = 1000; //ms to wait before displaying tooltip
 	private Parent parent;
+	private World parentWorld;
 	private boolean useCustomFont;
 	//private CustomFont customFont;
 	private Text UIText;
@@ -58,13 +59,13 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		this.height = UIText.getHeight();
 		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
 		Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
-		Log.trace("UIButton center point: ("+center.getX()+", "+center.getY()+")");
+		//Log.trace("UIButton center point: ("+center.getX()+", "+center.getY()+")");
 		Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
-		Log.trace("UIButton top-right point: ("+topRight.getX()+", "+topRight.getY()+")");
+		//Log.trace("UIButton top-right point: ("+topRight.getX()+", "+topRight.getY()+")");
 		Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
-		Log.trace("UIButton bottomLeft point: ("+bottomLeft.getX()+", "+bottomLeft.getY()+")");
+		//Log.trace("UIButton bottomLeft point: ("+bottomLeft.getX()+", "+bottomLeft.getY()+")");
 		Point bottomRight = new Point(topLeft.getX()+width, topLeft.getY()-height, 0);
-		Log.trace("UIButton bottomRight point: ("+bottomRight.getX()+", "+bottomRight.getY()+")");
+		//Log.trace("UIButton bottomRight point: ("+bottomRight.getX()+", "+bottomRight.getY()+")");
 		//top
 		bounds.put(new Line(topLeft, topRight), center);
 		//left
@@ -105,6 +106,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		buttonMask.addUIMaskListener(this);
 		
 		UIText.setParent(this);
+		
+		parentWorld = world;
 		
 		ready=true;
 	}
@@ -290,6 +293,24 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	@Override
 	public void setParent(Parent p) {
 		this.parent = p;
+		
+		//world-relative points (not parent-relative)
+		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
+		Point topLeft = parent.getRealPointForRelativePoint(this.topLeft);
+		Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
+		Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
+		Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
+		Point bottomRight = new Point(topLeft.getX()+width, topLeft.getY()-height, 0);
+		//top
+		bounds.put(new Line(topLeft, topRight), center);
+		//left
+		bounds.put(new Line(topLeft, bottomLeft), center);
+		//right
+		bounds.put(new Line(topRight, bottomRight), center);
+		//bottom
+		bounds.put(new Line(bottomLeft, bottomRight), center);
+		int buttonMaskHash = System.identityHashCode(buttonMask);
+		buttonMask.setBounds(bounds);
 	}
 
 	@Override
@@ -314,5 +335,10 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	public Frame getContainingFrame() {
 		// We don't live directly on a frame, so return the frame that our parent is on
 		return parent.getContainingFrame();
+	}
+
+	@Override
+	public Point getRealPointForRelativePoint(Point p) {
+		return p;
 	}
 }

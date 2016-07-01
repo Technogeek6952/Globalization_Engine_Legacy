@@ -86,11 +86,12 @@ public class UserConfiguration {
 	}
 	
 	public static void writeFile(String path){
+		//TODO: implement file saving for config
 		File file = new File(path);
 		try {
 			FileOutputStream writer = new FileOutputStream(file);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			Log.error("Error while writing configuration file");
 			e.printStackTrace();
 		}
 	}
