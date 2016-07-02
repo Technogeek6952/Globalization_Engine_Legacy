@@ -645,44 +645,105 @@
 [00:00:00][Thread-9][TRACE] UIMask Ready
 [00:00:00][ENGINE-main][TRACE] No registered file for: font/É.png
 [00:00:00][ENGINE-main][WARNING] unknown char, replacing with ?
-[00:00:00][ENGINE-main][TRACE] Proposing Pre-Initializer
-[00:00:00][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
-[00:00:00][ENGINE-preInitializer][TRACE] Globalization pre-init
-[00:00:00][game_globalization-init][INFO] Globalization Master File Init
+[00:00:00][Thread-10][TRACE] UIMask Ready
+[00:00:00][Thread-11][TRACE] UIMask Ready
+[00:00:00][Thread-12][TRACE] UIMask Ready
 [00:00:00][Thread-13][TRACE] UIMask Ready
-[00:00:00][Thread-14][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][Thread-14][TRACE] UI Mask Ready (bitmap)
-[00:00:00][Thread-15][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][Thread-15][TRACE] UI Mask Ready (bitmap)
+[00:00:00][Thread-14][TRACE] UIMask Ready
+[00:00:00][Thread-15][TRACE] UIMask Ready
 [00:00:00][Thread-16][TRACE] UIMask Ready
 [00:00:00][Thread-17][TRACE] UIMask Ready
-[00:00:01][Thread-18][TRACE] UIMask Ready
-[00:00:01][Thread-19][TRACE] UIMask Ready
-[00:00:01][Thread-20][TRACE] UIMask Ready
-[00:00:01][Thread-21][TRACE] UIMask Ready
-[00:00:01][Thread-22][TRACE] UIMask Ready
-[00:00:01][Thread-23][TRACE] UIMask Ready
-[00:00:01][game_globalization-postInit][INFO] Globalization Master File Post Init
-[00:00:02][ENGINE-main][TRACE] about to make title screen
-[00:00:02][game_globalization-createMainScreen][TRACE] starting makeing title screen
-[00:00:02][game_globalization-createMainScreen][TRACE] about to make ceo portrait
-[00:00:02][Thread-26][TRACE] UIMask Ready
-[00:00:02][Thread-27][TRACE] UIMask Ready
-[00:00:02][Thread-28][TRACE] UIMask Ready
-[00:00:02][Thread-29][TRACE] UIMask Ready
-[00:00:02][Thread-30][TRACE] UIMask Ready
-[00:00:02][Thread-31][TRACE] UIMask Ready
-[00:00:02][Thread-32][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-32][TRACE] UI Mask Ready (bitmap)
-[00:00:02][ENGINE-main][TRACE] made title screen
-[00:00:02][game_globalization-main][INFO] Globalization Master File Init Game
-[00:00:04][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:05][pool-2-thread-1][TRACE] No registered file for: font/É.png
-[00:00:05][pool-2-thread-1][WARNING] unknown char, replacing with ?
-[00:00:06][AWT-EventQueue-0][TRACE] City button clicked
-[00:00:07][AWT-EventQueue-0][TRACE] City button clicked
-[00:00:07][AWT-EventQueue-0][TRACE] City button clicked
-[00:00:08][AWT-EventQueue-0][TRACE] City button clicked
-[00:00:08][AWT-EventQueue-0][TRACE] City button clicked
-[00:00:09][AWT-EventQueue-0][TRACE] City button clicked
-[00:00:14][Thread-36][TRACE] UIMask Ready
+[00:00:00][Thread-18][TRACE] UIMask Ready
+[00:00:00][ENGINE-main][TRACE] No registered file for: font/Ó.png
+[00:00:00][Thread-19][TRACE] UIMask Ready
+[00:00:00][ENGINE-main][WARNING] unknown char, replacing with ?
+[00:00:00][Thread-20][TRACE] UIMask Ready
+[00:00:00][Thread-21][TRACE] UIMask Ready
+[00:00:00][Thread-22][TRACE] UIMask Ready
+[00:00:00][ENGINE-main][TRACE] No registered file for: font/Í.png
+[00:00:00][ENGINE-main][WARNING] unknown char, replacing with ?
+[00:00:00][Thread-23][TRACE] UIMask Ready
+[00:00:00][Thread-24][TRACE] UIMask Ready[00:00:00][ENGINE-main][TRACE] Resource not found: images/flags/Balkan Flag.png
+
+[00:00:00][ENGINE-main][ERROR] Error while loading resource: images/flags/Balkan Flag.png
+[00:00:00][Thread-25][TRACE] UIMask Ready
+[00:00:01][Thread-26][TRACE] UIMask Ready
+[00:00:01][Thread-27][TRACE] UIMask Ready
+[00:00:01][Thread-28][TRACE] UIMask Ready
+[00:00:01][Thread-29][TRACE] UIMask Ready
+[00:00:01][ENGINE-main][TRACE] Proposing Pre-Initializer
+[00:00:01][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
+[00:00:01][ENGINE-preInitializer][TRACE] Globalization pre-init
+[00:00:01][game_globalization-init][INFO] Globalization Master File Init
+[00:00:01][Thread-33][TRACE] UIMask Ready
+[00:00:01][Thread-34][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-34][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Algeria
+[00:00:01][game_globalization-init][TRACE] Created mask for: America
+[00:00:01][Thread-35][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-35][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Argentina
+[00:00:01][Thread-36][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][game_globalization-init][TRACE] Created mask for: Australia
+[00:00:01][Thread-36][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Balkan Region
+[00:00:01][Thread-38][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-38][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Belgium
+[00:00:01][Thread-39][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-39][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Botswana
+[00:00:01][Thread-40][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][game_globalization-init][TRACE] Created mask for: Brazil
+[00:00:01][Thread-40][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Canada
+[00:00:01][game_globalization-init][TRACE] Created mask for: Panama
+[00:00:01][game_globalization-init][TRACE] Created mask for: Chile
+[00:00:01][game_globalization-init][TRACE] Created mask for: China
+[00:00:01][game_globalization-init][TRACE] Created mask for: Colombia
+[00:00:01][game_globalization-init][TRACE] Created mask for: Poland
+[00:00:01][game_globalization-init][TRACE] Created mask for: Egypt
+[00:00:01][game_globalization-init][TRACE] Created mask for: Ethiopia
+[00:00:01][game_globalization-init][TRACE] Created mask for: France
+[00:00:01][game_globalization-init][TRACE] Created mask for: Germany
+[00:00:01][game_globalization-init][TRACE] Created mask for: India
+[00:00:01][game_globalization-init][TRACE] Created mask for: Indonesia
+[00:00:01][game_globalization-init][TRACE] Created mask for: Israel
+[00:00:01][game_globalization-init][TRACE] Created mask for: Italy
+[00:00:01][game_globalization-init][TRACE] Created mask for: Japan
+[00:00:01][game_globalization-init][TRACE] Created mask for: Kenya
+[00:00:01][game_globalization-init][TRACE] Created mask for: Netherlands
+[00:00:01][game_globalization-init][TRACE] Created mask for: Philippines
+[00:00:01][game_globalization-init][TRACE] Created mask for: Saudi Arabia
+[00:00:01][game_globalization-init][TRACE] Created mask for: South Africa
+[00:00:01][Thread-62][TRACE] UIMask Ready
+[00:00:01][Thread-63][TRACE] UIMask Ready
+[00:00:02][Thread-64][TRACE] UIMask Ready
+[00:00:02][Thread-65][TRACE] UIMask Ready
+[00:00:02][Thread-66][TRACE] UIMask Ready
+[00:00:02][Thread-67][TRACE] UIMask Ready
+[00:00:02][Thread-68][TRACE] UIMask Ready
+[00:00:02][Thread-69][TRACE] UIMask Ready
+[00:00:02][game_globalization-postInit][INFO] Globalization Master File Post Init
+[00:00:03][ENGINE-main][TRACE] about to make title screen
+[00:00:03][game_globalization-createMainScreen][TRACE] starting makeing title screen
+[00:00:03][game_globalization-createMainScreen][TRACE] about to make ceo portrait
+[00:00:03][Thread-72][TRACE] UIMask Ready
+[00:00:03][Thread-73][TRACE] UIMask Ready
+[00:00:03][Thread-74][TRACE] UIMask Ready
+[00:00:03][Thread-75][TRACE] UIMask Ready
+[00:00:03][Thread-76][TRACE] UIMask Ready
+[00:00:03][Thread-77][TRACE] UIMask Ready
+[00:00:03][Thread-78][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-78][TRACE] UI Mask Ready (bitmap)
+[00:00:03][ENGINE-main][TRACE] made title screen
+[00:00:03][game_globalization-main][INFO] Globalization Master File Init Game
+[00:00:45][AWT-EventQueue-0][TRACE] START NEW GAME!
+[00:04:15][pool-2-thread-1][TRACE] No registered file for: font/É.png
+[00:04:15][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:04:20][AWT-EventQueue-0][TRACE] City button clicked
+[00:04:20][AWT-EventQueue-0][TRACE] City button clicked
+[00:04:21][AWT-EventQueue-0][TRACE] City button clicked
+[00:04:21][AWT-EventQueue-0][TRACE] City button clicked
+[00:04:21][AWT-EventQueue-0][TRACE] City button clicked
+[00:04:22][AWT-EventQueue-0][TRACE] City button clicked
