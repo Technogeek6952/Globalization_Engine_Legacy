@@ -42,7 +42,6 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	private boolean renderToolTip = false; //has the button been moused over for long enough to render the tooltip
 	private int toolTipTimeout = 1000; //ms to wait before displaying tooltip
 	private Parent parent;
-	private World parentWorld;
 	private boolean useCustomFont;
 	//private CustomFont customFont;
 	private Text UIText;
@@ -106,8 +105,6 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		buttonMask.addUIMaskListener(this);
 		
 		UIText.setParent(this);
-		
-		parentWorld = world;
 		
 		ready=true;
 	}
@@ -309,7 +306,6 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		bounds.put(new Line(topRight, bottomRight), center);
 		//bottom
 		bounds.put(new Line(bottomLeft, bottomRight), center);
-		int buttonMaskHash = System.identityHashCode(buttonMask);
 		buttonMask.setBounds(bounds);
 	}
 

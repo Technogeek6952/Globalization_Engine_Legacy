@@ -7,7 +7,6 @@ import java.util.HashMap;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.data.DataManager;
-import com.julianEngine.graphics.UI.UIButton;
 import com.julianEngine.utility.Log;
 
 public class CustomFont {

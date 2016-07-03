@@ -1,4 +1,7 @@
 ----------Changelog - Julian Engine----------
+----------ea1.2.6.2 (SHA: e765f215 w/ ga1.0.4)
+-added UIContainer - allows a subset of objects to be placed relative to a different origin. The container can be moved with all the
+ objects moving with it (see commit messages for more info)
 ----------a1.2.6-------------
 -Slight change to version numbers: replaced starting 'v' to an 'a' to indicate alpha version - change to 'b' at beta
 	-For better smoothness with git, third part of version number should go up on a major release, and an _# will increment after each

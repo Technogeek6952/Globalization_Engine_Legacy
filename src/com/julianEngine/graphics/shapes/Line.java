@@ -23,6 +23,7 @@ public class Line implements Shape{
 	Point end;
 	boolean ready = false;
 	boolean anchored = false;
+	@SuppressWarnings("unused")
 	private Parent parent;
 	
 	/*--------Code--------------------------*/

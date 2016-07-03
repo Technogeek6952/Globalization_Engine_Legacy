@@ -2,7 +2,6 @@ package com.julianEngine.config;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,7 +89,8 @@ public class UserConfiguration {
 		File file = new File(path);
 		try {
 			FileOutputStream writer = new FileOutputStream(file);
-		} catch (FileNotFoundException e) {
+			writer.close();
+		} catch (Exception e) {
 			Log.error("Error while writing configuration file");
 			e.printStackTrace();
 		}

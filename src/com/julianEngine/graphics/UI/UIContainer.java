@@ -2,20 +2,15 @@ package com.julianEngine.graphics.UI;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RadialGradientPaint;
-import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.Color;
 
-import com.julianEngine.Engine2D;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.Frame;
-
-import javafx.scene.paint.CycleMethod;
 
 public class UIContainer implements Shape, Parent{
 	
