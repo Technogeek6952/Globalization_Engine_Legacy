@@ -642,8 +642,8 @@
 [00:00:00][game_globalization-init][INFO] Globalization Master File Init
 [00:00:00][Thread-6][TRACE] UIMask Ready
 [00:00:00][Thread-7][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][game_globalization-init][TRACE] Created mask for: Algeria
 [00:00:00][Thread-7][TRACE] UI Mask Ready (bitmap)
+[00:00:00][game_globalization-init][TRACE] Created mask for: Algeria
 [00:00:00][game_globalization-init][TRACE] Created mask for: America
 [00:00:00][Thread-8][TRACE] UI bitmap mask about to ask for listener
 [00:00:00][Thread-8][TRACE] UI Mask Ready (bitmap)
@@ -651,142 +651,181 @@
 [00:00:00][Thread-9][TRACE] UI bitmap mask about to ask for listener
 [00:00:00][Thread-9][TRACE] UI Mask Ready (bitmap)
 [00:00:00][game_globalization-init][TRACE] Created mask for: Australia
+[00:00:00][Thread-10][TRACE] UI bitmap mask about to ask for listener
+[00:00:00][Thread-10][TRACE] UI Mask Ready (bitmap)
 [00:00:00][game_globalization-init][TRACE] Created mask for: Balkan Region
 [00:00:00][Thread-11][TRACE] UI bitmap mask about to ask for listener
 [00:00:00][Thread-11][TRACE] UI Mask Ready (bitmap)
 [00:00:00][game_globalization-init][TRACE] Created mask for: Belgium
 [00:00:00][Thread-12][TRACE] UI bitmap mask about to ask for listener
 [00:00:00][Thread-12][TRACE] UI Mask Ready (bitmap)
-[00:00:00][game_globalization-init][TRACE] Created mask for: Botswana
-[00:00:00][game_globalization-init][TRACE] Created mask for: Brazil
-[00:00:00][Thread-13][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][Thread-13][TRACE] UI Mask Ready (bitmap)
-[00:00:00][game_globalization-init][TRACE] Created mask for: Canada
-[00:00:00][game_globalization-init][TRACE] Created mask for: Panama
-[00:00:00][game_globalization-init][TRACE] Created mask for: Chile
-[00:00:00][game_globalization-init][TRACE] Created mask for: China
-[00:00:00][game_globalization-init][TRACE] Created mask for: Colombia
-[00:00:00][game_globalization-init][TRACE] Created mask for: Poland
-[00:00:00][game_globalization-init][TRACE] Created mask for: Egypt
-[00:00:00][game_globalization-init][TRACE] Created mask for: Ethiopia
-[00:00:00][game_globalization-init][TRACE] Created mask for: France
-[00:00:00][game_globalization-init][TRACE] Created mask for: Germany
-[00:00:00][game_globalization-init][TRACE] Created mask for: India
-[00:00:00][game_globalization-init][TRACE] Created mask for: Indonesia
-[00:00:00][game_globalization-init][TRACE] Created mask for: Israel
-[00:00:00][game_globalization-init][TRACE] Created mask for: Italy
-[00:00:00][game_globalization-init][TRACE] Created mask for: Japan
-[00:00:00][game_globalization-init][TRACE] Created mask for: Kenya
-[00:00:00][game_globalization-init][TRACE] Created mask for: Netherlands
-[00:00:00][game_globalization-init][TRACE] Created mask for: Philippines
-[00:00:00][game_globalization-init][TRACE] Created mask for: Saudi Arabia
-[00:00:00][game_globalization-init][TRACE] Created mask for: South Africa
-[00:00:00][Thread-35][TRACE] UIMask Ready
-[00:00:01][Thread-36][TRACE] UIMask Ready
-[00:00:02][Thread-37][TRACE] UIMask Ready
-[00:00:02][Thread-38][TRACE] UIMask Ready
-[00:00:02][Thread-39][TRACE] UIMask Ready
-[00:00:02][Thread-40][TRACE] UIMask Ready
-[00:00:02][Thread-41][TRACE] UIMask Ready
-[00:00:02][Thread-42][TRACE] UIMask Ready
-[00:00:02][game_globalization-postInit][INFO] Globalization Master File Post Init
-[00:00:02][Thread-44][TRACE] UIMask Ready
-[00:00:02][Thread-45][TRACE] UIMask Ready
-[00:00:02][Thread-46][TRACE] UIMask Ready
-[00:00:02][Thread-47][TRACE] UIMask Ready
-[00:00:02][Thread-48][TRACE] UIMask Ready
-[00:00:02][Thread-49][TRACE] UIMask Ready
-[00:00:02][Thread-50][TRACE] UIMask Ready
-[00:00:02][game_globalization-postInit][TRACE] No registered file for: font/É.png
-[00:00:02][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:02][Thread-51][TRACE] UIMask Ready
-[00:00:02][Thread-52][TRACE] UIMask Ready
-[00:00:02][Thread-53][TRACE] UIMask Ready
-[00:00:02][Thread-54][TRACE] UIMask Ready
-[00:00:02][Thread-55][TRACE] UIMask Ready
-[00:00:02][Thread-56][TRACE] UIMask Ready
-[00:00:02][Thread-57][TRACE] UIMask Ready
-[00:00:02][Thread-58][TRACE] UIMask Ready
-[00:00:02][Thread-59][TRACE] UIMask Ready
-[00:00:02][Thread-60][TRACE] UIMask Ready
-[00:00:02][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
-[00:00:02][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:02][Thread-61][TRACE] UIMask Ready
-[00:00:02][Thread-62][TRACE] UIMask Ready
-[00:00:02][game_globalization-postInit][TRACE] No registered file for: font/Í.png
-[00:00:02][Thread-63][TRACE] UIMask Ready
-[00:00:02][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:02][Thread-64][TRACE] UIMask Ready
-[00:00:02][Thread-65][TRACE] UIMask Ready
-[00:00:02][Thread-66][TRACE] UIMask Ready
-[00:00:02][Thread-67][TRACE] UIMask Ready
-[00:00:02][Thread-68][TRACE] UIMask Ready
-[00:00:02][Thread-69][TRACE] UIMask Ready
-[00:00:02][Thread-70][TRACE] UIMask Ready
-[00:00:02][Thread-71][TRACE] UIMask Ready
-[00:00:02][Thread-72][TRACE] UIMask Ready
-[00:00:02][game_globalization-postInit][TRACE] Resource not found: images/flags/Balkan Flag.png
-[00:00:02][game_globalization-postInit][ERROR] Error while loading resource: images/flags/Balkan Flag.png
-[00:00:02][Thread-73][TRACE] UIMask Ready
-[00:00:03][Thread-74][TRACE] UIMask Ready
-[00:00:03][Thread-75][TRACE] UIMask Ready
-[00:00:03][Thread-76][TRACE] UIMask Ready
-[00:00:03][Thread-77][TRACE] UIMask Ready
-[00:00:03][Thread-78][TRACE] UIMask Ready
-[00:00:03][Thread-79][TRACE] UIMask Ready
-[00:00:03][Thread-80][TRACE] UIMask Ready
-[00:00:03][Thread-81][TRACE] UIMask Ready
-[00:00:03][Thread-82][TRACE] UIMask Ready
-[00:00:03][Thread-83][TRACE] UIMask Ready
-[00:00:03][Thread-84][TRACE] UIMask Ready
-[00:00:03][Thread-85][TRACE] UIMask Ready
-[00:00:03][Thread-86][TRACE] UIMask Ready
-[00:00:03][Thread-87][TRACE] UIMask Ready
-[00:00:04][Thread-88][TRACE] UIMask Ready
-[00:00:04][Thread-89][TRACE] UIMask Ready
-[00:00:04][Thread-90][TRACE] UIMask Ready
-[00:00:04][Thread-91][TRACE] UIMask Ready
-[00:00:04][Thread-92][TRACE] UIMask Ready
-[00:00:04][Thread-93][TRACE] UIMask Ready
-[00:00:04][Thread-94][TRACE] UIMask Ready
-[00:00:04][Thread-95][TRACE] UIMask Ready
-[00:00:04][Thread-96][TRACE] UIMask Ready
-[00:00:04][Thread-97][TRACE] UIMask Ready
-[00:00:04][Thread-98][TRACE] UIMask Ready
-[00:00:04][Thread-99][TRACE] UIMask Ready
-[00:00:04][Thread-100][TRACE] UIMask Ready
-[00:00:04][Thread-101][TRACE] UIMask Ready
-[00:00:04][Thread-102][TRACE] UIMask Ready
-[00:00:04][Thread-103][TRACE] UIMask Ready
-[00:00:05][Thread-104][TRACE] UIMask Ready
-[00:00:05][Thread-105][TRACE] UIMask Ready
-[00:00:05][Thread-106][TRACE] UIMask Ready
-[00:00:05][Thread-107][TRACE] UIMask Ready
-[00:00:05][Thread-108][TRACE] UIMask Ready
-[00:00:05][Thread-109][TRACE] UIMask Ready
-[00:00:05][Thread-110][TRACE] UIMask Ready
-[00:00:05][Thread-111][TRACE] UIMask Ready
-[00:00:05][Thread-112][TRACE] UIMask Ready
-[00:00:05][Thread-113][TRACE] UIMask Ready
-[00:00:05][Thread-114][TRACE] UIMask Ready
-[00:00:05][Thread-115][TRACE] UIMask Ready
-[00:00:05][Thread-116][TRACE] UIMask Ready
-[00:00:05][Thread-117][TRACE] UIMask Ready
-[00:00:06][Thread-118][TRACE] UIMask Ready
-[00:00:06][Thread-119][TRACE] UIMask Ready
-[00:00:06][ENGINE-main][TRACE] about to make title screen
-[00:00:06][game_globalization-createMainScreen][TRACE] starting makeing title screen
-[00:00:06][game_globalization-createMainScreen][TRACE] about to make ceo portrait
-[00:00:06][Thread-121][TRACE] UIMask Ready
-[00:00:06][Thread-122][TRACE] UIMask Ready
-[00:00:06][Thread-123][TRACE] UIMask Ready
-[00:00:06][Thread-124][TRACE] UIMask Ready
-[00:00:06][Thread-125][TRACE] UIMask Ready
-[00:00:06][Thread-126][TRACE] UIMask Ready
-[00:00:06][Thread-127][TRACE] UI bitmap mask about to ask for listener
-[00:00:06][Thread-127][TRACE] UI Mask Ready (bitmap)
-[00:00:06][ENGINE-main][TRACE] made title screen
-[00:00:06][game_globalization-main][INFO] Globalization Master File Init Game
-[00:00:10][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:14][pool-2-thread-1][TRACE] No registered file for: font/É.png
-[00:00:14][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:00:01][game_globalization-init][TRACE] Created mask for: Botswana
+[00:00:01][Thread-13][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-13][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Brazil
+[00:00:01][Thread-14][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-14][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Canada
+[00:00:01][Thread-15][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-15][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Panama
+[00:00:01][Thread-16][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-16][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Chile
+[00:00:01][Thread-17][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-17][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: China
+[00:00:01][Thread-18][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-18][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Colombia
+[00:00:01][Thread-19][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-19][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Poland
+[00:00:01][Thread-20][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-20][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Egypt
+[00:00:01][Thread-21][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-21][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Ethiopia
+[00:00:01][Thread-22][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-22][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: France
+[00:00:01][Thread-23][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-23][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Germany
+[00:00:01][Thread-24][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-24][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: India
+[00:00:01][Thread-25][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-25][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Indonesia
+[00:00:01][Thread-26][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-26][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Israel
+[00:00:01][Thread-27][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-27][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Italy
+[00:00:02][Thread-28][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-28][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Japan
+[00:00:02][Thread-29][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-29][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Kenya
+[00:00:02][Thread-30][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-30][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Netherlands
+[00:00:02][Thread-31][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-31][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Philippines
+[00:00:02][Thread-32][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-32][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Saudi Arabia
+[00:00:02][Thread-33][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-33][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: South Africa
+[00:00:02][Thread-34][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-34][TRACE] UI Mask Ready (bitmap)
+[00:00:02][Thread-35][TRACE] UIMask Ready
+[00:00:02][Thread-36][TRACE] UIMask Ready
+[00:00:03][Thread-37][TRACE] UIMask Ready
+[00:00:03][Thread-38][TRACE] UIMask Ready
+[00:00:03][Thread-39][TRACE] UIMask Ready
+[00:00:03][Thread-40][TRACE] UIMask Ready
+[00:00:03][Thread-41][TRACE] UIMask Ready
+[00:00:03][Thread-42][TRACE] UIMask Ready
+[00:00:03][game_globalization-postInit][INFO] Globalization Master File Post Init
+[00:00:03][Thread-44][TRACE] UIMask Ready
+[00:00:03][Thread-45][TRACE] UIMask Ready
+[00:00:03][Thread-46][TRACE] UIMask Ready
+[00:00:03][Thread-47][TRACE] UIMask Ready
+[00:00:03][Thread-48][TRACE] UIMask Ready
+[00:00:03][Thread-49][TRACE] UIMask Ready
+[00:00:03][Thread-50][TRACE] UIMask Ready
+[00:00:03][game_globalization-postInit][TRACE] No registered file for: font/É.png
+[00:00:03][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:03][Thread-51][TRACE] UIMask Ready
+[00:00:03][Thread-52][TRACE] UIMask Ready
+[00:00:03][Thread-53][TRACE] UIMask Ready
+[00:00:03][Thread-54][TRACE] UIMask Ready
+[00:00:03][Thread-55][TRACE] UIMask Ready
+[00:00:03][Thread-56][TRACE] UIMask Ready
+[00:00:03][Thread-57][TRACE] UIMask Ready
+[00:00:04][Thread-58][TRACE] UIMask Ready
+[00:00:04][Thread-59][TRACE] UIMask Ready
+[00:00:04][Thread-60][TRACE] UIMask Ready[00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
+
+[00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:04][Thread-61][TRACE] UIMask Ready
+[00:00:04][Thread-62][TRACE] UIMask Ready
+[00:00:04][Thread-63][TRACE] UIMask Ready
+[00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Í.png
+[00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:04][Thread-64][TRACE] UIMask Ready
+[00:00:04][Thread-65][TRACE] UIMask Ready
+[00:00:04][Thread-66][TRACE] UIMask Ready
+[00:00:04][Thread-67][TRACE] UIMask Ready
+[00:00:04][Thread-68][TRACE] UIMask Ready
+[00:00:04][Thread-69][TRACE] UIMask Ready
+[00:00:04][Thread-70][TRACE] UIMask Ready
+[00:00:04][Thread-71][TRACE] UIMask Ready
+[00:00:04][Thread-72][TRACE] UIMask Ready
+[00:00:04][Thread-73][TRACE] UIMask Ready
+[00:00:04][Thread-74][TRACE] UIMask Ready
+[00:00:04][Thread-75][TRACE] UIMask Ready
+[00:00:04][Thread-76][TRACE] UIMask Ready
+[00:00:04][Thread-77][TRACE] UIMask Ready
+[00:00:04][Thread-78][TRACE] UIMask Ready
+[00:00:04][Thread-79][TRACE] UIMask Ready
+[00:00:04][Thread-80][TRACE] UIMask Ready
+[00:00:04][Thread-81][TRACE] UIMask Ready
+[00:00:05][Thread-82][TRACE] UIMask Ready
+[00:00:05][Thread-83][TRACE] UIMask Ready
+[00:00:05][Thread-84][TRACE] UIMask Ready
+[00:00:05][Thread-85][TRACE] UIMask Ready
+[00:00:05][Thread-86][TRACE] UIMask Ready
+[00:00:05][Thread-87][TRACE] UIMask Ready
+[00:00:05][Thread-88][TRACE] UIMask Ready
+[00:00:05][Thread-89][TRACE] UIMask Ready
+[00:00:05][Thread-90][TRACE] UIMask Ready
+[00:00:05][Thread-91][TRACE] UIMask Ready
+[00:00:05][Thread-92][TRACE] UIMask Ready
+[00:00:05][Thread-93][TRACE] UIMask Ready
+[00:00:05][Thread-94][TRACE] UIMask Ready
+[00:00:05][Thread-95][TRACE] UIMask Ready
+[00:00:05][Thread-96][TRACE] UIMask Ready
+[00:00:05][Thread-97][TRACE] UIMask Ready
+[00:00:06][Thread-98][TRACE] UIMask Ready
+[00:00:06][Thread-99][TRACE] UIMask Ready
+[00:00:06][Thread-100][TRACE] UIMask Ready
+[00:00:06][Thread-101][TRACE] UIMask Ready
+[00:00:06][Thread-102][TRACE] UIMask Ready
+[00:00:06][Thread-103][TRACE] UIMask Ready
+[00:00:06][Thread-104][TRACE] UIMask Ready
+[00:00:06][Thread-105][TRACE] UIMask Ready
+[00:00:06][Thread-106][TRACE] UIMask Ready
+[00:00:06][Thread-107][TRACE] UIMask Ready
+[00:00:06][Thread-108][TRACE] UIMask Ready
+[00:00:06][Thread-109][TRACE] UIMask Ready
+[00:00:06][Thread-110][TRACE] UIMask Ready
+[00:00:06][Thread-111][TRACE] UIMask Ready
+[00:00:07][Thread-112][TRACE] UIMask Ready
+[00:00:07][Thread-113][TRACE] UIMask Ready
+[00:00:07][Thread-114][TRACE] UIMask Ready
+[00:00:07][Thread-115][TRACE] UIMask Ready
+[00:00:07][Thread-116][TRACE] UIMask Ready
+[00:00:07][Thread-117][TRACE] UIMask Ready
+[00:00:07][Thread-118][TRACE] UIMask Ready
+[00:00:07][Thread-119][TRACE] UIMask Ready
+[00:00:07][ENGINE-main][TRACE] about to make title screen
+[00:00:07][game_globalization-createMainScreen][TRACE] starting makeing title screen
+[00:00:07][game_globalization-createMainScreen][TRACE] about to make ceo portrait
+[00:00:07][Thread-121][TRACE] UIMask Ready
+[00:00:07][Thread-122][TRACE] UIMask Ready
+[00:00:07][Thread-123][TRACE] UIMask Ready
+[00:00:07][Thread-124][TRACE] UIMask Ready
+[00:00:07][Thread-125][TRACE] UIMask Ready
+[00:00:07][Thread-126][TRACE] UIMask Ready
+[00:00:07][Thread-127][TRACE] UI bitmap mask about to ask for listener
+[00:00:07][Thread-127][TRACE] UI Mask Ready (bitmap)
+[00:00:07][ENGINE-main][TRACE] made title screen
+[00:00:08][game_globalization-main][INFO] Globalization Master File Init Game
