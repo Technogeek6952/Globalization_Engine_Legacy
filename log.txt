@@ -642,8 +642,8 @@
 [00:00:00][game_globalization-init][INFO] Globalization Master File Init
 [00:00:00][Thread-6][TRACE] UIMask Ready
 [00:00:00][Thread-7][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][Thread-7][TRACE] UI Mask Ready (bitmap)
 [00:00:00][game_globalization-init][TRACE] Created mask for: Algeria
+[00:00:00][Thread-7][TRACE] UI Mask Ready (bitmap)
 [00:00:00][game_globalization-init][TRACE] Created mask for: America
 [00:00:00][Thread-8][TRACE] UI bitmap mask about to ask for listener
 [00:00:00][Thread-8][TRACE] UI Mask Ready (bitmap)
@@ -726,6 +726,8 @@
 [00:00:02][Thread-34][TRACE] UI bitmap mask about to ask for listener
 [00:00:02][Thread-34][TRACE] UI Mask Ready (bitmap)
 [00:00:02][Thread-35][TRACE] UIMask Ready
+[00:00:02][game_globalization-init][TRACE] No registered file for: font//.png
+[00:00:02][game_globalization-init][WARNING] unknown char, replacing with ?
 [00:00:02][Thread-36][TRACE] UIMask Ready
 [00:00:03][Thread-37][TRACE] UIMask Ready
 [00:00:03][Thread-38][TRACE] UIMask Ready
@@ -743,22 +745,22 @@
 [00:00:03][Thread-50][TRACE] UIMask Ready
 [00:00:03][game_globalization-postInit][TRACE] No registered file for: font/É.png
 [00:00:03][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:03][Thread-51][TRACE] UIMask Ready
-[00:00:03][Thread-52][TRACE] UIMask Ready
-[00:00:03][Thread-53][TRACE] UIMask Ready
-[00:00:03][Thread-54][TRACE] UIMask Ready
-[00:00:03][Thread-55][TRACE] UIMask Ready
-[00:00:03][Thread-56][TRACE] UIMask Ready
-[00:00:03][Thread-57][TRACE] UIMask Ready
+[00:00:04][Thread-51][TRACE] UIMask Ready
+[00:00:04][Thread-56][TRACE] UIMask Ready[00:00:04][Thread-57][TRACE] UIMask Ready
+[00:00:04][Thread-53][TRACE] UIMask Ready
+
+[00:00:04][Thread-55][TRACE] UIMask Ready
+[00:00:04][Thread-52][TRACE] UIMask Ready
+[00:00:04][Thread-54][TRACE] UIMask Ready
 [00:00:04][Thread-58][TRACE] UIMask Ready
 [00:00:04][Thread-59][TRACE] UIMask Ready
-[00:00:04][Thread-60][TRACE] UIMask Ready[00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
-
+[00:00:04][Thread-60][TRACE] UIMask Ready
+[00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
 [00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
 [00:00:04][Thread-61][TRACE] UIMask Ready
 [00:00:04][Thread-62][TRACE] UIMask Ready
-[00:00:04][Thread-63][TRACE] UIMask Ready
 [00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Í.png
+[00:00:04][Thread-63][TRACE] UIMask Ready
 [00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
 [00:00:04][Thread-64][TRACE] UIMask Ready
 [00:00:04][Thread-65][TRACE] UIMask Ready
@@ -790,8 +792,8 @@
 [00:00:05][Thread-91][TRACE] UIMask Ready
 [00:00:05][Thread-92][TRACE] UIMask Ready
 [00:00:05][Thread-93][TRACE] UIMask Ready
-[00:00:05][Thread-94][TRACE] UIMask Ready
-[00:00:05][Thread-95][TRACE] UIMask Ready
+[00:00:06][Thread-94][TRACE] UIMask Ready
+[00:00:06][Thread-95][TRACE] UIMask Ready
 [00:00:06][Thread-96][TRACE] UIMask Ready
 [00:00:06][Thread-97][TRACE] UIMask Ready
 [00:00:06][Thread-98][TRACE] UIMask Ready
@@ -804,8 +806,8 @@
 [00:00:06][Thread-105][TRACE] UIMask Ready
 [00:00:06][Thread-106][TRACE] UIMask Ready
 [00:00:06][Thread-107][TRACE] UIMask Ready
-[00:00:07][Thread-108][TRACE] UIMask Ready
-[00:00:07][Thread-109][TRACE] UIMask Ready
+[00:00:06][Thread-108][TRACE] UIMask Ready
+[00:00:06][Thread-109][TRACE] UIMask Ready
 [00:00:07][Thread-110][TRACE] UIMask Ready
 [00:00:07][Thread-111][TRACE] UIMask Ready
 [00:00:07][Thread-112][TRACE] UIMask Ready
@@ -815,9 +817,9 @@
 [00:00:07][Thread-116][TRACE] UIMask Ready
 [00:00:07][Thread-117][TRACE] UIMask Ready
 [00:00:07][Thread-118][TRACE] UIMask Ready
-[00:00:07][Thread-119][TRACE] UIMask Ready
 [00:00:07][ENGINE-main][TRACE] about to make title screen
 [00:00:07][game_globalization-createMainScreen][TRACE] starting makeing title screen
+[00:00:07][Thread-119][TRACE] UIMask Ready
 [00:00:07][game_globalization-createMainScreen][TRACE] about to make ceo portrait
 [00:00:07][Thread-121][TRACE] UIMask Ready
 [00:00:07][Thread-122][TRACE] UIMask Ready
@@ -829,6 +831,8 @@
 [00:00:07][Thread-127][TRACE] UI Mask Ready (bitmap)
 [00:00:07][ENGINE-main][TRACE] made title screen
 [00:00:08][game_globalization-main][INFO] Globalization Master File Init Game
-[00:00:10][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:12][pool-2-thread-1][TRACE] No registered file for: font/É.png
-[00:00:12][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:00:29][AWT-EventQueue-0][TRACE] START NEW GAME!
+[00:00:37][pool-2-thread-1][TRACE] No registered file for: font/É.png
+[00:00:37][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:01:11][AWT-EventQueue-0][TRACE] City button clicked
+[00:01:12][AWT-EventQueue-0][TRACE] City button clicked

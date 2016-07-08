@@ -13,6 +13,9 @@ import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
 
 public abstract class UIMask implements UIElement, MouseListener, MouseMotionListener{
+	//FIXME: long loading times caused by masks waiting for listeners
+	//This can probably be fixed by one listener being created at the start of the program, and it can service all masks that have been
+	//created.
 	protected ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
 	public UIMask(World parent){
