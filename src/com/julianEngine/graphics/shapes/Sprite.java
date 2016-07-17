@@ -149,6 +149,26 @@ public class Sprite implements Shape{
 		}
 	}
 	
+	public void setHeight(int newHeight, boolean scale){
+		if(scale){
+			double aspectRatio = (double)this.imgWidth/(double)this.imgHeight;
+			this.dstHeight = newHeight;
+			this.dstWidth = (int)Math.round(newHeight*aspectRatio);
+		}else{
+			this.dstHeight = newHeight;
+		}
+	}
+	
+	public void setWidth(int newWidth, boolean scale){
+		if(scale){
+			double aspectRatio = (double)this.imgWidth/(double)this.imgHeight;
+			this.dstWidth = newWidth;
+			this.dstHeight = (int)Math.round(newWidth/aspectRatio);
+		}else{
+			this.dstWidth = newWidth;
+		}
+	}
+	
 	public void blur(){
 		Kernel avgKernel = new Kernel(3, 3, new float[] {1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f});
 		Kernel gausKernel = new Kernel(3, 3, new float[] {1f/16f, 1f/8f, 1f/16f, 1f/8f, 1f/4f, 1f/8f, 1f/16f, 1f/8f, 1f/16f});

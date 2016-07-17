@@ -32,6 +32,7 @@ public class UIPolygonMask extends UIMask {
 	private boolean ready = false;
 	private boolean listenerReady = false;
 	private World parent;
+	private Vector shift;
 	//private ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
 	/*--------Code--------------------------*/
@@ -73,9 +74,14 @@ public class UIPolygonMask extends UIMask {
 		this.bounds = bounds;
 	}
 	
+	public void useVectorToTest(Vector shift){
+		this.shift = shift;
+	}
+	
 	public boolean isPointInside(Point toTest){
+		Point point = toTest.addVector(shift!=null?shift:new Vector(0, 0, 0));
 		for(Line l:bounds.keySet()){
-			if(l.areTwoPointsOnSameSide(bounds.get(l), toTest)){
+			if(l.areTwoPointsOnSameSide(bounds.get(l), point)){
 				//same side - don't worry
 			}else{
 				return false; //as soon as any check is false, we can exit 

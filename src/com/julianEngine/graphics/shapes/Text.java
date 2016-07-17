@@ -13,6 +13,7 @@ import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.CustomFont;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.graphics.UI.UIContainer;
 
 public class Text implements Shape{
 	/*--------Public Static Variables-------*/
@@ -58,6 +59,18 @@ public class Text implements Shape{
 		textWidth = metrics.stringWidth(text);
 		g.dispose();
 		ready = true;
+	}
+	
+	public void fitCustomFontToContainer(UIContainer container){
+		int containerHeight = container.getFrame().getHeight();
+		int containerWidth = container.getFrame().getWidth();
+		for(int i = 1;i<=containerHeight;i++){
+			CustomFont font = new CustomFont(i, 0);
+			if(font.getWidthOfString(text)<=containerWidth){
+				this.setCustomFont(font);
+			}
+		}
+		this.useCustomFont(true);
 	}
 	
 	public void setWidth(int width){ //wraps text if beond width
@@ -164,8 +177,13 @@ public class Text implements Shape{
 
 	@Override
 	public void centerY(Frame frame) {
-		int yPos = (frame.getWidth()-this.textHeight)/2;
-		topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
+		if(!useCustomFont){
+			int yPos = (frame.getWidth()-this.textHeight)/2;
+			topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
+		}else{
+			int yPos = (frame.getHeight()+this.customFont.getHeight())/2;
+			topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
+		}
 	}
 
 	@Override

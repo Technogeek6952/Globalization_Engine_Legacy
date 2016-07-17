@@ -25,6 +25,10 @@ public class CustomFont {
 		
 	}
 	
+	public int getHeight(){
+		return height;
+	}
+	
 	public void preRenderString(String str, int wrapWidth, boolean wrap, Parent parent){
 		Graphics2D dudGfx = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
 		renderString(new Point(), dudGfx, str, parent, wrapWidth, wrap);

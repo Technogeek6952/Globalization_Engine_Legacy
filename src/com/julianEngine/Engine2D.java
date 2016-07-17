@@ -97,6 +97,14 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			}catch(Exception e){
 				Log.error("Error in render loop: ");
 				e.printStackTrace();
+				if(e.getMessage().equals("Buffers have not been created")){
+					Log.warn("Elaina detected in the matrix... Attempting to eliminate...");
+					boolean preState = this.isVisible();
+					Engine2D.this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
+					Engine2D.this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering
+					bufferStrategy = this.getBufferStrategy(); //Set the public variable so the buffer strategy can be accessed by other classes
+					Engine2D.this.setVisible(preState);
+				}
 			}
 		}
 		

@@ -109,6 +109,10 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		ready=true;
 	}
 	
+	public UIPolygonMask getMask(){
+		return buttonMask;
+	}
+	
 	public void setEnabled(boolean b){
 		enabled = b;
 	}
