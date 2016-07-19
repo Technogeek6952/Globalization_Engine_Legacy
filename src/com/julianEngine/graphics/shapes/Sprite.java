@@ -182,6 +182,17 @@ public class Sprite implements Shape{
 		image = gausOp.filter((BufferedImage) image, null);
 	}
 	
+	public void blur(int times){
+		Kernel avgKernel = new Kernel(3, 3, new float[] {1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f});
+		Kernel gausKernel = new Kernel(3, 3, new float[] {1f/16f, 1f/8f, 1f/16f, 1f/8f, 1f/4f, 1f/8f, 1f/16f, 1f/8f, 1f/16f});
+		BufferedImageOp op = new ConvolveOp(avgKernel);
+		BufferedImageOp gausOp = new ConvolveOp(gausKernel);
+		for(int i=0;i<times;i++){
+			image = op.filter((BufferedImage) image, null);
+			image = gausOp.filter((BufferedImage) image, null);
+		}
+	}
+	
 	public void setGifFPS(int fps){
 		timePerFrame = 1000/fps;
 	}
