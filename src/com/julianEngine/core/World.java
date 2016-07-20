@@ -83,6 +83,12 @@ public class World implements Parent{
 		updateAttachedCameras();
 	}
 	
+	public void addShapes(Shape... shapes){
+		for(Shape shape:shapes){
+			addShape(shape);
+		}
+	}
+	
 	public void updateAttachedCameras(){
 		for(Camera c:attachedCameras){
 			c.update();

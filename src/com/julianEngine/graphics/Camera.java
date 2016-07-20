@@ -1,6 +1,7 @@
 package com.julianEngine.graphics;
 
 import java.awt.image.BufferStrategy;
+import java.util.Stack;
 
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
@@ -25,6 +26,7 @@ public class Camera {
 	boolean render = false;
 	Frame frame;
 	World currentWorld;
+	Stack<World> worldHistory = new Stack<World>();
 	
 	/*--------Code--------------------------*/
 	public Camera(Frame frame){
@@ -34,7 +36,13 @@ public class Camera {
 	}
 	
 	public void moveToWorld(int id){
+		moveToWorld(id, true);
+	}
+	
+	public void moveToWorld(int id, boolean save){
 		if(World.getWorldForID(id)!=null){
+			if(save)
+				worldHistory.push(currentWorld); //if we are going to change worlds, push first
 			World.getWorldForID(currentID).removeCamera(this);
 			World.getWorldForID(id).attachCamera(this);
 			World.getWorldForID(id).setActiveCamera(this);
@@ -44,6 +52,18 @@ public class Camera {
 			currentWorld = World.getWorldForID(currentID);
 			currentWorld.load();
 		}
+	}
+	
+	public void moveBack(){
+		moveToWorld(getPreviousWorld().getID(), false);
+	}
+	
+	public World getPreviousWorld(){
+		return (worldHistory.isEmpty())?null:worldHistory.pop();
+	}
+	
+	public void clearWorldHistory(){
+		worldHistory.clear();
 	}
 	
 	public World getWorld(){
