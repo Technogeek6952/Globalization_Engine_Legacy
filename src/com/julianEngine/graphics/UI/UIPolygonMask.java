@@ -79,7 +79,7 @@ public class UIPolygonMask extends UIMask {
 	}
 	
 	public boolean isPointInside(Point toTest){
-		Point point = toTest.addVector(shift!=null?shift:new Vector(0, 0, 0));
+		Point point = toTest;//.addVector(shift!=null?shift:new Vector(0, 0, 0));
 		for(Line l:bounds.keySet()){
 			if(l.areTwoPointsOnSameSide(bounds.get(l), point)){
 				//same side - don't worry
@@ -100,7 +100,7 @@ public class UIPolygonMask extends UIMask {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		Point mousePoint = referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0));
+		Point mousePoint = parent.getRelativePointForRealPoint(referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0)));
 		if(isPointInside(mousePoint)){
 			//mose moved inside mask
 			if(mouseInside){

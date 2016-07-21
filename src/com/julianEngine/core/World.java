@@ -245,4 +245,14 @@ public class World implements Parent{
 	public Point getRealPointForRelativePoint(Point p) {
 		return p;
 	}
+	
+	@Override
+	public Point getRelativePointForRealPoint(Point p){
+		return p;
+	}
+	
+	@Override
+	public Point getOrigin(){
+		return new Point();
+	}
 }

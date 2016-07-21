@@ -25,13 +25,14 @@ public class Camera {
 	boolean update = false;
 	boolean render = false;
 	Frame frame;
-	World currentWorld;
+	private World currentWorld;
 	Stack<World> worldHistory = new Stack<World>();
 	
 	/*--------Code--------------------------*/
 	public Camera(Frame frame){
 		World.getWorldForID(currentID).attachCamera(this);
 		currentWorld = World.getWorldForID(currentID);
+		currentWorld.load();
 		this.frame = frame;
 	}
 	

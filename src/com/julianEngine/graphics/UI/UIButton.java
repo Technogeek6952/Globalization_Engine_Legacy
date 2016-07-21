@@ -297,7 +297,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		
 		//world-relative points (not parent-relative)
 		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
-		Point topLeft = parent.getRealPointForRelativePoint(this.topLeft);
+		//Point topLeft = parent.getRealPointForRelativePoint(this.topLeft);
 		Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
 		Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
 		Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
@@ -340,5 +340,22 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		return p;
+	}
+	
+	@Override
+	public Point getOrigin(){
+		Point thisOrigin = new Point();
+		thisOrigin.setX(topLeft.getX());
+		thisOrigin.setY(topLeft.getY()-height);
+		return thisOrigin;
+	}
+	
+	@Override
+	public Point getRelativePointForRealPoint(Point p){
+		Point thisOrigin = getOrigin();
+		Vector toOrigin = Point.subtractPointFromPoint(parent.getOrigin(), thisOrigin);
+		Point relPoint = p.addVector(toOrigin);
+		
+		return relPoint;
 	}
 }

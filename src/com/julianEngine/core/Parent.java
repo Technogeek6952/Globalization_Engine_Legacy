@@ -7,4 +7,6 @@ public interface Parent extends Shape{
 	public Point getGFXPoint(Point p);
 	public Frame getContainingFrame();
 	public Point getRealPointForRelativePoint(Point p);
+	public Point getRelativePointForRealPoint(Point p);
+	public Point getOrigin();
 }

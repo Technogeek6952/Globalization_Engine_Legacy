@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 
+import com.julianEngine.graphics.external_windows.ErrorReporter;
 import com.julianEngine.utility.DataTools;
 import com.julianEngine.utility.Log;
 
@@ -101,6 +102,7 @@ public class DataManager {
 				return ImageIO.read(byteStream);
 			} catch (Exception e) {
 				Log.fatal("Error loading resource "+URI+" from disk");
+				ErrorReporter.displayError(e);
 				e.printStackTrace();
 			}
 		}else{
@@ -111,6 +113,7 @@ public class DataManager {
 						return ImageIO.read(in);
 					} catch (IOException e) {
 						Log.trace("Error getting image from byte stream");
+						ErrorReporter.displayError(e);
 						e.printStackTrace();
 					}
 				}

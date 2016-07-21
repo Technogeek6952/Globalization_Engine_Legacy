@@ -41,6 +41,7 @@ import com.julianEngine.data.pluginCommunication.JDFMessageReceiver;
 import com.julianEngine.data.pluginCommunication.JDFMessageSender;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.graphics.external_windows.ErrorReporter;
 import com.julianEngine.graphics.shapes.ProgressBar;
 import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
@@ -364,10 +365,12 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				System.exit(0);
 			} catch (EngineAlreadyInstancedException e) {
 				e.printStackTrace();
+				ErrorReporter.displayError(e);
 			}
 		}catch(Exception e){
 			Log.fatal("Fatal Error in main(): ");
 			e.printStackTrace();
+			ErrorReporter.displayError(e);
 			System.exit(-1);
 		}
 	}
@@ -386,7 +389,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			this.setIgnoreRepaint(true); //Since we are using active rendering for the graphics - ignore system calls to repaint
 			this.setTitle(title); //Title the main window
 			this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //Closing must be handled by WindowListener
-			this.setSize(1080, 720);
+			this.setSize(width, height);
 			this.setResizable(false); //Prevents the user from manually resizing the window, and messing up all our hard work
 			this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
 			this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering

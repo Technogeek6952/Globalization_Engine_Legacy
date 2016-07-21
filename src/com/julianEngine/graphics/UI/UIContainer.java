@@ -17,6 +17,7 @@ import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.UI.UIMask.UIMaskListener;
 import com.julianEngine.graphics.shapes.Line;
+import com.julianEngine.utility.Log;
 
 public class UIContainer implements Shape, Parent{
 	
@@ -30,6 +31,7 @@ public class UIContainer implements Shape, Parent{
 	Color background = new Color(0, 0, 0, 0);
 	ArrayList<UIContainerListener> listeners = new ArrayList<UIContainerListener>();
 	UIMask mask = null;
+	Color borderColor = new Color(0, 0, 0, 0);
 	
 	public UIContainer(Point t1, int width, int height, World world){
 		this(t1, width, height);
@@ -75,6 +77,10 @@ public class UIContainer implements Shape, Parent{
 		m_height = height;
 	}
 
+	public void setBorderColor(Color c){
+		borderColor = c;
+	}
+	
 	public void addListener(UIContainerListener l){
 		listeners.add(l);
 	}
@@ -120,6 +126,8 @@ public class UIContainer implements Shape, Parent{
 		int yPos = (int) gfxPoint.getY();
 		((Graphics2D)graphics).setColor(background);
 		graphics.fillRoundRect(xPos, yPos, m_width, m_height, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
+		((Graphics2D)graphics).setColor(borderColor);
+		graphics.drawRoundRect(xPos, yPos, m_width, m_height, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
 		graphics.drawImage(buffer, xPos, yPos, xPos+m_width, yPos+m_height, 
 				0, 0, buffer.getWidth(), buffer.getHeight(), null);
 		if(mask!=null&&mask.isMouseInside()){
@@ -198,13 +206,40 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
+		if(parent!=null){
+			Point thisOrigin = getOrigin();
+			Vector toOrigin = Point.subtractPointFromPoint(thisOrigin, new Point());
+			Point realPoint = p.addVector(toOrigin);
+			return realPoint;
+		}else{
+			Log.fatal("call to get a point before the parent has been set");
+			return new Point();
+		}
+	}
+	
+	@Override
+	public Point getRelativePointForRealPoint(Point p){
+		if(parent!=null){
+			Point thisOrigin = getOrigin();
+			Vector toOrigin = Point.subtractPointFromPoint(new Point(), thisOrigin);
+			Point relPoint = p.addVector(toOrigin);
+			
+			return relPoint;
+		}else{
+			Log.fatal("call to get a point before the parent has been set");
+			return new Point();
+		}
+	}
+	
+	@Override
+	public Point getOrigin(){
 		Point thisOrigin = new Point();
 		thisOrigin.setX(m_topLeft.getX());
 		thisOrigin.setY(m_topLeft.getY()-m_height);
-		Vector toOrigin = Point.subtractPointFromPoint(thisOrigin, new Point(0, 0, 0));
-		Point realPoint = p.addVector(toOrigin);
-		
-		return realPoint;
+		Point actualOrigin = parent.getOrigin();
+		actualOrigin.setX(actualOrigin.getX()+thisOrigin.getX());
+		actualOrigin.setY(actualOrigin.getY()+thisOrigin.getY());
+		return actualOrigin;
 	}
 	
 	public interface UIContainerListener{
