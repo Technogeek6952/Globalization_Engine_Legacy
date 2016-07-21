@@ -578,6 +578,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(!consoleActive){
+			if(e.getExtendedKeyCode()==KeyEvent.VK_ENTER)
+				System.out.println("enter");
 			switch (e.getKeyCode()){
 			case 192:
 				Log.trace("Console key pressed");

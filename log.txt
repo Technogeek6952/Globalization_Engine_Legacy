@@ -653,12 +653,12 @@
 [00:00:00][game_globalization-init][TRACE] Created mask for: Australia
 [00:00:00][Thread-10][TRACE] UI bitmap mask about to ask for listener
 [00:00:00][Thread-10][TRACE] UI Mask Ready (bitmap)
-[00:00:00][game_globalization-init][TRACE] Created mask for: Balkan Region
-[00:00:00][Thread-11][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][Thread-11][TRACE] UI Mask Ready (bitmap)
-[00:00:00][game_globalization-init][TRACE] Created mask for: Belgium
-[00:00:00][Thread-12][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][Thread-12][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Balkan Region
+[00:00:01][Thread-11][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-11][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Belgium
+[00:00:01][Thread-12][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-12][TRACE] UI Mask Ready (bitmap)
 [00:00:01][game_globalization-init][TRACE] Created mask for: Botswana
 [00:00:01][Thread-13][TRACE] UI bitmap mask about to ask for listener
 [00:00:01][Thread-13][TRACE] UI Mask Ready (bitmap)
@@ -686,21 +686,21 @@
 [00:00:01][game_globalization-init][TRACE] Created mask for: Egypt
 [00:00:01][Thread-21][TRACE] UI bitmap mask about to ask for listener
 [00:00:01][Thread-21][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Ethiopia
-[00:00:01][Thread-22][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-22][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: France
-[00:00:01][Thread-23][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-23][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Germany
-[00:00:01][Thread-24][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-24][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: India
-[00:00:01][Thread-25][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-25][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Indonesia
-[00:00:01][Thread-26][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-26][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Ethiopia
+[00:00:02][Thread-22][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-22][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: France[00:00:02][Thread-23][TRACE] UI bitmap mask about to ask for listener
+
+[00:00:02][Thread-23][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Germany
+[00:00:02][Thread-24][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-24][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: India
+[00:00:02][Thread-25][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-25][TRACE] UI Mask Ready (bitmap)
+[00:00:02][game_globalization-init][TRACE] Created mask for: Indonesia
+[00:00:02][Thread-26][TRACE] UI bitmap mask about to ask for listener
+[00:00:02][Thread-26][TRACE] UI Mask Ready (bitmap)
 [00:00:02][game_globalization-init][TRACE] Created mask for: Israel
 [00:00:02][Thread-27][TRACE] UI bitmap mask about to ask for listener
 [00:00:02][Thread-27][TRACE] UI Mask Ready (bitmap)
@@ -725,30 +725,30 @@
 [00:00:02][game_globalization-init][TRACE] Created mask for: Mexico
 [00:00:02][Thread-34][TRACE] UI bitmap mask about to ask for listener
 [00:00:02][Thread-34][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: Morocco
-[00:00:02][Thread-35][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-35][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: Namibia
-[00:00:02][Thread-36][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-36][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: Netherlands
-[00:00:02][Thread-37][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-37][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: New Zealand
-[00:00:02][Thread-38][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-38][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: Nigeria
-[00:00:02][Thread-39][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-39][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: Pakistan
-[00:00:02][Thread-40][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-40][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: Peru
-[00:00:02][Thread-41][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-41][TRACE] UI Mask Ready (bitmap)
-[00:00:02][game_globalization-init][TRACE] Created mask for: Philippines
-[00:00:02][Thread-42][TRACE] UI bitmap mask about to ask for listener
-[00:00:02][Thread-42][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: Morocco
+[00:00:03][Thread-35][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-35][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: Namibia
+[00:00:03][Thread-36][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-36][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: Netherlands
+[00:00:03][Thread-37][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-37][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: New Zealand
+[00:00:03][Thread-38][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-38][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: Nigeria
+[00:00:03][Thread-39][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-39][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: Pakistan
+[00:00:03][Thread-40][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-40][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: Peru
+[00:00:03][Thread-41][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-41][TRACE] UI Mask Ready (bitmap)
+[00:00:03][game_globalization-init][TRACE] Created mask for: Philippines
+[00:00:03][Thread-42][TRACE] UI bitmap mask about to ask for listener
+[00:00:03][Thread-42][TRACE] UI Mask Ready (bitmap)
 [00:00:03][game_globalization-init][TRACE] Created mask for: Russia
 [00:00:03][Thread-43][TRACE] UI bitmap mask about to ask for listener
 [00:00:03][Thread-43][TRACE] UI Mask Ready (bitmap)
@@ -764,35 +764,35 @@
 [00:00:03][game_globalization-init][TRACE] Created mask for: South Korea
 [00:00:03][Thread-47][TRACE] UI bitmap mask about to ask for listener
 [00:00:03][Thread-47][TRACE] UI Mask Ready (bitmap)
-[00:00:03][game_globalization-init][TRACE] Created mask for: Spain
-[00:00:03][Thread-48][TRACE] UI bitmap mask about to ask for listener
-[00:00:03][Thread-48][TRACE] UI Mask Ready (bitmap)
-[00:00:03][game_globalization-init][TRACE] Created mask for: Thailand
-[00:00:03][Thread-49][TRACE] UI bitmap mask about to ask for listener
-[00:00:03][Thread-49][TRACE] UI Mask Ready (bitmap)
-[00:00:03][game_globalization-init][TRACE] Created mask for: Turkey
-[00:00:03][Thread-50][TRACE] UI bitmap mask about to ask for listener
-[00:00:03][Thread-50][TRACE] UI Mask Ready (bitmap)
-[00:00:03][game_globalization-init][TRACE] Created mask for: United Arab Emirites
-[00:00:03][Thread-51][TRACE] UI bitmap mask about to ask for listener
-[00:00:03][Thread-51][TRACE] UI Mask Ready (bitmap)
-[00:00:03][game_globalization-init][TRACE] Created mask for: United Kingdom
-[00:00:03][Thread-52][TRACE] UI bitmap mask about to ask for listener
-[00:00:03][Thread-52][TRACE] UI Mask Ready (bitmap)
-[00:00:03][game_globalization-init][TRACE] Created mask for: Venezuela
-[00:00:03][Thread-53][TRACE] UI bitmap mask about to ask for listener
-[00:00:03][Thread-53][TRACE] UI Mask Ready (bitmap)
-[00:00:03][Thread-54][TRACE] UIMask Ready
-[00:00:03][game_globalization-init][TRACE] No registered file for: font//.png
-[00:00:03][game_globalization-init][WARNING] unknown char, replacing with ?
-[00:00:03][Thread-55][TRACE] UIMask Ready
-[00:00:04][Thread-56][TRACE] UIMask Ready
-[00:00:04][Thread-57][TRACE] UIMask Ready
-[00:00:04][Thread-58][TRACE] UIMask Ready
-[00:00:04][Thread-59][TRACE] UIMask Ready
-[00:00:04][Thread-60][TRACE] UIMask Ready
-[00:00:04][Thread-61][TRACE] UIMask Ready
-[00:00:04][game_globalization-postInit][INFO] Globalization Master File Post Init
+[00:00:04][game_globalization-init][TRACE] Created mask for: Spain
+[00:00:04][Thread-48][TRACE] UI bitmap mask about to ask for listener
+[00:00:04][Thread-48][TRACE] UI Mask Ready (bitmap)
+[00:00:04][game_globalization-init][TRACE] Created mask for: Thailand
+[00:00:04][Thread-49][TRACE] UI bitmap mask about to ask for listener
+[00:00:04][Thread-49][TRACE] UI Mask Ready (bitmap)
+[00:00:04][game_globalization-init][TRACE] Created mask for: Turkey
+[00:00:04][Thread-50][TRACE] UI bitmap mask about to ask for listener
+[00:00:04][Thread-50][TRACE] UI Mask Ready (bitmap)
+[00:00:04][game_globalization-init][TRACE] Created mask for: United Arab Emirites
+[00:00:04][Thread-51][TRACE] UI bitmap mask about to ask for listener
+[00:00:04][Thread-51][TRACE] UI Mask Ready (bitmap)
+[00:00:04][game_globalization-init][TRACE] Created mask for: United Kingdom
+[00:00:04][Thread-52][TRACE] UI bitmap mask about to ask for listener
+[00:00:04][Thread-52][TRACE] UI Mask Ready (bitmap)
+[00:00:04][game_globalization-init][TRACE] Created mask for: Venezuela[00:00:04][Thread-53][TRACE] UI bitmap mask about to ask for listener
+
+[00:00:04][Thread-53][TRACE] UI Mask Ready (bitmap)
+[00:00:04][Thread-54][TRACE] UIMask Ready
+[00:00:04][game_globalization-init][TRACE] No registered file for: font//.png
+[00:00:04][game_globalization-init][WARNING] unknown char, replacing with ?
+[00:00:04][Thread-55][TRACE] UIMask Ready
+[00:00:05][Thread-56][TRACE] UIMask Ready
+[00:00:05][Thread-57][TRACE] UIMask Ready
+[00:00:05][Thread-58][TRACE] UIMask Ready
+[00:00:05][Thread-59][TRACE] UIMask Ready
+[00:00:05][Thread-60][TRACE] UIMask Ready
+[00:00:05][Thread-61][TRACE] UIMask Ready
+[00:00:05][game_globalization-postInit][INFO] Globalization Master File Post Init
 [00:00:05][Thread-63][TRACE] UIMask Ready
 [00:00:05][Thread-64][TRACE] UIMask Ready
 [00:00:05][Thread-65][TRACE] UIMask Ready
@@ -807,40 +807,40 @@
 [00:00:05][Thread-74][TRACE] UIMask Ready
 [00:00:05][Thread-75][TRACE] UIMask Ready
 [00:00:05][Thread-76][TRACE] UIMask Ready
-[00:00:05][Thread-77][TRACE] UIMask Ready
-[00:00:05][Thread-78][TRACE] UIMask Ready
-[00:00:05][Thread-79][TRACE] UIMask Ready
-[00:00:05][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
-[00:00:05][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:05][Thread-80][TRACE] UIMask Ready
-[00:00:05][Thread-81][TRACE] UIMask Ready
-[00:00:05][Thread-82][TRACE] UIMask Ready
-[00:00:05][game_globalization-postInit][TRACE] No registered file for: font/Í.png
-[00:00:05][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:05][Thread-83][TRACE] UIMask Ready
-[00:00:05][Thread-84][TRACE] UIMask Ready
-[00:00:05][Thread-85][TRACE] UIMask Ready
-[00:00:05][Thread-86][TRACE] UIMask Ready
-[00:00:05][Thread-87][TRACE] UIMask Ready
-[00:00:05][Thread-88][TRACE] UIMask Ready
-[00:00:05][Thread-89][TRACE] UIMask Ready
-[00:00:05][Thread-90][TRACE] UIMask Ready
-[00:00:05][Thread-91][TRACE] UIMask Ready
-[00:00:05][Thread-92][TRACE] UIMask Ready
-[00:00:05][Thread-93][TRACE] UIMask Ready
-[00:00:05][Thread-94][TRACE] UIMask Ready
-[00:00:05][Thread-95][TRACE] UIMask Ready
-[00:00:05][Thread-96][TRACE] UIMask Ready
-[00:00:05][Thread-97][TRACE] UIMask Ready
-[00:00:05][Thread-98][TRACE] UIMask Ready
-[00:00:05][Thread-99][TRACE] UIMask Ready[00:00:05][Thread-100][TRACE] UIMask Ready
+[00:00:06][Thread-77][TRACE] UIMask Ready
+[00:00:06][Thread-78][TRACE] UIMask Ready
+[00:00:06][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
+[00:00:06][Thread-79][TRACE] UIMask Ready
+[00:00:06][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:06][Thread-80][TRACE] UIMask Ready
+[00:00:06][Thread-81][TRACE] UIMask Ready
+[00:00:06][Thread-82][TRACE] UIMask Ready
+[00:00:06][game_globalization-postInit][TRACE] No registered file for: font/Í.png
+[00:00:06][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:06][Thread-83][TRACE] UIMask Ready
+[00:00:06][Thread-84][TRACE] UIMask Ready
+[00:00:06][Thread-85][TRACE] UIMask Ready
+[00:00:06][Thread-86][TRACE] UIMask Ready
+[00:00:06][Thread-87][TRACE] UIMask Ready
+[00:00:06][Thread-88][TRACE] UIMask Ready
+[00:00:06][Thread-89][TRACE] UIMask Ready
+[00:00:06][Thread-90][TRACE] UIMask Ready
+[00:00:06][Thread-91][TRACE] UIMask Ready
+[00:00:06][Thread-93][TRACE] UIMask Ready[00:00:06][Thread-92][TRACE] UIMask Ready
 
-[00:00:05][Thread-101][TRACE] UIMask Ready
-[00:00:05][Thread-102][TRACE] UIMask Ready
-[00:00:05][Thread-103][TRACE] UIMask Ready
-[00:00:05][game_globalization-postInit][TRACE] No registered file for: font/È.png
-[00:00:05][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:05][Thread-104][TRACE] UIMask Ready
+[00:00:06][Thread-94][TRACE] UIMask Ready
+[00:00:06][Thread-95][TRACE] UIMask Ready
+[00:00:06][Thread-96][TRACE] UIMask Ready
+[00:00:06][Thread-97][TRACE] UIMask Ready
+[00:00:06][Thread-98][TRACE] UIMask Ready
+[00:00:06][Thread-99][TRACE] UIMask Ready
+[00:00:06][Thread-100][TRACE] UIMask Ready
+[00:00:06][Thread-101][TRACE] UIMask Ready
+[00:00:06][Thread-102][TRACE] UIMask Ready
+[00:00:06][Thread-103][TRACE] UIMask Ready
+[00:00:06][game_globalization-postInit][TRACE] No registered file for: font/È.png
+[00:00:06][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:06][Thread-104][TRACE] UIMask Ready
 [00:00:06][Thread-105][TRACE] UIMask Ready
 [00:00:06][Thread-106][TRACE] UIMask Ready
 [00:00:06][Thread-107][TRACE] UIMask Ready
@@ -856,49 +856,49 @@
 [00:00:06][Thread-117][TRACE] UIMask Ready
 [00:00:06][Thread-118][TRACE] UIMask Ready
 [00:00:06][Thread-119][TRACE] UIMask Ready
-[00:00:06][Thread-120][TRACE] UIMask Ready
-[00:00:06][Thread-121][TRACE] UIMask Ready
-[00:00:06][Thread-122][TRACE] UIMask Ready
-[00:00:06][Thread-123][TRACE] UIMask Ready
-[00:00:06][Thread-124][TRACE] UIMask Ready
-[00:00:06][Thread-125][TRACE] UIMask Ready
-[00:00:06][Thread-126][TRACE] UIMask Ready
-[00:00:06][Thread-127][TRACE] UIMask Ready
-[00:00:06][Thread-128][TRACE] UIMask Ready
-[00:00:06][Thread-129][TRACE] UIMask Ready
-[00:00:06][Thread-130][TRACE] UIMask Ready
-[00:00:06][Thread-131][TRACE] UIMask Ready
-[00:00:06][Thread-132][TRACE] UIMask Ready
-[00:00:06][Thread-133][TRACE] UIMask Ready
-[00:00:06][Thread-134][TRACE] UIMask Ready
-[00:00:06][Thread-135][TRACE] UIMask Ready
-[00:00:06][Thread-136][TRACE] UIMask Ready
-[00:00:06][Thread-137][TRACE] UIMask Ready
-[00:00:06][Thread-138][TRACE] UIMask Ready
-[00:00:06][Thread-139][TRACE] UIMask Ready
-[00:00:06][Thread-140][TRACE] UIMask Ready
-[00:00:06][Thread-146][TRACE] UIMask Ready
-[00:00:06][Thread-141][TRACE] UIMask Ready
-[00:00:06][Thread-142][TRACE] UIMask Ready
-[00:00:06][Thread-143][TRACE] UIMask Ready
-[00:00:06][Thread-145][TRACE] UIMask Ready
-[00:00:06][Thread-144][TRACE] UIMask Ready
-[00:00:06][Thread-147][TRACE] UIMask Ready
-[00:00:06][Thread-148][TRACE] UIMask Ready
-[00:00:06][Thread-149][TRACE] UIMask Ready
-[00:00:06][Thread-150][TRACE] UIMask Ready
-[00:00:06][Thread-151][TRACE] UIMask Ready
-[00:00:06][game_globalization-postInit][TRACE] No registered file for: font/Ú.png
-[00:00:06][Thread-152][TRACE] UIMask Ready
-[00:00:06][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:06][Thread-153][TRACE] UIMask Ready
-[00:00:06][Thread-154][TRACE] UIMask Ready
-[00:00:06][Thread-155][TRACE] UIMask Ready
-[00:00:06][Thread-156][TRACE] UIMask Ready
-[00:00:06][Thread-157][TRACE] UIMask Ready
-[00:00:06][Thread-158][TRACE] UIMask Ready
-[00:00:06][Thread-159][TRACE] UIMask Ready
-[00:00:06][Thread-160][TRACE] UIMask Ready
+[00:00:07][Thread-120][TRACE] UIMask Ready
+[00:00:07][Thread-121][TRACE] UIMask Ready
+[00:00:07][Thread-123][TRACE] UIMask Ready
+[00:00:07][Thread-122][TRACE] UIMask Ready[00:00:07][Thread-124][TRACE] UIMask Ready
+
+[00:00:07][Thread-125][TRACE] UIMask Ready
+[00:00:07][Thread-126][TRACE] UIMask Ready
+[00:00:07][Thread-127][TRACE] UIMask Ready
+[00:00:07][Thread-128][TRACE] UIMask Ready
+[00:00:07][Thread-129][TRACE] UIMask Ready
+[00:00:07][Thread-130][TRACE] UIMask Ready
+[00:00:07][Thread-131][TRACE] UIMask Ready
+[00:00:07][Thread-132][TRACE] UIMask Ready
+[00:00:07][Thread-133][TRACE] UIMask Ready
+[00:00:07][Thread-134][TRACE] UIMask Ready
+[00:00:07][Thread-135][TRACE] UIMask Ready
+[00:00:07][Thread-139][TRACE] UIMask Ready
+[00:00:07][Thread-137][TRACE] UIMask Ready
+[00:00:07][Thread-138][TRACE] UIMask Ready
+[00:00:07][Thread-136][TRACE] UIMask Ready
+[00:00:07][Thread-140][TRACE] UIMask Ready
+[00:00:07][Thread-141][TRACE] UIMask Ready
+[00:00:07][Thread-142][TRACE] UIMask Ready
+[00:00:07][Thread-143][TRACE] UIMask Ready
+[00:00:07][Thread-144][TRACE] UIMask Ready
+[00:00:07][Thread-145][TRACE] UIMask Ready
+[00:00:07][Thread-146][TRACE] UIMask Ready
+[00:00:07][Thread-147][TRACE] UIMask Ready
+[00:00:07][Thread-148][TRACE] UIMask Ready
+[00:00:07][Thread-149][TRACE] UIMask Ready
+[00:00:07][Thread-150][TRACE] UIMask Ready
+[00:00:07][Thread-151][TRACE] UIMask Ready
+[00:00:07][game_globalization-postInit][TRACE] No registered file for: font/Ú.png
+[00:00:07][Thread-152][TRACE] UIMask Ready
+[00:00:07][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:07][Thread-153][TRACE] UIMask Ready
+[00:00:07][Thread-154][TRACE] UIMask Ready
+[00:00:07][Thread-155][TRACE] UIMask Ready
+[00:00:07][Thread-156][TRACE] UIMask Ready
+[00:00:07][Thread-158][TRACE] UIMask Ready
+[00:00:07][Thread-157][TRACE] UIMask Ready
+[00:00:07][Thread-159][TRACE] UIMask Ready
+[00:00:07][Thread-160][TRACE] UIMask Ready
 [00:00:07][Thread-161][TRACE] UIMask Ready
 [00:00:07][Thread-162][TRACE] UIMask Ready
 [00:00:07][Thread-163][TRACE] UIMask Ready
@@ -906,48 +906,48 @@
 [00:00:07][Thread-165][TRACE] UIMask Ready
 [00:00:07][Thread-166][TRACE] UIMask Ready
 [00:00:07][Thread-167][TRACE] UIMask Ready
-[00:00:07][Thread-168][TRACE] UIMask Ready
-[00:00:07][Thread-170][TRACE] UIMask Ready
-[00:00:07][Thread-169][TRACE] UIMask Ready
-[00:00:07][Thread-171][TRACE] UIMask Ready
-[00:00:07][Thread-172][TRACE] UIMask Ready
-[00:00:07][Thread-173][TRACE] UIMask Ready
-[00:00:07][Thread-174][TRACE] UIMask Ready
-[00:00:07][Thread-175][TRACE] UIMask Ready
-[00:00:07][Thread-176][TRACE] UIMask Ready
-[00:00:07][Thread-177][TRACE] UIMask Ready
-[00:00:07][Thread-178][TRACE] UIMask Ready
-[00:00:07][Thread-179][TRACE] UIMask Ready
-[00:00:07][Thread-180][TRACE] UIMask Ready
-[00:00:07][Thread-181][TRACE] UIMask Ready
-[00:00:07][Thread-182][TRACE] UIMask Ready
-[00:00:07][Thread-183][TRACE] UIMask Ready
-[00:00:07][Thread-184][TRACE] UIMask Ready
-[00:00:07][Thread-185][TRACE] UIMask Ready
-[00:00:07][Thread-186][TRACE] UIMask Ready
-[00:00:07][Thread-187][TRACE] UIMask Ready
-[00:00:07][Thread-188][TRACE] UIMask Ready
-[00:00:07][Thread-189][TRACE] UIMask Ready
-[00:00:07][Thread-190][TRACE] UIMask Ready
-[00:00:07][Thread-191][TRACE] UIMask Ready
-[00:00:07][Thread-193][TRACE] UIMask Ready[00:00:07][Thread-192][TRACE] UIMask Ready
+[00:00:08][Thread-168][TRACE] UIMask Ready
+[00:00:08][Thread-169][TRACE] UIMask Ready
+[00:00:08][Thread-170][TRACE] UIMask Ready
+[00:00:08][Thread-171][TRACE] UIMask Ready
+[00:00:08][Thread-172][TRACE] UIMask Ready
+[00:00:08][Thread-173][TRACE] UIMask Ready
+[00:00:08][Thread-174][TRACE] UIMask Ready
+[00:00:08][Thread-175][TRACE] UIMask Ready
+[00:00:08][Thread-176][TRACE] UIMask Ready
+[00:00:08][Thread-177][TRACE] UIMask Ready
+[00:00:08][Thread-178][TRACE] UIMask Ready
+[00:00:08][Thread-179][TRACE] UIMask Ready
+[00:00:08][Thread-180][TRACE] UIMask Ready
+[00:00:08][Thread-181][TRACE] UIMask Ready
+[00:00:08][Thread-182][TRACE] UIMask Ready
+[00:00:08][Thread-183][TRACE] UIMask Ready[00:00:08][Thread-184][TRACE] UIMask Ready
 
-[00:00:07][Thread-195][TRACE] UIMask Ready
-[00:00:07][Thread-194][TRACE] UIMask Ready
-[00:00:07][Thread-196][TRACE] UIMask Ready
-[00:00:07][Thread-197][TRACE] UIMask Ready
-[00:00:07][Thread-198][TRACE] UIMask Ready
-[00:00:07][Thread-199][TRACE] UIMask Ready
-[00:00:07][Thread-200][TRACE] UIMask Ready
-[00:00:07][Thread-201][TRACE] UIMask Ready
-[00:00:07][Thread-202][TRACE] UIMask Ready
-[00:00:07][Thread-203][TRACE] UIMask Ready
-[00:00:07][Thread-204][TRACE] UIMask Ready[00:00:07][Thread-205][TRACE] UIMask Ready
+[00:00:08][Thread-185][TRACE] UIMask Ready
+[00:00:08][Thread-186][TRACE] UIMask Ready
+[00:00:08][Thread-187][TRACE] UIMask Ready
+[00:00:08][Thread-188][TRACE] UIMask Ready
+[00:00:08][Thread-189][TRACE] UIMask Ready
+[00:00:08][Thread-190][TRACE] UIMask Ready[00:00:08][Thread-191][TRACE] UIMask Ready
 
-[00:00:07][Thread-206][TRACE] UIMask Ready
-[00:00:07][Thread-207][TRACE] UIMask Ready
-[00:00:07][Thread-208][TRACE] UIMask Ready
-[00:00:07][Thread-209][TRACE] UIMask Ready
+[00:00:08][Thread-192][TRACE] UIMask Ready
+[00:00:08][Thread-194][TRACE] UIMask Ready[00:00:08][Thread-193][TRACE] UIMask Ready
+
+[00:00:08][Thread-195][TRACE] UIMask Ready
+[00:00:08][Thread-196][TRACE] UIMask Ready
+[00:00:08][Thread-197][TRACE] UIMask Ready
+[00:00:08][Thread-198][TRACE] UIMask Ready
+[00:00:08][Thread-199][TRACE] UIMask Ready
+[00:00:08][Thread-200][TRACE] UIMask Ready
+[00:00:08][Thread-201][TRACE] UIMask Ready
+[00:00:08][Thread-202][TRACE] UIMask Ready
+[00:00:08][Thread-203][TRACE] UIMask Ready
+[00:00:08][Thread-205][TRACE] UIMask Ready
+[00:00:08][Thread-206][TRACE] UIMask Ready
+[00:00:08][Thread-204][TRACE] UIMask Ready
+[00:00:08][Thread-207][TRACE] UIMask Ready
+[00:00:08][Thread-208][TRACE] UIMask Ready
+[00:00:08][Thread-209][TRACE] UIMask Ready
 [00:00:08][Thread-210][TRACE] UIMask Ready
 [00:00:08][Thread-211][TRACE] UIMask Ready
 [00:00:08][Thread-212][TRACE] UIMask Ready
@@ -955,193 +955,210 @@
 [00:00:08][Thread-214][TRACE] UIMask Ready
 [00:00:08][Thread-215][TRACE] UIMask Ready
 [00:00:08][Thread-216][TRACE] UIMask Ready
-[00:00:08][Thread-217][TRACE] UIMask Ready
-[00:00:08][Thread-218][TRACE] UIMask Ready
-[00:00:08][Thread-219][TRACE] UIMask Ready
-[00:00:08][Thread-220][TRACE] UIMask Ready
-[00:00:08][Thread-221][TRACE] UIMask Ready
-[00:00:08][Thread-222][TRACE] UIMask Ready
-[00:00:08][Thread-223][TRACE] UIMask Ready
-[00:00:08][Thread-224][TRACE] UIMask Ready
-[00:00:08][Thread-225][TRACE] UIMask Ready[00:00:08][Thread-226][TRACE] UIMask Ready
+[00:00:09][Thread-217][TRACE] UIMask Ready
+[00:00:09][Thread-218][TRACE] UIMask Ready[00:00:09][Thread-219][TRACE] UIMask Ready
 
-[00:00:08][Thread-227][TRACE] UIMask Ready
-[00:00:08][Thread-228][TRACE] UIMask Ready
-[00:00:08][Thread-229][TRACE] UIMask Ready
-[00:00:08][Thread-230][TRACE] UIMask Ready
-[00:00:08][Thread-231][TRACE] UIMask Ready
-[00:00:08][Thread-232][TRACE] UIMask Ready
-[00:00:08][Thread-233][TRACE] UIMask Ready
-[00:00:08][Thread-234][TRACE] UIMask Ready
-[00:00:08][Thread-235][TRACE] UIMask Ready
-[00:00:08][Thread-236][TRACE] UIMask Ready
-[00:00:08][Thread-237][TRACE] UIMask Ready
-[00:00:08][Thread-238][TRACE] UIMask Ready
-[00:00:08][Thread-239][TRACE] UIMask Ready
-[00:00:08][Thread-240][TRACE] UIMask Ready
-[00:00:08][Thread-241][TRACE] UIMask Ready
-[00:00:08][Thread-242][TRACE] UIMask Ready
-[00:00:08][Thread-243][TRACE] UIMask Ready
-[00:00:08][Thread-244][TRACE] UIMask Ready
-[00:00:08][Thread-245][TRACE] UIMask Ready
-[00:00:08][Thread-246][TRACE] UIMask Ready
-[00:00:08][Thread-247][TRACE] UIMask Ready
-[00:00:08][Thread-248][TRACE] UIMask Ready
-[00:00:08][Thread-249][TRACE] UIMask Ready
-[00:00:08][Thread-250][TRACE] UIMask Ready
-[00:00:08][Thread-251][TRACE] UIMask Ready
-[00:00:08][Thread-252][TRACE] UIMask Ready
-[00:00:08][Thread-253][TRACE] UIMask Ready
-[00:00:08][Thread-254][TRACE] UIMask Ready
-[00:00:08][Thread-255][TRACE] UIMask Ready[00:00:08][Thread-256][TRACE] UIMask Ready
+[00:00:09][Thread-220][TRACE] UIMask Ready
+[00:00:09][Thread-221][TRACE] UIMask Ready
+[00:00:09][Thread-222][TRACE] UIMask Ready
+[00:00:09][Thread-223][TRACE] UIMask Ready
+[00:00:09][Thread-224][TRACE] UIMask Ready
+[00:00:09][Thread-226][TRACE] UIMask Ready
+[00:00:09][Thread-225][TRACE] UIMask Ready
+[00:00:09][Thread-227][TRACE] UIMask Ready
+[00:00:09][Thread-229][TRACE] UIMask Ready
+[00:00:09][Thread-228][TRACE] UIMask Ready
+[00:00:09][Thread-230][TRACE] UIMask Ready
+[00:00:09][Thread-231][TRACE] UIMask Ready
+[00:00:09][Thread-232][TRACE] UIMask Ready
+[00:00:09][Thread-233][TRACE] UIMask Ready
+[00:00:09][Thread-234][TRACE] UIMask Ready
+[00:00:09][Thread-235][TRACE] UIMask Ready
+[00:00:09][Thread-236][TRACE] UIMask Ready
+[00:00:09][Thread-237][TRACE] UIMask Ready
+[00:00:09][Thread-238][TRACE] UIMask Ready
+[00:00:09][Thread-239][TRACE] UIMask Ready
+[00:00:09][Thread-240][TRACE] UIMask Ready
+[00:00:09][Thread-241][TRACE] UIMask Ready
+[00:00:09][Thread-242][TRACE] UIMask Ready
+[00:00:09][Thread-243][TRACE] UIMask Ready
+[00:00:09][Thread-244][TRACE] UIMask Ready
+[00:00:09][Thread-245][TRACE] UIMask Ready
+[00:00:09][Thread-246][TRACE] UIMask Ready
+[00:00:09][Thread-247][TRACE] UIMask Ready
+[00:00:09][Thread-248][TRACE] UIMask Ready
+[00:00:09][Thread-249][TRACE] UIMask Ready
+[00:00:09][Thread-250][TRACE] UIMask Ready
+[00:00:09][Thread-251][TRACE] UIMask Ready
+[00:00:09][Thread-252][TRACE] UIMask Ready
+[00:00:09][Thread-253][TRACE] UIMask Ready
+[00:00:09][Thread-254][TRACE] UIMask Ready
+[00:00:09][Thread-255][TRACE] UIMask Ready
+[00:00:09][Thread-256][TRACE] UIMask Ready
+[00:00:09][Thread-257][TRACE] UIMask Ready
+[00:00:09][Thread-258][TRACE] UIMask Ready
+[00:00:09][Thread-259][TRACE] UIMask Ready
+[00:00:09][Thread-260][TRACE] UIMask Ready
+[00:00:09][Thread-261][TRACE] UIMask Ready
+[00:00:09][Thread-262][TRACE] UIMask Ready
+[00:00:09][Thread-264][TRACE] UIMask Ready
+[00:00:09][Thread-263][TRACE] UIMask Ready
+[00:00:09][Thread-265][TRACE] UIMask Ready
+[00:00:10][Thread-266][TRACE] UIMask Ready
+[00:00:10][Thread-268][TRACE] UIMask Ready[00:00:10][Thread-271][TRACE] UIMask Ready
+[00:00:10][Thread-267][TRACE] UIMask Ready[00:00:10][Thread-269][TRACE] UIMask Ready
 
-[00:00:08][Thread-257][TRACE] UIMask Ready
-[00:00:08][Thread-258][TRACE] UIMask Ready
-[00:00:08][Thread-259][TRACE] UIMask Ready
-[00:00:08][Thread-260][TRACE] UIMask Ready
-[00:00:08][Thread-261][TRACE] UIMask Ready
-[00:00:08][Thread-262][TRACE] UIMask Ready
-[00:00:08][Thread-263][TRACE] UIMask Ready
-[00:00:08][Thread-264][TRACE] UIMask Ready
-[00:00:08][Thread-265][TRACE] UIMask Ready
-[00:00:09][Thread-266][TRACE] UIMask Ready
-[00:00:09][Thread-267][TRACE] UIMask Ready
-[00:00:09][Thread-268][TRACE] UIMask Ready
-[00:00:09][Thread-269][TRACE] UIMask Ready
-[00:00:09][Thread-270][TRACE] UIMask Ready
-[00:00:09][Thread-271][TRACE] UIMask Ready
-[00:00:09][Thread-272][TRACE] UIMask Ready
-[00:00:09][Thread-273][TRACE] UIMask Ready
-[00:00:09][Thread-274][TRACE] UIMask Ready
-[00:00:09][Thread-275][TRACE] UIMask Ready
-[00:00:09][Thread-276][TRACE] UIMask Ready
-[00:00:09][Thread-277][TRACE] UIMask Ready
-[00:00:09][Thread-278][TRACE] UIMask Ready
-[00:00:09][Thread-279][TRACE] UIMask Ready
-[00:00:09][Thread-280][TRACE] UIMask Ready
-[00:00:09][Thread-281][TRACE] UIMask Ready[00:00:09][Thread-282][TRACE] UIMask Ready
-
-[00:00:09][Thread-283][TRACE] UIMask Ready
-[00:00:09][Thread-284][TRACE] UIMask Ready
-[00:00:09][Thread-285][TRACE] UIMask Ready
-[00:00:09][Thread-286][TRACE] UIMask Ready
-[00:00:09][Thread-287][TRACE] UIMask Ready
-[00:00:09][Thread-288][TRACE] UIMask Ready
-[00:00:09][Thread-289][TRACE] UIMask Ready
-[00:00:09][Thread-290][TRACE] UIMask Ready
-[00:00:09][Thread-291][TRACE] UIMask Ready
-[00:00:09][Thread-292][TRACE] UIMask Ready
-[00:00:09][Thread-293][TRACE] UIMask Ready
-[00:00:09][Thread-294][TRACE] UIMask Ready
-[00:00:09][Thread-295][TRACE] UIMask Ready
-[00:00:09][Thread-296][TRACE] UIMask Ready
-[00:00:09][Thread-297][TRACE] UIMask Ready
-[00:00:09][Thread-298][TRACE] UIMask Ready
-[00:00:09][Thread-299][TRACE] UIMask Ready
-[00:00:09][Thread-300][TRACE] UIMask Ready
-[00:00:09][Thread-301][TRACE] UIMask Ready
-[00:00:09][Thread-302][TRACE] UIMask Ready
-[00:00:09][Thread-303][TRACE] UIMask Ready
-[00:00:09][Thread-304][TRACE] UIMask Ready
-[00:00:09][Thread-305][TRACE] UIMask Ready
-[00:00:09][Thread-306][TRACE] UIMask Ready
-[00:00:09][Thread-307][TRACE] UIMask Ready
-[00:00:09][Thread-308][TRACE] UIMask Ready
-[00:00:09][Thread-309][TRACE] UIMask Ready
-[00:00:09][Thread-310][TRACE] UIMask Ready
-[00:00:09][Thread-311][TRACE] UIMask Ready
-[00:00:09][Thread-312][TRACE] UIMask Ready
-[00:00:09][Thread-313][TRACE] UIMask Ready
-[00:00:09][Thread-314][TRACE] UIMask Ready
-[00:00:10][Thread-315][TRACE] UIMask Ready
-[00:00:10][Thread-316][TRACE] UIMask Ready[00:00:10][Thread-317][TRACE] UIMask Ready
-
-[00:00:10][Thread-318][TRACE] UIMask Ready
-[00:00:10][Thread-319][TRACE] UIMask Ready
-[00:00:10][Thread-320][TRACE] UIMask Ready
-[00:00:10][Thread-321][TRACE] UIMask Ready
-[00:00:10][Thread-322][TRACE] UIMask Ready
-[00:00:10][Thread-324][TRACE] UIMask Ready
-[00:00:10][Thread-325][TRACE] UIMask Ready[00:00:10][Thread-323][TRACE] UIMask Ready
-[00:00:10][Thread-326][TRACE] UIMask Ready
-
-[00:00:10][Thread-327][TRACE] UIMask Ready
-[00:00:10][Thread-328][TRACE] UIMask Ready
-[00:00:10][Thread-329][TRACE] UIMask Ready
-[00:00:10][Thread-330][TRACE] UIMask Ready
-[00:00:10][Thread-332][TRACE] UIMask Ready
-[00:00:10][Thread-331][TRACE] UIMask Ready
-[00:00:10][Thread-333][TRACE] UIMask Ready
-[00:00:10][Thread-334][TRACE] UIMask Ready
-[00:00:10][Thread-335][TRACE] UIMask Ready
-[00:00:10][Thread-336][TRACE] UIMask Ready
-[00:00:10][Thread-339][TRACE] UIMask Ready[00:00:10][Thread-340][TRACE] UIMask Ready[00:00:10][Thread-338][TRACE] UIMask Ready
+[00:00:10][Thread-270][TRACE] UIMask Ready[00:00:10][Thread-272][TRACE] UIMask Ready
 
 
-[00:00:10][Thread-341][TRACE] UIMask Ready[00:00:10][Thread-337][TRACE] UIMask Ready
+[00:00:10][Thread-273][TRACE] UIMask Ready
+[00:00:10][Thread-274][TRACE] UIMask Ready
+[00:00:10][Thread-275][TRACE] UIMask Ready
+[00:00:10][Thread-276][TRACE] UIMask Ready
+[00:00:10][Thread-277][TRACE] UIMask Ready
+[00:00:10][Thread-278][TRACE] UIMask Ready
+[00:00:10][Thread-279][TRACE] UIMask Ready
+[00:00:10][Thread-280][TRACE] UIMask Ready
+[00:00:10][Thread-281][TRACE] UIMask Ready
+[00:00:10][Thread-282][TRACE] UIMask Ready
+[00:00:10][Thread-283][TRACE] UIMask Ready
+[00:00:10][Thread-284][TRACE] UIMask Ready
+[00:00:10][Thread-285][TRACE] UIMask Ready
+[00:00:10][Thread-286][TRACE] UIMask Ready
+[00:00:10][Thread-287][TRACE] UIMask Ready
+[00:00:10][Thread-288][TRACE] UIMask Ready
+[00:00:10][Thread-289][TRACE] UIMask Ready
+[00:00:10][Thread-290][TRACE] UIMask Ready
+[00:00:10][Thread-291][TRACE] UIMask Ready
+[00:00:10][Thread-292][TRACE] UIMask Ready
+[00:00:10][Thread-293][TRACE] UIMask Ready
+[00:00:10][Thread-294][TRACE] UIMask Ready
+[00:00:10][Thread-295][TRACE] UIMask Ready
+[00:00:10][Thread-296][TRACE] UIMask Ready
+[00:00:10][Thread-297][TRACE] UIMask Ready
+[00:00:10][Thread-298][TRACE] UIMask Ready
+[00:00:10][Thread-299][TRACE] UIMask Ready
+[00:00:10][Thread-300][TRACE] UIMask Ready
+[00:00:10][Thread-301][TRACE] UIMask Ready
+[00:00:10][Thread-302][TRACE] UIMask Ready
+[00:00:10][Thread-303][TRACE] UIMask Ready
+[00:00:10][Thread-304][TRACE] UIMask Ready
+[00:00:10][Thread-305][TRACE] UIMask Ready
+[00:00:10][Thread-306][TRACE] UIMask Ready
+[00:00:10][Thread-307][TRACE] UIMask Ready
+[00:00:10][Thread-308][TRACE] UIMask Ready
+[00:00:10][Thread-309][TRACE] UIMask Ready
+[00:00:10][Thread-310][TRACE] UIMask Ready
+[00:00:10][Thread-311][TRACE] UIMask Ready
+[00:00:10][Thread-312][TRACE] UIMask Ready
+[00:00:10][Thread-313][TRACE] UIMask Ready
+[00:00:10][Thread-314][TRACE] UIMask Ready
+[00:00:11][Thread-315][TRACE] UIMask Ready
+[00:00:11][Thread-316][TRACE] UIMask Ready
+[00:00:11][Thread-317][TRACE] UIMask Ready
+[00:00:11][Thread-318][TRACE] UIMask Ready
+[00:00:11][Thread-319][TRACE] UIMask Ready
+[00:00:11][Thread-320][TRACE] UIMask Ready
+[00:00:11][Thread-321][TRACE] UIMask Ready
+[00:00:11][Thread-322][TRACE] UIMask Ready
+[00:00:11][Thread-323][TRACE] UIMask Ready
+[00:00:11][Thread-324][TRACE] UIMask Ready
+[00:00:11][Thread-325][TRACE] UIMask Ready
+[00:00:11][Thread-326][TRACE] UIMask Ready
+[00:00:11][Thread-327][TRACE] UIMask Ready
+[00:00:11][Thread-328][TRACE] UIMask Ready
+[00:00:11][Thread-329][TRACE] UIMask Ready
+[00:00:11][Thread-330][TRACE] UIMask Ready
+[00:00:11][Thread-331][TRACE] UIMask Ready
+[00:00:11][Thread-332][TRACE] UIMask Ready
+[00:00:11][Thread-333][TRACE] UIMask Ready
+[00:00:11][Thread-334][TRACE] UIMask Ready
+[00:00:11][Thread-335][TRACE] UIMask Ready
+[00:00:11][Thread-336][TRACE] UIMask Ready
+[00:00:11][Thread-337][TRACE] UIMask Ready
+[00:00:11][Thread-338][TRACE] UIMask Ready
+[00:00:11][Thread-339][TRACE] UIMask Ready
+[00:00:11][Thread-340][TRACE] UIMask Ready
+[00:00:11][Thread-341][TRACE] UIMask Ready
+[00:00:11][Thread-342][TRACE] UIMask Ready
+[00:00:11][Thread-343][TRACE] UIMask Ready
+[00:00:11][Thread-344][TRACE] UIMask Ready
+[00:00:11][Thread-345][TRACE] UIMask Ready
+[00:00:11][Thread-346][TRACE] UIMask Ready
+[00:00:11][Thread-347][TRACE] UIMask Ready
+[00:00:11][Thread-348][TRACE] UIMask Ready
+[00:00:11][Thread-349][TRACE] UIMask Ready
+[00:00:11][Thread-350][TRACE] UIMask Ready
+[00:00:11][Thread-351][TRACE] UIMask Ready
+[00:00:11][Thread-352][TRACE] UIMask Ready
+[00:00:11][Thread-353][TRACE] UIMask Ready
+[00:00:11][Thread-354][TRACE] UIMask Ready
+[00:00:11][Thread-355][TRACE] UIMask Ready
+[00:00:11][Thread-356][TRACE] UIMask Ready
+[00:00:11][Thread-357][TRACE] UIMask Ready
+[00:00:11][Thread-358][TRACE] UIMask Ready[00:00:11][Thread-359][TRACE] UIMask Ready
 
-[00:00:10][Thread-342][TRACE] UIMask Ready
-[00:00:10][Thread-343][TRACE] UIMask Ready
-[00:00:10][Thread-344][TRACE] UIMask Ready
-[00:00:10][Thread-345][TRACE] UIMask Ready
-[00:00:10][Thread-346][TRACE] UIMask Ready
-[00:00:10][Thread-347][TRACE] UIMask Ready
-[00:00:10][Thread-348][TRACE] UIMask Ready
-[00:00:10][Thread-349][TRACE] UIMask Ready
-[00:00:10][Thread-350][TRACE] UIMask Ready
-[00:00:10][Thread-351][TRACE] UIMask Ready
-[00:00:10][Thread-352][TRACE] UIMask Ready
-[00:00:10][Thread-353][TRACE] UIMask Ready
-[00:00:10][Thread-354][TRACE] UIMask Ready
-[00:00:10][Thread-355][TRACE] UIMask Ready
-[00:00:10][Thread-356][TRACE] UIMask Ready
-[00:00:10][Thread-357][TRACE] UIMask Ready
-[00:00:10][Thread-358][TRACE] UIMask Ready
-[00:00:10][Thread-359][TRACE] UIMask Ready
-[00:00:10][Thread-360][TRACE] UIMask Ready
-[00:00:10][Thread-361][TRACE] UIMask Ready
-[00:00:10][Thread-362][TRACE] UIMask Ready
-[00:00:10][Thread-363][TRACE] UIMask Ready
-[00:00:10][Thread-364][TRACE] UIMask Ready
-[00:00:10][Thread-365][TRACE] UIMask Ready
-[00:00:10][Thread-366][TRACE] UIMask Ready
-[00:00:10][Thread-367][TRACE] UIMask Ready
-[00:00:10][Thread-368][TRACE] UIMask Ready
-[00:00:10][Thread-369][TRACE] UIMask Ready
-[00:00:10][Thread-370][TRACE] UIMask Ready
-[00:00:11][Thread-371][TRACE] UIMask Ready
-[00:00:11][Thread-372][TRACE] UIMask Ready
-[00:00:11][Thread-373][TRACE] UIMask Ready
-[00:00:11][Thread-374][TRACE] UIMask Ready
-[00:00:11][Thread-375][TRACE] UIMask Ready
-[00:00:11][Thread-376][TRACE] UIMask Ready
-[00:00:11][Thread-377][TRACE] UIMask Ready
-[00:00:11][Thread-378][TRACE] UIMask Ready
-[00:00:11][Thread-379][TRACE] UIMask Ready
-[00:00:11][Thread-380][TRACE] UIMask Ready
-[00:00:11][Thread-381][TRACE] UIMask Ready
-[00:00:11][Thread-382][TRACE] UIMask Ready
-[00:00:11][Thread-383][TRACE] UIMask Ready
-[00:00:11][Thread-384][TRACE] UIMask Ready
-[00:00:11][Thread-385][TRACE] UIMask Ready
-[00:00:11][Thread-387][TRACE] UIMask Ready[00:00:11][Thread-386][TRACE] UIMask Ready
+[00:00:11][Thread-360][TRACE] UIMask Ready
+[00:00:11][Thread-361][TRACE] UIMask Ready
+[00:00:11][Thread-362][TRACE] UIMask Ready
+[00:00:11][Thread-363][TRACE] UIMask Ready
+[00:00:11][Thread-364][TRACE] UIMask Ready
+[00:00:11][Thread-365][TRACE] UIMask Ready
+[00:00:11][Thread-366][TRACE] UIMask Ready
+[00:00:11][Thread-367][TRACE] UIMask Ready
+[00:00:11][Thread-368][TRACE] UIMask Ready
+[00:00:11][Thread-369][TRACE] UIMask Ready
+[00:00:11][Thread-370][TRACE] UIMask Ready
+[00:00:12][Thread-371][TRACE] UIMask Ready
+[00:00:12][Thread-372][TRACE] UIMask Ready
+[00:00:12][Thread-373][TRACE] UIMask Ready
+[00:00:12][Thread-374][TRACE] UIMask Ready
+[00:00:12][Thread-375][TRACE] UIMask Ready
+[00:00:12][Thread-376][TRACE] UIMask Ready
+[00:00:12][Thread-377][TRACE] UIMask Ready
+[00:00:12][Thread-378][TRACE] UIMask Ready
+[00:00:12][Thread-379][TRACE] UIMask Ready
+[00:00:12][Thread-380][TRACE] UIMask Ready
+[00:00:12][Thread-381][TRACE] UIMask Ready
+[00:00:12][Thread-382][TRACE] UIMask Ready
+[00:00:12][Thread-383][TRACE] UIMask Ready
+[00:00:12][Thread-384][TRACE] UIMask Ready
+[00:00:12][Thread-385][TRACE] UIMask Ready
+[00:00:12][Thread-386][TRACE] UIMask Ready
+[00:00:12][Thread-387][TRACE] UIMask Ready
+[00:00:12][Thread-388][TRACE] UIMask Ready
+[00:00:12][Thread-389][TRACE] UIMask Ready
+[00:00:12][Thread-390][TRACE] UIMask Ready
+[00:00:12][Thread-391][TRACE] UIMask Ready
+[00:00:12][ENGINE-main][TRACE] about to make title screen
+[00:00:12][game_globalization-createMainScreen][TRACE] starting makeing title screen
+[00:00:12][game_globalization-createMainScreen][TRACE] about to make ceo portrait
+[00:00:12][Thread-396][TRACE] UIMask Ready
+[00:00:12][Thread-397][TRACE] UIMask Ready[00:00:12][Thread-398][TRACE] UIMask Ready[00:00:12][Thread-395][TRACE] UIMask Ready[00:00:12][Thread-394][TRACE] UIMask Ready
+[00:00:12][Thread-393][TRACE] UIMask Ready
 
-[00:00:11][Thread-389][TRACE] UIMask Ready
-[00:00:11][Thread-388][TRACE] UIMask Ready
-[00:00:11][Thread-391][TRACE] UIMask Ready[00:00:11][Thread-390][TRACE] UIMask Ready
 
-[00:00:11][ENGINE-main][TRACE] about to make title screen
-[00:00:11][game_globalization-createMainScreen][TRACE] starting makeing title screen
-[00:00:11][game_globalization-createMainScreen][TRACE] about to make ceo portrait
-[00:00:11][Thread-393][TRACE] UIMask Ready
-[00:00:11][Thread-394][TRACE] UIMask Ready
-[00:00:11][Thread-395][TRACE] UIMask Ready
-[00:00:11][Thread-396][TRACE] UIMask Ready
-[00:00:11][Thread-397][TRACE] UIMask Ready
-[00:00:11][Thread-398][TRACE] UIMask Ready
-[00:00:11][Thread-399][TRACE] UI bitmap mask about to ask for listener
-[00:00:11][Thread-399][TRACE] UI Mask Ready (bitmap)
-[00:00:11][ENGINE-main][TRACE] made title screen
-[00:00:12][game_globalization-main][INFO] Globalization Master File Init Game
-[00:00:14][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:22][AWT-EventQueue-0][TRACE] START NEW GAME!
+
+[00:00:12][Thread-399][TRACE] UI bitmap mask about to ask for listener
+[00:00:12][Thread-399][TRACE] UI Mask Ready (bitmap)
+[00:00:12][ENGINE-main][TRACE] made title screen
+[00:00:13][game_globalization-main][INFO] Globalization Master File Init Game
+[00:00:16][Thread-403][TRACE] UIMask Ready
+[00:00:16][Thread-404][TRACE] UIMask Ready
+[00:00:16][Thread-405][TRACE] UIMask Ready
+[00:00:17][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:17][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:17][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:17][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:17][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:18][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:18][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:18][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:18][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:18][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:19][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:19][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:19][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:19][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:20][AWT-EventQueue-0][TRACE] Unmapped key pressed
+[00:00:20][AWT-EventQueue-0][TRACE] Unmapped key pressed

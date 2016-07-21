@@ -98,6 +98,14 @@ public class CustomFont {
 						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
 						point.setY(yPos);
 						break;
+					case '.':
+						dstWidth = (int) (.4f*this.height);
+						lineWidth += dstWidth;
+						point.setY(point.getY()+this.height-dstWidth);
+						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+						point.setY(yPos);
+						point.setX(point.getX()+dstWidth);
+						break;
 					default:
 						lineWidth += dstWidth;
 						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+this.height, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
