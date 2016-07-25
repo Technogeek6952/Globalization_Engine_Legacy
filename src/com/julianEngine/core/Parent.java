@@ -9,4 +9,5 @@ public interface Parent extends Shape{
 	public Point getRealPointForRelativePoint(Point p);
 	public Point getRelativePointForRealPoint(Point p);
 	public Point getOrigin();
+	public World getWorld();
 }

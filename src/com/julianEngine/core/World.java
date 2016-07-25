@@ -255,4 +255,9 @@ public class World implements Parent{
 	public Point getOrigin(){
 		return new Point();
 	}
+	
+	@Override
+	public World getWorld(){
+		return this;
+	}
 }

@@ -35,38 +35,6 @@ public class UIContainer implements Shape, Parent{
 	
 	public UIContainer(Point t1, int width, int height, World world){
 		this(t1, width, height);
-		
-		//set up mask
-		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
-		Point center = new Point(m_topLeft.getX()+(width/2),m_topLeft.getY()-(height/2), 0);
-		//Log.trace("UIButton center point: ("+center.getX()+", "+center.getY()+")");
-		Point topRight = new Point(m_topLeft.getX()+width, m_topLeft.getY(), 0);
-		//Log.trace("UIButton top-right point: ("+topRight.getX()+", "+topRight.getY()+")");
-		Point bottomLeft = new Point(m_topLeft.getX(), m_topLeft.getY()-height, 0);
-		//Log.trace("UIButton bottomLeft point: ("+bottomLeft.getX()+", "+bottomLeft.getY()+")");
-		Point bottomRight = new Point(m_topLeft.getX()+width, m_topLeft.getY()-height, 0);
-		//Log.trace("UIButton bottomRight point: ("+bottomRight.getX()+", "+bottomRight.getY()+")");
-		//top
-		bounds.put(new Line(m_topLeft, topRight), center);
-		//left
-		bounds.put(new Line(m_topLeft, bottomLeft), center);
-		//right
-		bounds.put(new Line(topRight, bottomRight), center);
-		//bottom
-		bounds.put(new Line(bottomLeft, bottomRight), center);
-		mask = new UIPolygonMask(bounds, m_frame, world);
-		mask.addUIMaskListener(new UIMaskListener(){
-			@Override
-			public void maskClicked() {
-				for(UIContainerListener l:listeners){
-					l.containerClicked();
-				}
-			}
-			public void mouseEnteredMask() {
-			}
-			public void mouseLeftMask() {
-			}
-		});
 	}
 	
 	public UIContainer(Point tl, int width, int height){
@@ -112,6 +80,7 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
+		//FIXME: \/some screens with heavy container use get *very* bad FPS, even with no content. This code should probably be optimized\/
 		forceDraw = true;
 		if(buffer==null||forceDraw){
 			//set up frame
@@ -206,40 +175,27 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
-		if(parent!=null){
-			Point thisOrigin = getOrigin();
-			Vector toOrigin = Point.subtractPointFromPoint(thisOrigin, new Point());
-			Point realPoint = p.addVector(toOrigin);
-			return realPoint;
-		}else{
-			Log.fatal("call to get a point before the parent has been set");
-			return new Point();
-		}
+		Point origin = getOrigin();
+		return new Point(p.getX()+origin.getX(), p.getY()+origin.getY(), p.getZ()+origin.getZ());
 	}
 	
 	@Override
 	public Point getRelativePointForRealPoint(Point p){
-		if(parent!=null){
-			Point thisOrigin = getOrigin();
-			Vector toOrigin = Point.subtractPointFromPoint(new Point(), thisOrigin);
-			Point relPoint = p.addVector(toOrigin);
-			
-			return relPoint;
-		}else{
-			Log.fatal("call to get a point before the parent has been set");
-			return new Point();
-		}
+		Point origin = getOrigin();
+		return new Point(p.getX()-origin.getX(), p.getY()-origin.getY(), p.getZ()-origin.getZ());
 	}
 	
 	@Override
 	public Point getOrigin(){
-		Point thisOrigin = new Point();
-		thisOrigin.setX(m_topLeft.getX());
-		thisOrigin.setY(m_topLeft.getY()-m_height);
-		Point actualOrigin = parent.getOrigin();
-		actualOrigin.setX(actualOrigin.getX()+thisOrigin.getX());
-		actualOrigin.setY(actualOrigin.getY()+thisOrigin.getY());
-		return actualOrigin;
+		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-m_height, m_topLeft.getZ());
+		origin = parent.getRealPointForRelativePoint(origin);
+		return origin;
+	}
+	
+	@Override
+	public World getWorld(){
+		assert parent!=null;
+		return parent.getWorld();
 	}
 	
 	public interface UIContainerListener{

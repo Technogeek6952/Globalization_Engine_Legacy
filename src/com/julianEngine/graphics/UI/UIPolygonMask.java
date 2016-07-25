@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
@@ -31,13 +32,13 @@ public class UIPolygonMask extends UIMask {
 	private boolean mouseInside = false;
 	private boolean ready = false;
 	private boolean listenerReady = false;
-	private World parent;
+	private Parent parent;
 	private Vector shift;
 	//private ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
 	/*--------Code--------------------------*/
-	public UIPolygonMask(HashMap<Line, Point> bounds, Frame frame, World world){
-		super(world);
+	public UIPolygonMask(HashMap<Line, Point> bounds, Frame frame, Parent parent){
+		super(parent.getWorld());
 		this.bounds = bounds;
 		UIPolygonMask ref = this;
 		ready = false;
@@ -63,7 +64,7 @@ public class UIPolygonMask extends UIMask {
 		referenceFrame = frame;
 		listenerReady = true;
 		ready = true;
-		parent = world;
+		this.parent = parent;
 	}
 	
 	public boolean isMouseInside(){
@@ -136,7 +137,7 @@ public class UIPolygonMask extends UIMask {
 		//Mouse clicked with the game active
 		if(mouseInside){
 			//if the mouse was inside the mask when it clicked, notify
-			if(listeners.size()>0 && Engine2D.getInstance().mainCamera.getWorld().equals(parent)){
+			if(listeners.size()>0 && Engine2D.getInstance().mainCamera.getWorld().equals(parent.getWorld())){
 				for(UIMaskListener l:listeners){
 					//note: if another mask is on top of this one, both will be notified when
 					//the mouse clicks any overlapping region. The program should have logic to

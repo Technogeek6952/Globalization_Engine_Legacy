@@ -51,8 +51,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	private boolean enabled = true;
 	
 	/*--------Code--------------------------*/
-	public UIButton(Point topLeft, String text, Color color, Frame frame, World world){
-		this(topLeft, text,color, 0, 0, frame, world);
+	public UIButton(Point topLeft, String text, Color color, Frame frame, Parent parent){
+		this(topLeft, text,color, 0, 0, frame, parent);
 		ready=false;
 		this.width = UIText.getWidth();
 		this.height = UIText.getHeight();
@@ -79,7 +79,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	}
 	
 	//Full constructor. Put most constructor code in this one
-	public UIButton(Point topLeft, String text, Color color, int width, int height, Frame frame, World world){
+	public UIButton(Point topLeft, String text, Color color, int width, int height, Frame frame, Parent parent){
 		this.topLeft = topLeft;
 		this.color = color;
 		this.hColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), 50);
@@ -100,7 +100,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		bounds.put(new Line(topRight, bottomRight), center);
 		//bottom
 		bounds.put(new Line(bottomLeft, bottomRight), center);
-		buttonMask = new UIPolygonMask(bounds, frame, world);
+		buttonMask = new UIPolygonMask(bounds, frame, parent);
 		
 		buttonMask.addUIMaskListener(this);
 		
@@ -357,5 +357,10 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		Point relPoint = p.addVector(toOrigin);
 		
 		return relPoint;
+	}
+
+	@Override
+	public World getWorld() {
+		return parent.getWorld();
 	}
 }

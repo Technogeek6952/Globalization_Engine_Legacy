@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -379,11 +382,24 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public Engine2D(String title) throws EngineAlreadyInstancedException{
 		if(!engineStarted){
 			Log.info("Engine Starting - Hello World! - version: " + versionID);
+			UserConfiguration.loadFile("./engine.config");
+			
+			boolean fullscreen = UserConfiguration.getBool("Fullscreen", false);
+			Log.info("Fullscreen - "+fullscreen);
 			
 			//vars from config file
-			UserConfiguration.loadFile("./engine.config");
-			int width = UserConfiguration.getInt("Frame-width", EngineConstants.Defaults.width);
-			int height = UserConfiguration.getInt("Frame-height", EngineConstants.Defaults.height);
+			int width;
+			int height;
+			if(!fullscreen){
+				width = UserConfiguration.getInt("Frame-width", EngineConstants.Defaults.width);
+				height = UserConfiguration.getInt("Frame-height", EngineConstants.Defaults.height);
+			}else{
+				GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+				width = gd.getDisplayMode().getWidth();
+				height = gd.getDisplayMode().getHeight();
+				this.setUndecorated(true);
+				this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			}
 			
 			//Create and set up main window
 			this.setIgnoreRepaint(true); //Since we are using active rendering for the graphics - ignore system calls to repaint
