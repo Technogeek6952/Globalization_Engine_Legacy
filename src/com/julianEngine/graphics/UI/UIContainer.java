@@ -2,11 +2,9 @@ package com.julianEngine.graphics.UI;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.awt.Color;
 
 import com.julianEngine.core.Parent;
@@ -15,9 +13,6 @@ import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
-import com.julianEngine.graphics.UI.UIMask.UIMaskListener;
-import com.julianEngine.graphics.shapes.Line;
-import com.julianEngine.utility.Log;
 
 public class UIContainer implements Shape, Parent{
 	
@@ -80,16 +75,6 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
-		//FIXME: \/some screens with heavy container use get *very* bad FPS, even with no content. This code should probably be optimized\/
-		forceDraw = true;
-		if(buffer==null||forceDraw){
-			//set up frame
-			m_frame.setShapes(shapes);
-			//draw buffer
-			buffer = new BufferedImage(m_width, m_height, BufferedImage.TYPE_INT_ARGB);
-			Graphics2D bufferGFX = buffer.createGraphics();
-			m_frame.drawFrame(bufferGFX, true);
-		}
 		Point gfxPoint = parent.getGFXPoint(m_topLeft);
 		int xPos = (int) gfxPoint.getX();
 		int yPos = (int) gfxPoint.getY();
@@ -97,8 +82,29 @@ public class UIContainer implements Shape, Parent{
 		graphics.fillRoundRect(xPos, yPos, m_width, m_height, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
 		((Graphics2D)graphics).setColor(borderColor);
 		graphics.drawRoundRect(xPos, yPos, m_width, m_height, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
-		graphics.drawImage(buffer, xPos, yPos, xPos+m_width, yPos+m_height, 
-				0, 0, buffer.getWidth(), buffer.getHeight(), null);
+		
+		boolean useBuffer = false; //TODO: make a use buffer setting
+		
+		if(!useBuffer){
+			AffineTransform at = ((Graphics2D)graphics).getTransform();
+			((Graphics2D)graphics).translate(gfxPoint.getX(), gfxPoint.getY());
+			m_frame.setShapes(shapes);
+			m_frame.setBackground(new Color(0, 0, 0, 0));
+			m_frame.drawFrame(((Graphics2D)graphics), forceDraw);
+			
+			((Graphics2D)graphics).setTransform(at);
+		}else{
+			if(buffer==null||forceDraw){
+				//set up frame
+				m_frame.setShapes(shapes);
+				//draw buffer
+				buffer = new BufferedImage(m_width, m_height, BufferedImage.TYPE_INT_ARGB);
+				Graphics2D bufferGFX = buffer.createGraphics();
+				m_frame.drawFrame(bufferGFX, true);
+			}
+			graphics.drawImage(buffer, xPos, yPos, xPos+m_width, yPos+m_height, 
+					0, 0, buffer.getWidth(), buffer.getHeight(), null);
+		}
 		if(mask!=null&&mask.isMouseInside()){
 			Color oldColor = graphics.getColor();
 			graphics.setColor(Color.pink);
@@ -145,8 +151,7 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public void centerX(Frame frame) {
-		// TODO Auto-generated method stub
-		
+		m_topLeft.setX((frame.getWidth()-m_width)/2);
 	}
 
 	@Override

@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -400,6 +399,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				this.setUndecorated(true);
 				this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			}
+			
+			//this.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("./Data/Cursor.png").getImage(), new java.awt.Point(0, 0), "Custom cursor"));
 			
 			//Create and set up main window
 			this.setIgnoreRepaint(true); //Since we are using active rendering for the graphics - ignore system calls to repaint

@@ -8,7 +8,6 @@ import com.julianEngine.Engine2D;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
-import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.shapes.Line;
 import com.julianEngine.utility.Log;
@@ -33,7 +32,7 @@ public class UIPolygonMask extends UIMask {
 	private boolean ready = false;
 	private boolean listenerReady = false;
 	private Parent parent;
-	private Vector shift;
+	//private Vector shift;
 	//private ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
 	/*--------Code--------------------------*/
@@ -76,7 +75,7 @@ public class UIPolygonMask extends UIMask {
 	}
 	
 	public void useVectorToTest(Vector shift){
-		this.shift = shift;
+		//this.shift = shift;
 	}
 	
 	public boolean isPointInside(Point toTest){

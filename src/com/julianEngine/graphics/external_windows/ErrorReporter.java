@@ -3,13 +3,13 @@ package com.julianEngine.graphics.external_windows;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintStream;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class ErrorReporter extends JFrame{
+	private static final long serialVersionUID = -94774894768521795L;
+
 	public static void displayError(Exception e){
 		StringBuilder sb = new StringBuilder(e.toString());
 		for (StackTraceElement ste : e.getStackTrace()) {
