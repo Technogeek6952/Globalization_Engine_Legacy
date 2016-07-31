@@ -88,11 +88,13 @@ public class UIContainer implements Shape, Parent{
 		if(!useBuffer){
 			AffineTransform at = ((Graphics2D)graphics).getTransform();
 			((Graphics2D)graphics).translate(gfxPoint.getX(), gfxPoint.getY());
+			((Graphics2D)graphics).clipRect(0, 0, m_width, m_height);
 			m_frame.setShapes(shapes);
 			m_frame.setBackground(new Color(0, 0, 0, 0));
 			m_frame.drawFrame(((Graphics2D)graphics), forceDraw);
 			
 			((Graphics2D)graphics).setTransform(at);
+			((Graphics2D)graphics).setClip(null);
 		}else{
 			if(buffer==null||forceDraw){
 				//set up frame
