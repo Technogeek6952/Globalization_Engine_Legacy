@@ -445,7 +445,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			mainCamera.moveToWorld(mainWorld.getID());
 			Log.trace("Main camera set up");
 			
-			mainCamera.showFPS(true);
+			mainCamera.showFPS(UserConfiguration.getBool("ShowFPS", false));
 			//renderLoopExecutor.scheduleAtFixedRate(renderLoop, 0, 1000000000/60, TimeUnit.NANOSECONDS); //runs loop at ~60Hz
 			setFPSTarget(fpsLock);
 			
@@ -603,6 +603,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		
 	}
 	
+	boolean f3pressed = false;
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(!consoleActive){
@@ -626,11 +628,37 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				Log.trace("Unmapped key pressed");
 			}
 		}
+		
+		if(e.getKeyCode()==KeyEvent.VK_F3){
+			f3pressed = true;
+		}
+		
+		if(f3pressed){
+			switch(e.getKeyChar()){
+			case 'f':
+				//toggle fps
+				mainCamera.showFPS(!mainCamera.isShowingFPS());
+				break;
+			case 'p':
+				//toggle UIContainers showing the mouse position
+				UserConfiguration.addBool("containerShowMousePoint", !UserConfiguration.getBool("containerShowMousePoint", false));
+				break;
+			case 'm':
+				//toggle showing masks
+				UserConfiguration.addBool("drawMasks", !UserConfiguration.getBool("drawMasks", false));
+				break;
+			default:
+				Log.trace("Unknown F3 key combo");
+				break;
+			}
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+		if(e.getKeyCode()==KeyEvent.VK_F3){
+			f3pressed = false;
+		}
 	}
 	
 	//WindowListener methods

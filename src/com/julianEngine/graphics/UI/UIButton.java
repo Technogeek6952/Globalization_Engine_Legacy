@@ -117,6 +117,11 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		enabled = b;
 	}
 	
+	@Override
+	public double getZoom(){
+		return 1;
+	}
+	
 	public void useCustomFont(boolean b){
 		useCustomFont = b;
 		if(b){
@@ -203,6 +208,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 			graphics.drawString(toolTip, xPos, yPos);
 		}
 		topLeft = oldTL;
+		
+		buttonMask.draw(graphics, shift);
 	}
 	
 	public boolean isReady(){
@@ -344,23 +351,26 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	
 	@Override
 	public Point getOrigin(){
-		Point thisOrigin = new Point();
-		thisOrigin.setX(topLeft.getX());
-		thisOrigin.setY(topLeft.getY()-height);
-		return thisOrigin;
+		Point origin = new Point(topLeft.getX(), topLeft.getY()-(height), topLeft.getZ());
+		origin = parent.getRealPointForRelativePoint(origin);
+		//origin.setX(origin.getX()*parent.getZoom());
+		//origin.setY(origin.getY()*parent.getZoom());
+		return origin;
 	}
 	
 	@Override
 	public Point getRelativePointForRealPoint(Point p){
-		Point thisOrigin = getOrigin();
-		Vector toOrigin = Point.subtractPointFromPoint(parent.getOrigin(), thisOrigin);
-		Point relPoint = p.addVector(toOrigin);
-		
-		return relPoint;
+		Point origin = getOrigin();
+		return new Point(((p.getX()-origin.getX())), ((p.getY()-origin.getY())), p.getZ()-origin.getZ());
 	}
 
 	@Override
 	public World getWorld() {
 		return parent.getWorld();
+	}
+	
+	@Override
+	public Frame getFrame(){
+		return this.getContainingFrame();
 	}
 }

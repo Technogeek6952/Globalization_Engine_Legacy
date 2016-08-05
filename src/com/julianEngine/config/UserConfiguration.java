@@ -118,6 +118,11 @@ public class UserConfiguration {
 			return defaultValue;
 	}
 	
+	//add a new value, or if it already exists: update it
+	public static void addBool(String name, boolean value){
+		booleans.put(name, value);
+	}
+	
 	public static String getString(String name, String defaultValue){
 		if(strings.containsKey(name))
 			return strings.get(name);
@@ -130,6 +135,11 @@ public class UserConfiguration {
 			return integers.get(name);
 		else
 			return defaultValue;
+	}
+	
+	//add a new value, or if it already exists: update it
+	public static void addInt(String name, int value){
+		integers.put(name, value);
 	}
 	
 	public static double getDouble(String name, double defaultValue){

@@ -6,13 +6,17 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.awt.Font;
 
+import com.julianEngine.Engine2D;
+import com.julianEngine.config.UserConfiguration;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.utility.Log;
 
 public class UIContainer implements Shape, Parent{
 	
@@ -27,6 +31,11 @@ public class UIContainer implements Shape, Parent{
 	ArrayList<UIContainerListener> listeners = new ArrayList<UIContainerListener>();
 	UIMask mask = null;
 	Color borderColor = new Color(0, 0, 0, 0);
+	ScrollType scrollAction = ScrollType.NONE;
+	double zoom = 1f;
+	static int ids = 0;//debug
+	int id;
+	Vector shift;
 	
 	public UIContainer(Point t1, int width, int height, World world){
 		this(t1, width, height);
@@ -38,8 +47,19 @@ public class UIContainer implements Shape, Parent{
 		m_topLeft = tl;
 		m_width = width;
 		m_height = height;
+		ids++;
+		id = ids;
+		shift = new Vector(0, 0, 0);
 	}
 
+	public void setShift(Vector newShift){
+		shift = newShift;
+	}
+	
+	public Vector getShift(){
+		return shift;
+	}
+	
 	public void setBorderColor(Color c){
 		borderColor = c;
 	}
@@ -73,6 +93,10 @@ public class UIContainer implements Shape, Parent{
 		parent = p;
 	}
 
+	public void setScrollType(ScrollType type){
+		scrollAction = type;
+	}
+	
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
 		Point gfxPoint = parent.getGFXPoint(m_topLeft);
@@ -89,9 +113,18 @@ public class UIContainer implements Shape, Parent{
 			AffineTransform at = ((Graphics2D)graphics).getTransform();
 			((Graphics2D)graphics).translate(gfxPoint.getX(), gfxPoint.getY());
 			((Graphics2D)graphics).clipRect(0, 0, m_width, m_height);
+			((Graphics2D)graphics).translate(this.shift.getX(), -this.shift.getY());
+			((Graphics2D)graphics).scale(zoom, zoom);
 			m_frame.setShapes(shapes);
 			m_frame.setBackground(new Color(0, 0, 0, 0));
 			m_frame.drawFrame(((Graphics2D)graphics), forceDraw);
+			
+			if(UserConfiguration.getBool("containerShowMousePoint", false)){
+				Point p = new Point(Engine2D.getMouseLocation().getX(), Engine2D.getMouseLocation().getY(), 0);
+				p = this.getRelativePointForRealPoint(p);
+				graphics.setFont(new Font("Ariel", Font.PLAIN, 20));
+				graphics.drawString("("+p.getX()+", "+p.getY()+")", 0, 20);
+			}
 			
 			((Graphics2D)graphics).setTransform(at);
 			((Graphics2D)graphics).setClip(null);
@@ -181,20 +214,46 @@ public class UIContainer implements Shape, Parent{
 	}
 
 	@Override
+	public double getZoom(){
+		return zoom;
+	}
+	
+	public void setZoom(double d){
+		zoom = d;
+	}
+	
+	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		Point origin = getOrigin();
-		return new Point(p.getX()+origin.getX(), p.getY()+origin.getY(), p.getZ()+origin.getZ());
+		return new Point(((p.getX()+shift.getX()+origin.getX())*zoom), ((p.getY()+shift.getY()+origin.getY())*zoom), (p.getY())+origin.getZ());
 	}
 	
 	@Override
 	public Point getRelativePointForRealPoint(Point p){
 		Point origin = getOrigin();
-		return new Point(p.getX()-origin.getX(), p.getY()-origin.getY(), p.getZ()-origin.getZ());
+		return new Point(((p.getX()-origin.getX()-shift.getX())/zoom), ((p.getY()-origin.getY()-shift.getY())/zoom), p.getZ()-origin.getZ());
+	}
+	
+	/**
+	 * calculates the point in the frame a given world-relative point equates to. Not effected by zoom/shift, so that certain math can be done on this point
+	 * @return
+	 */
+	public Point getRasterPointForFramePoint(Point p){
+		Point origin = getUnalteredOrigin();
+		return new Point(((p.getX()-origin.getX())), ((p.getY()-origin.getY())), p.getZ()-origin.getZ());
 	}
 	
 	@Override
 	public Point getOrigin(){
-		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-m_height, m_topLeft.getZ());
+		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-(m_height*zoom), m_topLeft.getZ());
+		origin = parent.getRealPointForRelativePoint(origin);
+		//origin.setX(origin.getX()*parent.getZoom());
+		//origin.setY(origin.getY()*parent.getZoom());
+		return origin;
+	}
+	
+	public Point getUnalteredOrigin(){
+		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-(m_height), m_topLeft.getZ());
 		origin = parent.getRealPointForRelativePoint(origin);
 		return origin;
 	}
@@ -205,7 +264,30 @@ public class UIContainer implements Shape, Parent{
 		return parent.getWorld();
 	}
 	
+	//given a point in the relative space of the containing world - is that point inside the space of this container?
+	public boolean isPointInside(Point p){
+		p = this.getRasterPointForFramePoint(p); //convert to relative coordinates
+		//if either the x or y is negative, the coordinate is out of the frame, the expression below will evaluate to true - it is then NOTed to be false
+		//if either the x or y is greater than the width or height respectively, the expression below will evaluate to true - and return false
+		return !((p.getX()<0||p.getY()<0)||(p.getX()>m_width||p.getY()>m_height));
+	}
+	
+	public int getWidth(){
+		return m_width;
+	}
+	
+	public int getHeight(){
+		return m_height;
+	}
+	
 	public interface UIContainerListener{
 		public void containerClicked();
+	}
+	
+	public enum ScrollType{
+		SCROLL_X,
+		SCROLL_Y,
+		ZOOM,
+		NONE;
 	}
 }

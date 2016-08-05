@@ -11,6 +11,7 @@ import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.utility.Log;
 
 public abstract class UIMask implements UIElement, MouseListener, MouseMotionListener{
 	protected ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();

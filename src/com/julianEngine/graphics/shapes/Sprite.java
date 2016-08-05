@@ -169,6 +169,22 @@ public class Sprite implements Shape{
 		}
 	}
 	
+	public int getBaseWidth(){
+		return this.imgWidth;
+	}
+	
+	public int getBaseHeight(){
+		return this.imgHeight;
+	}
+	
+	public int getDestWidth(){
+		return this.dstWidth;
+	}
+	
+	public int getDestHeight(){
+		return this.dstHeight;
+	}
+	
 	public void blur(){
 		Kernel avgKernel = new Kernel(3, 3, new float[] {1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f});
 		Kernel gausKernel = new Kernel(3, 3, new float[] {1f/16f, 1f/8f, 1f/16f, 1f/8f, 1f/4f, 1f/8f, 1f/16f, 1f/8f, 1f/16f});
@@ -183,13 +199,23 @@ public class Sprite implements Shape{
 	}
 	
 	public void blur(int times){
+		blur(times, 3);
+	}
+	
+	public void blur(int times, int type){
 		Kernel avgKernel = new Kernel(3, 3, new float[] {1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f});
 		Kernel gausKernel = new Kernel(3, 3, new float[] {1f/16f, 1f/8f, 1f/16f, 1f/8f, 1f/4f, 1f/8f, 1f/16f, 1f/8f, 1f/16f});
 		BufferedImageOp op = new ConvolveOp(avgKernel);
 		BufferedImageOp gausOp = new ConvolveOp(gausKernel);
 		for(int i=0;i<times;i++){
-			image = op.filter((BufferedImage) image, null);
-			image = gausOp.filter((BufferedImage) image, null);
+			if(type==1){
+				image = op.filter((BufferedImage) image, null);
+			}else if(type==2){
+				image = gausOp.filter((BufferedImage) image, null);
+			}else if(type==3){
+				image = op.filter((BufferedImage) image, null);
+				image = gausOp.filter((BufferedImage) image, null);
+			}
 		}
 	}
 	
@@ -219,6 +245,9 @@ public class Sprite implements Shape{
 	}
 	
 	public int getAlphaAtPoint(int x, int y){
+		//convert points
+		//x = x*(this.imgWidth/this.dstWidth);
+		//y = y*(this.imgHeight/this.dstHeight);
 		try{
 			if(image!=null){
 				int color = ((BufferedImage) image).getRGB((int)Math.floor(x*((double)this.imgWidth/(double)this.dstWidth)), (int)Math.floor(y*((double)this.imgHeight/(double)this.dstHeight)));

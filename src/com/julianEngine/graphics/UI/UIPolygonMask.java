@@ -1,10 +1,12 @@
 package com.julianEngine.graphics.UI;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.config.UserConfiguration;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
@@ -60,7 +62,8 @@ public class UIPolygonMask extends UIMask {
 		listenerThread.start();
 		
 		//listenerThread.setPriority(Thread.MAX_PRIORITY);
-		referenceFrame = frame;
+		//referenceFrame = frame;
+		referenceFrame = parent.getWorld().getContainingFrame();
 		listenerReady = true;
 		ready = true;
 		this.parent = parent;
@@ -91,7 +94,6 @@ public class UIPolygonMask extends UIMask {
 	}
 	
 	public void draw(Graphics graphics, Vector shift) {
-		
 	}
 
 	public boolean isReady(){

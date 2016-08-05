@@ -98,6 +98,10 @@ public class Camera {
 		showFPS = b;
 	}
 	
+	public boolean isShowingFPS(){
+		return showFPS;
+	}
+	
 	public void setFPS(float fps){
 		this.fps = fps;
 	}
