@@ -57,28 +57,37 @@ public class Sprite implements Shape{
 		this.topLeft = topLeft;
 		
 		try{
-			if(texture.toLowerCase().endsWith(".png")){
-				BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource(texture));
-				this.image = spriteImage;
-				this.imgWidth = spriteImage.getWidth();
-				this.imgHeight = spriteImage.getHeight();
-				this.dstWidth = (int) (imgWidth*scale);
-				this.dstHeight = (int) (imgHeight*scale);
-			}else if(texture.toLowerCase().endsWith(".gif")){
-				frames = getFramesFromStream(DataManager.getStreamForResource(texture));
-				this.imgWidth = frames.get(0).getWidth();
-				this.imgHeight = frames.get(0).getHeight();
-				this.dstWidth = (int) (imgWidth*scale);
-				this.dstHeight = (int) (imgHeight*scale);
-			}else if(texture.equals("")){
+			if(DataManager.doesResourceExist(texture)){
+				if(texture.toLowerCase().endsWith(".png")){
+					BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource(texture));
+					this.image = spriteImage;
+					this.imgWidth = spriteImage.getWidth();
+					this.imgHeight = spriteImage.getHeight();
+					this.dstWidth = (int) (imgWidth*scale);
+					this.dstHeight = (int) (imgHeight*scale);
+				}else if(texture.toLowerCase().endsWith(".gif")){
+					frames = getFramesFromStream(DataManager.getStreamForResource(texture));
+					this.imgWidth = frames.get(0).getWidth();
+					this.imgHeight = frames.get(0).getHeight();
+					this.dstWidth = (int) (imgWidth*scale);
+					this.dstHeight = (int) (imgHeight*scale);
+				}else if(texture.equals("")){
+					BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource("images/misc/Error.png"));
+					this.image = spriteImage;
+					this.imgWidth = spriteImage.getWidth();
+					this.imgHeight = spriteImage.getHeight();
+					this.dstWidth = (int) (imgWidth*scale);
+					this.dstHeight = (int) (imgHeight*scale);
+				}else{
+					Log.error("Unrecognized image format for resource: "+texture);
+				}
+			}else {
 				BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource("images/misc/Error.png"));
 				this.image = spriteImage;
 				this.imgWidth = spriteImage.getWidth();
 				this.imgHeight = spriteImage.getHeight();
 				this.dstWidth = (int) (imgWidth*scale);
 				this.dstHeight = (int) (imgHeight*scale);
-			}else{
-				Log.error("Unrecognized image format for resource: "+texture);
 			}
 		}catch(Exception e){
 			Log.error("Error while loading resource: "+texture);
@@ -92,22 +101,29 @@ public class Sprite implements Shape{
 		this.dstHeight = height;
 		
 		try{
-			if(texture.toLowerCase().endsWith(".png")){
-				BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource(texture));
-				this.image = spriteImage;
-				this.imgWidth = spriteImage.getWidth();
-				this.imgHeight = spriteImage.getHeight();
-			}else if(texture.toLowerCase().endsWith(".gif")){
-				frames = getFramesFromStream(DataManager.getStreamForResource(texture));
-				this.imgWidth = frames.get(0).getWidth();
-				this.imgHeight = frames.get(0).getHeight();
-			}else if(texture.equals("")){
+			if(DataManager.doesResourceExist(texture)){
+				if(texture.toLowerCase().endsWith(".png")){
+					BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource(texture));
+					this.image = spriteImage;
+					this.imgWidth = spriteImage.getWidth();
+					this.imgHeight = spriteImage.getHeight();
+				}else if(texture.toLowerCase().endsWith(".gif")){
+					frames = getFramesFromStream(DataManager.getStreamForResource(texture));
+					this.imgWidth = frames.get(0).getWidth();
+					this.imgHeight = frames.get(0).getHeight();
+				}else if(texture.equals("")){
+					BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource("images/misc/Error.png"));
+					this.image = spriteImage;
+					this.imgWidth = spriteImage.getWidth();
+					this.imgHeight = spriteImage.getHeight();
+				}else{
+					Log.error("Unrecognized image format for resource: "+texture);
+				}
+			}else {
 				BufferedImage spriteImage = ImageIO.read(DataManager.getStreamForResource("images/misc/Error.png"));
 				this.image = spriteImage;
 				this.imgWidth = spriteImage.getWidth();
 				this.imgHeight = spriteImage.getHeight();
-			}else{
-				Log.error("Unrecognized image format for resource: "+texture);
 			}
 		}catch(Exception e){
 			
@@ -149,6 +165,42 @@ public class Sprite implements Shape{
 		}
 	}
 	
+	public void setHeight(int newHeight, boolean scale){
+		if(scale){
+			double aspectRatio = (double)this.imgWidth/(double)this.imgHeight;
+			this.dstHeight = newHeight;
+			this.dstWidth = (int)Math.round(newHeight*aspectRatio);
+		}else{
+			this.dstHeight = newHeight;
+		}
+	}
+	
+	public void setWidth(int newWidth, boolean scale){
+		if(scale){
+			double aspectRatio = (double)this.imgWidth/(double)this.imgHeight;
+			this.dstWidth = newWidth;
+			this.dstHeight = (int)Math.round(newWidth/aspectRatio);
+		}else{
+			this.dstWidth = newWidth;
+		}
+	}
+	
+	public int getBaseWidth(){
+		return this.imgWidth;
+	}
+	
+	public int getBaseHeight(){
+		return this.imgHeight;
+	}
+	
+	public int getDestWidth(){
+		return this.dstWidth;
+	}
+	
+	public int getDestHeight(){
+		return this.dstHeight;
+	}
+	
 	public void blur(){
 		Kernel avgKernel = new Kernel(3, 3, new float[] {1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f});
 		Kernel gausKernel = new Kernel(3, 3, new float[] {1f/16f, 1f/8f, 1f/16f, 1f/8f, 1f/4f, 1f/8f, 1f/16f, 1f/8f, 1f/16f});
@@ -160,6 +212,27 @@ public class Sprite implements Shape{
 		image = gausOp.filter((BufferedImage) image, null);
 		image = gausOp.filter((BufferedImage) image, null);
 		image = gausOp.filter((BufferedImage) image, null);
+	}
+	
+	public void blur(int times){
+		blur(times, 3);
+	}
+	
+	public void blur(int times, int type){
+		Kernel avgKernel = new Kernel(3, 3, new float[] {1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f, 1f/9f});
+		Kernel gausKernel = new Kernel(3, 3, new float[] {1f/16f, 1f/8f, 1f/16f, 1f/8f, 1f/4f, 1f/8f, 1f/16f, 1f/8f, 1f/16f});
+		BufferedImageOp op = new ConvolveOp(avgKernel);
+		BufferedImageOp gausOp = new ConvolveOp(gausKernel);
+		for(int i=0;i<times;i++){
+			if(type==1){
+				image = op.filter((BufferedImage) image, null);
+			}else if(type==2){
+				image = gausOp.filter((BufferedImage) image, null);
+			}else if(type==3){
+				image = op.filter((BufferedImage) image, null);
+				image = gausOp.filter((BufferedImage) image, null);
+			}
+		}
 	}
 	
 	public void setGifFPS(int fps){
@@ -188,6 +261,9 @@ public class Sprite implements Shape{
 	}
 	
 	public int getAlphaAtPoint(int x, int y){
+		//convert points
+		//x = x*(this.imgWidth/this.dstWidth);
+		//y = y*(this.imgHeight/this.dstHeight);
 		try{
 			if(image!=null){
 				int color = ((BufferedImage) image).getRGB((int)Math.floor(x*((double)this.imgWidth/(double)this.dstWidth)), (int)Math.floor(y*((double)this.imgHeight/(double)this.dstHeight)));

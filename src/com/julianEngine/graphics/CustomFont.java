@@ -25,6 +25,10 @@ public class CustomFont {
 		
 	}
 	
+	public int getHeight(){
+		return height;
+	}
+	
 	public void preRenderString(String str, int wrapWidth, boolean wrap, Parent parent){
 		Graphics2D dudGfx = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
 		renderString(new Point(), dudGfx, str, parent, wrapWidth, wrap);
@@ -310,7 +314,7 @@ public class CustomFont {
 	}
 	
 	public int getWidthOfString(String str){
-		float width = 0;
+		int width = 0;
 		for(char c:str.toCharArray()){
 			if(characterWidths.containsKey(c)){
 				width += (float)characterWidths.get(c)*(float)height;
@@ -328,15 +332,15 @@ public class CustomFont {
 						characterWidths.put(c, (float)((float)imgWidth/(float)(2f*(float)imgHeight)));
 					}else{
 						characterWidths.put(c, ((float)imgWidth/(float)imgHeight));
-						width += (float)this.height*((float)imgWidth/(float)imgHeight);
+						width += (float)this.height*(float)((float)imgWidth/(float)imgHeight);
 					}
 				}else{
 					characterWidths.put(c, (float) .5);
-					width += height/2;
+					width += (float)height/2f;
 				}
 			}
 		}
-		return (int)(Math.ceil(width));
+		return (int)(Math.round(width));
 	}
 	
 	private BufferedImage getImageForChar(char c){

@@ -1,13 +1,15 @@
 package com.julianEngine.graphics.UI;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.config.UserConfiguration;
+import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
-import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.shapes.Line;
 import com.julianEngine.utility.Log;
@@ -31,12 +33,13 @@ public class UIPolygonMask extends UIMask {
 	private boolean mouseInside = false;
 	private boolean ready = false;
 	private boolean listenerReady = false;
-	private World parent;
+	private Parent parent;
+	//private Vector shift;
 	//private ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
 	/*--------Code--------------------------*/
-	public UIPolygonMask(HashMap<Line, Point> bounds, Frame frame, World world){
-		super(world);
+	public UIPolygonMask(HashMap<Line, Point> bounds, Frame frame, Parent parent){
+		super(parent.getWorld());
 		this.bounds = bounds;
 		UIPolygonMask ref = this;
 		ready = false;
@@ -59,10 +62,11 @@ public class UIPolygonMask extends UIMask {
 		listenerThread.start();
 		
 		//listenerThread.setPriority(Thread.MAX_PRIORITY);
-		referenceFrame = frame;
+		//referenceFrame = frame;
+		referenceFrame = parent.getWorld().getContainingFrame();
 		listenerReady = true;
 		ready = true;
-		parent = world;
+		this.parent = parent;
 	}
 	
 	public boolean isMouseInside(){
@@ -73,9 +77,14 @@ public class UIPolygonMask extends UIMask {
 		this.bounds = bounds;
 	}
 	
+	public void useVectorToTest(Vector shift){
+		//this.shift = shift;
+	}
+	
 	public boolean isPointInside(Point toTest){
+		Point point = toTest;//.addVector(shift!=null?shift:new Vector(0, 0, 0));
 		for(Line l:bounds.keySet()){
-			if(l.areTwoPointsOnSameSide(bounds.get(l), toTest)){
+			if(l.areTwoPointsOnSameSide(bounds.get(l), point)){
 				//same side - don't worry
 			}else{
 				return false; //as soon as any check is false, we can exit 
@@ -85,7 +94,6 @@ public class UIPolygonMask extends UIMask {
 	}
 	
 	public void draw(Graphics graphics, Vector shift) {
-		
 	}
 
 	public boolean isReady(){
@@ -94,7 +102,7 @@ public class UIPolygonMask extends UIMask {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		Point mousePoint = referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0));
+		Point mousePoint = parent.getRelativePointForRealPoint(referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0)));
 		if(isPointInside(mousePoint)){
 			//mose moved inside mask
 			if(mouseInside){
@@ -130,7 +138,7 @@ public class UIPolygonMask extends UIMask {
 		//Mouse clicked with the game active
 		if(mouseInside){
 			//if the mouse was inside the mask when it clicked, notify
-			if(listeners.size()>0 && Engine2D.getInstance().mainCamera.getWorld().equals(parent)){
+			if(listeners.size()>0 && Engine2D.getInstance().mainCamera.getWorld().equals(parent.getWorld())){
 				for(UIMaskListener l:listeners){
 					//note: if another mask is on top of this one, both will be notified when
 					//the mouse clicks any overlapping region. The program should have logic to

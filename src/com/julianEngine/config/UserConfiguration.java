@@ -43,22 +43,37 @@ public class UserConfiguration {
 				//parse lines
 				for(String s:lines){
 					if(!s.startsWith("#")&&!s.equals("")&&s!=null){ //ignore '#' for comments
+						String name;
+						String value;
 						switch(s.charAt(1)){ //look at second char (between [ and ] at start of line)
 						case 'b':
+							name = (String) s.subSequence(3, s.indexOf('=', 3));
+							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
+							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+							boolean boolValue = false;
+							try{ 
+								boolValue = Boolean.parseBoolean(value);
+								Log.trace("config file int: "+name);
+								Log.trace("Value: "+boolValue);
+								booleans.put(name, boolValue);
+							}catch(NumberFormatException e){
+								Log.error("Boolean corrupted - no value assigned");
+							}
 							break;
 						case 's':
 							break;
 						case 'i':
-							String name = (String) s.subSequence(3, s.indexOf('=', 3));
+							name = (String) s.subSequence(3, s.indexOf('=', 3));
 							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
-							String value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
+							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
 							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
-							int actualValue = 0;
+							int intValue = 0;
 							try{ 
-								actualValue = Integer.parseInt(value);
+								intValue = Integer.parseInt(value);
 								Log.trace("config file int: "+name);
-								Log.trace("Value: "+actualValue);
-								integers.put(name, actualValue);
+								Log.trace("Value: "+intValue);
+								integers.put(name, intValue);
 							}catch(NumberFormatException e){
 								Log.error("Int corrupted - no value assigned");
 							}
@@ -103,6 +118,11 @@ public class UserConfiguration {
 			return defaultValue;
 	}
 	
+	//add a new value, or if it already exists: update it
+	public static void addBool(String name, boolean value){
+		booleans.put(name, value);
+	}
+	
 	public static String getString(String name, String defaultValue){
 		if(strings.containsKey(name))
 			return strings.get(name);
@@ -115,6 +135,11 @@ public class UserConfiguration {
 			return integers.get(name);
 		else
 			return defaultValue;
+	}
+	
+	//add a new value, or if it already exists: update it
+	public static void addInt(String name, int value){
+		integers.put(name, value);
 	}
 	
 	public static double getDouble(String name, double defaultValue){

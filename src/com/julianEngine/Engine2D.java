@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -41,6 +43,7 @@ import com.julianEngine.data.pluginCommunication.JDFMessageReceiver;
 import com.julianEngine.data.pluginCommunication.JDFMessageSender;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.graphics.external_windows.ErrorReporter;
 import com.julianEngine.graphics.shapes.ProgressBar;
 import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
@@ -97,6 +100,14 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			}catch(Exception e){
 				Log.error("Error in render loop: ");
 				e.printStackTrace();
+				if(e.getMessage().equals("Buffers have not been created")){
+					Log.warn("Elaina detected in the matrix... Attempting to eliminate...");
+					boolean preState = this.isVisible();
+					Engine2D.this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
+					Engine2D.this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering
+					bufferStrategy = this.getBufferStrategy(); //Set the public variable so the buffer strategy can be accessed by other classes
+					Engine2D.this.setVisible(preState);
+				}
 			}
 		}
 		
@@ -356,10 +367,12 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				System.exit(0);
 			} catch (EngineAlreadyInstancedException e) {
 				e.printStackTrace();
+				ErrorReporter.displayError(e);
 			}
 		}catch(Exception e){
 			Log.fatal("Fatal Error in main(): ");
 			e.printStackTrace();
+			ErrorReporter.displayError(e);
 			System.exit(-1);
 		}
 	}
@@ -368,17 +381,32 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public Engine2D(String title) throws EngineAlreadyInstancedException{
 		if(!engineStarted){
 			Log.info("Engine Starting - Hello World! - version: " + versionID);
+			UserConfiguration.loadFile("./engine.config");
+			
+			boolean fullscreen = UserConfiguration.getBool("Fullscreen", false);
+			Log.info("Fullscreen - "+fullscreen);
 			
 			//vars from config file
-			UserConfiguration.loadFile("./engine.config");
-			int width = UserConfiguration.getInt("Frame-width", EngineConstants.Defaults.width);
-			int height = UserConfiguration.getInt("Frame-height", EngineConstants.Defaults.height);
+			int width;
+			int height;
+			if(!fullscreen){
+				width = UserConfiguration.getInt("Frame-width", EngineConstants.Defaults.width);
+				height = UserConfiguration.getInt("Frame-height", EngineConstants.Defaults.height);
+			}else{
+				GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+				width = gd.getDisplayMode().getWidth();
+				height = gd.getDisplayMode().getHeight();
+				this.setUndecorated(true);
+				this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			}
+			
+			//this.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("./Data/Cursor.png").getImage(), new java.awt.Point(0, 0), "Custom cursor"));
 			
 			//Create and set up main window
 			this.setIgnoreRepaint(true); //Since we are using active rendering for the graphics - ignore system calls to repaint
 			this.setTitle(title); //Title the main window
 			this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //Closing must be handled by WindowListener
-			this.setSize(1080, 720);
+			this.setSize(width, height);
 			this.setResizable(false); //Prevents the user from manually resizing the window, and messing up all our hard work
 			this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
 			this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering
@@ -417,7 +445,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			mainCamera.moveToWorld(mainWorld.getID());
 			Log.trace("Main camera set up");
 			
-			mainCamera.showFPS(true);
+			mainCamera.showFPS(UserConfiguration.getBool("ShowFPS", false));
 			//renderLoopExecutor.scheduleAtFixedRate(renderLoop, 0, 1000000000/60, TimeUnit.NANOSECONDS); //runs loop at ~60Hz
 			setFPSTarget(fpsLock);
 			
@@ -575,6 +603,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		
 	}
 	
+	boolean f3pressed = false;
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(!consoleActive){
@@ -598,11 +628,37 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				Log.trace("Unmapped key pressed");
 			}
 		}
+		
+		if(e.getKeyCode()==KeyEvent.VK_F3){
+			f3pressed = true;
+		}
+		
+		if(f3pressed){
+			switch(e.getKeyChar()){
+			case 'f':
+				//toggle fps
+				mainCamera.showFPS(!mainCamera.isShowingFPS());
+				break;
+			case 'p':
+				//toggle UIContainers showing the mouse position
+				UserConfiguration.addBool("containerShowMousePoint", !UserConfiguration.getBool("containerShowMousePoint", false));
+				break;
+			case 'm':
+				//toggle showing masks
+				UserConfiguration.addBool("drawMasks", !UserConfiguration.getBool("drawMasks", false));
+				break;
+			default:
+				Log.trace("Unknown F3 key combo");
+				break;
+			}
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+		if(e.getKeyCode()==KeyEvent.VK_F3){
+			f3pressed = false;
+		}
 	}
 	
 	//WindowListener methods

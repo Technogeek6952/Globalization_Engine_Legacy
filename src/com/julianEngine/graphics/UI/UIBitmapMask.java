@@ -1,12 +1,17 @@
 package com.julianEngine.graphics.UI;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import com.julianEngine.Engine2D;
+import com.julianEngine.config.UserConfiguration;
+import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
+import com.julianEngine.graphics.Frame;
 import com.julianEngine.utility.Log;
 
 public class UIBitmapMask extends UIMask{
@@ -19,10 +24,14 @@ public class UIBitmapMask extends UIMask{
 	private boolean listenerReady = false;
 	private boolean mouseInside = false;
 	private boolean draw = false;
-	private World parent;
+	private Parent parent;
+	private Frame referenceFrame;
+	private Color highlightColor;
+	private boolean parentSet = false;
+	private boolean highlight = false;
 	
-	public UIBitmapMask(Point topLeft, boolean[][] bitMap, World world){
-		super(world);
+	public UIBitmapMask(Point topLeft, boolean[][] bitMap, Parent parent){
+		super(parent.getWorld());
 		this.topLeft = topLeft;
 		this.bitMap = bitMap;
 		width = bitMap.length; //get the size of the first array for the width
@@ -39,8 +48,10 @@ public class UIBitmapMask extends UIMask{
 			}
 		}.start();
 		
-		parent = world;
+		this.parent = parent;
 		
+		referenceFrame = parent.getWorld().getFrame();
+		highlightColor = new Color(255, 255, 255, 50);
 		ready = true;
 	}
 	
@@ -51,9 +62,13 @@ public class UIBitmapMask extends UIMask{
 		draw = b;
 	}
 	
+	public void highlight(boolean b){
+		highlight = b;
+	}
+	
 	@Override
 	public boolean isPointInside(Point toTest){
-		Point p = new Point();
+		Point p = toTest;
 		p.setX(toTest.getX()-topLeft.getX());
 		p.setY(-(toTest.getY()-topLeft.getY()));
 		try{
@@ -64,10 +79,24 @@ public class UIBitmapMask extends UIMask{
 	}
 	
 	@Override
+	public void setParent(Parent p){
+		parent = p;
+		parentSet = true;
+	}
+	
+	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw){
-		if(this.height>0&&draw){
-			Point gfxPoint = Engine2D.getInstance().mainView.convertPointJEGFXtoJGFX(topLeft);
-			graphics.setColor(new Color(0, 255, 0, 50));
+		if(this.height>0&&((mouseInside&&highlight)||draw||UserConfiguration.getBool("drawMasks", false))){
+			Point gfxPoint = parent.getGFXPoint(topLeft);
+			if(mouseInside&&!(draw||UserConfiguration.getBool("drawMasks", false))){
+				graphics.setColor(highlightColor);
+			}else{
+				if(!mouseInside){
+					graphics.setColor(new Color(0, 255, 0, 50));
+				}else{
+					graphics.setColor(new Color(255, 0, 0, 50));
+				}
+			}
 			for(int x=0;x<bitMap.length;x++){
 				for(int y=0;y<bitMap[0].length;y++){
 					if(bitMap[x][y]){
@@ -90,48 +119,53 @@ public class UIBitmapMask extends UIMask{
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		Point mousePoint = Engine2D.getInstance().mainView.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0));
-		if(this.isPointInside(mousePoint)){
-			//mose moved inside mask
-			if(mouseInside){
-				//if mouse was already inside, do nothing
-			}else{
-				//if mouse moved into mask, set bool and notify
-				mouseInside = true;
-				if(listeners.size()>0){
-					for(UIMaskListener l:listeners){
-						l.mouseEnteredMask();
-					}
-				}
-			}
-		}else{
-			//mouse moved outside mask
-			if(mouseInside){
-				//if mouse was previously inside the mask, set bool and notify it left
-				mouseInside = false;
-				if(listeners.size()>0){
-					for(UIMaskListener l:listeners){
-						l.mouseLeftMask();
+		//only respond to events once this has been added to a container (parent set), and if the active world is the one we should respond to
+		if(parentSet&&Engine2D.getInstance().mainCamera.getWorld().equals(parent.getWorld())){
+			Point mousePoint = parent.getRelativePointForRealPoint(referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0)));
+			if(this.isPointInside(mousePoint)){
+				//mose moved inside mask
+				if(mouseInside){
+					//if mouse was already inside, do nothing
+				}else{
+					//if mouse moved into mask, set bool and notify
+					mouseInside = true;
+					if(listeners.size()>0){
+						for(UIMaskListener l:listeners){
+							l.mouseEnteredMask();
+						}
 					}
 				}
 			}else{
-				//if mouse was already outside, do nothing
+				//mouse moved outside mask
+				if(mouseInside){
+					//if mouse was previously inside the mask, set bool and notify it left
+					mouseInside = false;
+					if(listeners.size()>0){
+						for(UIMaskListener l:listeners){
+							l.mouseLeftMask();
+						}
+					}
+				}else{
+					//if mouse was already outside, do nothing
+				}
 			}
 		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		//Log.trace("Mouse Click detected");
-		//Mouse clicked with the game active
-		if(mouseInside){
-			//if the mouse was inside the mask when it clicked, notify
-			if(listeners.size()>0 && Engine2D.getInstance().mainCamera.getWorld().equals(parent)){
-				for(UIMaskListener l:listeners){
-					//note: if another mask is on top of this one, both will be notified when
-					//the mouse clicks any overlapping region. The program should have logic to
-					//figure out if it needs to ignore maskClicked() calls.
-					l.maskClicked();
+		//only respond to events once this has been added to a container (parent set), and if the active world is the one we should respond to
+		if(parentSet&&Engine2D.getInstance().mainCamera.getWorld().equals(parent.getWorld())){
+			//Mouse clicked with the game active
+			if(mouseInside){
+				//if the mouse was inside the mask when it clicked, notify
+				if(listeners.size()>0){
+					for(UIMaskListener l:listeners){
+						//note: if another mask is on top of this one, both will be notified when
+						//the mouse clicks any overlapping region. The program should have logic to
+						//figure out if it needs to ignore maskClicked() calls.
+						l.maskClicked();
+					}
 				}
 			}
 		}

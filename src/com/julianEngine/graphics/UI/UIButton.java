@@ -51,8 +51,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	private boolean enabled = true;
 	
 	/*--------Code--------------------------*/
-	public UIButton(Point topLeft, String text, Color color, Frame frame, World world){
-		this(topLeft, text,color, 0, 0, frame, world);
+	public UIButton(Point topLeft, String text, Color color, Frame frame, Parent parent){
+		this(topLeft, text,color, 0, 0, frame, parent);
 		ready=false;
 		this.width = UIText.getWidth();
 		this.height = UIText.getHeight();
@@ -79,7 +79,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	}
 	
 	//Full constructor. Put most constructor code in this one
-	public UIButton(Point topLeft, String text, Color color, int width, int height, Frame frame, World world){
+	public UIButton(Point topLeft, String text, Color color, int width, int height, Frame frame, Parent parent){
 		this.topLeft = topLeft;
 		this.color = color;
 		this.hColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), 50);
@@ -100,7 +100,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		bounds.put(new Line(topRight, bottomRight), center);
 		//bottom
 		bounds.put(new Line(bottomLeft, bottomRight), center);
-		buttonMask = new UIPolygonMask(bounds, frame, world);
+		buttonMask = new UIPolygonMask(bounds, frame, parent);
 		
 		buttonMask.addUIMaskListener(this);
 		
@@ -109,8 +109,17 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		ready=true;
 	}
 	
+	public UIPolygonMask getMask(){
+		return buttonMask;
+	}
+	
 	public void setEnabled(boolean b){
 		enabled = b;
+	}
+	
+	@Override
+	public double getZoom(){
+		return 1;
 	}
 	
 	public void useCustomFont(boolean b){
@@ -199,6 +208,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 			graphics.drawString(toolTip, xPos, yPos);
 		}
 		topLeft = oldTL;
+		
+		buttonMask.draw(graphics, shift);
 	}
 	
 	public boolean isReady(){
@@ -293,7 +304,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		
 		//world-relative points (not parent-relative)
 		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
-		Point topLeft = parent.getRealPointForRelativePoint(this.topLeft);
+		//Point topLeft = parent.getRealPointForRelativePoint(this.topLeft);
 		Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
 		Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
 		Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
@@ -336,5 +347,30 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		return p;
+	}
+	
+	@Override
+	public Point getOrigin(){
+		Point origin = new Point(topLeft.getX(), topLeft.getY()-(height), topLeft.getZ());
+		origin = parent.getRealPointForRelativePoint(origin);
+		//origin.setX(origin.getX()*parent.getZoom());
+		//origin.setY(origin.getY()*parent.getZoom());
+		return origin;
+	}
+	
+	@Override
+	public Point getRelativePointForRealPoint(Point p){
+		Point origin = getOrigin();
+		return new Point(((p.getX()-origin.getX())), ((p.getY()-origin.getY())), p.getZ()-origin.getZ());
+	}
+
+	@Override
+	public World getWorld() {
+		return parent.getWorld();
+	}
+	
+	@Override
+	public Frame getFrame(){
+		return this.getContainingFrame();
 	}
 }

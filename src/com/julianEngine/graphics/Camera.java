@@ -1,6 +1,7 @@
 package com.julianEngine.graphics;
 
 import java.awt.image.BufferStrategy;
+import java.util.Stack;
 
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
@@ -24,17 +25,25 @@ public class Camera {
 	boolean update = false;
 	boolean render = false;
 	Frame frame;
-	World currentWorld;
+	private World currentWorld;
+	Stack<World> worldHistory = new Stack<World>();
 	
 	/*--------Code--------------------------*/
 	public Camera(Frame frame){
 		World.getWorldForID(currentID).attachCamera(this);
 		currentWorld = World.getWorldForID(currentID);
+		currentWorld.load();
 		this.frame = frame;
 	}
 	
 	public void moveToWorld(int id){
+		moveToWorld(id, true);
+	}
+	
+	public void moveToWorld(int id, boolean save){
 		if(World.getWorldForID(id)!=null){
+			if(save)
+				worldHistory.push(currentWorld); //if we are going to change worlds, push first
 			World.getWorldForID(currentID).removeCamera(this);
 			World.getWorldForID(id).attachCamera(this);
 			World.getWorldForID(id).setActiveCamera(this);
@@ -44,6 +53,18 @@ public class Camera {
 			currentWorld = World.getWorldForID(currentID);
 			currentWorld.load();
 		}
+	}
+	
+	public void moveBack(){
+		moveToWorld(getPreviousWorld().getID(), false);
+	}
+	
+	public World getPreviousWorld(){
+		return (worldHistory.isEmpty())?null:worldHistory.pop();
+	}
+	
+	public void clearWorldHistory(){
+		worldHistory.clear();
 	}
 	
 	public World getWorld(){
@@ -75,6 +96,10 @@ public class Camera {
 	
 	public void showFPS(boolean b){
 		showFPS = b;
+	}
+	
+	public boolean isShowingFPS(){
+		return showFPS;
 	}
 	
 	public void setFPS(float fps){

@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.julianEngine.Engine2D;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.utility.Log;
@@ -81,6 +82,12 @@ public class World implements Parent{
 	public void removeShape(Shape s){
 		shapes.remove(s);
 		updateAttachedCameras();
+	}
+	
+	public void addShapes(Shape... shapes){
+		for(Shape shape:shapes){
+			addShape(shape);
+		}
 	}
 	
 	public void updateAttachedCameras(){
@@ -221,6 +228,8 @@ public class World implements Parent{
 
 	@Override
 	public Frame getContainingFrame() {
+		return Engine2D.getInstance().mainView;
+		/*
 		Camera activeCamera = getActiveCamera();
 		if(activeCamera!=null){
 			Frame renderFrame = activeCamera.getFrame();
@@ -228,6 +237,7 @@ public class World implements Parent{
 		}else{
 			return null;
 		}
+		*/
 	}
 	
 	public interface LoadExecutor{
@@ -238,5 +248,30 @@ public class World implements Parent{
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		return p;
+	}
+	
+	@Override
+	public Point getRelativePointForRealPoint(Point p){
+		return p;
+	}
+	
+	@Override
+	public Point getOrigin(){
+		return new Point();
+	}
+	
+	@Override
+	public World getWorld(){
+		return this;
+	}
+	
+	@Override
+	public double getZoom(){
+		return 1;
+	}
+	
+	@Override
+	public Frame getFrame(){
+		return this.getContainingFrame();
 	}
 }
