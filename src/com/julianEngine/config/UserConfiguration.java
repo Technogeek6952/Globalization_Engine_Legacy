@@ -8,6 +8,11 @@ import java.util.HashMap;
 
 import com.julianEngine.utility.Log;
 
+/**
+ * Class to store global variables, and load vars from a file
+ * @author Sean
+ *
+ */
 public class UserConfiguration {
 	
 	//TODO: make a robust config system
@@ -62,6 +67,11 @@ public class UserConfiguration {
 							}
 							break;
 						case 's':
+							name = (String) s.subSequence(3, s.indexOf('=', 3));
+							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
+							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+							strings.put(name, value);
 							break;
 						case 'i':
 							name = (String) s.subSequence(3, s.indexOf('=', 3));
@@ -79,10 +89,41 @@ public class UserConfiguration {
 							}
 							break;
 						case 'd':
+							name = (String) s.subSequence(3, s.indexOf('=', 3));
+							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
+							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+							double doubleValue = 0;
+							try{ 
+								doubleValue = Double.parseDouble(value);
+								Log.trace("config file int: "+name);
+								Log.trace("Value: "+doubleValue);
+								doubles.put(name, doubleValue);
+							}catch(NumberFormatException e){
+								Log.error("Double corrupted - no value assigned");
+							}
 							break;
 						case 'f':
+							name = (String) s.subSequence(3, s.indexOf('=', 3));
+							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
+							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+							float floatValue = 0;
+							try{ 
+								floatValue = Float.parseFloat(value);
+								Log.trace("config file int: "+name);
+								Log.trace("Value: "+floatValue);
+								floats.put(name, floatValue);
+							}catch(NumberFormatException e){
+								Log.error("Float corrupted - no value assigned");
+							}
 							break;
 						case 'c':
+							name = (String) s.subSequence(3, s.indexOf('=', 3));
+							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
+							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+							characters.put(name, value.charAt(0));
 							break;
 						default:
 							Log.trace("unrecognized type: "+s.charAt(1));
@@ -130,6 +171,11 @@ public class UserConfiguration {
 			return defaultValue;
 	}
 	
+	//add a new value, or if it already exists: update it
+	public static void addString(String name, String value){
+		strings.put(name, value);
+	}
+	
 	public static int getInt(String name, int defaultValue){
 		if(integers.containsKey(name))
 			return integers.get(name);
@@ -149,6 +195,11 @@ public class UserConfiguration {
 			return defaultValue;
 	}
 	
+	//add a new value, or if it already exists: update it
+	public static void addDouble(String name, Double value){
+		doubles.put(name, value);
+	}
+	
 	public static float getFloat(String name, float defaultValue){
 		if(floats.containsKey(name))
 			return floats.get(name);
@@ -156,10 +207,20 @@ public class UserConfiguration {
 			return defaultValue;
 	}
 	
+	//add a new value, or if it already exists: update it
+	public static void addFloat(String name, float value){
+		floats.put(name, value);
+	}
+	
 	public static char getChar(String name, char defaultValue){
 		if(characters.containsKey(name))
 			return characters.get(name);
 		else
 			return defaultValue;
+	}
+	
+	//add a new value, or if it already exists: update it
+	public static void addChar(String name, char value){
+		characters.put(name, value);
 	}
 }

@@ -389,6 +389,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			//vars from config file
 			int width;
 			int height;
+			fpsLock = UserConfiguration.getInt("FPSCap", 60);
 			if(!fullscreen){
 				width = UserConfiguration.getInt("Frame-width", EngineConstants.Defaults.width);
 				height = UserConfiguration.getInt("Frame-height", EngineConstants.Defaults.height);
