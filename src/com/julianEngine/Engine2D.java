@@ -49,9 +49,7 @@ import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
 
 /**
- * Julian Engine v1.2 - coded in Java with default libraries. Successor to v1.0
- * which, although worked somewhat and taught valuable lessons, was ultimately
- * a massive failure. May it rest in peace.
+ * Julian Engine v1.2 - coded in Java with default libraries.
  */
 public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	/*--------Public Static Variables-------*/
@@ -76,7 +74,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	/*--------Private Instance Variables----*/
 	private BufferStrategy bufferStrategy; //buffer strategy for the frame - renders two frames in advanced to improve performance
 	private boolean paused = false; //is the game paused?
-	private int fpsLock = 60; //default fps lock - used in constructor to set up render loop
+	private int fpsLock = -1; //default fps lock - used in constructor to set up render loop
 	private ArrayList<EngineLoadListener> loadListeners = new ArrayList<EngineLoadListener>(); //list of parties who are interested in the loading state of the game
 	private boolean consoleActive = false; //is the console active (THIS SHOULD BE TAKEN UP BY THE MASTER FILE, AND EVENTUALLY REMOVED)
 		//settings for render loop (fps)
