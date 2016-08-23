@@ -183,9 +183,11 @@ public class Frame extends JPanel{
 				}
 			});
 			
-			for(Shape s:shapes){
-				//s.setParent(this);
-				s.draw(graphics, shift, forceDraw); //Draw every shape we have in our list
+			synchronized(shapes){
+				for(Shape s:shapes){
+					//s.setParent(this);
+					s.draw(graphics, shift, forceDraw); //Draw every shape we have in our list
+				}
 			}
 		}
 	}

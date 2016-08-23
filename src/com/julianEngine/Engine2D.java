@@ -57,6 +57,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public static JDFMaster masterFile; //Variable holder for the master plugin file (see JDFMaster)
 	public static ArrayList<JDFPlugin> pluginFiles; //ArrayList holder for each plugin file (see JDFPlugin)
 	public static boolean debugMode = true; //Should the engine be run in debug mode (set to false for release)
+	public Object engineLock = new Object(); //this should be locked on when modifying the engine, or when the code must use the engine (in the render loop for example)
 	
 	/*--------Private Static Variables------*/
 	private static final long serialVersionUID = -7981520978541595849L; //Serial Version UID for serializing the engine for save files and the like
@@ -85,15 +86,17 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	private Runnable renderLoop = () -> {
 		if(!paused){
 			try{
-				mainCamera.renderPerspective(mainView, bufferStrategy);
-				renders++;
-				
-				if((System.nanoTime()-lastUpdateNano)>250000000){
-					long timePassed = System.nanoTime()-lastUpdateNano;
-					lastUpdateNano = System.nanoTime();
-					double fps = ((float)renders/(double)((double)timePassed/1000000000f));
-					mainCamera.setFPS((float) fps);
-					renders = 0;
+				synchronized(engineLock){
+					mainCamera.renderPerspective(mainView, bufferStrategy);
+					renders++;
+					
+					if((System.nanoTime()-lastUpdateNano)>250000000){
+						long timePassed = System.nanoTime()-lastUpdateNano;
+						lastUpdateNano = System.nanoTime();
+						double fps = ((float)renders/(double)((double)timePassed/1000000000f));
+						mainCamera.setFPS((float) fps);
+						renders = 0;
+					}
 				}
 			}catch(Exception e){
 				Log.error("Error in render loop: ");
@@ -124,7 +127,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		try{
 			try {
 				//Create the engine
-				Engine2D engine = new Engine2D("JulianEngine "+versionID);
+				Engine2D engine = new Engine2D("JulianEngine "+versionID, true);
 				
 				//Load plugins
 				Log.trace("Loading plugins...");
@@ -376,10 +379,12 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	}
 	
 	//Constructor
-	public Engine2D(String title) throws EngineAlreadyInstancedException{
+	public Engine2D(String title, boolean loadCfg) throws EngineAlreadyInstancedException{
 		if(!engineStarted){
 			Log.info("Engine Starting - Hello World! - version: " + versionID);
-			UserConfiguration.loadFile("./engine.config");
+			
+			if(loadCfg)
+				UserConfiguration.loadFile("./engine.config");
 			
 			boolean fullscreen = UserConfiguration.getBool("Fullscreen", false);
 			Log.info("Fullscreen - "+fullscreen);
@@ -434,6 +439,9 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				mainWorld = new World(0);
 			} catch (IDAlreadyInUseException e) {
 				e.printStackTrace();
+				Log.info("ID already being used, attempting to reuse this world.");
+				Log.warn("About to reuse world ID, this may get ugly if not handled correctly...");
+				mainWorld = World.getWorldForID(0);
 			}
 			Log.trace("Main world set up");
 			
@@ -453,6 +461,26 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		}
 		this.setVisible(false);
 		engineReference = this; //set the static variable so that the active engine can always be instanced
+	}
+	
+	/**
+	 * in theory re-runs the constructor and replaces the Engine instance
+	 * This code might not be safe..
+	 * @return
+	 */
+	public boolean reloadEngine(){
+		synchronized(engineLock){
+			this.setVisible(false);
+			Engine2D.engineStarted = false;
+			try {
+				Engine2D.engineReference = new Engine2D("JulianEngine "+versionID, false);
+			} catch (EngineAlreadyInstancedException e) {
+				Log.fatal("Engine already started, failure to override");
+				System.exit(2);
+			}
+			this.setVisible(true);
+			return true;
+		}
 	}
 	
 	public void setPaused(boolean b){
