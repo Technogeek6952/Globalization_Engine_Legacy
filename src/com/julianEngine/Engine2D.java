@@ -127,7 +127,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		try{
 			try {
 				//Create the engine
-				Engine2D engine = new Engine2D("JulianEngine "+versionID, true);
+				Engine2D engine = new Engine2D("JulianEngine "+versionID, null);
 				
 				//Load plugins
 				Log.trace("Loading plugins...");
@@ -379,13 +379,30 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	}
 	
 	//Constructor
-	public Engine2D(String title, boolean loadCfg) throws EngineAlreadyInstancedException{
+	public Engine2D(String title, Engine2D predecessor) throws EngineAlreadyInstancedException{
 		if(!engineStarted){
-			Log.info("Engine Starting - Hello World! - version: " + versionID);
-			
-			if(loadCfg)
+			if(predecessor==null){ //if there was no predecessor then create everything, else use the objects from the predecessor
+				//init message and load engine config
+				Log.info("Engine Starting - Hello World! - version: " + versionID);
 				UserConfiguration.loadFile("./engine.config");
+				
+				//initialize world 0 if new engine
+				try {
+					mainWorld = new World(0);
+				} catch (IDAlreadyInUseException e) {
+					Log.fatal("New engine being created, but world ID 0 is already being used...");
+					e.printStackTrace();
+					System.exit(3);
+				}
+				
+				//initialize new camera
+				mainCamera = new Camera(mainView);
+			}else{
+				this.mainWorld = predecessor.mainWorld;
+				this.mainCamera = predecessor.mainCamera;
+			}
 			
+			//load relevant configuration vars into local memory
 			boolean fullscreen = UserConfiguration.getBool("Fullscreen", false);
 			Log.info("Fullscreen - "+fullscreen);
 			
@@ -403,6 +420,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			}
 			
+			//set custom cursor
 			//this.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("./Data/Cursor.png").getImage(), new java.awt.Point(0, 0), "Custom cursor"));
 			
 			//Create and set up main window
@@ -434,19 +452,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			mainView.setTitleBorder(titleBorder);
 			Log.trace("Main viewport set up");
 			
-			//Set up world
-			try {
-				mainWorld = new World(0);
-			} catch (IDAlreadyInUseException e) {
-				e.printStackTrace();
-				Log.info("ID already being used, attempting to reuse this world.");
-				Log.warn("About to reuse world ID, this may get ugly if not handled correctly...");
-				mainWorld = World.getWorldForID(0);
-			}
-			Log.trace("Main world set up");
-			
 			//Set up camera
-			mainCamera = new Camera(mainView);
 			//mainCamera.showFPS(true);
 			mainCamera.moveToWorld(mainWorld.getID());
 			Log.trace("Main camera set up");
@@ -456,11 +462,12 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			setFPSTarget(fpsLock);
 			
 			Log.trace("Render loop set up");
+			
+			this.setVisible(false);
+			engineReference = this; //set the static variable so that the active engine can always be instanced
 		}else{
 			throw new EngineAlreadyInstancedException();
 		}
-		this.setVisible(false);
-		engineReference = this; //set the static variable so that the active engine can always be instanced
 	}
 	
 	/**
@@ -468,14 +475,51 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	 * This code might not be safe..
 	 * @return
 	 */
+	//FIXME: There is a bit of unused code here from different ways of reloading the engine
 	public boolean reloadEngine(){
 		synchronized(engineLock){
 			this.setVisible(false);
-			Engine2D.engineStarted = false;
+			this.dispose();
 			try {
-				Engine2D.engineReference = new Engine2D("JulianEngine "+versionID, false);
-			} catch (EngineAlreadyInstancedException e) {
-				Log.fatal("Engine already started, failure to override");
+				boolean fullscreen = UserConfiguration.getBool("Fullscreen", false);
+				Log.info("Fullscreen - "+fullscreen);
+				
+				//vars from config file
+				int width;
+				int height;
+				if(!fullscreen){
+					width = UserConfiguration.getInt("Frame-width", EngineConstants.Defaults.width);
+					height = UserConfiguration.getInt("Frame-height", EngineConstants.Defaults.height);
+				}else{
+					GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+					width = gd.getDisplayMode().getWidth();
+					height = gd.getDisplayMode().getHeight();
+					this.setUndecorated(true);
+					this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				}
+				
+				this.setResizable(true);
+				this.setSize(width, height);
+				this.setResizable(false);
+				
+				this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
+				this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering
+				bufferStrategy = this.getBufferStrategy(); //Set the public variable so the buffer strategy can be accessed by other classes
+				this.setVisible(false);
+				
+				mainView.resizeFrame(width, height);
+				this.pack();
+				
+				Dimension windowSize = this.getSize();
+				int sideBorder = (windowSize.width - width)/2; //px size of left, right, and bottom borders
+				int titleBorder = (windowSize.height - height)-sideBorder; //px size of top border (w/title)
+				mainView.setSideBorder(sideBorder);
+				mainView.setTitleBorder(titleBorder);
+				
+				mainCamera.showFPS(UserConfiguration.getBool("ShowFPS", false));
+			} catch (Exception e) {
+				Log.fatal("Failure reloading engine");
+				e.printStackTrace();
 				System.exit(2);
 			}
 			this.setVisible(true);
