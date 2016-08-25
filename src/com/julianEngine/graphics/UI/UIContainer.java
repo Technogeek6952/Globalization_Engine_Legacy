@@ -1,12 +1,12 @@
 package com.julianEngine.graphics.UI;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.awt.Color;
-import java.awt.Font;
 
 import com.julianEngine.Engine2D;
 import com.julianEngine.config.UserConfiguration;
@@ -16,7 +16,6 @@ import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
 import com.julianEngine.graphics.Frame;
-import com.julianEngine.utility.Log;
 
 public class UIContainer implements Shape, Parent{
 	
