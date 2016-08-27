@@ -47,89 +47,7 @@ public class UserConfiguration {
 				
 				//parse lines
 				for(String s:lines){
-					if(!s.startsWith("#")&&!s.equals("")&&s!=null){ //ignore '#' for comments
-						String name;
-						String value;
-						switch(s.charAt(1)){ //look at second char (between [ and ] at start of line)
-						case 'b':
-							name = (String) s.subSequence(3, s.indexOf('=', 3));
-							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
-							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
-							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
-							boolean boolValue = false;
-							try{ 
-								boolValue = Boolean.parseBoolean(value);
-								Log.trace("config file int: "+name);
-								Log.trace("Value: "+boolValue);
-								booleans.put(name, boolValue);
-							}catch(NumberFormatException e){
-								Log.error("Boolean corrupted - no value assigned");
-							}
-							break;
-						case 's':
-							name = (String) s.subSequence(3, s.indexOf('=', 3));
-							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
-							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
-							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
-							strings.put(name, value);
-							break;
-						case 'i':
-							name = (String) s.subSequence(3, s.indexOf('=', 3));
-							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
-							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
-							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
-							int intValue = 0;
-							try{ 
-								intValue = Integer.parseInt(value);
-								Log.trace("config file int: "+name);
-								Log.trace("Value: "+intValue);
-								integers.put(name, intValue);
-							}catch(NumberFormatException e){
-								Log.error("Int corrupted - no value assigned");
-							}
-							break;
-						case 'd':
-							name = (String) s.subSequence(3, s.indexOf('=', 3));
-							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
-							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
-							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
-							double doubleValue = 0;
-							try{ 
-								doubleValue = Double.parseDouble(value);
-								Log.trace("config file int: "+name);
-								Log.trace("Value: "+doubleValue);
-								doubles.put(name, doubleValue);
-							}catch(NumberFormatException e){
-								Log.error("Double corrupted - no value assigned");
-							}
-							break;
-						case 'f':
-							name = (String) s.subSequence(3, s.indexOf('=', 3));
-							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
-							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
-							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
-							float floatValue = 0;
-							try{ 
-								floatValue = Float.parseFloat(value);
-								Log.trace("config file int: "+name);
-								Log.trace("Value: "+floatValue);
-								floats.put(name, floatValue);
-							}catch(NumberFormatException e){
-								Log.error("Float corrupted - no value assigned");
-							}
-							break;
-						case 'c':
-							name = (String) s.subSequence(3, s.indexOf('=', 3));
-							name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
-							value = (String) s.substring(s.indexOf('=', 3)+1, s.length());
-							value = (value.startsWith(" "))?value.substring(1, value.length()):value;
-							characters.put(name, value.charAt(0));
-							break;
-						default:
-							Log.trace("unrecognized type: "+s.charAt(1));
-							break;
-						}
-					}
+					parseString(s);
 				}
 			} catch (Exception e) {
 				Log.trace("Error loading config file: "+path);
@@ -137,6 +55,92 @@ public class UserConfiguration {
 			}
 		}else{
 			Log.trace("Error loading config file: "+path);
+		}
+	}
+	
+	public static void parseString(String data){
+		if(!data.startsWith("#")&&!data.equals("")&&data!=null){ //ignore '#' for comments
+			String name;
+			String value;
+			switch(data.charAt(1)){ //look at second char (between [ and ] at start of line)
+			case 'b':
+				name = (String) data.subSequence(3, data.indexOf('=', 3));
+				name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+				value = (String) data.substring(data.indexOf('=', 3)+1, data.length());
+				value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+				boolean boolValue = false;
+				try{ 
+					boolValue = Boolean.parseBoolean(value);
+					Log.trace("config file int: "+name);
+					Log.trace("Value: "+boolValue);
+					booleans.put(name, boolValue);
+				}catch(NumberFormatException e){
+					Log.error("Boolean corrupted - no value assigned");
+				}
+				break;
+			case 's':
+				name = (String) data.subSequence(3, data.indexOf('=', 3));
+				name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+				value = (String) data.substring(data.indexOf('=', 3)+1, data.length());
+				value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+				strings.put(name, value);
+				break;
+			case 'i':
+				name = (String) data.subSequence(3, data.indexOf('=', 3));
+				name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+				value = (String) data.substring(data.indexOf('=', 3)+1, data.length());
+				value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+				int intValue = 0;
+				try{ 
+					intValue = Integer.parseInt(value);
+					Log.trace("config file int: "+name);
+					Log.trace("Value: "+intValue);
+					integers.put(name, intValue);
+				}catch(NumberFormatException e){
+					Log.error("Int corrupted - no value assigned");
+				}
+				break;
+			case 'd':
+				name = (String) data.subSequence(3, data.indexOf('=', 3));
+				name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+				value = (String) data.substring(data.indexOf('=', 3)+1, data.length());
+				value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+				double doubleValue = 0;
+				try{ 
+					doubleValue = Double.parseDouble(value);
+					Log.trace("config file int: "+name);
+					Log.trace("Value: "+doubleValue);
+					doubles.put(name, doubleValue);
+				}catch(NumberFormatException e){
+					Log.error("Double corrupted - no value assigned");
+				}
+				break;
+			case 'f':
+				name = (String) data.subSequence(3, data.indexOf('=', 3));
+				name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+				value = (String) data.substring(data.indexOf('=', 3)+1, data.length());
+				value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+				float floatValue = 0;
+				try{ 
+					floatValue = Float.parseFloat(value);
+					Log.trace("config file int: "+name);
+					Log.trace("Value: "+floatValue);
+					floats.put(name, floatValue);
+				}catch(NumberFormatException e){
+					Log.error("Float corrupted - no value assigned");
+				}
+				break;
+			case 'c':
+				name = (String) data.subSequence(3, data.indexOf('=', 3));
+				name = (name.endsWith(" "))?name.substring(0, name.length()-1):name;
+				value = (String) data.substring(data.indexOf('=', 3)+1, data.length());
+				value = (value.startsWith(" "))?value.substring(1, value.length()):value;
+				characters.put(name, value.charAt(0));
+				break;
+			default:
+				Log.trace("unrecognized type: "+data.charAt(1));
+				break;
+			}
 		}
 	}
 	
