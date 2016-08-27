@@ -1,12 +1,10 @@
 package com.julianEngine.graphics.UI;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import com.julianEngine.Engine2D;
-import com.julianEngine.config.UserConfiguration;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
