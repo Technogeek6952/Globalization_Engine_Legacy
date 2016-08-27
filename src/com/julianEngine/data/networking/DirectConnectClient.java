@@ -1,6 +1,7 @@
 package com.julianEngine.data.networking;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -22,22 +23,25 @@ public class DirectConnectClient {
 			new Thread(){
 				public void run(){
 					try {
-						BufferedReader in = new BufferedReader(new InputStreamReader(hostConnection.getInputStream()));
-						
 						while(true){
-							byte[] data = in.readLine().getBytes();
+							byte b = (byte) hostConnection.getInputStream().read();
+							Log.trace("first byte: "+b);
+							byte[] data = new byte[hostConnection.getInputStream().available()];
+							hostConnection.getInputStream().read(data);
+							ByteArrayOutputStream stream = new ByteArrayOutputStream();
+							stream.write(b);
+							stream.write(data);
 							
 							Log.trace("[client] got data");
 							
 							for(MessageListener listener:listeners){
-								listener.messageReceived(data);
+								listener.messageReceived(stream.toByteArray());
 							}
 							
 							if(hostConnection.isClosed()){
 								break;
 							}
 						}
-						in.close();
 					} catch (IOException e) {
 						Log.error("Error getting input stream for socket");
 						e.printStackTrace();

@@ -10,7 +10,6 @@ import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.Frame;
-import com.julianEngine.utility.Log;
 
 public class UIBitmapMask extends UIMask{
 
@@ -38,10 +37,10 @@ public class UIBitmapMask extends UIMask{
 		UIBitmapMask ref = this;
 		new Thread(){
 			public void run(){
-				Log.trace("UI bitmap mask about to ask for listener");
+				//Log.trace("UI bitmap mask about to ask for listener");
 				Engine2D.getInstance().mainView.addMouseListener(ref);
 				Engine2D.getInstance().mainView.addMouseMotionListener(ref);
-				Log.trace("UI Mask Ready (bitmap)");
+				//Log.trace("UI Mask Ready (bitmap)");
 				listenerReady = true;
 			}
 		}.start();

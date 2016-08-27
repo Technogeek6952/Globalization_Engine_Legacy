@@ -10,7 +10,6 @@ import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.shapes.Line;
-import com.julianEngine.utility.Log;
 
 public class UIPolygonMask extends UIMask {
 	/*--------Public Static Variables-------*/
@@ -54,7 +53,7 @@ public class UIPolygonMask extends UIMask {
 				frame.addMouseMotionListener(ref);
 				frame.addMouseListener(ref);
 				listenerReady = true;
-				Log.trace("UIMask Ready");
+				//Log.trace("UIMask Ready");
 			}
 		};
 		listenerThread.start();
