@@ -651,46 +651,46 @@
 [00:00:00][game_globalization-init][TRACE] No registered file for: font//.png
 [00:00:00][game_globalization-init][WARNING] unknown char, replacing with ?
 [00:00:03][game_globalization-postInit][INFO] Globalization Master File Post Init
-[00:00:03][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
-[00:00:03][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:03][game_globalization-postInit][TRACE] No registered file for: font/Í.png
-[00:00:03][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:03][game_globalization-postInit][TRACE] No registered file for: font/È.png
-[00:00:03][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Ó.png
+[00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Í.png
+[00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:04][game_globalization-postInit][TRACE] No registered file for: font/È.png
+[00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
 [00:00:04][game_globalization-postInit][TRACE] No registered file for: font/Ú.png
 [00:00:04][game_globalization-postInit][WARNING] unknown char, replacing with ?
 [00:00:05][ENGINE-main][TRACE] about to make title screen
 [00:00:05][game_globalization-createMainScreen][TRACE] Constructing title screen...
 [00:00:05][ENGINE-main][TRACE] made title screen
-[00:00:05][game_globalization-main][INFO] Globalization Master File Init Game
-[00:00:07][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:07][Thread-966][INFO] New client connection from: 127.0.0.1 on port: 1234
-[00:00:07][Thread-968][TRACE] first byte: 2
-[00:00:07][Thread-968][TRACE] Got request for new gameconnection
-[00:00:07][Thread-968][TRACE] Got object stream
-[00:00:07][Thread-968][TRACE] Got type
-[00:00:07][Thread-968][TRACE] got player
-[00:00:07][Thread-968][TRACE] Got connection with uid: 5756905718661480143
-[00:00:07][Thread-967][TRACE] first byte: 2
-[00:00:07][Thread-968][TRACE] wrote data[host]
-[00:00:07][Thread-967][TRACE] [client] got data
-[00:00:07][Thread-967][INFO] Got a gameconnection with uid: 5756905718661480143
-[00:00:07][pool-2-thread-1][TRACE] No registered file for: font//.png
-[00:00:07][pool-2-thread-1][WARNING] unknown char, replacing with ?
-[00:00:07][pool-2-thread-1][TRACE] No registered file for: font//.png
-[00:00:07][pool-2-thread-1][WARNING] unknown char, replacing with ?
-[00:00:08][Thread-6][TRACE] entering game
-[00:00:08][Thread-6][TRACE] looking for info for uid 5756905718661480143
-[00:00:08][Thread-968][TRACE] first byte: 3
-[00:00:08][Thread-967][TRACE] first byte: 3
-[00:00:08][Thread-968][TRACE] wrote data[host]
-[00:00:08][Thread-967][TRACE] [client] got data
-[00:00:08][Thread-967][TRACE] com.globalization.strategy.CompanyInfo@65712a08
-[00:00:08][Thread-6][TRACE] looking for info for uid 5756905718661480143
-[00:00:08][Thread-968][TRACE] first byte: 3
-[00:00:08][Thread-967][TRACE] first byte: 3
-[00:00:08][Thread-968][TRACE] wrote data[host]
-[00:00:08][Thread-967][TRACE] [client] got data
-[00:00:08][Thread-967][TRACE] com.globalization.strategy.CompanyInfo@6bb6c8d6
-[00:00:19][AWT-EventQueue-0][TRACE] mouse pressed inside map view
-[00:00:19][AWT-EventQueue-0][TRACE] Algeria clicked
+[00:00:06][game_globalization-main][INFO] Globalization Master File Init Game
+[00:00:09][AWT-EventQueue-0][TRACE] START NEW GAME!
+[00:00:09][Thread-966][INFO] New client connection from: 127.0.0.1 on port: 1234
+[00:00:09][Thread-968][TRACE] first byte: 2
+[00:00:09][Thread-968][TRACE] Got request for new gameconnection
+[00:00:09][Thread-968][TRACE] Got object stream
+[00:00:09][Thread-968][TRACE] Got type
+[00:00:09][Thread-968][TRACE] got player
+[00:00:09][Thread-968][TRACE] Got connection with uid: -3111867675629223956
+[00:00:09][Thread-968][TRACE] wrote data[host]
+[00:00:09][Thread-967][TRACE] first byte: 2
+[00:00:09][Thread-967][TRACE] [client] got data
+[00:00:09][Thread-967][INFO] Got a gameconnection with uid: -3111867675629223956
+[00:00:09][pool-2-thread-1][TRACE] No registered file for: font//.png
+[00:00:09][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:00:09][pool-2-thread-1][TRACE] No registered file for: font//.png
+[00:00:09][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:00:09][Thread-6][TRACE] entering game
+[00:00:09][Thread-6][TRACE] looking for info for uid -3111867675629223956
+[00:00:09][Thread-968][TRACE] first byte: 3
+[00:00:09][Thread-967][TRACE] first byte: 3
+[00:00:09][Thread-968][TRACE] wrote data[host]
+[00:00:09][Thread-967][TRACE] [client] got data
+[00:00:09][Thread-967][TRACE] com.globalization.strategy.CompanyInfo@659939fa
+[00:00:09][Thread-6][TRACE] looking for info for uid -3111867675629223956
+[00:00:09][Thread-968][TRACE] first byte: 3
+[00:00:09][Thread-967][TRACE] first byte: 3
+[00:00:09][Thread-968][TRACE] wrote data[host]
+[00:00:09][Thread-967][TRACE] [client] got data
+[00:00:09][Thread-967][TRACE] com.globalization.strategy.CompanyInfo@6b5ecb39
+[00:00:12][Thread-968][TRACE] first byte: 5
+[00:00:16][AWT-EventQueue-0][INFO] Engine shutting down
