@@ -16,6 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.ObjectInputStream;
+import java.io.PipedInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -46,6 +47,7 @@ import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.external_windows.ErrorReporter;
 import com.julianEngine.graphics.shapes.ProgressBar;
 import com.julianEngine.graphics.shapes.Text;
+import com.julianEngine.misc.UIConsoleWindow;
 import com.julianEngine.utility.Log;
 
 /**
@@ -719,6 +721,11 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			case 'm':
 				//toggle showing masks
 				UserConfiguration.addBool("drawMasks", !UserConfiguration.getBool("drawMasks", false));
+				break;
+			case 'c':
+				Log.trace("Opening console...");
+				new UIConsoleWindow().setVisible(true);
+				Log.trace("Console oppened");
 				break;
 			default:
 				Log.trace("Unknown F3 key combo");
