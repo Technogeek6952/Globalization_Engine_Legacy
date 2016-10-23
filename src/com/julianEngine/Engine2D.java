@@ -45,9 +45,9 @@ import com.julianEngine.data.pluginCommunication.JDFMessageSender;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.external_windows.ErrorReporter;
+import com.julianEngine.graphics.gui.DebugToolsWindow;
 import com.julianEngine.graphics.shapes.ProgressBar;
 import com.julianEngine.graphics.shapes.Text;
-import com.julianEngine.misc.UIConsoleWindow;
 import com.julianEngine.utility.Log;
 
 /**
@@ -384,9 +384,18 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public Engine2D(String title, Engine2D predecessor) throws EngineAlreadyInstancedException{
 		if(!engineStarted){
 			if(predecessor==null){ //if there was no predecessor then create everything, else use the objects from the predecessor
-				//init message and load engine config
-				Log.info("Engine Starting - Hello World! - version: " + versionID);
+				//load engine config
 				UserConfiguration.loadFile("./engine.config");
+				
+				//open debug window if bool set
+				if(UserConfiguration.getBool("debug", false)){
+					DebugToolsWindow consoleWin = new DebugToolsWindow();
+					System.setOut(consoleWin.getPrintStream());
+					System.setErr(consoleWin.getPrintStream());
+					System.setIn(consoleWin.getInputStream());
+					consoleWin.setVisible(true);
+				}
+				Log.info("Engine Starting - Hello World! - version: " + versionID);
 				
 				//initialize world 0 if new engine
 				try {
@@ -722,9 +731,13 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				//toggle showing masks
 				UserConfiguration.addBool("drawMasks", !UserConfiguration.getBool("drawMasks", false));
 				break;
-			case 'c':
+			case 'd':
 				Log.trace("Opening console...");
-				new UIConsoleWindow().setVisible(true);
+				DebugToolsWindow consoleWin = new DebugToolsWindow();
+				System.setOut(consoleWin.getPrintStream());
+				System.setErr(consoleWin.getPrintStream());
+				System.setIn(consoleWin.getInputStream());
+				consoleWin.setVisible(true);
 				Log.trace("Console oppened");
 				break;
 			default:

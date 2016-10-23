@@ -1,4 +1,4 @@
-package com.julianEngine.misc;
+package com.julianEngine.graphics.gui;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
