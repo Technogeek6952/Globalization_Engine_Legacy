@@ -53,11 +53,15 @@ public class DirectConnectHost {
 											stream.write(b);
 											stream.write(data);
 											
-											for(Long filter:messageListeners.keySet()){
-												if(filter==uid){
-													messageListeners.get(filter).clientMessageReceived(uid, stream.toByteArray());
+											new Thread(){
+												public void run(){
+													for(Long filter:messageListeners.keySet()){
+														if(filter==uid){
+															messageListeners.get(filter).clientMessageReceived(uid, stream.toByteArray());
+														}
+													}
 												}
-											}
+											}.start();
 											
 											if(server.isClosed()){
 												break;
@@ -115,9 +119,14 @@ public class DirectConnectHost {
 	
 	public void write(byte[] data, long uid) throws IOException{
 		if(!(clients.get(uid)==null)){
-			clients.get(uid).getOutputStream().write(data);
-			clients.get(uid).getOutputStream().write((byte)'\n');
-			Log.trace("wrote data[host]");
+			byte[] toSend = new byte[data.length];
+			toSend = data;
+			//toSend[toSend.length-1] = (byte)'\n';
+			clients.get(uid).getOutputStream().write(toSend);
+			//clients.get(uid).getOutputStream().write((byte)'\n');
+			Log.trace("[HOST] sent data to NUID "+uid);
+		}else{
+			Log.error("NUID "+uid+" not found");
 		}
 	}
 	

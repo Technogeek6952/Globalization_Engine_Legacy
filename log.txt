@@ -648,44 +648,627 @@
 [00:00:00][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
 [00:00:00][ENGINE-preInitializer][TRACE] Globalization pre-init
 [00:00:00][game_globalization-init][INFO] Globalization Master File Init
-[00:00:01][game_globalization-init][TRACE] No registered file for: font//.png
-[00:00:01][game_globalization-init][WARNING] unknown char, replacing with ?
+[00:00:00][game_globalization-init][TRACE] No registered file for: font//.png
+[00:00:00][game_globalization-init][WARNING] unknown char, replacing with ?
 [00:00:06][game_globalization-init][ERROR] Error initializing music line
 [00:00:06][game_globalization-postInit][INFO] Globalization Master File Post Init
 [00:00:06][game_globalization-postInit][TRACE] No registered file for: font/È.png
 [00:00:06][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:08][ENGINE-main][TRACE] about to make title screen
-[00:00:08][game_globalization-createMainScreen][TRACE] Constructing title screen...
-[00:00:08][ENGINE-main][TRACE] made title screen
+[00:00:09][ENGINE-main][TRACE] about to make title screen
+[00:00:09][game_globalization-createMainScreen][TRACE] Constructing title screen...
+[00:00:09][ENGINE-main][TRACE] made title screen
 [00:00:09][game_globalization-main][INFO] Globalization Master File Init Game
-[00:00:13][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:13][Thread-967][INFO] New client connection from: 127.0.0.1 on port: 1234
-[00:00:13][Thread-969][TRACE] first byte: 2
-[00:00:13][Thread-969][TRACE] Got request for new gameconnection
-[00:00:13][Thread-969][TRACE] Got object stream
-[00:00:13][Thread-969][TRACE] Got type
-[00:00:13][Thread-969][TRACE] got player
-[00:00:13][Thread-969][TRACE] Got connection with uid: 2014563135119877002
-[00:00:13][Thread-969][TRACE] wrote data[host]
-[00:00:13][Thread-968][TRACE] first byte: 2
-[00:00:13][Thread-968][TRACE] [client] got data
-[00:00:13][Thread-968][INFO] Got a gameconnection with uid: 2014563135119877002
-[00:00:13][pool-2-thread-1][TRACE] No registered file for: font//.png
-[00:00:13][pool-2-thread-1][WARNING] unknown char, replacing with ?
-[00:00:13][pool-2-thread-1][TRACE] No registered file for: font//.png
-[00:00:13][pool-2-thread-1][WARNING] unknown char, replacing with ?
-[00:00:13][Thread-6][TRACE] entering game
-[00:00:13][Thread-6][TRACE] looking for info for uid 2014563135119877002
-[00:00:13][Thread-969][TRACE] first byte: 3
-[00:00:13][Thread-968][TRACE] first byte: 3
-[00:00:13][Thread-969][TRACE] wrote data[host]
-[00:00:13][Thread-968][TRACE] [client] got data
-[00:00:13][Thread-968][TRACE] com.globalization.strategy.CompanyInfo@4a8b87c6
-[00:00:13][Thread-6][TRACE] looking for info for uid 2014563135119877002
-[00:00:13][Thread-969][TRACE] first byte: 3
-[00:00:13][Thread-968][TRACE] first byte: 3
-[00:00:13][Thread-969][TRACE] wrote data[host]
-[00:00:13][Thread-968][TRACE] [client] got data
-[00:00:13][Thread-968][TRACE] com.globalization.strategy.CompanyInfo@444c70e7
-[00:00:17][Thread-969][TRACE] first byte: 5
-[00:00:20][AWT-EventQueue-0][INFO] Engine shutting down
+[00:00:14][AWT-EventQueue-0][TRACE] START NEW GAME!
+[00:00:14][Thread-967][INFO] New client connection from: 127.0.0.1 on port: 1234
+[00:00:14][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+[00:00:14][Thread-969][TRACE] first byte: 2
+[00:00:14][Thread-970][TRACE] Got request for new gameconnection
+[00:00:14][Thread-970][TRACE] Got object stream
+[00:00:14][Thread-970][TRACE] Got type
+[00:00:14][Thread-970][TRACE] got player
+[00:00:14][Thread-970][TRACE] Got connection with uid: -8661804348592098130
+[00:00:14][Thread-970][TRACE] Mapped game UID (-8661804348592098130) to network UID (-1564798561315877248)
+[00:00:14][Thread-968][TRACE] first byte: 2[00:00:14][Thread-970][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:14][Thread-968][TRACE] [CLIENT] got data
+[00:00:14][Thread-971][INFO] Got a gameconnection with uid: -8661804348592098130
+[00:00:14][pool-2-thread-1][TRACE] No registered file for: font//.png
+[00:00:14][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:00:14][pool-2-thread-1][TRACE] No registered file for: font//.png
+[00:00:14][pool-2-thread-1][WARNING] unknown char, replacing with ?
+[00:00:14][Thread-6][TRACE] entering game
+[00:00:14][Thread-6][TRACE] looking for info for uid -8661804348592098130
+[00:00:14][Thread-6][TRACE] [CLIENT] sent data to host
+[00:00:14][Thread-969][TRACE] first byte: 3
+[00:00:14][Thread-972][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:14][Thread-972][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:14][Thread-968][TRACE] first byte: 3
+[00:00:14][Thread-972][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:14][Thread-968][TRACE] [CLIENT] got data
+[00:00:14][Thread-973][TRACE] com.globalization.strategy.CompanyInfo@5ed5aa88
+[00:00:14][Thread-6][TRACE] looking for info for uid -8661804348592098130
+[00:00:14][Thread-6][TRACE] [CLIENT] sent data to host
+[00:00:14][Thread-969][TRACE] first byte: 3
+[00:00:14][Thread-974][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:14][Thread-974][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:14][Thread-968][TRACE] first byte: 3
+[00:00:14][Thread-974][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:14][Thread-968][TRACE] [CLIENT] got data
+[00:00:14][Thread-975][TRACE] com.globalization.strategy.CompanyInfo@66a2d13f
+[00:00:16][Thread-969][TRACE] first byte: 5[00:00:16][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:16][Thread-977][TRACE] [HOST] sent data to NUID -1564798561315877248[00:00:16][Thread-968][TRACE] first byte: 6
+
+[00:00:16][Thread-968][TRACE] [CLIENT] got data
+[00:00:16][Thread-978][TRACE] Processing turn 1 from network
+[00:00:16][Thread-979][TRACE] looking for info for uid -8661804348592098130
+[00:00:16][Thread-969][TRACE] first byte: 3
+[00:00:16][Thread-979][TRACE] [CLIENT] sent data to host
+[00:00:16][Thread-980][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:16][Thread-980][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:16][Thread-968][TRACE] first byte: 3
+[00:00:16][Thread-980][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:16][Thread-968][TRACE] [CLIENT] got data
+[00:00:16][Thread-981][TRACE] com.globalization.strategy.CompanyInfo@78c2092a
+[00:00:16][Thread-979][TRACE] looking for info for uid -8661804348592098130
+[00:00:16][Thread-969][TRACE] first byte: 3[00:00:16][Thread-979][TRACE] [CLIENT] sent data to host
+
+[00:00:16][Thread-982][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:16][Thread-982][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:16][Thread-968][TRACE] first byte: 3
+[00:00:16][Thread-982][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:16][Thread-968][TRACE] [CLIENT] got data
+[00:00:16][Thread-983][TRACE] com.globalization.strategy.CompanyInfo@630eac37
+[00:00:17][Thread-969][TRACE] first byte: 5[00:00:17][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:17][Thread-968][TRACE] first byte: 6[00:00:17][Thread-985][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:17][Thread-968][TRACE] [CLIENT] got data
+[00:00:17][Thread-986][TRACE] Processing turn 2 from network
+[00:00:17][Thread-987][TRACE] looking for info for uid -8661804348592098130
+[00:00:17][Thread-969][TRACE] first byte: 3
+[00:00:17][Thread-987][TRACE] [CLIENT] sent data to host
+[00:00:17][Thread-988][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:17][Thread-988][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:17][Thread-988][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:17][Thread-968][TRACE] first byte: 3
+[00:00:17][Thread-968][TRACE] [CLIENT] got data
+[00:00:17][Thread-989][TRACE] com.globalization.strategy.CompanyInfo@6268a7a3
+[00:00:17][Thread-987][TRACE] looking for info for uid -8661804348592098130
+[00:00:17][Thread-987][TRACE] [CLIENT] sent data to host
+[00:00:17][Thread-969][TRACE] first byte: 3
+[00:00:17][Thread-990][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:17][Thread-990][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:17][Thread-968][TRACE] first byte: 3
+[00:00:17][Thread-968][TRACE] [CLIENT] got data
+[00:00:17][Thread-990][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:17][Thread-991][TRACE] com.globalization.strategy.CompanyInfo@564a86c1
+[00:00:18][Thread-969][TRACE] first byte: 5[00:00:18][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:18][Thread-968][TRACE] first byte: 6
+[00:00:18][Thread-968][TRACE] [CLIENT] got data
+[00:00:18][Thread-993][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:18][Thread-994][TRACE] Processing turn 3 from network
+[00:00:18][Thread-995][TRACE] looking for info for uid -8661804348592098130
+[00:00:18][Thread-995][TRACE] [CLIENT] sent data to host
+[00:00:18][Thread-969][TRACE] first byte: 3
+[00:00:18][Thread-996][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:18][Thread-996][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:18][Thread-968][TRACE] first byte: 3
+[00:00:18][Thread-996][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:18][Thread-968][TRACE] [CLIENT] got data
+[00:00:18][Thread-997][TRACE] com.globalization.strategy.CompanyInfo@254f1844
+[00:00:18][Thread-995][TRACE] looking for info for uid -8661804348592098130
+[00:00:18][Thread-969][TRACE] first byte: 3
+[00:00:18][Thread-995][TRACE] [CLIENT] sent data to host
+[00:00:18][Thread-998][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:18][Thread-998][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:18][Thread-968][TRACE] first byte: 3
+[00:00:18][Thread-998][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:18][Thread-968][TRACE] [CLIENT] got data
+[00:00:18][Thread-999][TRACE] com.globalization.strategy.CompanyInfo@7de33499
+[00:00:19][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host[00:00:19][Thread-969][TRACE] first byte: 5
+
+[00:00:19][Thread-968][TRACE] first byte: 6
+[00:00:19][Thread-1001][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:19][Thread-968][TRACE] [CLIENT] got data
+[00:00:19][Thread-1002][TRACE] Processing turn 4 from network
+[00:00:19][Thread-1003][TRACE] looking for info for uid -8661804348592098130
+[00:00:19][Thread-969][TRACE] first byte: 3
+[00:00:19][Thread-1003][TRACE] [CLIENT] sent data to host
+[00:00:19][Thread-1004][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:19][Thread-1004][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:19][Thread-1004][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:19][Thread-968][TRACE] first byte: 3
+[00:00:19][Thread-968][TRACE] [CLIENT] got data
+[00:00:19][Thread-1005][TRACE] com.globalization.strategy.CompanyInfo@62ad1673
+[00:00:19][Thread-1003][TRACE] looking for info for uid -8661804348592098130
+[00:00:19][Thread-969][TRACE] first byte: 3
+[00:00:19][Thread-1003][TRACE] [CLIENT] sent data to host
+[00:00:19][Thread-1006][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:19][Thread-1006][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:19][Thread-1006][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:19][Thread-968][TRACE] first byte: 3
+[00:00:19][Thread-968][TRACE] [CLIENT] got data
+[00:00:19][Thread-1007][TRACE] com.globalization.strategy.CompanyInfo@2c0967aa
+[00:00:20][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+[00:00:20][Thread-969][TRACE] first byte: 5
+[00:00:20][Thread-968][TRACE] first byte: 6
+[00:00:20][Thread-1009][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:20][Thread-968][TRACE] [CLIENT] got data
+[00:00:20][Thread-1010][TRACE] Processing turn 5 from network
+[00:00:20][Thread-1011][TRACE] looking for info for uid -8661804348592098130
+[00:00:20][Thread-969][TRACE] first byte: 3
+[00:00:20][Thread-1011][TRACE] [CLIENT] sent data to host
+[00:00:20][Thread-1012][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:20][Thread-1012][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:20][Thread-968][TRACE] first byte: 3
+[00:00:20][Thread-968][TRACE] [CLIENT] got data
+[00:00:20][Thread-1012][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:20][Thread-1013][TRACE] com.globalization.strategy.CompanyInfo@261f3
+[00:00:20][Thread-1011][TRACE] looking for info for uid -8661804348592098130
+[00:00:20][Thread-1011][TRACE] [CLIENT] sent data to host
+[00:00:20][Thread-969][TRACE] first byte: 3
+[00:00:20][Thread-1014][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:20][Thread-1014][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:20][Thread-1014][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:20][Thread-968][TRACE] first byte: 3
+[00:00:20][Thread-968][TRACE] [CLIENT] got data
+[00:00:20][Thread-1015][TRACE] com.globalization.strategy.CompanyInfo@c393c13
+[00:00:21][Thread-969][TRACE] first byte: 5[00:00:21][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:21][Thread-968][TRACE] first byte: 6[00:00:21][Thread-1017][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:21][Thread-968][TRACE] [CLIENT] got data
+[00:00:21][Thread-1018][TRACE] Processing turn 6 from network
+[00:00:21][Thread-1019][TRACE] looking for info for uid -8661804348592098130
+[00:00:21][Thread-1019][TRACE] [CLIENT] sent data to host
+[00:00:21][Thread-969][TRACE] first byte: 3
+[00:00:21][Thread-1020][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:21][Thread-1020][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:21][Thread-968][TRACE] first byte: 3
+[00:00:21][Thread-1020][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:21][Thread-968][TRACE] [CLIENT] got data
+[00:00:21][Thread-1021][TRACE] com.globalization.strategy.CompanyInfo@5d99af1e
+[00:00:21][Thread-1019][TRACE] looking for info for uid -8661804348592098130
+[00:00:21][Thread-969][TRACE] first byte: 3
+[00:00:21][Thread-1019][TRACE] [CLIENT] sent data to host
+[00:00:21][Thread-1022][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:21][Thread-1022][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:21][Thread-968][TRACE] first byte: 3
+[00:00:21][Thread-1022][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:21][Thread-968][TRACE] [CLIENT] got data
+[00:00:21][Thread-1023][TRACE] com.globalization.strategy.CompanyInfo@5ef298d1
+[00:00:22][Thread-969][TRACE] first byte: 5[00:00:22][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:22][Thread-968][TRACE] first byte: 6
+[00:00:22][Thread-1025][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:22][Thread-968][TRACE] [CLIENT] got data
+[00:00:22][Thread-1026][TRACE] Processing turn 7 from network
+[00:00:22][Thread-1027][TRACE] looking for info for uid -8661804348592098130
+[00:00:22][Thread-1027][TRACE] [CLIENT] sent data to host
+[00:00:22][Thread-969][TRACE] first byte: 3
+[00:00:22][Thread-1028][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:22][Thread-1028][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:22][Thread-968][TRACE] first byte: 3
+[00:00:22][Thread-1028][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:22][Thread-968][TRACE] [CLIENT] got data
+[00:00:22][Thread-1029][TRACE] com.globalization.strategy.CompanyInfo@35204a1b
+[00:00:22][Thread-1027][TRACE] looking for info for uid -8661804348592098130
+[00:00:22][Thread-1027][TRACE] [CLIENT] sent data to host
+[00:00:22][Thread-969][TRACE] first byte: 3
+[00:00:22][Thread-1030][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:22][Thread-1030][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:22][Thread-1030][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:22][Thread-968][TRACE] first byte: 3
+[00:00:22][Thread-968][TRACE] [CLIENT] got data
+[00:00:22][Thread-1031][TRACE] com.globalization.strategy.CompanyInfo@7645501f
+[00:00:23][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host[00:00:23][Thread-969][TRACE] first byte: 5
+
+[00:00:23][Thread-968][TRACE] first byte: 6[00:00:23][Thread-1033][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:23][Thread-968][TRACE] [CLIENT] got data
+[00:00:23][Thread-1034][TRACE] Processing turn 8 from network
+[00:00:23][Thread-1035][TRACE] looking for info for uid -8661804348592098130
+[00:00:23][Thread-1035][TRACE] [CLIENT] sent data to host
+[00:00:23][Thread-969][TRACE] first byte: 3
+[00:00:23][Thread-1036][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:23][Thread-1036][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:23][Thread-968][TRACE] first byte: 3
+[00:00:23][Thread-968][TRACE] [CLIENT] got data
+[00:00:23][Thread-1036][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:23][Thread-1037][TRACE] com.globalization.strategy.CompanyInfo@8018310
+[00:00:23][Thread-1035][TRACE] looking for info for uid -8661804348592098130
+[00:00:23][Thread-1035][TRACE] [CLIENT] sent data to host
+[00:00:23][Thread-969][TRACE] first byte: 3
+[00:00:23][Thread-1038][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:23][Thread-1038][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:23][Thread-968][TRACE] first byte: 3
+[00:00:23][Thread-968][TRACE] [CLIENT] got data
+[00:00:23][Thread-1038][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:23][Thread-1039][TRACE] com.globalization.strategy.CompanyInfo@53e2d21e
+[00:00:24][Thread-969][TRACE] first byte: 5[00:00:24][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:24][Thread-968][TRACE] first byte: 6
+[00:00:24][Thread-1041][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:24][Thread-968][TRACE] [CLIENT] got data
+[00:00:24][Thread-1042][TRACE] Processing turn 9 from network
+[00:00:24][Thread-1043][TRACE] looking for info for uid -8661804348592098130
+[00:00:24][Thread-969][TRACE] first byte: 3
+[00:00:24][Thread-1043][TRACE] [CLIENT] sent data to host
+[00:00:24][Thread-1044][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:24][Thread-1044][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:24][Thread-1044][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:24][Thread-968][TRACE] first byte: 3
+[00:00:24][Thread-968][TRACE] [CLIENT] got data
+[00:00:24][Thread-1045][TRACE] com.globalization.strategy.CompanyInfo@76b13b0a
+[00:00:24][Thread-1043][TRACE] looking for info for uid -8661804348592098130
+[00:00:24][Thread-969][TRACE] first byte: 3
+[00:00:24][Thread-1043][TRACE] [CLIENT] sent data to host
+[00:00:24][Thread-1046][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:24][Thread-1046][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:24][Thread-968][TRACE] first byte: 3
+[00:00:24][Thread-1046][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:24][Thread-968][TRACE] [CLIENT] got data
+[00:00:24][Thread-1047][TRACE] com.globalization.strategy.CompanyInfo@2c47a3a7
+[00:00:24][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+[00:00:24][Thread-969][TRACE] first byte: 5
+[00:00:24][Thread-968][TRACE] first byte: 6
+[00:00:24][Thread-968][TRACE] [CLIENT] got data[00:00:24][Thread-1049][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:24][Thread-1050][TRACE] Processing turn 10 from network
+[00:00:24][Thread-1051][TRACE] looking for info for uid -8661804348592098130
+[00:00:24][Thread-969][TRACE] first byte: 3
+[00:00:24][Thread-1051][TRACE] [CLIENT] sent data to host
+[00:00:24][Thread-1052][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:24][Thread-1052][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:24][Thread-968][TRACE] first byte: 3
+[00:00:24][Thread-968][TRACE] [CLIENT] got data
+[00:00:24][Thread-1052][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:24][Thread-1053][TRACE] com.globalization.strategy.CompanyInfo@52b9843d
+[00:00:25][Thread-1051][TRACE] looking for info for uid -8661804348592098130
+[00:00:25][Thread-969][TRACE] first byte: 3
+[00:00:25][Thread-1051][TRACE] [CLIENT] sent data to host
+[00:00:25][Thread-1054][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:25][Thread-1054][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:25][Thread-968][TRACE] first byte: 3
+[00:00:25][Thread-968][TRACE] [CLIENT] got data
+[00:00:25][Thread-1054][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:25][Thread-1055][TRACE] com.globalization.strategy.CompanyInfo@575c7752
+[00:00:25][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host[00:00:25][Thread-969][TRACE] first byte: 5
+
+[00:00:25][Thread-968][TRACE] first byte: 6
+[00:00:25][Thread-968][TRACE] [CLIENT] got data
+[00:00:25][Thread-1057][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:25][Thread-1058][TRACE] Processing turn 11 from network
+[00:00:25][Thread-1059][TRACE] looking for info for uid -8661804348592098130
+[00:00:25][Thread-969][TRACE] first byte: 3
+[00:00:25][Thread-1059][TRACE] [CLIENT] sent data to host
+[00:00:25][Thread-1060][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:25][Thread-1060][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:25][Thread-968][TRACE] first byte: 3
+[00:00:25][Thread-968][TRACE] [CLIENT] got data
+[00:00:25][Thread-1060][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:25][Thread-1061][TRACE] com.globalization.strategy.CompanyInfo@684c36bf
+[00:00:25][Thread-1059][TRACE] looking for info for uid -8661804348592098130
+[00:00:25][Thread-969][TRACE] first byte: 3
+[00:00:25][Thread-1059][TRACE] [CLIENT] sent data to host
+[00:00:25][Thread-1062][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:25][Thread-1062][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:25][Thread-968][TRACE] first byte: 3
+[00:00:25][Thread-1062][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:25][Thread-968][TRACE] [CLIENT] got data
+[00:00:25][Thread-1063][TRACE] com.globalization.strategy.CompanyInfo@2fda45ff
+[00:00:26][Thread-969][TRACE] first byte: 5[00:00:26][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:26][Thread-968][TRACE] first byte: 6
+[00:00:26][Thread-1065][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:26][Thread-968][TRACE] [CLIENT] got data
+[00:00:26][Thread-1066][TRACE] Processing turn 12 from network
+[00:00:26][Thread-1067][TRACE] looking for info for uid -8661804348592098130
+[00:00:26][Thread-969][TRACE] first byte: 3
+[00:00:26][Thread-1067][TRACE] [CLIENT] sent data to host
+[00:00:26][Thread-1068][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:26][Thread-1068][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:26][Thread-968][TRACE] first byte: 3
+[00:00:26][Thread-968][TRACE] [CLIENT] got data
+[00:00:26][Thread-1068][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:26][Thread-1069][TRACE] com.globalization.strategy.CompanyInfo@4657300
+[00:00:26][Thread-1067][TRACE] looking for info for uid -8661804348592098130
+[00:00:26][Thread-969][TRACE] first byte: 3
+[00:00:26][Thread-1067][TRACE] [CLIENT] sent data to host
+[00:00:26][Thread-1070][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:26][Thread-1070][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:26][Thread-968][TRACE] first byte: 3
+[00:00:26][Thread-968][TRACE] [CLIENT] got data
+[00:00:26][Thread-1070][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:26][Thread-1071][TRACE] com.globalization.strategy.CompanyInfo@220c83f7
+[00:00:27][Thread-969][TRACE] first byte: 5[00:00:27][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:27][Thread-968][TRACE] first byte: 6
+[00:00:27][Thread-968][TRACE] [CLIENT] got data
+[00:00:27][Thread-1073][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:27][Thread-1074][TRACE] Processing turn 13 from network
+[00:00:27][Thread-1075][TRACE] looking for info for uid -8661804348592098130
+[00:00:27][Thread-969][TRACE] first byte: 3
+[00:00:27][Thread-1075][TRACE] [CLIENT] sent data to host
+[00:00:27][Thread-1076][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:27][Thread-1076][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:27][Thread-968][TRACE] first byte: 3
+[00:00:27][Thread-968][TRACE] [CLIENT] got data
+[00:00:27][Thread-1076][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:27][Thread-1077][TRACE] com.globalization.strategy.CompanyInfo@5c57e9b
+[00:00:27][Thread-1075][TRACE] looking for info for uid -8661804348592098130
+[00:00:27][Thread-1075][TRACE] [CLIENT] sent data to host
+[00:00:27][Thread-969][TRACE] first byte: 3
+[00:00:27][Thread-1078][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:27][Thread-1078][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:27][Thread-968][TRACE] first byte: 3
+[00:00:27][Thread-968][TRACE] [CLIENT] got data
+[00:00:27][Thread-1078][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:27][Thread-1079][TRACE] com.globalization.strategy.CompanyInfo@6db17bb8
+[00:00:28][Thread-969][TRACE] first byte: 5[00:00:28][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:28][Thread-968][TRACE] first byte: 6
+[00:00:28][Thread-968][TRACE] [CLIENT] got data
+[00:00:28][Thread-1081][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:28][Thread-1082][TRACE] Processing turn 14 from network
+[00:00:28][Thread-1083][TRACE] looking for info for uid -8661804348592098130
+[00:00:28][Thread-969][TRACE] first byte: 3
+[00:00:28][Thread-1083][TRACE] [CLIENT] sent data to host
+[00:00:28][Thread-1084][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:28][Thread-1084][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:28][Thread-968][TRACE] first byte: 3
+[00:00:28][Thread-1084][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:28][Thread-968][TRACE] [CLIENT] got data
+[00:00:28][Thread-1085][TRACE] com.globalization.strategy.CompanyInfo@31f54705
+[00:00:28][Thread-1083][TRACE] looking for info for uid -8661804348592098130
+[00:00:28][Thread-969][TRACE] first byte: 3
+[00:00:28][Thread-1083][TRACE] [CLIENT] sent data to host
+[00:00:28][Thread-1086][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:28][Thread-1086][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:28][Thread-1086][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:28][Thread-968][TRACE] first byte: 3
+[00:00:28][Thread-968][TRACE] [CLIENT] got data
+[00:00:28][Thread-1087][TRACE] com.globalization.strategy.CompanyInfo@7b5916a8
+[00:00:29][Thread-969][TRACE] first byte: 5[00:00:29][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:29][Thread-968][TRACE] first byte: 6
+[00:00:29][Thread-1089][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:29][Thread-968][TRACE] [CLIENT] got data
+[00:00:29][Thread-1090][TRACE] Processing turn 15 from network
+[00:00:29][Thread-1091][TRACE] looking for info for uid -8661804348592098130
+[00:00:29][Thread-1091][TRACE] [CLIENT] sent data to host
+[00:00:29][Thread-969][TRACE] first byte: 3
+[00:00:29][Thread-1092][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:29][Thread-1092][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:29][Thread-1092][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:29][Thread-968][TRACE] first byte: 3
+[00:00:29][Thread-968][TRACE] [CLIENT] got data
+[00:00:29][Thread-1093][TRACE] com.globalization.strategy.CompanyInfo@cb3c79d
+[00:00:29][Thread-1091][TRACE] looking for info for uid -8661804348592098130
+[00:00:29][Thread-1091][TRACE] [CLIENT] sent data to host
+[00:00:29][Thread-969][TRACE] first byte: 3
+[00:00:29][Thread-1094][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:29][Thread-1094][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:29][Thread-968][TRACE] first byte: 3
+[00:00:29][Thread-1094][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:29][Thread-968][TRACE] [CLIENT] got data
+[00:00:29][Thread-1095][TRACE] com.globalization.strategy.CompanyInfo@4834eb3a
+[00:00:30][Thread-969][TRACE] first byte: 5
+[00:00:30][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+[00:00:30][Thread-968][TRACE] first byte: 6
+[00:00:30][Thread-1097][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:30][Thread-968][TRACE] [CLIENT] got data
+[00:00:30][Thread-1098][TRACE] Processing turn 16 from network
+[00:00:30][Thread-1099][TRACE] looking for info for uid -8661804348592098130
+[00:00:30][Thread-1099][TRACE] [CLIENT] sent data to host
+[00:00:30][Thread-969][TRACE] first byte: 3
+[00:00:30][Thread-1100][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:30][Thread-1100][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:30][Thread-1100][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:30][Thread-968][TRACE] first byte: 3
+[00:00:30][Thread-968][TRACE] [CLIENT] got data
+[00:00:30][Thread-1101][TRACE] com.globalization.strategy.CompanyInfo@76a5340c
+[00:00:30][Thread-1099][TRACE] looking for info for uid -8661804348592098130
+[00:00:30][Thread-969][TRACE] first byte: 3
+[00:00:30][Thread-1099][TRACE] [CLIENT] sent data to host
+[00:00:30][Thread-1102][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:30][Thread-1102][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:30][Thread-968][TRACE] first byte: 3
+[00:00:30][Thread-1102][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:30][Thread-968][TRACE] [CLIENT] got data
+[00:00:30][Thread-1103][TRACE] com.globalization.strategy.CompanyInfo@7ed9bf73
+[00:00:31][Thread-969][TRACE] first byte: 5[00:00:31][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:31][Thread-968][TRACE] first byte: 6[00:00:31][Thread-1105][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:31][Thread-968][TRACE] [CLIENT] got data
+[00:00:31][Thread-1106][TRACE] Processing turn 17 from network
+[00:00:31][Thread-1107][TRACE] looking for info for uid -8661804348592098130
+[00:00:31][Thread-969][TRACE] first byte: 3
+[00:00:31][Thread-1107][TRACE] [CLIENT] sent data to host
+[00:00:31][Thread-1108][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:31][Thread-1108][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:31][Thread-1108][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:31][Thread-968][TRACE] first byte: 3
+[00:00:31][Thread-968][TRACE] [CLIENT] got data
+[00:00:31][Thread-1109][TRACE] com.globalization.strategy.CompanyInfo@51b48833
+[00:00:31][Thread-1107][TRACE] looking for info for uid -8661804348592098130
+[00:00:31][Thread-1107][TRACE] [CLIENT] sent data to host
+[00:00:31][Thread-969][TRACE] first byte: 3
+[00:00:31][Thread-1110][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:31][Thread-1110][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:31][Thread-968][TRACE] first byte: 3
+[00:00:31][Thread-968][TRACE] [CLIENT] got data
+[00:00:31][Thread-1110][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:31][Thread-1111][TRACE] com.globalization.strategy.CompanyInfo@1a12ff63
+[00:00:32][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host[00:00:32][Thread-969][TRACE] first byte: 5
+
+[00:00:32][Thread-968][TRACE] first byte: 6
+[00:00:32][Thread-968][TRACE] [CLIENT] got data
+[00:00:32][Thread-1113][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:32][Thread-1114][TRACE] Processing turn 18 from network
+[00:00:32][Thread-1115][TRACE] looking for info for uid -8661804348592098130
+[00:00:32][Thread-969][TRACE] first byte: 3
+[00:00:32][Thread-1115][TRACE] [CLIENT] sent data to host
+[00:00:32][Thread-1116][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:32][Thread-1116][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:32][Thread-968][TRACE] first byte: 3
+[00:00:32][Thread-968][TRACE] [CLIENT] got data
+[00:00:32][Thread-1116][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:32][Thread-1117][TRACE] com.globalization.strategy.CompanyInfo@27fae85
+[00:00:32][Thread-1115][TRACE] looking for info for uid -8661804348592098130
+[00:00:32][Thread-1115][TRACE] [CLIENT] sent data to host
+[00:00:32][Thread-969][TRACE] first byte: 3
+[00:00:32][Thread-1118][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:32][Thread-1118][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:32][Thread-1118][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:32][Thread-968][TRACE] first byte: 3
+[00:00:32][Thread-968][TRACE] [CLIENT] got data
+[00:00:32][Thread-1119][TRACE] com.globalization.strategy.CompanyInfo@7fbc8004
+[00:00:33][Thread-969][TRACE] first byte: 5[00:00:33][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:33][Thread-968][TRACE] first byte: 6
+[00:00:33][Thread-968][TRACE] [CLIENT] got data
+[00:00:33][Thread-1121][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:33][Thread-1122][TRACE] Processing turn 19 from network
+[00:00:33][Thread-1123][TRACE] looking for info for uid -8661804348592098130
+[00:00:33][Thread-969][TRACE] first byte: 3
+[00:00:33][Thread-1123][TRACE] [CLIENT] sent data to host
+[00:00:33][Thread-1124][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:33][Thread-1124][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:33][Thread-968][TRACE] first byte: 3
+[00:00:33][Thread-968][TRACE] [CLIENT] got data
+[00:00:33][Thread-1124][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:33][Thread-1125][TRACE] com.globalization.strategy.CompanyInfo@280deade
+[00:00:33][Thread-1123][TRACE] looking for info for uid -8661804348592098130
+[00:00:33][Thread-1123][TRACE] [CLIENT] sent data to host
+[00:00:33][Thread-969][TRACE] first byte: 3
+[00:00:33][Thread-1126][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:33][Thread-1126][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:33][Thread-1126][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:33][Thread-968][TRACE] first byte: 3
+[00:00:33][Thread-968][TRACE] [CLIENT] got data
+[00:00:33][Thread-1127][TRACE] com.globalization.strategy.CompanyInfo@4af9efc3
+[00:00:34][Thread-969][TRACE] first byte: 5[00:00:34][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:34][Thread-968][TRACE] first byte: 6
+[00:00:34][Thread-1129][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:34][Thread-968][TRACE] [CLIENT] got data
+[00:00:34][Thread-1130][TRACE] Processing turn 20 from network
+[00:00:34][Thread-1131][TRACE] looking for info for uid -8661804348592098130
+[00:00:34][Thread-1131][TRACE] [CLIENT] sent data to host
+[00:00:34][Thread-969][TRACE] first byte: 3
+[00:00:34][Thread-1132][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:34][Thread-1132][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:34][Thread-968][TRACE] first byte: 3
+[00:00:34][Thread-1132][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:34][Thread-968][TRACE] [CLIENT] got data
+[00:00:34][Thread-1133][TRACE] com.globalization.strategy.CompanyInfo@1ed221c6
+[00:00:34][Thread-1131][TRACE] looking for info for uid -8661804348592098130
+[00:00:34][Thread-969][TRACE] first byte: 3
+[00:00:34][Thread-1131][TRACE] [CLIENT] sent data to host
+[00:00:34][Thread-1134][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:34][Thread-1134][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:34][Thread-1134][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:34][Thread-968][TRACE] first byte: 3
+[00:00:34][Thread-968][TRACE] [CLIENT] got data
+[00:00:34][Thread-1135][TRACE] com.globalization.strategy.CompanyInfo@733df2cf
+[00:00:34][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host[00:00:34][Thread-969][TRACE] first byte: 5
+
+[00:00:34][Thread-968][TRACE] first byte: 6
+[00:00:34][Thread-1137][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:34][Thread-968][TRACE] [CLIENT] got data
+[00:00:34][Thread-1138][TRACE] Processing turn 21 from network
+[00:00:34][Thread-1139][TRACE] looking for info for uid -8661804348592098130
+[00:00:34][Thread-969][TRACE] first byte: 3
+[00:00:34][Thread-1139][TRACE] [CLIENT] sent data to host
+[00:00:34][Thread-1140][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:34][Thread-1140][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:34][Thread-968][TRACE] first byte: 3[00:00:34][Thread-1140][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:34][Thread-968][TRACE] [CLIENT] got data
+[00:00:34][Thread-1141][TRACE] com.globalization.strategy.CompanyInfo@a10468e
+[00:00:35][Thread-1139][TRACE] looking for info for uid -8661804348592098130
+[00:00:35][Thread-969][TRACE] first byte: 3
+[00:00:35][Thread-1139][TRACE] [CLIENT] sent data to host
+[00:00:35][Thread-1142][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:35][Thread-1142][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:35][Thread-968][TRACE] first byte: 3
+[00:00:35][Thread-1142][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:35][Thread-968][TRACE] [CLIENT] got data
+[00:00:35][Thread-1143][TRACE] com.globalization.strategy.CompanyInfo@57af5ec7
+[00:00:35][Thread-969][TRACE] first byte: 5[00:00:35][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:35][Thread-968][TRACE] first byte: 6
+[00:00:35][Thread-1145][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:35][Thread-968][TRACE] [CLIENT] got data
+[00:00:35][Thread-1146][TRACE] Processing turn 22 from network
+[00:00:35][Thread-1147][TRACE] looking for info for uid -8661804348592098130
+[00:00:35][Thread-1147][TRACE] [CLIENT] sent data to host
+[00:00:35][Thread-969][TRACE] first byte: 3
+[00:00:35][Thread-1148][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:35][Thread-1148][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:35][Thread-968][TRACE] first byte: 3
+[00:00:35][Thread-1148][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:35][Thread-968][TRACE] [CLIENT] got data
+[00:00:35][Thread-1149][TRACE] com.globalization.strategy.CompanyInfo@4ab48800
+[00:00:35][Thread-1147][TRACE] looking for info for uid -8661804348592098130
+[00:00:35][Thread-969][TRACE] first byte: 3
+[00:00:35][Thread-1147][TRACE] [CLIENT] sent data to host
+[00:00:35][Thread-1150][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:35][Thread-1150][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:35][Thread-968][TRACE] first byte: 3
+[00:00:35][Thread-1150][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:35][Thread-968][TRACE] [CLIENT] got data
+[00:00:35][Thread-1151][TRACE] com.globalization.strategy.CompanyInfo@449df7
+[00:00:36][Thread-969][TRACE] first byte: 5[00:00:36][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
+
+[00:00:36][Thread-968][TRACE] first byte: 6
+[00:00:36][Thread-1153][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:36][Thread-968][TRACE] [CLIENT] got data
+[00:00:36][Thread-1154][TRACE] Processing turn 23 from network
+[00:00:36][Thread-1155][TRACE] looking for info for uid -8661804348592098130
+[00:00:36][Thread-969][TRACE] first byte: 3
+[00:00:36][Thread-1155][TRACE] [CLIENT] sent data to host
+[00:00:36][Thread-1156][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:36][Thread-1156][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:36][Thread-968][TRACE] first byte: 3
+[00:00:36][Thread-1156][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:36][Thread-968][TRACE] [CLIENT] got data
+[00:00:36][Thread-1157][TRACE] com.globalization.strategy.CompanyInfo@6747bf35
+[00:00:36][Thread-1155][TRACE] looking for info for uid -8661804348592098130
+[00:00:36][Thread-969][TRACE] first byte: 3[00:00:36][Thread-1155][TRACE] [CLIENT] sent data to host
+
+[00:00:36][Thread-1158][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:36][Thread-1158][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:36][Thread-968][TRACE] first byte: 3[00:00:36][Thread-1158][TRACE] [HOST] sent data to NUID -1564798561315877248
+
+[00:00:36][Thread-968][TRACE] [CLIENT] got data
+[00:00:36][Thread-1159][TRACE] com.globalization.strategy.CompanyInfo@520b257a
+[00:00:37][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host[00:00:37][Thread-969][TRACE] first byte: 5
+
+[00:00:37][Thread-968][TRACE] first byte: 6
+[00:00:37][Thread-1161][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:37][Thread-968][TRACE] [CLIENT] got data
+[00:00:37][Thread-1162][TRACE] Processing turn 24 from network
+[00:00:37][Thread-1163][TRACE] looking for info for uid -8661804348592098130
+[00:00:37][Thread-1163][TRACE] [CLIENT] sent data to host
+[00:00:37][Thread-969][TRACE] first byte: 3
+[00:00:37][Thread-1164][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:37][Thread-1164][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:37][Thread-968][TRACE] first byte: 3
+[00:00:37][Thread-1164][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:37][Thread-968][TRACE] [CLIENT] got data
+[00:00:37][Thread-1165][TRACE] com.globalization.strategy.CompanyInfo@29f44b2
+[00:00:37][Thread-1163][TRACE] looking for info for uid -8661804348592098130
+[00:00:37][Thread-1163][TRACE] [CLIENT] sent data to host
+[00:00:37][Thread-969][TRACE] first byte: 3
+[00:00:37][Thread-1166][TRACE] Host got request for info on uid -8661804348592098130, from NUID -1564798561315877248
+[00:00:37][Thread-1166][TRACE] Sending found data to NUID -1564798561315877248
+[00:00:37][Thread-968][TRACE] first byte: 3
+[00:00:37][Thread-968][TRACE] [CLIENT] got data
+[00:00:37][Thread-1166][TRACE] [HOST] sent data to NUID -1564798561315877248
+[00:00:37][Thread-1167][TRACE] com.globalization.strategy.CompanyInfo@504fae99
+[00:00:54][AWT-EventQueue-0][INFO] Engine shutting down

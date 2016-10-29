@@ -32,13 +32,18 @@ public class DirectConnectClient {
 							stream.write(b);
 							stream.write(data);
 							
-							Log.trace("[client] got data");
+							Log.trace("[CLIENT] got data");
 							
-							for(MessageListener listener:listeners){
-								listener.messageReceived(stream.toByteArray());
-							}
+							new Thread(){
+								public void run(){
+									for(MessageListener listener:listeners){
+										listener.messageReceived(stream.toByteArray());
+									}
+								}
+							}.start();
 							
 							if(hostConnection.isClosed()){
+								Log.info("[CLIENT] Host connection closed, no longer listening");
 								break;
 							}
 						}
@@ -55,8 +60,12 @@ public class DirectConnectClient {
 	}
 	
 	public void write(byte[] data) throws IOException{
-		hostConnection.getOutputStream().write(data);
-		hostConnection.getOutputStream().write((byte)'\n');
+		byte[] toSend = new byte[data.length];
+		toSend = data;
+		//toSend[toSend.length-1] = (byte)'\n';
+		hostConnection.getOutputStream().write(toSend);
+		//hostConnection.getOutputStream().write((byte)'\n');
+		Log.trace("[CLIENT] sent data to host");
 	}
 	
 	public void close(){
