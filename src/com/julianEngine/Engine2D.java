@@ -268,8 +268,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				
 				
 				//POST-INIT PLUGINS
-				loadingBar.setPercentFilled((float) 0); //set loading bar
-				loadingText.setText("Post-Initializing Plugins...");
+				loadingBar.setPercentFilled((float) .5); //set loading bar
+				//loadingText.setText("Post-Initializing Plugins...");
 				loadingText.centerX(engine.mainView);
 				
 				Thread.currentThread().setName(masterFile.getPluginID()+"-postInit");

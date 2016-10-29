@@ -4,6 +4,7 @@ import com.julianEngine.graphics.Frame;
 
 public interface Parent extends Shape{
 	public void addShape(Shape s);
+	public void removeShape(Shape s);
 	public Point getGFXPoint(Point p);
 	public Frame getContainingFrame();
 	public Frame getFrame();

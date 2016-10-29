@@ -109,6 +109,11 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		ready=true;
 	}
 	
+	public void setText(String text){
+		UIText.setText(text);
+		this.useCustomFont(true);
+	}
+	
 	public UIPolygonMask getMask(){
 		return buttonMask;
 	}
@@ -322,6 +327,11 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 
 	@Override
 	public void addShape(Shape s) {
+		//Don't do anything - We shouldn't be adding new shapes to this container, as it is just a container for two shapes:
+		//the text and the rectangle
+	}
+	
+	public void removeShape(Shape s){
 		//Don't do anything - We shouldn't be adding new shapes to this container, as it is just a container for two shapes:
 		//the text and the rectangle
 	}
