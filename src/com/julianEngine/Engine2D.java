@@ -43,7 +43,9 @@ import com.julianEngine.data.pluginCommunication.JDFMessageManager;
 import com.julianEngine.data.pluginCommunication.JDFMessageReceiver;
 import com.julianEngine.data.pluginCommunication.JDFMessageSender;
 import com.julianEngine.graphics.Camera;
+import com.julianEngine.graphics.CustomFont;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.graphics.UI.UIContainer;
 import com.julianEngine.graphics.external_windows.ErrorReporter;
 import com.julianEngine.graphics.gui.DebugToolsWindow;
 import com.julianEngine.graphics.shapes.ProgressBar;
@@ -205,19 +207,37 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				loadingScreen = masterFile.createLoadingScreen(loadingScreen, engine.mainView); //ask the master file for the load screen
 				Thread.currentThread().setName("ENGINE-main"); //change thread name back
 				
-				ProgressBar loadingBar = new ProgressBar(new Point(20, 100, 5), 300, 25); //create a progress bar for detailed loading progress
-				Text loadingText = new Text(new Point(20, 120, 5), "", Color.WHITE, new Font("Ariel", Font.PLAIN, 12), engine.mainView); //text to display loading progress on
+				int loadContainer_width = engine.mainView.getWidth();
+				int loadContainer_height = (int)((float)engine.mainView.getHeight()*(.25f)*(.3f));
+				UIContainer loadingContainer = new UIContainer(new Point(0, (int)(((.125f)*(float)engine.mainView.getHeight())+(float)loadContainer_height/2f), 1), loadContainer_width, loadContainer_height*2, loadingScreen);
+				loadingContainer.centerX(loadingScreen.getContainingFrame());
+				if(showLoadBar||debugMode){ //if we should show the loading bar, or if we are in debug name, add it to the loading screen
+					/*
+					loadingScreen.addShape(loadingBar);
+					loadingScreen.addShape(loadingText);
+					*/
+					loadingScreen.addShape(loadingContainer);
+				}
 				
+				int loadBar_width = (int)(.5*((float)loadContainer_width));
+				int loadBar_height = (int)((float)loadContainer_height*(1f));
+				
+				ProgressBar loadingBar = new ProgressBar(new Point(0, loadContainer_height*2, 5), loadBar_width, loadBar_height); //create a progress bar for detailed loading progress
+				Text loadingText = new Text(new Point(20, (int)(loadContainer_height*(.75f)), 5), " ", Color.WHITE, new Font("Ariel", Font.PLAIN, 12), engine.mainView); //text to display loading progress on
+				//loadingText.setCustomFont(new CustomFont(12, 0));
+				loadingText.fitCustomFontToContainer(new UIContainer(new Point(), loadContainer_width, (int)(loadContainer_height*(.75f))));
+				loadingText.useCustomFont(true);
 				//set up and stylize loading bar and loading text
 				loadingBar.setBarColor(Color.WHITE);
 				loadingBar.setBorderColor(Color.WHITE);
-				loadingBar.centerX(engine.mainView);
-				loadingText.centerX(engine.mainView);
+				loadingBar.centerX(loadingContainer.getFrame());
+				//loadingBar.centerY(loadingContainer.getFrame());
+				loadingText.centerX(loadingContainer.getFrame());
+				//loadingText.centerY(loadingContainer.getFrame());
 				
-				if(showLoadBar||debugMode){ //if we should show the loading bar, or if we are in debug name, add it to the loading screen
-					loadingScreen.addShape(loadingBar);
-					loadingScreen.addShape(loadingText);
-				}
+				loadingContainer.addShapes(loadingBar, loadingText);
+				//loadingContainer.setBorderColor(Color.magenta);
+				
 				
 				Thread customLoadThread; //thread to run custom loading code in - we put this in a new thread so we can limit the time spent on it, and keep load times low
 				

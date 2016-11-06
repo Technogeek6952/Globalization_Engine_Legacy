@@ -133,7 +133,7 @@ public class ProgressBar implements Shape {
 
 	@Override
 	public void centerY(Frame frame) {
-		int yPos = (frame.getWidth()-this.height)/2;
+		int yPos = (frame.getHeight()+this.height)/2;
 		topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
 	}
 

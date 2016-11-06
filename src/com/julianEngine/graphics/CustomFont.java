@@ -35,6 +35,7 @@ public class CustomFont {
 	}
 	
 	public void renderString(Point topLeft, Graphics2D graphics, String str, Parent parent, int wrapWidth, boolean wrap){
+		str = str.toUpperCase(); //convert string to upper case
 		if(getWidthOfString(str)==0){
 			Log.trace("0 width");
 		}
@@ -338,6 +339,19 @@ public class CustomFont {
 					}else if(c=='-'){
 						width += (float)height*(float)((float)imgWidth/(float)(2f*(float)imgHeight));
 						characterWidths.put(c, (float)((float)imgWidth/(float)(2f*(float)imgHeight)));
+					}else if (c=='.'){
+						/*
+						 * case '.':
+								dstWidth = (int) (.4f*this.height);
+								lineWidth += dstWidth;
+								point.setY(point.getY()+this.height-dstWidth);
+								strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+dstWidth, 0, 0, charImage.getWidth(), charImage.getHeight(), null);
+								point.setY(yPos);
+								point.setX(point.getX()+dstWidth);
+								break;
+						 */
+						width += (int) (.4f*this.height);
+						characterWidths.put(c,  .4f);
 					}else{
 						characterWidths.put(c, ((float)imgWidth/(float)imgHeight));
 						width += (float)this.height*(float)((float)imgWidth/(float)imgHeight);

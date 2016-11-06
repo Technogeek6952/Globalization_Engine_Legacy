@@ -37,6 +37,9 @@ public class Text implements Shape{
 	private Parent parent;
 	private int wrapWidth;
 	private boolean wrap = false;
+	private Frame centerFrame = null;
+	private boolean centerX = false;
+	private boolean centerY = false;
 	
 	/*--------Code--------------------------*/
 	//Constructors
@@ -105,6 +108,17 @@ public class Text implements Shape{
 	public void setText(String newText){
 		text = newText;
 		textWidth = metrics.stringWidth(newText);
+		
+		/*
+		if (centerFrame!=null){
+			if (centerX){
+				centerX(centerFrame);
+			}
+			if (centerY){
+				centerY(centerFrame);
+			}
+		}
+		*/
 	}
 	
 	public void preRenderText(String text){
@@ -166,6 +180,8 @@ public class Text implements Shape{
 
 	@Override
 	public void centerX(Frame frame) {
+		centerFrame = frame;
+		centerX = true;
 		if(!useCustomFont){
 			int xPos = (frame.getWidth()-this.textWidth)/2;
 			topLeft = new Point(xPos, topLeft.getY(), topLeft.getZ());
@@ -177,8 +193,10 @@ public class Text implements Shape{
 
 	@Override
 	public void centerY(Frame frame) {
+		centerFrame = frame;
+		centerY = true;
 		if(!useCustomFont){
-			int yPos = (frame.getWidth()-this.textHeight)/2;
+			int yPos = (frame.getHeight()+this.textHeight)/2;
 			topLeft = new Point(topLeft.getX(), yPos, topLeft.getZ());
 		}else{
 			int yPos = (frame.getHeight()+this.customFont.getHeight())/2;
