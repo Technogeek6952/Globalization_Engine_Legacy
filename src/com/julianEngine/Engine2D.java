@@ -51,7 +51,7 @@ import com.julianEngine.misc.UIConsoleWindow;
 import com.julianEngine.utility.Log;
 
 /**
- * Julian Engine v1.2 - coded in Java with default libraries.
+ * Julian Engine v1.2 - coded in Java with default libraries. Copyright SUYB Games 2016 ©
  */
 public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	/*--------Public Static Variables-------*/
