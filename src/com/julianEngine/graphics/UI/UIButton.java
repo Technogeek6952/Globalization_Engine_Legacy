@@ -109,6 +109,11 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		ready=true;
 	}
 	
+	public void setText(String text){
+		UIText.setText(text);
+		this.useCustomFont(true);
+	}
+	
 	public UIPolygonMask getMask(){
 		return buttonMask;
 	}
@@ -325,6 +330,11 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		//Don't do anything - We shouldn't be adding new shapes to this container, as it is just a container for two shapes:
 		//the text and the rectangle
 	}
+	
+	public void removeShape(Shape s){
+		//Don't do anything - We shouldn't be adding new shapes to this container, as it is just a container for two shapes:
+		//the text and the rectangle
+	}
 
 	@Override
 	public Point getGFXPoint(Point p) {
@@ -372,5 +382,11 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	@Override
 	public Frame getFrame(){
 		return this.getContainingFrame();
+	}
+
+	@Override
+	public void preLoad() {
+		// TODO Auto-generated method stub
+		
 	}
 }

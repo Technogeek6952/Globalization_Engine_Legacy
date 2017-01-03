@@ -1,6 +1,7 @@
 package com.julianEngine.data.networking;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -22,22 +23,30 @@ public class DirectConnectClient {
 			new Thread(){
 				public void run(){
 					try {
-						BufferedReader in = new BufferedReader(new InputStreamReader(hostConnection.getInputStream()));
-						
 						while(true){
-							byte[] data = in.readLine().getBytes();
+							byte b = (byte) hostConnection.getInputStream().read();
+							Log.trace("first byte: "+b);
+							byte[] data = new byte[hostConnection.getInputStream().available()];
+							hostConnection.getInputStream().read(data);
+							ByteArrayOutputStream stream = new ByteArrayOutputStream();
+							stream.write(b);
+							stream.write(data);
 							
-							Log.trace("[client] got data");
+							Log.trace("[CLIENT] got data");
 							
-							for(MessageListener listener:listeners){
-								listener.messageReceived(data);
-							}
+							new Thread(){
+								public void run(){
+									for(MessageListener listener:listeners){
+										listener.messageReceived(stream.toByteArray());
+									}
+								}
+							}.start();
 							
 							if(hostConnection.isClosed()){
+								Log.info("[CLIENT] Host connection closed, no longer listening");
 								break;
 							}
 						}
-						in.close();
 					} catch (IOException e) {
 						Log.error("Error getting input stream for socket");
 						e.printStackTrace();
@@ -51,8 +60,12 @@ public class DirectConnectClient {
 	}
 	
 	public void write(byte[] data) throws IOException{
-		hostConnection.getOutputStream().write(data);
-		hostConnection.getOutputStream().write((byte)'\n');
+		byte[] toSend = new byte[data.length];
+		toSend = data;
+		//toSend[toSend.length-1] = (byte)'\n';
+		hostConnection.getOutputStream().write(toSend);
+		//hostConnection.getOutputStream().write((byte)'\n');
+		Log.trace("[CLIENT] sent data to host");
 	}
 	
 	public void close(){

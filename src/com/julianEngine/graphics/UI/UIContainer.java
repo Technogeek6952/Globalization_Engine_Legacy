@@ -77,6 +77,11 @@ public class UIContainer implements Shape, Parent{
 		s.setParent(this);
 	}
 	
+	public void removeShape(Shape s){
+		shapes.remove(s);
+		s.setParent(null);
+	}
+	
 	public void addShapes(Shape... shapes){
 		for(Shape shape:shapes){
 			addShape(shape);
@@ -288,5 +293,11 @@ public class UIContainer implements Shape, Parent{
 		SCROLL_Y,
 		ZOOM,
 		NONE;
+	}
+
+	@Override
+	public void preLoad() {
+		// TODO Auto-generated method stub
+		
 	}
 }

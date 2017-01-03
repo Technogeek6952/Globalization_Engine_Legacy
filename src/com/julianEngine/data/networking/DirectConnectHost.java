@@ -1,7 +1,10 @@
 package com.julianEngine.data.networking;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -41,21 +44,29 @@ public class DirectConnectHost {
 							new Thread(){
 								public void run(){
 									try {
-										BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 										while(true){
-											byte[] data = in.readLine().getBytes();
+											byte b = (byte) client.getInputStream().read();
+											Log.trace("first byte: "+b);
+											byte[] data = new byte[client.getInputStream().available()];
+											client.getInputStream().read(data);
+											ByteArrayOutputStream stream = new ByteArrayOutputStream();
+											stream.write(b);
+											stream.write(data);
 											
-											for(Long filter:messageListeners.keySet()){
-												if(filter==uid){
-													messageListeners.get(filter).clientMessageReceived(uid, data);
+											new Thread(){
+												public void run(){
+													for(Long filter:messageListeners.keySet()){
+														if(filter==uid){
+															messageListeners.get(filter).clientMessageReceived(uid, stream.toByteArray());
+														}
+													}
 												}
-											}
+											}.start();
 											
 											if(server.isClosed()){
 												break;
 											}
 										}
-										in.close();
 									} catch (Exception e) {
 										Log.error("Error while reading from socket");
 										e.printStackTrace();
@@ -107,9 +118,16 @@ public class DirectConnectHost {
 	}
 	
 	public void write(byte[] data, long uid) throws IOException{
-		clients.get(uid).getOutputStream().write(data);
-		clients.get(uid).getOutputStream().write((byte)'\n');
-		Log.trace("wrote data[host]");
+		if(!(clients.get(uid)==null)){
+			byte[] toSend = new byte[data.length];
+			toSend = data;
+			//toSend[toSend.length-1] = (byte)'\n';
+			clients.get(uid).getOutputStream().write(toSend);
+			//clients.get(uid).getOutputStream().write((byte)'\n');
+			Log.trace("[HOST] sent data to NUID "+uid);
+		}else{
+			Log.error("NUID "+uid+" not found");
+		}
 	}
 	
 	public static interface NewClientListener{

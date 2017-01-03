@@ -42,6 +42,9 @@ public class Camera {
 	
 	public void moveToWorld(int id, boolean save){
 		if(World.getWorldForID(id)!=null){
+			//first preload the new world
+			World.getWorldForID(id).preLoad();
+			
 			if(save)
 				worldHistory.push(currentWorld); //if we are going to change worlds, push first
 			World.getWorldForID(currentID).removeCamera(this);
