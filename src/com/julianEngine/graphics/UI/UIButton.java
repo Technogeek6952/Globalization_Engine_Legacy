@@ -383,4 +383,10 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	public Frame getFrame(){
 		return this.getContainingFrame();
 	}
+
+	@Override
+	public void preLoad() {
+		// TODO Auto-generated method stub
+		
+	}
 }

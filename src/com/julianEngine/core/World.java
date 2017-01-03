@@ -3,6 +3,7 @@ package com.julianEngine.core;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.julianEngine.Engine2D;
 import com.julianEngine.graphics.Camera;
@@ -21,6 +22,7 @@ public class World implements Parent{
 	int worldID;
 	ArrayList<Shape> shapes = new ArrayList<Shape>();
 	ArrayList<Camera> attachedCameras = new ArrayList<Camera>();
+	List<PreLoadListener> preLoadListeners = new ArrayList<PreLoadListener>();
 	int activeCamera = 0;
 	LoadExecutor onLoad = null;
 	
@@ -63,6 +65,11 @@ public class World implements Parent{
 	public void load(){
 		if(onLoad!=null)
 			onLoad.execute();
+	}
+	
+	//clears all shapes from the world
+	public void clear(){
+		shapes.clear();
 	}
 	
 	public void attachCamera(Camera c){
@@ -273,5 +280,27 @@ public class World implements Parent{
 	@Override
 	public Frame getFrame(){
 		return this.getContainingFrame();
+	}
+	
+	//custom worlds should overload this and call super.preLoad() at the top, to keep this functionality
+	@Override
+	public void preLoad(){
+		for (PreLoadListener listener:preLoadListeners){
+			listener.preLoad();
+		}
+		
+		for (Shape s:shapes){
+			if (Parent.class.isInstance(s)){
+				((Parent)s).preLoad();
+			}
+		}
+	}
+	
+	public void addPreLoadListener(PreLoadListener listener){
+		preLoadListeners.add(listener);
+	}
+	
+	public static interface PreLoadListener{
+		public void preLoad();
 	}
 }

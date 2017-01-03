@@ -647,56 +647,348 @@
 [00:00:00][ENGINE-main][TRACE] Proposing Pre-Initializer
 [00:00:00][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
 [00:00:00][ENGINE-preInitializer][TRACE] Globalization pre-init
-[00:00:01][game_globalization-init][INFO] Globalization Master File Init
-[00:00:01][game_globalization-init][TRACE] No registered file for: font//.png
-[00:00:01][game_globalization-init][WARNING] unknown char, replacing with ?
-[00:00:06][game_globalization-init][ERROR] Error initializing music line
-[00:00:07][game_globalization-postInit][INFO] Globalization Master File Post Init
-[00:00:07][game_globalization-postInit][TRACE] No registered file for: font/È.png
-[00:00:07][game_globalization-postInit][WARNING] unknown char, replacing with ?
-[00:00:09][ENGINE-main][TRACE] about to make title screen
-[00:00:09][game_globalization-createMainScreen][TRACE] Constructing title screen...
-[00:00:09][ENGINE-main][TRACE] made title screen
-[00:00:10][game_globalization-main][INFO] Globalization Master File Init Game
+[00:00:00][game_globalization-init][INFO] Globalization Master File Init
+[00:00:00][game_globalization-init][TRACE] No registered file for: font//.png
+[00:00:00][game_globalization-init][WARNING] unknown char, replacing with ?
+[00:00:05][game_globalization-init][ERROR] Error initializing music line
+[00:00:05][game_globalization-postInit][INFO] Globalization Master File Post Init
+[00:00:05][game_globalization-postInit][TRACE] No registered file for: font/È.png
+[00:00:05][game_globalization-postInit][WARNING] unknown char, replacing with ?
+[00:00:06][ENGINE-main][TRACE] about to make title screen
+[00:00:06][game_globalization-createMainScreen][TRACE] Constructing title screen...
+[00:00:06][ENGINE-main][TRACE] made title screen
+[00:00:07][game_globalization-main][INFO] Globalization Master File Init Game
 [00:00:13][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:13][Thread-967][INFO] New client connection from: 127.0.0.1 on port: 1234
-[00:00:13][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
-[00:00:13][Thread-969][TRACE] first byte: 2
-[00:00:13][Thread-970][TRACE] Got request for new gameconnection
-[00:00:13][Thread-970][TRACE] Got object stream
-[00:00:13][Thread-970][TRACE] Got type
-[00:00:13][Thread-970][TRACE] got player
-[00:00:13][Thread-970][TRACE] Got connection with uid: 1927912159224602971
-[00:00:13][Thread-970][TRACE] Mapped game UID (1927912159224602971) to network UID (8099264940110110467)
-[00:00:13][Thread-970][TRACE] [HOST] sent data to NUID 8099264940110110467
-[00:00:13][Thread-968][TRACE] first byte: 2
-[00:00:13][Thread-968][TRACE] [CLIENT] got data
-[00:00:13][Thread-971][INFO] Got a gameconnection with uid: 1927912159224602971
 [00:00:13][pool-2-thread-1][TRACE] No registered file for: font//.png
 [00:00:13][pool-2-thread-1][WARNING] unknown char, replacing with ?
 [00:00:13][pool-2-thread-1][TRACE] No registered file for: font//.png
 [00:00:13][pool-2-thread-1][WARNING] unknown char, replacing with ?
-[00:00:14][Thread-6][TRACE] entering game
-[00:00:14][Thread-6][TRACE] looking for info for uid 1927912159224602971
-[00:00:14][Thread-969][TRACE] first byte: 3
-[00:00:14][Thread-6][TRACE] [CLIENT] sent data to host
-[00:00:14][Thread-972][TRACE] Host got request for info on uid 1927912159224602971, from NUID 8099264940110110467
-[00:00:14][Thread-972][TRACE] Sending found data to NUID 8099264940110110467
-[00:00:14][Thread-968][TRACE] first byte: 3
-[00:00:14][Thread-972][TRACE] [HOST] sent data to NUID 8099264940110110467
-[00:00:14][Thread-968][TRACE] [CLIENT] got data
-[00:00:14][Thread-973][TRACE] com.globalization.strategy.CompanyInfo@19bfb544
-[00:00:14][Thread-6][TRACE] looking for info for uid 1927912159224602971
-[00:00:14][Thread-969][TRACE] first byte: 3
-[00:00:14][Thread-6][TRACE] [CLIENT] sent data to host
-[00:00:14][Thread-974][TRACE] Host got request for info on uid 1927912159224602971, from NUID 8099264940110110467
-[00:00:14][Thread-974][TRACE] Sending found data to NUID 8099264940110110467
-[00:00:14][Thread-968][TRACE] first byte: 3
-[00:00:14][Thread-974][TRACE] [HOST] sent data to NUID 8099264940110110467
-[00:00:14][Thread-968][TRACE] [CLIENT] got data
-[00:00:14][Thread-975][TRACE] com.globalization.strategy.CompanyInfo@52c35f8c
-[00:00:15][AWT-EventQueue-0][TRACE] mouse pressed inside map view
-[00:00:15][AWT-EventQueue-0][TRACE] Algeria clicked
-[00:00:17][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
-[00:00:25][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
-[00:00:40][AWT-EventQueue-0][INFO] Engine shutting down
+[00:00:13][Thread-6][TRACE] entering game
+[00:00:13][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:00:14][AWT-EventQueue-0][TRACE] Algeria clicked
+[00:00:15][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:00:15][AWT-EventQueue-0][TRACE] Buildings in algeria:algiers:
+[00:00:15][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 0 (0)
+[00:00:17][AWT-EventQueue-0][TRACE] New com.globalization.strategy.buildings.GB_Headquarters building requested in algeria:algiers
+[00:00:17][AWT-EventQueue-0][TRACE] Adding new city algeria:algiers to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city algeria:oran to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city algeria:constantine to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city algeria:annaba to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city algeria:batna to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city algeria:bechar to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedstates:newyorkcity to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedstates:losangeles to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedstates:chicago to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedstates:dallas to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedstates:miami to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedstates:minneapolis to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city argentina:buenosaires to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city argentina:cordoba to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city argentina:mendoza to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city argentina:rosario to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city argentina:bahiablanca to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city argentina:neuquen to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city australia:sydney to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city australia:melbourne to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city australia:brisbane to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city australia:perth to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city australia:adelaide to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city australia:canberra to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city balkan:budapest to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city balkan:athens to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city balkan:zagreb to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city balkan:ljubljana to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city balkan:belgrade to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city balkan:sofia to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city belgium:brussels to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city belgium:antwerp to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city belgium:ghent to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city belgium:charleroi to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city belgium:liege to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city belgium:bruges to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city botswana:gaborone to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city botswana:francistown to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city botswana:maun to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city botswana:selebiphikwe to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city botswana:serowe to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city botswana:palapye to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city brazil:riodejaneiro to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city brazil:saopaulo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city brazil:brasilia to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city brazil:portoalegre to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city brazil:fortaleza to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city brazil:salvador to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city canada:toronto to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city canada:montreal to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city canada:vancouver to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city canada:ottawa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city canada:calgary to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city canada:quebec to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city centralamerica:panamacity to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city centralamerica:sansalvador to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city centralamerica:sanjose to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city centralamerica:guatemala to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city centralamerica:tegucigalpa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city centralamerica:managua to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city chile:santiago to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city chile:valparaiso to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city chile:concepcion to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city chile:laserena to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city chile:antofagasta to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city chile:temuco to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city china:shanghai to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city china:guangzhou to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city china:bejing to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city china:chongqing to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city china:wuhan to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city china:lhasa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city colombia:bogota to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city colombia:medellin to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city colombia:cali to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city colombia:barranquilla to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city colombia:cucuta to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city colombia:pasto to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city easterneurope:warsaw to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city easterneurope:kiev to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city easterneurope:prague to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city easterneurope:bratislava to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city easterneurope:bucharest to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city easterneurope:chisinau to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city egypt:cairo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city egypt:portsaid to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city egypt:alexandria to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city egypt:luxor to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city egypt:suez to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city egypt:aswan to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city ethiopia:addis to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city ethiopia:gondar to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city ethiopia:mekele to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city ethiopia:awasa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city ethiopia:diredawa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city ethiopia:arbaminch to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city france:paris to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city france:marseille to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city france:lyon to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city france:toulouse to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city france:nantes to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city france:strasbourg to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city germany:berlin to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city germany:hamburg to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city germany:munich to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city germany:cologne to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city germany:frankfurt to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city germany:leipzig to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city india:newdelhi to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city india:mumbai to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city india:bangalore to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city india:hyderabad to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city india:kolkata to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city india:ahmedabad to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city indonesia:jakarta to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city indonesia:suravaya to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city indonesia:medan to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city indonesia:palembang to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city indonesia:makassar to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city indonesia:samarinda to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city israel:jerusalem to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city israel:telaviv to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city israel:haifa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city israel:beersheba to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city israel:nazareth to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city israel:rishonlezion to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city italy:rome to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city italy:milan to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city italy:naples to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city italy:palermo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city italy:genoa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city italy:bari to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city japan:tokyo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city japan:osaka to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city japan:sapporo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city japan:fukuoka to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city japan:yokohama to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city japan:nagoya to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city kenya:nairobi to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city kenya:mombasa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city kenya:kisumu to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city kenya:nakuru to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city kenya:eldoret to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city kenya:malindi to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city lebanon:beirut to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city lebanon:tripoli to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city lebanon:tyre to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city lebanon:sidon to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city lebanon:nabatieh to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city lebanon:zahle to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city madagascar:antananarivo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city madagascar:toamasina to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city madagascar:mahajanga to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city madagascar:fianarantsoa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city madagascar:toliara to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city madagascar:antisiranana to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city malaysia:kualalumpur to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city malaysia:johorbahru to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city malaysia:kuching to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city malaysia:ipoh to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city malaysia:kotakinabalu to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city malaysia:georgetown to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city mexico:mexicocity to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city mexico:guadaljara to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city mexico:monterrey to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city mexico:tijuana to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city mexico:merida to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city mexico:acapulco to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city morocco:casablanca to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city morocco:fes to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city morocco:tangier to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city morocco:marrakech to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city morocco:oujda to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city morocco:agadir to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city namibia:windhoek to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city namibia:walvisbay to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city namibia:rundu to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city namibia:oshakati to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city namibia:katimamulilo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city namibia:keetmanshoop to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city netherlands:amsterdam to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city netherlands:thehague to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city netherlands:rotterdam to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city netherlands:utrecht to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city netherlands:eindhoven to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city netherlands:groningen to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city newzealand:auckland to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city newzealand:wellington to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city newzealand:christchurch to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city newzealand:hamilton to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city newzealand:dunedin to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city newzealand:nelson to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city nigeria:lagos to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city nigeria:kano to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city nigeria:kaduna to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city nigeria:portharcourt to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city nigeria:benincity to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city nigeria:maiduguri to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city pakistan:karachi to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city pakistan:lahore to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city pakistan:hyderabad to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city pakistan:islamabad to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city pakistan:multan to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city pakistan:quetta to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city peru:lima to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city peru:trujillo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city peru:arequipa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city peru:chiclayo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city peru:cusco to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city peru:iquitos to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city philippines:manila to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city philippines:davaocity to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city philippines:cebucity to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city philippines:zamboanga to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city philippines:cagayandeoro to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city philippines:bacolod to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city russia:moscow to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city russia:saintpetersburg to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city russia:nobosibirsk to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city russia:yekaterinburg to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city russia:novgorod to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city russia:rostovondon to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city saudiarabia:riyadh to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city saudiarabia:jeddah to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city saudiarabia:mecca to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city saudiarabia:medina to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city saudiarabia:dammam to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city saudiarabia:khamismushait to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city scandinavia:stockholm to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city scandinavia:oslo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city scandinavia:helsinki to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city scandinavia:copenhagen to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city scandinavia:reykjavik to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city scandinavia:gothenburg to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southafrica:capetown to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southafrica:pretoria to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southafrica:bloemfontein to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southafrica:durban to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southafrica:portelizabeth to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southafrica:johannesburg to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southkorea:seoul to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southkorea:busan to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southkorea:incheon to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southkorea:daegu to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southkorea:daejeon to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city southkorea:gwangju to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city spain:madrid to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city spain:barcelona to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city spain:valencia to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city spain:seville to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city spain:zaragoza to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city spain:bilbao to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city thailand:bangkok to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city thailand:hatyai to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city thailand:nakhonratchasima to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city thailand:chiangmai to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city thailand:udonthani to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city thailand:suratthani to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city turkey:istanbul to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city turkey:ankara to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city turkey:izmir to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city turkey:bursa to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city turkey:adana to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city turkey:samsun to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedarabemirites:dubai to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedarabemirites:abudhabi to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedarabemirites:sharjah to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedarabemirites:alain to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedarabemirites:ajman to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedarabemirites:madinatzayed to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedkingdom:london to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedkingdom:manchester to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedkingdom:glasgow to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedkingdom:southampton to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedkingdom:newcastle to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city unitedkingdom:belfast to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city venezuela:caracas to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city venezuela:maracaibo to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city venezuela:valencia to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city venezuela:ciudadguyana to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city venezuela:sancristobal to tracked cities list
+[00:00:20][Thread-409][TRACE] Adding new city venezuela:maturin to tracked cities list
+[00:00:23][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:00:23][AWT-EventQueue-0][TRACE] Algeria clicked
+[00:00:24][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:00:24][AWT-EventQueue-0][TRACE] Buildings in algeria:algiers:
+[00:00:24][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 1 (0)
+[00:00:30][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:00:30][AWT-EventQueue-0][TRACE] Buildings in algeria:algiers:
+[00:00:30][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 1 (0)
+[00:00:53][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:00:53][AWT-EventQueue-0][TRACE] America clicked
+[00:00:56][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:00:56][AWT-EventQueue-0][TRACE] Russia clicked
+[00:00:59][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:00:59][AWT-EventQueue-0][TRACE] America clicked
+[00:01:02][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:01:02][AWT-EventQueue-0][TRACE] Canada clicked
+[00:01:05][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:01:05][AWT-EventQueue-0][TRACE] South Africa clicked
+[00:01:07][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:01:09][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:01:09][AWT-EventQueue-0][TRACE] United Kingdom clicked
+[00:01:16][Thread-402][TRACE] music done
+[00:01:23][AWT-EventQueue-0][TRACE] mouse pressed inside map view
+[00:01:23][AWT-EventQueue-0][TRACE] Algeria clicked
+[00:01:25][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:01:25][AWT-EventQueue-0][TRACE] Buildings in algeria:oran:
+[00:01:25][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 0 (0)
+[00:01:27][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:01:27][AWT-EventQueue-0][TRACE] Buildings in algeria:constantine:
+[00:01:27][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 0 (0)
+[00:01:29][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:01:29][AWT-EventQueue-0][TRACE] Buildings in algeria:bechar:
+[00:01:29][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 0 (0)
+[00:01:31][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:01:31][AWT-EventQueue-0][TRACE] Buildings in algeria:algiers:
+[00:01:31][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 1 (0)
+[00:01:33][AWT-EventQueue-0][TRACE] Loading city screen - updating buildings
+[00:01:33][AWT-EventQueue-0][TRACE] Buildings in algeria:algiers:
+[00:01:33][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 1 (0)
+[00:01:36][AWT-EventQueue-0][INFO] Engine shutting down

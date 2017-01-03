@@ -294,4 +294,10 @@ public class UIContainer implements Shape, Parent{
 		ZOOM,
 		NONE;
 	}
+
+	@Override
+	public void preLoad() {
+		// TODO Auto-generated method stub
+		
+	}
 }
