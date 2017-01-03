@@ -53,7 +53,7 @@ import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
 
 /**
- * Julian Engine v1.2 - coded in Java with default libraries. Copyright SUYB Games 2016 ©
+ * Julian Engine v1.2 - coded in Java with default libraries.
  */
 public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	/*--------Public Static Variables-------*/
