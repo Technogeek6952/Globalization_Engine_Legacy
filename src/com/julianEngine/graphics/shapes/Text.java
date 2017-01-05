@@ -99,6 +99,7 @@ public class Text implements Shape{
 	
 	public void useCustomFont(boolean b){
 		useCustomFont = b;
+		textHeight = customFont.getHeight();
 	}
 	
 	public void setCustomFont(CustomFont c){

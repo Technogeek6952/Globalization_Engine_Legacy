@@ -21,10 +21,6 @@ public class CustomFont {
 		this.padding = padding;
 	}
 	
-	public void renderLetter(Point topLeft, Graphics2D graphics, char letter){
-		
-	}
-	
 	public int getHeight(){
 		return height;
 	}
@@ -95,6 +91,7 @@ public class CustomFont {
 						point.setY(point.getY()+(this.height/4));
 						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
 						point.setY(yPos);
+						point.setX(point.getX()+dstWidth);
 						break;
 					case '-':
 						dstWidth = imgWidth*((this.height/2)/imgHeight);
@@ -102,6 +99,7 @@ public class CustomFont {
 						point.setY(point.getY()+(this.height/4));
 						strImgGfx.drawImage(charImage, (int) point.getX(), (int) point.getY(), (int) point.getX()+dstWidth, (int) point.getY()+(this.height/2), 0, 0, charImage.getWidth(), charImage.getHeight(), null);
 						point.setY(yPos);
+						point.setX(point.getX()+dstWidth);
 						break;
 					case '.':
 						dstWidth = (int) (.4f*this.height);
