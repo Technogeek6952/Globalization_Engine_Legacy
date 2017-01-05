@@ -167,9 +167,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	}
 	
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
-		if(anchored){
-			
-		}
+		Composite originalComposite = ((Graphics2D)graphics).getComposite();
+		
 		if(!enabled){
 			Composite alphaComp = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f);
 			((Graphics2D) graphics).setComposite(alphaComp);
@@ -215,6 +214,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		topLeft = oldTL;
 		
 		buttonMask.draw(graphics, shift);
+		
+		((Graphics2D)graphics).setComposite(originalComposite); //reset the composite at the end to avoid accidental side effects.
 	}
 	
 	public boolean isReady(){
