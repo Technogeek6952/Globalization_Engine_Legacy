@@ -653,41 +653,13 @@
 [00:00:00][game_globalization-init][TRACE] Created mask for: Australia
 [00:00:00][Thread-10][TRACE] UI bitmap mask about to ask for listener
 [00:00:00][Thread-10][TRACE] UI Mask Ready (bitmap)
-[00:00:00][game_globalization-init][TRACE] Created mask for: Balkan Region
-[00:00:00][Thread-11][TRACE] UI bitmap mask about to ask for listener
-[00:00:00][Thread-11][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Balkan Region
+[00:00:01][Thread-11][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-11][TRACE] UI Mask Ready (bitmap)
 [00:00:01][game_globalization-init][TRACE] Created mask for: Belgium
 [00:00:01][Thread-12][TRACE] UI bitmap mask about to ask for listener
 [00:00:01][Thread-12][TRACE] UI Mask Ready (bitmap)
+[00:00:01][AWT-EventQueue-0][INFO] Engine shutting down
 [00:00:01][game_globalization-init][TRACE] Created mask for: Botswana
 [00:00:01][Thread-13][TRACE] UI bitmap mask about to ask for listener
 [00:00:01][Thread-13][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Brazil
-[00:00:01][Thread-14][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-14][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Canada
-[00:00:01][Thread-15][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-15][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Panama
-[00:00:01][Thread-16][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-16][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Chile
-[00:00:01][Thread-17][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-17][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: China
-[00:00:01][Thread-18][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-18][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Colombia
-[00:00:01][Thread-19][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-19][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Poland
-[00:00:01][Thread-20][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-20][TRACE] UI Mask Ready (bitmap)
-[00:00:01][AWT-EventQueue-0][INFO] Engine shutting down
-[00:00:01][game_globalization-init][ERROR] Error while loading resource: images/bitmaps/Egypt Bitmap.png
-[00:00:01][game_globalization-init][TRACE] Created mask for: Egypt
-[00:00:01][Thread-21][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-21][TRACE] UI Mask Ready (bitmap)
-[00:00:01][game_globalization-init][TRACE] Created mask for: Ethiopia
-[00:00:01][Thread-22][TRACE] UI bitmap mask about to ask for listener
-[00:00:01][Thread-22][TRACE] UI Mask Ready (bitmap)
