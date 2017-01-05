@@ -11,13 +11,18 @@ import java.io.PrintStream;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
+import com.julianEngine.config.UserConfiguration;
 import com.julianEngine.utility.TextAreaOutputStream;
 
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 import java.awt.SystemColor;
@@ -81,11 +86,15 @@ public class DebugToolsWindow extends JFrame {
 		
 		consoleOut = new PrintStream(new TextAreaOutputStream(textArea, 100_000));
 		
-		JPanel panel = new JPanel();
-		tabbedPane.addTab("User Variables", null, panel, null);
+		JPanel variablesPanel = new JPanel();
+		variablesPanel.setLayout(new BorderLayout());
+		tabbedPane.addTab("User Variables", null, variablesPanel, null);
 		
-		table = new JTable();
-		panel.add(table);
+		table = new UserConfigTable();
+		JScrollPane variablesTable = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		variablesTable.setViewportView(table);
+		
+		variablesPanel.add(variablesTable, BorderLayout.CENTER);
 		
 		ActionListener sendAction = new ActionListener(){
 			@Override
