@@ -220,20 +220,20 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				}
 				
 				int loadBar_width = (int)(.5*((float)loadContainer_width));
-				int loadBar_height = (int)((float)loadContainer_height*(1f));
+				int loadBar_height = (int)((float)loadContainer_height*(.75f));
 				
 				ProgressBar loadingBar = new ProgressBar(new Point(0, loadContainer_height*2, 5), loadBar_width, loadBar_height); //create a progress bar for detailed loading progress
 				Text loadingText = new Text(new Point(20, (int)(loadContainer_height*(.75f)), 5), " ", Color.WHITE, new Font("Ariel", Font.PLAIN, 12), engine.mainView); //text to display loading progress on
 				//loadingText.setCustomFont(new CustomFont(12, 0));
-				loadingText.fitCustomFontToContainer(new UIContainer(new Point(), loadContainer_width, (int)(loadContainer_height*(.75f))));
+				loadingText.fitCustomFontToContainer(new UIContainer(new Point(), loadContainer_width, (int)(loadContainer_height*(.4f))));
 				loadingText.useCustomFont(true);
 				//set up and stylize loading bar and loading text
 				loadingBar.setBarColor(Color.WHITE);
 				loadingBar.setBorderColor(Color.WHITE);
 				loadingBar.centerX(loadingContainer.getFrame());
-				//loadingBar.centerY(loadingContainer.getFrame());
+				loadingBar.centerY(loadingContainer.getFrame());
 				loadingText.centerX(loadingContainer.getFrame());
-				//loadingText.centerY(loadingContainer.getFrame());
+				loadingText.centerY(loadingContainer.getFrame());
 				
 				loadingContainer.addShapes(loadingBar, loadingText);
 				//loadingContainer.setBorderColor(Color.magenta);

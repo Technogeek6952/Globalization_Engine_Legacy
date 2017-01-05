@@ -19,8 +19,6 @@
 [00:00:00][ENGINE-main][TRACE] Main camera set up
 [00:00:00][ENGINE-main][TRACE] Render loop set up
 [00:00:00][ENGINE-main][TRACE] Loading plugins...
-[00:00:00][pool-2-thread-1][ERROR] Error in render loop: 
-[00:00:00][pool-2-thread-1][WARNING] Elaina detected in the matrix... Attempting to eliminate...
 [00:00:00][ENGINE-main][TRACE] Loading resource file: ./Data/Globalization.jrf
 [00:00:00][ENGINE-main][TRACE] Checksum passed
 [00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
@@ -654,7 +652,7 @@
 [00:00:00][game_globalization-init][INFO] Globalization Master File Init
 [00:00:00][game_globalization-init][TRACE] No registered file for: font//.png
 [00:00:00][game_globalization-init][WARNING] unknown char, replacing with ?
-[00:00:03][game_globalization-init][ERROR] Error initializing music line
+[00:00:04][game_globalization-init][ERROR] Error initializing music line
 [00:00:04][game_globalization-postInit][INFO] Globalization Master File Post Init
 [00:00:04][ENGINE-main][TRACE] about to make title screen
 [00:00:04][game_globalization-createMainScreen][TRACE] Constructing title screen...
