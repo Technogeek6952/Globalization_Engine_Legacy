@@ -25,6 +25,8 @@
 [00:00:00][ENGINE-main][TRACE] Main camera set up
 [00:00:00][ENGINE-main][TRACE] Render loop set up
 [00:00:00][ENGINE-main][TRACE] Loading plugins...
+[00:00:00][pool-2-thread-1][ERROR] Error in render loop: 
+[00:00:00][pool-2-thread-1][WARNING] Elaina detected in the matrix... Attempting to eliminate...
 [00:00:00][ENGINE-main][TRACE] Loading resource file: ./Data/Globalization.jrf
 [00:00:00][ENGINE-main][TRACE] Checksum passed
 [00:00:00][ENGINE-main][TRACE] DATA TYPE: Image File (PNG)
@@ -664,5 +666,3 @@
 [00:00:04][ENGINE-main][TRACE] made title screen
 [00:00:05][game_globalization-main][INFO] Globalization Master File Init Game
 [00:00:05][game_globalization-main][ERROR] Error initializing music line
-[00:00:09][AWT-EventQueue-0][TRACE] Max gain: 6.0206
-[00:00:23][AWT-EventQueue-0][INFO] Engine shutting down

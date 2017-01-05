@@ -607,7 +607,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	
 	//returns an instance of the master file
 	private static JDFMaster loadMasterFile() throws NoMasterDataFileFoundException, MultipleMasterFilesFoundException, MultipleMasterClassesException, NoMasterClassFoundException{
-		File dataDir = new File("./Data"); //points to /Data directory
+		File dataDir = new File(System.getProperty("user.dir"), "./Data"); //points to /Data directory
 		
 		//Get an array of files in the data directory that end in .jdm (Julian Data Master)
 		File[] dataFiles = dataDir.listFiles(new FileFilter(){
@@ -651,7 +651,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	//returns an ArrayList of plugin files - in order based on load order - and checks for dependencies
 	private static ArrayList<JDFPlugin> loadPluginFiles(){
 		ArrayList<JDFPlugin> loadedPlugins = new ArrayList<JDFPlugin>();
-		File dataDir = new File("./Data"); //points to /Data directory
+		File dataDir = new File(System.getProperty("user.dir"), "./Data"); //points to /Data directory
 		
 		//Get an array of files in the data directory that end in .jdp (Julian Data Plugin)
 		File[] dataFiles = dataDir.listFiles(new FileFilter(){

@@ -30,7 +30,7 @@ public class UserConfiguration {
 	private static HashMap<String, Character> characters = new HashMap<String, Character>();
 	
 	public static void loadFile(String path){
-		File cfgFile = new File(path);
+		File cfgFile = new File(System.getProperty("user.dir"), path);
 		if(cfgFile.exists()){
 			try {
 				FileInputStream fileStream = new FileInputStream(cfgFile);
@@ -149,7 +149,7 @@ public class UserConfiguration {
 	
 	public static void writeFile(String path){
 		//TODO: implement file saving for config
-		File file = new File(path);
+		File file = new File(System.getProperty("user.dir"), path);
 		try {
 			FileOutputStream writer = new FileOutputStream(file);
 			writer.close();

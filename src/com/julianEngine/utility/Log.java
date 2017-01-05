@@ -11,7 +11,7 @@ public class Log {
 	static FileOutputStream fos;
 	static{
 		try {
-			fos = new FileOutputStream(new File(EngineConstants.Defaults.LOGFILE));
+			fos = new FileOutputStream(new File(System.getProperty("user.dir"), EngineConstants.Defaults.LOGFILE));
 		} catch (FileNotFoundException e) {
 			System.out.println("[LOGGING-ERROR] Logfile could not be opened");
 			e.printStackTrace();

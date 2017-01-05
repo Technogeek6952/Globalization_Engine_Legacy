@@ -17,7 +17,7 @@ public class DataManager {
 	static HashMap<FileInformation, byte[]> data = new HashMap<FileInformation, byte[]>(); //file name, data
 	
 	public static void loadDataFile(String filePath) throws Exception{
-		File dataFile = new File(filePath);
+		File dataFile = new File(System.getProperty("user.dir"), filePath);
 		if(dataFile.isFile()){
 			Log.trace("Loading resource file: " + filePath);
 			FileInputStream in = new FileInputStream(filePath);
@@ -91,7 +91,7 @@ public class DataManager {
 	}
 	
 	public static BufferedImage getImageForURI(String URI){
-		File textureFile = new File("./Data/"+URI);
+		File textureFile = new File(System.getProperty("user.dir"), "./Data/"+URI);
 		if(textureFile.exists()){ //if a file exists for the resource, override already loaded files, else look for the resource in loaded files
 			try {
 				FileInputStream fileStream = new FileInputStream("./Data/"+URI);
@@ -125,7 +125,7 @@ public class DataManager {
 	
 	public static ByteArrayInputStream getStreamForResource(String resourceName){
 		//create a file object for the resource - append ./Data/ to make sure the engine is looking for the resource there
-		File textureFile = new File("./Data/"+resourceName);
+		File textureFile = new File(System.getProperty("user.dir"), "./Data/"+resourceName);
 		if(textureFile.exists()){ //if a file exists for the resource, override already loaded files, else look for the resource in loaded files
 			try {
 				FileInputStream fileStream = new FileInputStream("./Data/"+resourceName);
@@ -155,7 +155,7 @@ public class DataManager {
 				return true;
 			}
 		}
-		File textureFile = new File("./Data/"+rs);
+		File textureFile = new File(System.getProperty("user.dir"), "./Data/"+rs);
 		if(textureFile.exists()){
 			return true;
 		}
