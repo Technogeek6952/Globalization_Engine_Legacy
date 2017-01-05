@@ -10,6 +10,10 @@
 [00:00:00][ENGINE-main][TRACE] Value: 60
 [00:00:00][ENGINE-main][TRACE] config file int: debug
 [00:00:00][ENGINE-main][TRACE] Value: true
+[00:00:00][ENGINE-main][TRACE] config file int: muteByDefault
+[00:00:00][ENGINE-main][TRACE] Value: true
+[00:00:00][ENGINE-main][TRACE] config file int: defaultVolume
+[00:00:00][ENGINE-main][TRACE] Value: -20.0
 [00:00:00][ENGINE-main][TRACE] config file int: hostPort
 [00:00:00][ENGINE-main][TRACE] Value: 1234
 [00:00:00][ENGINE-main][INFO] Engine Starting - Hello World! - version: a1.2.8
