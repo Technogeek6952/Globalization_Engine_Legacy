@@ -652,6 +652,7 @@
 [00:00:00][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
 [00:00:00][ENGINE-preInitializer][TRACE] Globalization pre-init
 [00:00:00][game_globalization-init][INFO] Globalization Master File Init
+<<<<<<< HEAD
 [00:00:00][game_globalization-init][TRACE] No registered file for: font//.png
 [00:00:00][game_globalization-init][WARNING] unknown char, replacing with ?
 [00:00:04][game_globalization-init][ERROR] Error initializing music line
@@ -3002,3 +3003,28 @@
 [00:00:18][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 1 (0)
 [00:00:18][AWT-EventQueue-0][TRACE] Attempting to switch building types
 [00:00:30][AWT-EventQueue-0][INFO] Engine shutting down
+=======
+[00:00:00][Thread-6][TRACE] UIMask Ready
+[00:00:00][Thread-7][TRACE] UI bitmap mask about to ask for listener
+[00:00:00][Thread-7][TRACE] UI Mask Ready (bitmap)
+[00:00:00][game_globalization-init][TRACE] Created mask for: Algeria
+[00:00:00][game_globalization-init][TRACE] Created mask for: America
+[00:00:00][Thread-8][TRACE] UI bitmap mask about to ask for listener
+[00:00:00][Thread-8][TRACE] UI Mask Ready (bitmap)
+[00:00:00][game_globalization-init][TRACE] Created mask for: Argentina
+[00:00:00][Thread-9][TRACE] UI bitmap mask about to ask for listener
+[00:00:00][Thread-9][TRACE] UI Mask Ready (bitmap)
+[00:00:00][game_globalization-init][TRACE] Created mask for: Australia
+[00:00:00][Thread-10][TRACE] UI bitmap mask about to ask for listener
+[00:00:00][Thread-10][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Balkan Region
+[00:00:01][Thread-11][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-11][TRACE] UI Mask Ready (bitmap)
+[00:00:01][game_globalization-init][TRACE] Created mask for: Belgium
+[00:00:01][Thread-12][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-12][TRACE] UI Mask Ready (bitmap)
+[00:00:01][AWT-EventQueue-0][INFO] Engine shutting down
+[00:00:01][game_globalization-init][TRACE] Created mask for: Botswana
+[00:00:01][Thread-13][TRACE] UI bitmap mask about to ask for listener
+[00:00:01][Thread-13][TRACE] UI Mask Ready (bitmap)
+>>>>>>> feature/jrf-modify_single_file
