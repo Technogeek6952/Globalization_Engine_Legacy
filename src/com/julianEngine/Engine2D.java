@@ -15,7 +15,9 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -62,6 +64,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public static ArrayList<JDFPlugin> pluginFiles; //ArrayList holder for each plugin file (see JDFPlugin)
 	public static boolean debugMode = true; //Should the engine be run in debug mode (set to false for release)
 	public Object engineLock = new Object(); //this should be locked on when modifying the engine, or when the code must use the engine (in the render loop for example)
+	public static InputStream defaultIn;
+	public static OutputStream defaultOut;
 	
 	/*--------Private Static Variables------*/
 	private static final long serialVersionUID = -7981520978541595849L; //Serial Version UID for serializing the engine for save files and the like
@@ -126,6 +130,10 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	 * @throws MultipleMasterFilesFoundException 
 	**/
 	public static void main(String[] args){
+		//first set up anything needed to run
+		defaultIn = System.in;
+		defaultOut = System.out;
+		
 		//Rename the thread. This has two purposes: first to help find errors during debugging, and also to print in the log
 		Thread.currentThread().setName("ENGINE-main");
 		try{
@@ -409,7 +417,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				
 				//open debug window if bool set
 				if(UserConfiguration.getBool("debug", false)){
-					DebugToolsWindow consoleWin = new DebugToolsWindow();
+					DebugToolsWindow consoleWin = DebugToolsWindow.getInstance();
 					System.setOut(consoleWin.getPrintStream());
 					System.setErr(consoleWin.getPrintStream());
 					System.setIn(consoleWin.getInputStream());
@@ -753,7 +761,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				break;
 			case 'd':
 				Log.trace("Opening console...");
-				DebugToolsWindow consoleWin = new DebugToolsWindow();
+				DebugToolsWindow consoleWin = DebugToolsWindow.getInstance();
 				System.setOut(consoleWin.getPrintStream());
 				System.setErr(consoleWin.getPrintStream());
 				System.setIn(consoleWin.getInputStream());

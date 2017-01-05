@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.julianEngine.config.UserConfiguration;
+import com.julianEngine.utility.Log;
 import com.julianEngine.utility.TextAreaOutputStream;
 
 import java.awt.Color;
@@ -39,10 +40,18 @@ public class DebugToolsWindow extends JFrame {
 	private PipedInputStream consoleIn = new PipedInputStream();
 	private PipedOutputStream out = null;
 	private JTable table;
+	private static DebugToolsWindow instance;
+	
 	/**
 	 * Create the frame.
+	 * @throws Exception 
+	 * throws an exception if it has already been initialized, the only instance allowed to run can be gotten with .getInstance()
 	 */
-	public DebugToolsWindow() {
+	public DebugToolsWindow() throws Exception {
+		if(instance!=null){
+			throw new Exception("An instance of the debug tools window has already been inintialized - use DebugToolsWindow.getInstance()");
+		}
+		
 		try {
 			out = new PipedOutputStream(consoleIn);
 		} catch (IOException e) {
@@ -109,6 +118,19 @@ public class DebugToolsWindow extends JFrame {
 		};
 		btnNewButton.addActionListener(sendAction);
 		textField.addActionListener(sendAction);
+		instance = this;
+	}
+	
+	public static DebugToolsWindow getInstance(){
+		if (instance==null){
+			try {
+				return new DebugToolsWindow();
+			} catch (Exception e) {
+				Log.fatal("Constructor threw exception despite instance being null");
+				e.printStackTrace();
+			}
+		}
+		return instance;
 	}
 	
 	public PrintStream getPrintStream(){

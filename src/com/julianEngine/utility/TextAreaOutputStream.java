@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.List;
 import javax.swing.*;
 
+import com.julianEngine.Engine2D;
+
 /* code from user Lawrence Dol on Stack Overflow - http://stackoverflow.com/questions/342990/create-java-console-inside-a-gui-panel */
 public class TextAreaOutputStream
 extends OutputStream
@@ -50,6 +52,12 @@ public synchronized void write(byte[] ba) {
     }
 
 public synchronized void write(byte[] ba,int str,int len) {
+	try {
+		Engine2D.defaultOut.write(ba, str, len); //also write data to the default output stream
+	} catch (IOException e) {
+		Log.error("Error writing to default out");
+		e.printStackTrace();
+	}
     if(appender!=null) { appender.append(bytesToString(ba,str,len)); }
     }
 
