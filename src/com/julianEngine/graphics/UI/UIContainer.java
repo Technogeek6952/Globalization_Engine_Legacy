@@ -82,6 +82,10 @@ public class UIContainer implements Shape, Parent{
 		s.setParent(null);
 	}
 	
+	public void clear(){
+		shapes.clear();
+	}
+	
 	public void addShapes(Shape... shapes){
 		for(Shape shape:shapes){
 			addShape(shape);

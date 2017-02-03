@@ -9,7 +9,7 @@
 [00:00:00][ENGINE-main][TRACE] config file int: FPSCap
 [00:00:00][ENGINE-main][TRACE] Value: 60
 [00:00:00][ENGINE-main][TRACE] config file int: debug
-[00:00:00][ENGINE-main][TRACE] Value: true
+[00:00:00][ENGINE-main][TRACE] Value: false
 [00:00:00][ENGINE-main][TRACE] config file int: hostPort
 [00:00:00][ENGINE-main][TRACE] Value: 1234
 [00:00:00][ENGINE-main][INFO] Engine Starting - Hello World! - version: a1.2.8
@@ -649,61 +649,13 @@
 [00:00:00][ENGINE-main][TRACE] Proposing Pre-Initializer
 [00:00:00][ENGINE-main][TRACE] Globalization Main class got message: proposed-initializer:game_globalization
 [00:00:00][ENGINE-preInitializer][TRACE] Globalization pre-init
-[00:00:00][game_globalization-init][INFO] Globalization Master File Init
-[00:00:00][game_globalization-init][TRACE] No registered file for: font//.png
-[00:00:00][game_globalization-init][WARNING] unknown char, replacing with ?
-[00:00:04][game_globalization-init][ERROR] Error initializing music line
-[00:00:04][game_globalization-postInit][INFO] Globalization Master File Post Init
-[00:00:04][ENGINE-main][TRACE] about to make title screen
-[00:00:04][game_globalization-createMainScreen][TRACE] Constructing title screen...
-[00:00:04][ENGINE-main][TRACE] made title screen
-[00:00:05][game_globalization-main][INFO] Globalization Master File Init Game
-[00:00:10][AWT-EventQueue-0][TRACE] START NEW GAME!
-[00:00:10][Thread-403][INFO] New client connection from: 127.0.0.1 on port: 1234
-[00:00:10][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
-[00:00:10][Thread-405][TRACE] first byte: 2
-[00:00:10][Thread-406][TRACE] Got request for new gameconnection
-[00:00:10][Thread-406][TRACE] Got object stream
-[00:00:10][Thread-406][TRACE] Got type
-[00:00:10][Thread-406][TRACE] got player
-[00:00:10][Thread-406][TRACE] Got connection with uid: 7984744160108374263
-[00:00:10][Thread-406][TRACE] Mapped game UID (7984744160108374263) to network UID (2186753696631408148)
-[00:00:10][Thread-406][TRACE] [HOST] sent data to NUID 2186753696631408148
-[00:00:10][Thread-404][TRACE] first byte: 2
-[00:00:10][Thread-404][TRACE] [CLIENT] got data
-[00:00:10][Thread-407][INFO] Got a gameconnection with uid: 7984744160108374263
-[00:00:11][Thread-6][TRACE] entering game
-[00:00:11][Thread-6][TRACE] looking for info for uid 7984744160108374263
-[00:00:11][Thread-6][TRACE] [CLIENT] sent data to host[00:00:11][Thread-405][TRACE] first byte: 3
-
-[00:00:11][Thread-408][TRACE] Host got request for info on uid 7984744160108374263, from NUID 2186753696631408148
-[00:00:11][Thread-408][TRACE] Sending found data to NUID 2186753696631408148
-[00:00:11][Thread-408][TRACE] [HOST] sent data to NUID 2186753696631408148
-[00:00:11][Thread-404][TRACE] first byte: 3
-[00:00:11][Thread-404][TRACE] [CLIENT] got data
-[00:00:11][Thread-409][TRACE] com.globalization.strategy.CompanyInfo@59d0758b
-[00:00:11][Thread-6][TRACE] looking for info for uid 7984744160108374263
-[00:00:11][Thread-6][TRACE] [CLIENT] sent data to host
-[00:00:11][Thread-405][TRACE] first byte: 3
-[00:00:11][Thread-410][TRACE] Host got request for info on uid 7984744160108374263, from NUID 2186753696631408148
-[00:00:11][Thread-410][TRACE] Sending found data to NUID 2186753696631408148
-[00:00:11][Thread-410][TRACE] [HOST] sent data to NUID 2186753696631408148
-[00:00:11][Thread-404][TRACE] first byte: 3
-[00:00:11][Thread-404][TRACE] [CLIENT] got data
-[00:00:11][Thread-411][TRACE] com.globalization.strategy.CompanyInfo@7fca9891
-[00:00:12][AWT-EventQueue-0][TRACE] Sending request to remote host for GlobalizationCity algeria:algiers
-[00:00:12][AWT-EventQueue-0][TRACE] [CLIENT] sent data to host
-[00:00:12][Thread-405][TRACE] first byte: 6
-[00:00:12][Thread-412][TRACE] Adding new city algeria:algiers to tracked cities list
-[00:00:12][Thread-412][TRACE] [HOST] sent data to NUID 2186753696631408148[00:00:12][Thread-404][TRACE] first byte: 7
-
-[00:00:12][Thread-404][TRACE] [CLIENT] got data
-[00:00:12][Thread-413][TRACE] Host response is of type: class com.globalization.strategy.GlobalizationCity
-[00:00:12][AWT-EventQueue-0][TRACE] updating buildings
-[00:00:12][AWT-EventQueue-0][TRACE] Buildings in algeria:algiers:
-[00:00:12][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 0 (0)
-[00:00:13][AWT-EventQueue-0][TRACE] New com.globalization.strategy.buildings.GB_Headquarters building requested in algeria:algiers
-[00:00:14][AWT-EventQueue-0][TRACE] updating buildings
-[00:00:14][AWT-EventQueue-0][TRACE] Buildings in algeria:algiers:
-[00:00:14][AWT-EventQueue-0][TRACE] class com.globalization.strategy.buildings.GB_Headquarters - 0 (0)
-[00:00:21][AWT-EventQueue-0][INFO] Engine shutting down
+[00:00:01][game_globalization-init][INFO] Globalization Master File Init
+[00:00:01][game_globalization-init][TRACE] No registered file for: font//.png
+[00:00:01][game_globalization-init][WARNING] unknown char, replacing with ?
+[00:00:07][game_globalization-init][ERROR] Error initializing music line
+[00:00:07][game_globalization-postInit][INFO] Globalization Master File Post Init
+[00:00:08][ENGINE-main][TRACE] about to make title screen
+[00:00:08][game_globalization-createMainScreen][TRACE] Constructing title screen...
+[00:00:08][ENGINE-main][TRACE] made title screen
+[00:00:09][game_globalization-main][INFO] Globalization Master File Init Game
+[00:01:18][Thread-402][TRACE] music done
