@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
@@ -29,6 +30,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import com.julianEngine.config.EngineConstants;
@@ -38,6 +40,7 @@ import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
 import com.julianEngine.core.World.IDAlreadyInUseException;
 import com.julianEngine.core.World.WorldWaitListener;
+import com.julianEngine.data.DataManager;
 import com.julianEngine.data.JDFMaster;
 import com.julianEngine.data.JDFPlugin;
 import com.julianEngine.data.PreInitializer;
@@ -408,10 +411,18 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		}
 	}
 	
+	public void setWindowIcon(String rs_icon) throws IOException{
+		this.setIconImage(ImageIO.read(DataManager.getStreamForResource(rs_icon)));
+		DebugToolsWindow.getInstance().setIconImage(ImageIO.read(DataManager.getStreamForResource(rs_icon)));
+	}
+	
 	//Constructor
 	public Engine2D(String title, Engine2D predecessor) throws EngineAlreadyInstancedException{
 		if(!engineStarted){
 			if(predecessor==null){ //if there was no predecessor then create everything, else use the objects from the predecessor
+				//don't let the user see the default java icon, so set it to null for now
+				this.setIconImage(null);
+				
 				//load engine config
 				UserConfiguration.loadFile("./engine.config");
 				

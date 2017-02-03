@@ -60,6 +60,7 @@ public class DebugToolsWindow extends JFrame {
 		
 		setBackground(Color.BLACK);
 		setTitle("Debug Tools");
+		setIconImage(null); //set the icon to blank, can be changed in code later via Engine2D.setWindowIcon
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}catch (Exception e){e.printStackTrace();}
 		setBounds(100, 100, 450, 300);
