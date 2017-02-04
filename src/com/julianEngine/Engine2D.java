@@ -1,11 +1,13 @@
 package com.julianEngine;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -411,7 +413,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		}
 	}
 	
-	public void setWindowIcon(String rs_icon) throws IOException{
+	public void setWindowIcon(String rs_icon) throws IOException, IllegalArgumentException{
 		this.setIconImage(ImageIO.read(DataManager.getStreamForResource(rs_icon)));
 		DebugToolsWindow.getInstance().setIconImage(ImageIO.read(DataManager.getStreamForResource(rs_icon)));
 	}
@@ -419,9 +421,16 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	//Constructor
 	public Engine2D(String title, Engine2D predecessor) throws EngineAlreadyInstancedException{
 		if(!engineStarted){
+			try {
+				this.setWindowIcon("engine/icon.png");//loads the default icon image - this should stay in the data directory instead of being packaged into a jrf file
+				this.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(DataManager.getImageForURI("engine/cursor.png"), this.getLocation(), "cursor")); //loads the default cursor, see above
+			} catch (Exception e) {
+				Log.error("Error while loading default icons");
+				e.printStackTrace();
+			} //loads icon and cursor as first thing
+			
 			if(predecessor==null){ //if there was no predecessor then create everything, else use the objects from the predecessor
 				//don't let the user see the default java icon, so set it to null for now
-				this.setIconImage(null);
 				
 				//load engine config
 				UserConfiguration.loadFile("./engine.config");
