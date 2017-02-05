@@ -1,7 +1,6 @@
 package com.julianEngine;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -21,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
-import java.io.PipedInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -51,7 +49,6 @@ import com.julianEngine.data.pluginCommunication.JDFMessageManager;
 import com.julianEngine.data.pluginCommunication.JDFMessageReceiver;
 import com.julianEngine.data.pluginCommunication.JDFMessageSender;
 import com.julianEngine.graphics.Camera;
-import com.julianEngine.graphics.CustomFont;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.UI.UIContainer;
 import com.julianEngine.graphics.external_windows.ErrorReporter;
@@ -66,7 +63,7 @@ import com.julianEngine.utility.Log;
  */
 public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	/*--------Public Static Variables-------*/
-	public static String versionID = "1.0"; //Engine version
+	public static String versionID = "1.1"; //Engine version
 	public static JDFMaster masterFile; //Variable holder for the master plugin file (see JDFMaster)
 	public static List<JDFPlugin> pluginFiles; //ArrayList holder for each plugin file (see JDFPlugin)
 	public static boolean debugMode = true; //Should the engine be run in debug mode (set to false for release)
