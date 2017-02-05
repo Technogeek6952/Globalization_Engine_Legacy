@@ -19,8 +19,8 @@ public class DataManager {
 	public static void loadDataFile(String filePath) throws Exception{
 		File dataFile = new File(System.getProperty("user.dir"), filePath);
 		if(dataFile.isFile()){
-			Log.trace("Loading resource file: " + filePath);
-			FileInputStream in = new FileInputStream(filePath);
+			Log.trace("Loading resource file: " + dataFile.getPath());
+			FileInputStream in = new FileInputStream(dataFile.getPath());
 			boolean read = true;
 			if(in.available()>0){
 				byte[] checkSum = new byte[8]; //get fist 8 bytes for the checksum
@@ -86,7 +86,7 @@ public class DataManager {
 			}
 			in.close();
 		}else{
-			Log.trace("Resource file not found: " + filePath);
+			Log.trace("Resource file not found: " + dataFile.getPath());
 		}
 	}
 	
@@ -94,14 +94,14 @@ public class DataManager {
 		File textureFile = new File(System.getProperty("user.dir"), "./Data/"+URI);
 		if(textureFile.exists()){ //if a file exists for the resource, override already loaded files, else look for the resource in loaded files
 			try {
-				FileInputStream fileStream = new FileInputStream("./Data/"+URI);
+				FileInputStream fileStream = new FileInputStream(textureFile);
 				byte[] fileBytes = new byte[fileStream.available()];
 				fileStream.read(fileBytes);
 				ByteArrayInputStream byteStream = new ByteArrayInputStream(fileBytes);
 				fileStream.close();
 				return ImageIO.read(byteStream);
 			} catch (Exception e) {
-				Log.fatal("Error loading resource "+URI+" from disk");
+				Log.fatal("Error loading resource "+textureFile.getPath()+" from disk");
 				ErrorReporter.displayError(e);
 				e.printStackTrace();
 			}
@@ -125,10 +125,10 @@ public class DataManager {
 	
 	public static ByteArrayInputStream getStreamForResource(String resourceName){
 		//create a file object for the resource - append ./Data/ to make sure the engine is looking for the resource there
-		File textureFile = new File(System.getProperty("user.dir"), "./Data/"+resourceName);
-		if(textureFile.exists()){ //if a file exists for the resource, override already loaded files, else look for the resource in loaded files
+		File file = new File(System.getProperty("user.dir"), "./Data/"+resourceName);
+		if(file.exists()){ //if a file exists for the resource, override already loaded files, else look for the resource in loaded files
 			try {
-				FileInputStream fileStream = new FileInputStream("./Data/"+resourceName);
+				FileInputStream fileStream = new FileInputStream(file);
 				byte[] fileBytes = new byte[fileStream.available()];
 				fileStream.read(fileBytes);
 				ByteArrayInputStream byteStream = new ByteArrayInputStream(fileBytes);

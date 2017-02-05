@@ -135,6 +135,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	 * @throws MultipleMasterFilesFoundException 
 	**/
 	public static void main(String[] args){
+		System.out.println("Current Dir: "+System.getProperty("user.dir"));
 		//first set up anything needed to run
 		defaultIn = System.in;
 		defaultOut = System.out;
