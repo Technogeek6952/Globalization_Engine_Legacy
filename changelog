@@ -1,0 +1,78 @@
+----------Changelog - Julian Engine----------
+----------ea1.2.6.2 (SHA: e765f215 w/ ga1.0.4)
+-added UIContainer - allows a subset of objects to be placed relative to a different origin. The container can be moved with all the
+ objects moving with it (see commit messages for more info)
+----------a1.2.6-------------
+-Slight change to version numbers: replaced starting 'v' to an 'a' to indicate alpha version - change to 'b' at beta
+	-For better smoothness with git, third part of version number should go up on a major release, and an _# will increment after each
+	 merge from build to develop.
+-Update to configuration system:
+	-EngineConstants houses the default values for critical variables 
+	-engine.config in the root dir of the engine will be loaded by UserConfiguration (called by Engine2D constructor)
+	-UserConfiguration has methods and static variables for managing constants read from configuration files
+	-in a config file '#' will be ignored, the line is formated as such: [*]name = value
+		-* - the type of variable (b, i, s, c, d, f)
+		-name = name of variable
+		-value = value of variable
+		-spaces are optional
+----------v1.2.5_a05---------
+-I skipped adding entries for a few versions, a lot of work was done - some that I didn't remember until I realized it wasn't in previous patch notes. I considered adding two full version numbers, 
+ but decided not to in the end, and opted for just adding a few build numbers on the end of the new version number. I'm the lead (and only) programmer. I can decide what version this is.
+-"Fixed" optimization issues with CustomFont - every time it was being asked to render it would take a significant amount of time. This was fixed by only doing the full
+ render the first time, and every other time just rendering a BufferedImage from the previous render. I really don't think it should take as long as it does to load in the first
+ place, and now it takes more time to load the game, although frame rates are phenomenal again. In the future I might look into getting the initial time down to decrease load times, but right now it's not really an issue
+-Created the beginnings of a sound engine - it's mostly just cover classes for the already existing Java sound classes, but it does provide structure and also means that I can change stuff in the future without re-writing
+ much sound code
+-Created a communication protocol between plugins. The engine uses this to decide which plugin should initialize the game - through a sort of "democratic" system - by which any plugin can disagree with using a certain
+ initializer, and propose their own. It's a bit clobbered together for right now, and will need to be flushed out, but it's not a high priority
+-Started making a configuration system that can be changed at runtime, and saved/loaded to/from a file. And by started, I mean I renamed the settings file. I'll work on the actual system later, it's not a high priority
+-Data files/data manager: I thought this was included in a previous version, but apparently not. This is probably one of the biggest changes: the Data File/Manager system.
+	-com.julianEngine.data.DataManger contains a static method to load a '.jrf' file - julian resource file. This file consists of a header for some basic info, and files. This file currently has no compression, but that
+	 could theoretically be added (and the file header could tell the program if compression was used/what compression method was used). The main objective of this file was to a) learn stuff about Java, and b) to make it easy to distribute
+	 dlc/mods in two-file packages: the plugin file, and a file for all the assets.
+	-Also made a tool: JRF Manager, which allows the user to select a .jrf file (there is a button to create a new file, but it doesn't work because I'm lazy) and to browse the contents. The app also allows new files to be added.
+	 Unfortunately if a file needs to be modified or deleted, a hex editor must be used to modify/delete the bytes.
+	-Note to self: I should probably include documentation somewhere as to how this .jrf file works so that if anyone actually needs to modify the hex values they know how it's layed out. Also so I don't forget if I need to
+	 change the code in several months time.
+----------v1.2.4_a02---------
+-Added the beginnings of a parent-child system for shapes
+-still need to convert most things to really use the system
+-Most functionality left unchanged
+-Added custom font class, and let Text and UIButton use it
+----------v1.2.4_a01(-1.2.2_a02)
+-I forgot to update the changelog for several updates, so I'll lump all the changes
+I remember into this section.
+-Fixed bug with the render loop (dirty hack - TODO: actually figure out what's wrong) that
+for some reason blocked the Frame.addMouseListener() and Frame.addMouseMotionListener()
+methods, 
+----------v1.2.2_a01---------
+-This was a very large update, so I might have missed some things
+-Fixed coordinate system
+-Added Progress bar (and progress circle, but that's not finished)
+-Several minor updates and re-coding of some systems
+-General improvements
+-Bug fixing
+----------v1.2.1_a02---------
+-Better FPS limiting system - can hold 60fps stable
+-Various minor improvements
+----------v1.2.1_a01b--------
+-Implementation of z-ordering (I think the last missing feature from v1.0)
+-Start commiting to git repo
+----------v1.2.1_a01---------
+-Finished implementing shapes (some code still needs to be done with getTopLeftX, etc on
+some shapes that don't use it much)
+-Should be at exact level of functionality as v1.0, but much, MUCH cleaner, and should be
+easy to expand
+----------v1.2_a03-----------
+-Added support for plugins
+	-.jdm for master file, .jdp for plugin file
+		-!!!IMPORTANT!!!: Make sure if any changes were made to the master code, the .jdm 
+		is recompiled - otherwise old code will be running, which can lead to confusion
+	-plugins not working, but master file is
+	-TODO: load plugins, make inter-plugin communication system
+----------v1.2_a02-----------
+-Mostly on-par with v1.0, but much neater
+	-Still need work with sprites and most other 2d objects
+	-infrastructure is complete
+----------v1.2_a01-----------
+-Started from scratch with lessons learned from v1.0
