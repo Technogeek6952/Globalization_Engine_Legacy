@@ -27,6 +27,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ServiceLoader;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -55,6 +56,7 @@ import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.UI.UIContainer;
 import com.julianEngine.graphics.external_windows.ErrorReporter;
 import com.julianEngine.graphics.gui.DebugToolsWindow;
+import com.julianEngine.graphics.gui.LauncherWindow;
 import com.julianEngine.graphics.shapes.ProgressBar;
 import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
@@ -66,7 +68,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	/*--------Public Static Variables-------*/
 	public static String versionID = "1.0"; //Engine version
 	public static JDFMaster masterFile; //Variable holder for the master plugin file (see JDFMaster)
-	public static ArrayList<JDFPlugin> pluginFiles; //ArrayList holder for each plugin file (see JDFPlugin)
+	public static List<JDFPlugin> pluginFiles; //ArrayList holder for each plugin file (see JDFPlugin)
 	public static boolean debugMode = true; //Should the engine be run in debug mode (set to false for release)
 	public Object engineLock = new Object(); //this should be locked on when modifying the engine, or when the code must use the engine (in the render loop for example)
 	public static InputStream defaultIn;
@@ -95,6 +97,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	private int renders = 0; //holder for how many times the frame has been drawn since last check
 	private long lastUpdateNano = System.nanoTime(); //system time at the last check
 	private ScheduledExecutorService renderLoopExecutor = Executors.newSingleThreadScheduledExecutor(); //holder for the executor service that runs the render loop at regular intervals
+	private List<String> plugins;
 	//Anonymous class for the render loop stored in a runnable object
 	private Runnable renderLoop = () -> {
 		if(!paused){
@@ -150,8 +153,15 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				//Load plugins
 				Log.trace("Loading plugins...");
 				
-				masterFile = loadMasterFile(); //load master file
-				pluginFiles = loadPluginFiles(); //load plugin files
+				if (UserConfiguration.getBool("useLauncher", false)){
+					PluginsInformation info = loadPlugins(engine.plugins);
+					
+					masterFile = info.masterFile; //load master file
+					pluginFiles = info.plugins; //load plugin files
+				}else{
+					masterFile = loadMasterFile(); //load master file
+					pluginFiles = loadPluginFiles(); //load plugin files
+				}
 				
 				//Log if either masterFile or pluginFiles is null (null masterFile is an error)
 				if(masterFile==null){
@@ -417,6 +427,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public void setWindowIcon(String rs_icon) throws IOException, IllegalArgumentException{
 		this.setIconImage(ImageIO.read(DataManager.getStreamForResource(rs_icon)));
 		DebugToolsWindow.getInstance().setIconImage(ImageIO.read(DataManager.getStreamForResource(rs_icon)));
+		LauncherWindow.getInstance().setIconImage(ImageIO.read(DataManager.getStreamForResource(rs_icon)));
 	}
 	
 	//Constructor
@@ -430,11 +441,17 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				e.printStackTrace();
 			} //loads icon and cursor as first thing
 			
+			
 			if(predecessor==null){ //if there was no predecessor then create everything, else use the objects from the predecessor
 				//don't let the user see the default java icon, so set it to null for now
 				
 				//load engine config
 				UserConfiguration.loadFile("./engine.config");
+				
+				//open launcher if bool set
+				if (UserConfiguration.getBool("useLauncher", false)){
+					plugins = LauncherWindow.getInstance().launchEngine();
+				}
 				
 				//open debug window if bool set
 				if(UserConfiguration.getBool("debug", false)){
@@ -624,6 +641,69 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	
 	public void setFPSLock(int targetFPS){
 		mainView.setTargetFPS(targetFPS);
+	}
+	
+	private static class PluginsInformation{
+		JDFMaster masterFile;
+		List<JDFPlugin> plugins = new ArrayList<JDFPlugin>();
+	}
+	
+	private static PluginsInformation loadPlugins(List<String> plugins) throws MultipleMasterClassesException, NoMasterClassFoundException, MultipleMasterFilesFoundException, NoMasterDataFileFoundException{
+		PluginsInformation pluginInfo = new PluginsInformation();
+		int masterFiles = 0;
+		for (String plugin:plugins){
+			if (plugin.endsWith(".jdm")){
+				masterFiles++;
+				if (masterFiles > 1){
+					throw new MultipleMasterFilesFoundException();
+				}
+				File jdmFile = new File(System.getProperty("user.dir"), "./Data/"+plugin);
+				
+				try {
+					URL[] importURL = {jdmFile.toURI().toURL()};
+					URLClassLoader classLoader = new URLClassLoader(importURL);
+					ServiceLoader<JDFMaster> masterLoader = ServiceLoader.load(JDFMaster.class, classLoader);
+					Iterator<JDFMaster> masters = masterLoader.iterator();
+					if(masters.hasNext()){
+						JDFMaster masterFile = masters.next();
+						if(masters.hasNext()){
+							Log.error("Multiple master classes loaded from \""+jdmFile.getName()+"\"");
+							throw new MultipleMasterClassesException();
+						}
+						pluginInfo.masterFile = masterFile;
+					}else{
+						Log.error("No master class found - the .jdm file was likely compiled wrong.");
+						throw new NoMasterClassFoundException();
+					}
+					
+				} catch (MalformedURLException e) {
+					Log.error("Error loading the master plugin file:");
+					e.printStackTrace();
+				}
+			}else if (plugin.endsWith(".jdp")){
+				File jdpFile = new File(System.getProperty("user.dir"), "./Data/"+plugin);
+				
+				try {
+					URL[] importURL = {jdpFile.toURI().toURL()};
+					URLClassLoader classLoader = new URLClassLoader(importURL);
+					ServiceLoader<JDFPlugin> masterLoader = ServiceLoader.load(JDFPlugin.class, classLoader);
+					Iterator<JDFPlugin> pluginsIterator = masterLoader.iterator();
+					while(pluginsIterator.hasNext()){
+						pluginInfo.plugins.add(pluginsIterator.next());
+					}
+					
+				} catch (MalformedURLException e) {
+					Log.error("Error loading the master plugin file:");
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		if (masterFiles == 0){
+			throw new NoMasterDataFileFoundException();
+		}
+		
+		return pluginInfo;
 	}
 	
 	//returns an instance of the master file
