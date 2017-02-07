@@ -20,7 +20,7 @@ public class DataManager {
 		File dataFile = new File(System.getProperty("user.dir"), filePath);
 		if(dataFile.isFile()){
 			Log.trace("Loading resource file: " + dataFile.getPath());
-			FileInputStream in = new FileInputStream(dataFile.getPath());
+			FileInputStream in = new FileInputStream(dataFile);
 			boolean read = true;
 			if(in.available()>0){
 				byte[] checkSum = new byte[8]; //get fist 8 bytes for the checksum
