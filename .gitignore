@@ -1,1 +1,10 @@
-/bin/
+#Ignore everything by default
+/*
+
+#Track specified files with !/{}
+!/src/
+!/.classpath
+!/.git
+!/.gitignore
+!/.project
+!/manifest
