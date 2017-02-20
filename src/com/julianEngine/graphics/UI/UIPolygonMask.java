@@ -135,7 +135,7 @@ public class UIPolygonMask extends UIMask {
 		//Mouse clicked with the game active
 		if(mouseInside){
 			//if the mouse was inside the mask when it clicked, notify
-			if(listeners.size()>0 && Engine2D.getInstance().mainCamera.getWorld().equals(parent.getWorld())){
+			if(listeners.size()>0 && Engine2D.getInstance().camera.getWorld().equals(parent.getWorld())){
 				for(UIMaskListener l:listeners){
 					//note: if another mask is on top of this one, both will be notified when
 					//the mouse clicks any overlapping region. The program should have logic to
