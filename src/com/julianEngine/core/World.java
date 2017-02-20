@@ -235,7 +235,7 @@ public class World implements Parent{
 
 	@Override
 	public Frame getContainingFrame() {
-		return Engine2D.getInstance().mainView;
+		return Engine2D.getInstance().rootFrame;
 		/*
 		Camera activeCamera = getActiveCamera();
 		if(activeCamera!=null){

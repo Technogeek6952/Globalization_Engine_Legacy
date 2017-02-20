@@ -38,8 +38,8 @@ public class UIBitmapMask extends UIMask{
 		new Thread(){
 			public void run(){
 				//Log.trace("UI bitmap mask about to ask for listener");
-				Engine2D.getInstance().mainView.addMouseListener(ref);
-				Engine2D.getInstance().mainView.addMouseMotionListener(ref);
+				Engine2D.getInstance().rootFrame.addMouseListener(ref);
+				Engine2D.getInstance().rootFrame.addMouseMotionListener(ref);
 				//Log.trace("UI Mask Ready (bitmap)");
 				listenerReady = true;
 			}
@@ -117,7 +117,7 @@ public class UIBitmapMask extends UIMask{
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		//only respond to events once this has been added to a container (parent set), and if the active world is the one we should respond to
-		if(parentSet&&Engine2D.getInstance().mainCamera.getWorld().equals(parent.getWorld())){
+		if(parentSet&&Engine2D.getInstance().camera.getWorld().equals(parent.getWorld())){
 			Point mousePoint = parent.getRelativePointForRealPoint(referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0)));
 			if(this.isPointInside(mousePoint)){
 				//mose moved inside mask
@@ -152,7 +152,7 @@ public class UIBitmapMask extends UIMask{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		//only respond to events once this has been added to a container (parent set), and if the active world is the one we should respond to
-		if(parentSet&&Engine2D.getInstance().mainCamera.getWorld().equals(parent.getWorld())){
+		if(parentSet&&Engine2D.getInstance().camera.getWorld().equals(parent.getWorld())){
 			//Mouse clicked with the game active
 			if(mouseInside){
 				//if the mouse was inside the mask when it clicked, notify

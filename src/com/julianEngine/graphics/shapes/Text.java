@@ -54,7 +54,7 @@ public class Text implements Shape{
 		this.color = color;
 		this.font = font;
 		
-		Graphics g = Engine2D.getInstance().mainView.getGraphics();
+		Graphics g = Engine2D.getInstance().rootFrame.getGraphics();
 		g.setFont(font);
 		FontMetrics metrics = g.getFontMetrics();
 		this.metrics = metrics;
