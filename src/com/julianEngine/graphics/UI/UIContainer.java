@@ -199,8 +199,7 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public void centerY(Frame frame) {
-		// TODO Auto-generated method stub
-		
+		m_topLeft.setY((frame.getHeight()+m_height)/2);
 	}
 
 	@Override
