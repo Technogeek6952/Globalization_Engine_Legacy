@@ -165,6 +165,12 @@ public class Sprite implements Shape{
 		}
 	}
 	
+	public void setImage(BufferedImage image){
+		this.image = image;
+		this.imgWidth = image.getWidth();
+		this.imgHeight = image.getHeight();
+	}
+	
 	public void setHeight(int newHeight, boolean scale){
 		if(scale){
 			double aspectRatio = (double)this.imgWidth/(double)this.imgHeight;
