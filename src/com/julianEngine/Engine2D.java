@@ -34,6 +34,9 @@ import javax.swing.JFrame;
 
 import com.julianEngine.config.EngineConstants;
 import com.julianEngine.config.UserConfiguration;
+import com.julianEngine.core.CoordinateSpace;
+import com.julianEngine.core.CoordinateSpace.AxisType;
+import com.julianEngine.core.CoordinateSpace.SystemType;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
@@ -52,6 +55,7 @@ import com.julianEngine.graphics.gui.LauncherWindow;
 import com.julianEngine.graphics.shapes.ProgressBar;
 import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
+import com.julianEngine.utility.Tests;
 
 /**
  * Julian Engine v1.2 - coded in Java with default libraries.
@@ -81,7 +85,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public Camera camera; //Variable holder for the camera rendering the window
 	public Frame rootFrame = new Frame(1080, 720); //Variable holder for the frame that the camera renders to, and is displayed in the window
 	public static Object engineLock = new Object(); //this should be locked on when modifying the engine, or when the code must use the engine (in the render loop for example)
-	
+	public static CoordinateSpace frameRootSystem = new CoordinateSpace(SystemType.CARTESIAN, AxisType.XAXIS_RIGHT_POS, AxisType.YAXIS_DOWN_POS);
 	
 	/*--------Private Instance Variables----*/
 	private BufferStrategy bufferStrategy; //buffer strategy for the frame - renders two frames in advanced to improve performance
@@ -137,6 +141,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	 * @throws MultipleMasterFilesFoundException 
 	**/
 	public static void main(String[] args){
+		Tests.runTests();
 		System.out.println("Starting Engine in: "+System.getProperty("user.dir"));
 		//first set up anything needed to run
 		preLoadEngine();

@@ -30,9 +30,9 @@ public class Camera {
 	
 	/*--------Code--------------------------*/
 	public Camera(Frame frame){
-		World.getWorldForID(currentID).attachCamera(this);
-		currentWorld = World.getWorldForID(currentID);
-		currentWorld.load();
+		//World.getWorldForID(currentID).attachCamera(this);
+		//currentWorld = World.getWorldForID(currentID);
+		//currentWorld.load();
 		this.frame = frame;
 	}
 	

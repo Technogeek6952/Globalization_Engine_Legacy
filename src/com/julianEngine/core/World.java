@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.core.CoordinateSpace.AxisType;
+import com.julianEngine.core.CoordinateSpace.SystemType;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.utility.Log;
@@ -25,6 +27,7 @@ public class World implements Parent{
 	List<PreLoadListener> preLoadListeners = new ArrayList<PreLoadListener>();
 	int activeCamera = 0;
 	LoadExecutor onLoad = null;
+	CoordinateSpace relativeSpace;
 	
 	/*--------Code--------------------------*/
 	//full constructor
@@ -32,6 +35,7 @@ public class World implements Parent{
 		if(!worlds.containsKey(id)){
 			worldID = id;
 			worlds.put(id, this);
+			relativeSpace = new CoordinateSpace(SystemType.CARTESIAN, AxisType.XAXIS_RIGHT_POS, AxisType.YAXIS_UP_POS); //just to have a system until it is changed by setting the parent
 		}else{
 			throw new IDAlreadyInUseException();
 		}
@@ -54,6 +58,11 @@ public class World implements Parent{
 		return null;
 	}
 	
+	@Override
+	public CoordinateSpace getRelativeSpace(){
+		return relativeSpace;
+	}
+	
 	public int getID(){
 		return worldID;
 	}
@@ -73,6 +82,8 @@ public class World implements Parent{
 	}
 	
 	public void attachCamera(Camera c){
+		//before the camera is attached, let's set up our coordinate system for the frame the camera is rendering to
+		this.relativeSpace = new CoordinateSpace(Engine2D.frameRootSystem, false, true, c.getFrame().getSideBorder(), c.getFrame().getHeight()+c.getFrame().getTitleBorder(), 1); //the new system will have a flipped y axis, with an origin at the bottem left
 		attachedCameras.add(c);
 	}
 	

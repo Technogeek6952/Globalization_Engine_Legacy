@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
@@ -49,6 +50,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	private int textWidth;
 	private boolean renderBox = false;
 	private boolean enabled = true;
+	private CoordinateSpace relSpace;
 	
 	/*--------Code--------------------------*/
 	public UIButton(Point topLeft, String text, Color color, Frame frame, Parent parent){
@@ -74,7 +76,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		//bottom
 		bounds.put(new Line(bottomLeft, bottomRight), center);
 		buttonMask.setBounds(bounds);
-			
+	
+		
 		ready=true;
 	}
 	
@@ -105,6 +108,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		buttonMask.addUIMaskListener(this);
 		
 		UIText.setParent(this);
+		
+		relSpace = new CoordinateSpace(parent.getRelativeSpace(), false, false, topLeft.getX(), topLeft.getY()-height, 1);
 		
 		ready=true;
 	}
@@ -389,5 +394,10 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	public void preLoad() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public CoordinateSpace getRelativeSpace() {
+		return relSpace;
 	}
 }

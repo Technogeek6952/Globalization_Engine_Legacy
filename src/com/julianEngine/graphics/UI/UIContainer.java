@@ -10,12 +10,16 @@ import java.util.ArrayList;
 
 import com.julianEngine.Engine2D;
 import com.julianEngine.config.UserConfiguration;
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
+import com.julianEngine.core.CoordinateSpace.AxisType;
+import com.julianEngine.core.CoordinateSpace.SystemType;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.utility.Log;
 
 public class UIContainer implements Shape, Parent{
 	
@@ -35,6 +39,7 @@ public class UIContainer implements Shape, Parent{
 	static int ids = 0;//debug
 	int id;
 	Vector shift;
+	//CoordinateSpace relSpace;
 	
 	public UIContainer(Point t1, int width, int height, World world){
 		this(t1, width, height);
@@ -49,6 +54,8 @@ public class UIContainer implements Shape, Parent{
 		ids++;
 		id = ids;
 		shift = new Vector(0, 0, 0);
+		
+		//relSpace = new CoordinateSpace(SystemType.CARTESIAN, AxisType.XAXIS_RIGHT_POS, AxisType.YAXIS_UP_POS); //just to have a system until it is changed by setting the parent
 	}
 
 	public void setShift(Vector newShift){
@@ -99,6 +106,9 @@ public class UIContainer implements Shape, Parent{
 	@Override
 	public void setParent(Parent p) {
 		parent = p;
+		if (parent != null){ //if the parent exists, move our coordinate system to that
+			//relSpace = new CoordinateSpace(p.getRelativeSpace(), false, false, this.getTopLeftX(), this.getTopLeftY(), this.zoom);
+		}
 	}
 
 	public void setScrollType(ScrollType type){
@@ -227,8 +237,41 @@ public class UIContainer implements Shape, Parent{
 	
 	public void setZoom(double d){
 		zoom = d;
+		//relSpace.setScale(d);
 	}
 	
+	public void zoomOnPoint(Point focus, double scale){
+		//Point p1 = CoordinateSpace.converPointToSystem(focus, relSpace, newSystem);
+		Log.info("("+focus.getX()+", "+focus.getY()+")");
+		try {
+			Point p1 = CoordinateSpace.convertPointToSystem(focus, Engine2D.frameRootSystem, this.getRelativeSpace());
+			Log.info("("+p1.getX()+", "+p1.getY()+")");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
+		Point p1 = this.getRasterPointForFramePoint(focus);
+		Log.info("Point 1: ("+p1.getX()+", "+p1.getY()+")");
+		zoom += scale;
+		Point p2 = this.getRasterPointForFramePoint(focus);
+		Log.info("Point 2: ("+p2.getX()+", "+p2.getY()+")");
+		focus.setX(focus.getX()-(.5*m_width));
+		focus.setY(focus.getY()-(.5*m_height));
+		Point focusShift = new Point(focus.getX()*scale, focus.getY()*scale, focus.getZ());
+		Vector shiftVector = focus.vectorTo(focusShift);
+		zoom += scale;
+		this.setShift(shiftVector);
+		*/
+	}
+	
+	
+	public Point getContainerRelativePointForFrameRelativePoint(Point framePoint){
+		Point containerPoint = new Point((framePoint.getX()-this.shift.getX())/zoom, (framePoint.getY()-this.shift.getY())/zoom, framePoint.getZ());
+		return framePoint;
+	}
+	
+	//OLD POINT CONVERSION METHOODS
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		Point origin = getOrigin();
@@ -267,7 +310,6 @@ public class UIContainer implements Shape, Parent{
 	
 	@Override
 	public World getWorld(){
-		assert parent!=null;
 		return parent.getWorld();
 	}
 	
@@ -302,5 +344,12 @@ public class UIContainer implements Shape, Parent{
 	public void preLoad() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public CoordinateSpace getRelativeSpace() {
+		//since our parent's space might change at any time, don't store it in a variable, just calculate it for every request
+		//there may be a way to make this more efficient, but it's fine for now.
+		return new CoordinateSpace(parent.getRelativeSpace(), false, false, this.getTopLeftX(), this.getTopLeftY()-m_height, 1);
 	}
 }

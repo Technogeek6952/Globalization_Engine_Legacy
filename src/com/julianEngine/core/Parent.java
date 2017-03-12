@@ -14,4 +14,8 @@ public interface Parent extends Shape{
 	public Point getOrigin();
 	public World getWorld();
 	public double getZoom();
+	
+	//NEW POINT CONVERSION METHOD
+	//public Point convertPoint(Point p1, CoordinateSystem newSystem);
+	public CoordinateSpace getRelativeSpace();
 }
