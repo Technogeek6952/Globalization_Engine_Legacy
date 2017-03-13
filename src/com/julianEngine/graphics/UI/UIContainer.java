@@ -131,8 +131,10 @@ public class UIContainer implements Shape, Parent{
 			AffineTransform at = ((Graphics2D)graphics).getTransform();
 			((Graphics2D)graphics).translate(gfxPoint.getX(), gfxPoint.getY());
 			((Graphics2D)graphics).clipRect(0, 0, m_width, m_height);
-			((Graphics2D)graphics).translate(this.shift.getX(), -this.shift.getY());
+			((Graphics2D)graphics).translate(0, -((m_height*zoom)-m_height));
 			((Graphics2D)graphics).scale(zoom, zoom);
+			((Graphics2D)graphics).translate(this.shift.getX(), -this.shift.getY());
+			
 			m_frame.setShapes(shapes);
 			m_frame.setBackground(new Color(0, 0, 0, 0));
 			m_frame.drawFrame(((Graphics2D)graphics), forceDraw);
@@ -241,28 +243,18 @@ public class UIContainer implements Shape, Parent{
 	}
 	
 	public void zoomOnPoint(Point focus, double scale){
-		//Point p1 = CoordinateSpace.converPointToSystem(focus, relSpace, newSystem);
-		Log.info("("+focus.getX()+", "+focus.getY()+")");
 		try {
-			Point p1 = CoordinateSpace.convertPointToSystem(focus, Engine2D.frameRootSystem, this.getRelativeSpace());
-			Log.info("("+p1.getX()+", "+p1.getY()+")");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			focus = CoordinateSpace.convertPointToSystem(focus, Engine2D.frameRootSystem, this.getRelativeSpace());
+			CoordinateSpace oldSpace = this.getRelativeSpace();
+			focus = new Point (m_width/2, m_height/2, 0);
+			this.zoom += scale;
+			Point end = CoordinateSpace.convertPointToSystem(focus, oldSpace, this.getRelativeSpace());
+			Vector shift = end.vectorTo(focus);
+			Log.info("<"+shift.getX()+", "+shift.getY()+">");
+			this.shift.addVectorToThis(shift);
+		}catch (Exception e){
 			e.printStackTrace();
 		}
-		/*
-		Point p1 = this.getRasterPointForFramePoint(focus);
-		Log.info("Point 1: ("+p1.getX()+", "+p1.getY()+")");
-		zoom += scale;
-		Point p2 = this.getRasterPointForFramePoint(focus);
-		Log.info("Point 2: ("+p2.getX()+", "+p2.getY()+")");
-		focus.setX(focus.getX()-(.5*m_width));
-		focus.setY(focus.getY()-(.5*m_height));
-		Point focusShift = new Point(focus.getX()*scale, focus.getY()*scale, focus.getZ());
-		Vector shiftVector = focus.vectorTo(focusShift);
-		zoom += scale;
-		this.setShift(shiftVector);
-		*/
 	}
 	
 	
@@ -350,6 +342,6 @@ public class UIContainer implements Shape, Parent{
 	public CoordinateSpace getRelativeSpace() {
 		//since our parent's space might change at any time, don't store it in a variable, just calculate it for every request
 		//there may be a way to make this more efficient, but it's fine for now.
-		return new CoordinateSpace(parent.getRelativeSpace(), false, false, this.getTopLeftX(), this.getTopLeftY()-m_height, 1);
+		return new CoordinateSpace(parent.getRelativeSpace(), false, false, this.getTopLeftX()+this.shift.getX(), (this.getTopLeftY()-m_height)+this.shift.getY(), this.zoom);
 	}
 }
