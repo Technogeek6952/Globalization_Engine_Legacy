@@ -3,6 +3,8 @@ package com.julianEngine.graphics.shapes;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import com.julianEngine.Engine2D;
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
@@ -72,7 +74,7 @@ public class ProgressBar implements Shape {
 		//int yPos = Math.round((float)(height - topLeft.getY())+ ((anchored)?0:(float)shift.getY()));
 		int filledWidth = Math.round(this.width*this.percentFilled);
 		
-		Point gfxPoint = parent.getGFXPoint(topLeft);
+		Point gfxPoint = CoordinateSpace.convertPointToSystem(topLeft, parent.getRelativeSpace(), parent.getDrawingSpace()); //parent.getGFXPoint(topLeft);
 		int xPos = (int) gfxPoint.getX();
 		int yPos = (int) gfxPoint.getY();
 		

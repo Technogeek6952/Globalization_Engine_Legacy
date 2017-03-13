@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
@@ -37,6 +38,7 @@ public class UIPolygonMask extends UIMask {
 	/*--------Code--------------------------*/
 	public UIPolygonMask(HashMap<Line, Point> bounds, Frame frame, Parent parent){
 		super(parent.getWorld());
+		this.parent = parent;
 		this.bounds = bounds;
 		UIPolygonMask ref = this;
 		ready = false;
@@ -63,7 +65,7 @@ public class UIPolygonMask extends UIMask {
 		referenceFrame = parent.getWorld().getContainingFrame();
 		listenerReady = true;
 		ready = true;
-		this.parent = parent;
+		
 	}
 	
 	public boolean isMouseInside(){
@@ -99,32 +101,34 @@ public class UIPolygonMask extends UIMask {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		Point mousePoint = parent.getRelativePointForRealPoint(referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0)));
-		if(isPointInside(mousePoint)){
-			//mose moved inside mask
-			if(mouseInside){
-				//if mouse was already inside, do nothing
-			}else{
-				//if mouse moved into mask, set bool and notify
-				mouseInside = true;
-				if(listeners.size()>0){
-					for(UIMaskListener l:listeners){
-						l.mouseEnteredMask();
-					}
-				}
-			}
-		}else{
-			//mouse moved outside mask
-			if(mouseInside){
-				//if mouse was previously inside the mask, set bool and notify it left
-				mouseInside = false;
-				if(listeners.size()>0){
-					for(UIMaskListener l:listeners){
-						l.mouseLeftMask();
+		if (parent!=null){
+			Point mousePoint = CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.frameRootSystem, parent.getRelativeSpace());
+			if(isPointInside(mousePoint)){
+				//mose moved inside mask
+				if(mouseInside){
+					//if mouse was already inside, do nothing
+				}else{
+					//if mouse moved into mask, set bool and notify
+					mouseInside = true;
+					if(listeners.size()>0){
+						for(UIMaskListener l:listeners){
+							l.mouseEnteredMask();
+						}
 					}
 				}
 			}else{
-				//if mouse was already outside, do nothing
+				//mouse moved outside mask
+				if(mouseInside){
+					//if mouse was previously inside the mask, set bool and notify it left
+					mouseInside = false;
+					if(listeners.size()>0){
+						for(UIMaskListener l:listeners){
+							l.mouseLeftMask();
+						}
+					}
+				}else{
+					//if mouse was already outside, do nothing
+				}
 			}
 		}
 	}

@@ -117,7 +117,7 @@ public class UIContainer implements Shape, Parent{
 	
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
-		Point gfxPoint = parent.getGFXPoint(m_topLeft);
+		Point gfxPoint = CoordinateSpace.convertPointToSystem(m_topLeft, parent.getRelativeSpace(), parent.getDrawingSpace());
 		int xPos = (int) gfxPoint.getX();
 		int yPos = (int) gfxPoint.getY();
 		((Graphics2D)graphics).setColor(background);
@@ -141,7 +141,7 @@ public class UIContainer implements Shape, Parent{
 			
 			if(UserConfiguration.getBool("containerShowMousePoint", false)){
 				Point p = new Point(Engine2D.getMouseLocation().getX(), Engine2D.getMouseLocation().getY(), 0);
-				p = this.getRelativePointForRealPoint(p);
+				p = CoordinateSpace.convertPointToSystem(p, Engine2D.frameRootSystem, this.getRelativeSpace());
 				graphics.setFont(new Font("Ariel", Font.PLAIN, 20));
 				graphics.drawString("("+p.getX()+", "+p.getY()+")", 0, 20);
 			}
@@ -219,6 +219,7 @@ public class UIContainer implements Shape, Parent{
 		return true;
 	}
 
+	/*
 	@Override
 	public Point getGFXPoint(Point p) {
 		Point newPoint = new Point();
@@ -226,7 +227,8 @@ public class UIContainer implements Shape, Parent{
 		newPoint.setY(m_height-p.getY());
 		return newPoint;
 	}
-
+	*/
+	
 	@Override
 	public Frame getContainingFrame() {
 		return m_frame;
@@ -263,6 +265,7 @@ public class UIContainer implements Shape, Parent{
 		return framePoint;
 	}
 	
+	/*
 	//OLD POINT CONVERSION METHOODS
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
@@ -280,11 +283,14 @@ public class UIContainer implements Shape, Parent{
 	 * calculates the point in the frame a given world-relative point equates to. Not effected by zoom/shift, so that certain math can be done on this point
 	 * @return
 	 */
+	/*
 	public Point getRasterPointForFramePoint(Point p){
 		Point origin = getUnalteredOrigin();
 		return new Point(((p.getX()-origin.getX())), ((p.getY()-origin.getY())), p.getZ()-origin.getZ());
 	}
+	*/
 	
+	/*
 	@Override
 	public Point getOrigin(){
 		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-(m_height*zoom), m_topLeft.getZ());
@@ -293,12 +299,15 @@ public class UIContainer implements Shape, Parent{
 		//origin.setY(origin.getY()*parent.getZoom());
 		return origin;
 	}
+	*/
 	
+	/*
 	public Point getUnalteredOrigin(){
 		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-(m_height), m_topLeft.getZ());
 		origin = parent.getRealPointForRelativePoint(origin);
 		return origin;
 	}
+	*/
 	
 	@Override
 	public World getWorld(){
@@ -307,7 +316,7 @@ public class UIContainer implements Shape, Parent{
 	
 	//given a point in the relative space of the containing world - is that point inside the space of this container?
 	public boolean isPointInside(Point p){
-		p = this.getRasterPointForFramePoint(p); //convert to relative coordinates
+		p = CoordinateSpace.convertPointToSystem(p, this.getWorld().getRelativeSpace(), this.getRelativeSpace()); //convert to relative coordinates
 		//if either the x or y is negative, the coordinate is out of the frame, the expression below will evaluate to true - it is then NOTed to be false
 		//if either the x or y is greater than the width or height respectively, the expression below will evaluate to true - and return false
 		return !((p.getX()<0||p.getY()<0)||(p.getX()>m_width||p.getY()>m_height));
@@ -343,5 +352,10 @@ public class UIContainer implements Shape, Parent{
 		//since our parent's space might change at any time, don't store it in a variable, just calculate it for every request
 		//there may be a way to make this more efficient, but it's fine for now.
 		return new CoordinateSpace(parent.getRelativeSpace(), false, false, this.getTopLeftX()+this.shift.getX(), (this.getTopLeftY()-m_height)+this.shift.getY(), this.zoom);
+	}
+	
+	@Override
+	public CoordinateSpace getDrawingSpace(){
+		return new CoordinateSpace(this.getRelativeSpace(), false, true, 0, m_height, this.zoom);
 	}
 }

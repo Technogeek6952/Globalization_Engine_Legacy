@@ -184,7 +184,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		
 		Point oldTL = new Point(topLeft.getX(), topLeft.getY(), topLeft.getZ());
 		topLeft.addVectorToThis(shift);
-		Point gfxPoint = parent.getGFXPoint(topLeft);
+		Point gfxPoint = CoordinateSpace.convertPointToSystem(topLeft, parent.getRelativeSpace(), parent.getDrawingSpace());
 		if(!useCustomFont){
 			UIText.draw(graphics, shift.addVector(new Vector(0, this.height, 0)), forceDraw);
 		}else{
@@ -342,6 +342,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		//the text and the rectangle
 	}
 
+	/*
 	@Override
 	public Point getGFXPoint(Point p) {
 		Point btnOrigin = new Point(topLeft.getX(), topLeft.getY()-this.height, 0);
@@ -353,13 +354,15 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 			return new Point(0, 0, 0);
 		}
 	}
-
+	*/
+	
 	@Override
 	public Frame getContainingFrame() {
 		// We don't live directly on a frame, so return the frame that our parent is on
 		return parent.getContainingFrame();
 	}
 
+	/*
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		return p;
@@ -379,7 +382,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		Point origin = getOrigin();
 		return new Point(((p.getX()-origin.getX())), ((p.getY()-origin.getY())), p.getZ()-origin.getZ());
 	}
-
+	*/
+	
 	@Override
 	public World getWorld() {
 		return parent.getWorld();
@@ -399,5 +403,10 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	@Override
 	public CoordinateSpace getRelativeSpace() {
 		return relSpace;
+	}
+	
+	@Override
+	public CoordinateSpace getDrawingSpace(){
+		return new CoordinateSpace(this.getRelativeSpace(), false, true, 0, height, 1);
 	}
 }

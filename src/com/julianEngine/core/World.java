@@ -63,6 +63,11 @@ public class World implements Parent{
 		return relativeSpace;
 	}
 	
+	@Override
+	public CoordinateSpace getDrawingSpace(){
+		return new CoordinateSpace(this.getRelativeSpace(), false, true, 0, Engine2D.getInstance().rootFrame.getHeight(), 1);
+	}
+	
 	public int getID(){
 		return worldID;
 	}
@@ -233,6 +238,7 @@ public class World implements Parent{
 		}
 	}
 	//Parent
+	/*
 	@Override
 	public Point getGFXPoint(Point p) {
 		Camera activeCamera = getActiveCamera();
@@ -243,7 +249,7 @@ public class World implements Parent{
 			return new Point(0, 0, 0);
 		}
 	}
-
+	 */
 	@Override
 	public Frame getContainingFrame() {
 		return Engine2D.getInstance().rootFrame;
@@ -263,6 +269,7 @@ public class World implements Parent{
 		public void execute();
 	}
 
+	/*
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		return p;
@@ -272,11 +279,14 @@ public class World implements Parent{
 	public Point getRelativePointForRealPoint(Point p){
 		return p;
 	}
+	*/
 	
+	/*
 	@Override
 	public Point getOrigin(){
 		return new Point();
 	}
+	*/
 	
 	@Override
 	public World getWorld(){

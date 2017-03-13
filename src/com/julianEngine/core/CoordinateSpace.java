@@ -1,5 +1,7 @@
 package com.julianEngine.core;
 
+import com.julianEngine.utility.Log;
+
 /**
  * Describes a coordinate system, and gives methods to convert to other spaces
  * @author Bowers
@@ -96,9 +98,11 @@ public class CoordinateSpace {
 		}
 	}
 	
-	public static Point convertPointToSystem(Point toConvert, CoordinateSpace oldSystem, CoordinateSpace newSystem) throws Exception{
+	public static Point convertPointToSystem(Point toConvert, CoordinateSpace oldSystem, CoordinateSpace newSystem){
 		if (!(oldSystem.getRootSpace()==newSystem.getRootSpace())){
-			throw new Exception("Cannot convert points with different root spaces");
+			//throw new Exception("Cannot convert points with different root spaces");
+			Log.error("Cannot convert points between two different root spaces, returning (0, 0, 0)");
+			return new Point();
 		}
 		//first convert the point into the root space, and then convert it out to the new system
 		return convertRootPointToSystemPoint(convertSystemPointToRootPoint(toConvert, oldSystem), newSystem);
