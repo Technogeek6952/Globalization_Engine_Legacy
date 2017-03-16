@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.julianEngine.Engine2D;
 import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
@@ -30,7 +33,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	
 	/*--------Private Instance Variables----*/
 	private Point topLeft;
-	private Color hColor;
+	private Color highlightColor;
 	private Color color;
 	private boolean anchored = false;
 	private int width;
@@ -51,6 +54,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	private boolean renderBox = false;
 	private boolean enabled = true;
 	private CoordinateSpace relSpace;
+	HashMap<Line, Point> bounds = new HashMap<Line, Point>();
 	
 	/*--------Code--------------------------*/
 	public UIButton(Point topLeft, String text, Color color, Frame frame, Parent parent){
@@ -58,60 +62,78 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		ready=false;
 		this.width = UIText.getWidth();
 		this.height = UIText.getHeight();
-		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
-		Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
+		
+		//Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
 		//Log.trace("UIButton center point: ("+center.getX()+", "+center.getY()+")");
-		Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
+		//Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
 		//Log.trace("UIButton top-right point: ("+topRight.getX()+", "+topRight.getY()+")");
-		Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
+		//Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
 		//Log.trace("UIButton bottomLeft point: ("+bottomLeft.getX()+", "+bottomLeft.getY()+")");
-		Point bottomRight = new Point(topLeft.getX()+width, topLeft.getY()-height, 0);
+		//Point bottomRight = new Point(topLeft.getX()+width, topLeft.getY()-height, 0);
 		//Log.trace("UIButton bottomRight point: ("+bottomRight.getX()+", "+bottomRight.getY()+")");
 		//top
-		bounds.put(new Line(topLeft, topRight), center);
+		
+		Point topLeftBound = new Point(0, height, 0);
+		Point topRightBound = new Point(width, height, 0);
+		Point bottomLeftBound = new Point(0, 0, 0);
+		Point bottomRightBound = new Point(width, 0, 0);
+		Point center = new Point(width/2, height/2, 0);
+		bounds.put(new Line(topLeftBound, topRightBound), center);
 		//left
-		bounds.put(new Line(topLeft, bottomLeft), center);
+		bounds.put(new Line(topLeftBound, bottomLeftBound), center);
 		//right
-		bounds.put(new Line(topRight, bottomRight), center);
+		bounds.put(new Line(topRightBound, bottomRightBound), center);
 		//bottom
-		bounds.put(new Line(bottomLeft, bottomRight), center);
+		bounds.put(new Line(bottomLeftBound, bottomRightBound), center);
 		buttonMask.setBounds(bounds);
-	
+		buttonMask.setParent(this);
 		
 		ready=true;
 	}
 	
 	//Full constructor. Put most constructor code in this one
 	public UIButton(Point topLeft, String text, Color color, int width, int height, Frame frame, Parent parent){
+		this.parent = parent;
 		this.topLeft = topLeft;
 		this.color = color;
-		this.hColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), 50);
+		this.highlightColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), 50);
 		this.width = width;
 		this.height = height;
 		UIText = new Text(new Point(0, height, 0), text, frame);
 		UIText.setColor(color);
-		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
-		Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
-		Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
-		Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
-		Point bottomRight = new Point(topLeft.getX()+width, topLeft.getY()-height, 0);
+		//HashMap<Line, Point> bounds = new HashMap<Line, Point>();
+		//Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
+		//Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
+		//Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
+		//Point bottomRight = new Point(topLeft.getX()+width, topLeft.getY()-height, 0);
+		
+		Point topLeftBound = new Point(0, height, 0);
+		Point topRightBound = new Point(width, height, 0);
+		Point bottomLeftBound = new Point(0, 0, 0);
+		Point bottomRightBound = new Point(width, 0, 0);
+		Point center = new Point(width/2, height/2, 0);
+		
 		//top
-		bounds.put(new Line(topLeft, topRight), center);
+		bounds.put(new Line(topLeftBound, topRightBound), center);
 		//left
-		bounds.put(new Line(topLeft, bottomLeft), center);
+		bounds.put(new Line(topLeftBound, bottomLeftBound), center);
 		//right
-		bounds.put(new Line(topRight, bottomRight), center);
+		bounds.put(new Line(topRightBound, bottomRightBound), center);
 		//bottom
-		bounds.put(new Line(bottomLeft, bottomRight), center);
-		buttonMask = new UIPolygonMask(bounds, frame, parent);
+		bounds.put(new Line(bottomLeftBound, bottomRightBound), center);
+		buttonMask = new UIPolygonMask(bounds, frame, this);
 		
 		buttonMask.addUIMaskListener(this);
 		
 		UIText.setParent(this);
-		
+		buttonMask.setParent(this);
 		relSpace = new CoordinateSpace(parent.getRelativeSpace(), false, false, topLeft.getX(), topLeft.getY()-height, 1);
 		
 		ready=true;
+	}
+	
+	public String getText(){
+		return this.UIText.getText();
 	}
 	
 	public void setText(String text){
@@ -171,6 +193,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		listeners.add(newListener);
 	}
 	
+	//@Deprecated
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
 		Composite originalComposite = ((Graphics2D)graphics).getComposite();
 		
@@ -186,13 +209,19 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		topLeft.addVectorToThis(shift);
 		Point gfxPoint = CoordinateSpace.convertPointToSystem(topLeft, parent.getRelativeSpace(), parent.getDrawingSpace());
 		if(!useCustomFont){
+			AffineTransform originalTransform = ((Graphics2D)graphics).getTransform();
+			((Graphics2D)graphics).translate(gfxPoint.getX(), gfxPoint.getY());
 			UIText.draw(graphics, shift.addVector(new Vector(0, this.height, 0)), forceDraw);
+			((Graphics2D)graphics).setTransform(originalTransform);
 		}else{
 			int xShift = (int) (((this.width-textWidth)/2) + shift.getX());
 			int yShift = (int) (((this.height-textHeight)/2) + shift.getY());
 			//UIText.move(UIText.getTopLeft().vectorTo(new Point(topLeft.getX()+xShift, topLeft.getY()-yShift, 0)));
 			//UIText.move(UIText.getTopLeft().vectorTo(new Point(xShift, yShift, 0)));
+			AffineTransform originalTransform = ((Graphics2D)graphics).getTransform();
+			((Graphics2D)graphics).translate(gfxPoint.getX(), gfxPoint.getY());
 			UIText.draw(graphics, new Vector(shift.getX()+xShift, -yShift, 0), forceDraw);
+			((Graphics2D)graphics).setTransform(originalTransform);
 		}
 		//int xPos = Math.round((float)topLeft.getX() + ((anchored )?0:(float)shift.getX()));
 		//int yPos = Math.round((float)(height - topLeft.getY()) + ((anchored)?0:(float)shift.getY())+this.height);
@@ -208,7 +237,7 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		}
 		
 		if(buttonMask.isMouseInside() && enabled){
-			graphics.setColor(hColor);
+			graphics.setColor(highlightColor);
 			graphics.fillRect(xPos, yPos, width, this.height);
 		}
 		
@@ -312,23 +341,6 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	@Override
 	public void setParent(Parent p) {
 		this.parent = p;
-		
-		//world-relative points (not parent-relative)
-		HashMap<Line, Point> bounds = new HashMap<Line, Point>();
-		//Point topLeft = parent.getRealPointForRelativePoint(this.topLeft);
-		Point center = new Point(topLeft.getX()+(width/2),topLeft.getY()-(height/2), 0);
-		Point topRight = new Point(topLeft.getX()+width, topLeft.getY(), 0);
-		Point bottomLeft = new Point(topLeft.getX(), topLeft.getY()-height, 0);
-		Point bottomRight = new Point(topLeft.getX()+width, topLeft.getY()-height, 0);
-		//top
-		bounds.put(new Line(topLeft, topRight), center);
-		//left
-		bounds.put(new Line(topLeft, bottomLeft), center);
-		//right
-		bounds.put(new Line(topRight, bottomRight), center);
-		//bottom
-		bounds.put(new Line(bottomLeft, bottomRight), center);
-		buttonMask.setBounds(bounds);
 	}
 
 	@Override
@@ -402,11 +414,13 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 
 	@Override
 	public CoordinateSpace getRelativeSpace() {
-		return relSpace;
+		return new CoordinateSpace(parent.getRelativeSpace(), false, false, topLeft.getX(), topLeft.getY()-(this.height), 1);
 	}
 	
 	@Override
 	public CoordinateSpace getDrawingSpace(){
 		return new CoordinateSpace(this.getRelativeSpace(), false, true, 0, height, 1);
+		//Point origin = CoordinateSpace.convertPointToSystem(new Point(), this.getRelativeSpace(), this.getWorld().getRelativeSpace());
+		//return new CoordinateSpace(this.getWorld().getRelativeSpace(), false, true, origin.getX(), origin.getY(), 1);
 	}
 }

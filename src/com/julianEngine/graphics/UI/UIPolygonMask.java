@@ -1,16 +1,21 @@
 package com.julianEngine.graphics.UI;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 import java.util.HashMap;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.config.UserConfiguration;
 import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.shapes.Line;
+import com.julianEngine.utility.Log;
 
 public class UIPolygonMask extends UIMask {
 	/*--------Public Static Variables-------*/
@@ -31,7 +36,7 @@ public class UIPolygonMask extends UIMask {
 	private boolean mouseInside = false;
 	private boolean ready = false;
 	private boolean listenerReady = false;
-	private Parent parent;
+	//private Parent parent;
 	//private Vector shift;
 	//private ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
@@ -93,6 +98,21 @@ public class UIPolygonMask extends UIMask {
 	}
 	
 	public void draw(Graphics graphics, Vector shift) {
+		if (UserConfiguration.getBool("drawMasks", false)){
+			AffineTransform transform1 = ((Graphics2D)graphics).getTransform();
+			((Graphics2D)graphics).setTransform(Engine2D.getInstance().rootFrame.getOriginalTransform());
+			if (this.mouseInside){
+				((Graphics2D)graphics).setColor(Color.CYAN);
+			}else{
+				((Graphics2D)graphics).setColor(Color.RED);
+			}
+			for (Line l:bounds.keySet()){
+				Point start = CoordinateSpace.convertPointToSystem(l.getStartPoint(), parent.getRelativeSpace(), Engine2D.frameRootSystem);
+				Point end = CoordinateSpace.convertPointToSystem(l.getEndPoint(), parent.getRelativeSpace(), Engine2D.frameRootSystem);
+				graphics.drawLine((int)start.getX(), (int)start.getY(), (int)end.getX(), (int)end.getY());
+			}
+			((Graphics2D)graphics).setTransform(transform1);
+		}
 	}
 
 	public boolean isReady(){
@@ -101,8 +121,11 @@ public class UIPolygonMask extends UIMask {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		if (parent!=null){
-			Point mousePoint = CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.frameRootSystem, parent.getRelativeSpace());
+		if (parent!=null&&parent.getWorld().equals(Engine2D.getInstance().camera.getWorld())){
+			Point mousePoint = /*new Point(e.getX(), e.getY(), 0);//*/CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.getInstance().mouseEventSpace, parent.getRelativeSpace());
+			if (UIButton.class.isInstance(parent)&&((UIButton)parent).getText()=="NEW GAME"){
+				Log.trace("("+mousePoint.getX()+", "+mousePoint.getY()+")");
+			}
 			if(isPointInside(mousePoint)){
 				//mose moved inside mask
 				if(mouseInside){

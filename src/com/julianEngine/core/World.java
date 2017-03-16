@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.config.EngineConstants;
 import com.julianEngine.core.CoordinateSpace.AxisType;
 import com.julianEngine.core.CoordinateSpace.SystemType;
 import com.julianEngine.graphics.Camera;
@@ -35,7 +36,10 @@ public class World implements Parent{
 		if(!worlds.containsKey(id)){
 			worldID = id;
 			worlds.put(id, this);
-			relativeSpace = new CoordinateSpace(SystemType.CARTESIAN, AxisType.XAXIS_RIGHT_POS, AxisType.YAXIS_UP_POS); //just to have a system until it is changed by setting the parent
+			//create a temporary coordinate space rooted in the frame root. This is because some parts of the code expect all worlds - weather loaded or not - to have a valid coordinate system
+			//rooted in the main frame root. It doesn't matter if the origin is in the right spot until the world is actually loaded and drawn, so we don't need to load the
+			//height of the frame here, especially since this constructor can be called before that height is set, leading to an error prone situation
+			relativeSpace = new CoordinateSpace(Engine2D.frameRootSystem, false, true, 0, 0, 1);
 		}else{
 			throw new IDAlreadyInUseException();
 		}

@@ -86,7 +86,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public Frame rootFrame = new Frame(1080, 720); //Variable holder for the frame that the camera renders to, and is displayed in the window
 	public static Object engineLock = new Object(); //this should be locked on when modifying the engine, or when the code must use the engine (in the render loop for example)
 	public static CoordinateSpace frameRootSystem = new CoordinateSpace(SystemType.CARTESIAN, AxisType.XAXIS_RIGHT_POS, AxisType.YAXIS_DOWN_POS);
-	
+	public CoordinateSpace mouseEventSpace;
 	/*--------Private Instance Variables----*/
 	private BufferStrategy bufferStrategy; //buffer strategy for the frame - renders two frames in advanced to improve performance
 	private boolean paused = false; //is the game paused?
@@ -340,7 +340,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		loadingScreen.loadingBar = new ProgressBar(new Point(0, loadContainer_height*2, 5), loadBar_width, loadBar_height); //create a progress bar for detailed loading progress
 		loadingScreen.loadingText = new Text(new Point(20, (int)(loadContainer_height*(.75f)), 5), " ", Color.WHITE, new Font("Ariel", Font.PLAIN, 12), engine.rootFrame); //text to display loading progress on
 		//loadingText.setCustomFont(new CustomFont(12, 0));
-		loadingScreen.loadingText.fitCustomFontToContainer(new UIContainer(new Point(), loadContainer_width, (int)(loadContainer_height*(.4f))));
+		loadingScreen.loadingText.fitCustomFontToContainer(new UIContainer(new Point(), loadContainer_width, (int)(loadContainer_height*(.4f)), loadingScreen));
 		loadingScreen.loadingText.useCustomFont(true);
 		//set up stylized loading bar and loading text
 		loadingScreen.loadingBar.setBarColor(Color.WHITE);
@@ -620,6 +620,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			rootFrame.setSideBorder(sideBorder);
 			rootFrame.setTitleBorder(titleBorder);
 			Log.trace("Main viewport set up");
+			
+			mouseEventSpace = new CoordinateSpace(Engine2D.frameRootSystem, false, false, sideBorder, titleBorder, 1);
 			
 			//Set up camera
 			//mainCamera.showFPS(true);

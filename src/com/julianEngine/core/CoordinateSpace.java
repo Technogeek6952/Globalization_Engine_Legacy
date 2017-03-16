@@ -99,8 +99,7 @@ public class CoordinateSpace {
 	}
 	
 	public static Point convertPointToSystem(Point toConvert, CoordinateSpace oldSystem, CoordinateSpace newSystem){
-		if (!(oldSystem.getRootSpace()==newSystem.getRootSpace())){
-			//throw new Exception("Cannot convert points with different root spaces");
+		if (!(oldSystem.getRootSpace().equals(newSystem.getRootSpace()))){
 			Log.error("Cannot convert points between two different root spaces, returning (0, 0, 0)");
 			return new Point();
 		}

@@ -14,7 +14,9 @@ import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.CustomFont;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.graphics.UI.UIButton;
 import com.julianEngine.graphics.UI.UIContainer;
+import com.julianEngine.utility.Log;
 
 public class Text implements Shape{
 	/*--------Public Static Variables-------*/
@@ -136,6 +138,7 @@ public class Text implements Shape{
 	}
 	
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
+		
 		if(anchored){
 			
 		}

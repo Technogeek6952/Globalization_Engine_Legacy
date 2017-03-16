@@ -44,6 +44,10 @@ public class Tests {
 			Point t6 = CoordinateSpace.convertPointToSystem(p2, l4, l2b); //point p2 in l2b space should be at (310, -450)
 			assert t6.getX()==310;
 			assert t6.getY()==-450;
+			
+			Point t7 = CoordinateSpace.convertPointToSystem(t4, l4, root); //point t4 in root space should be p1
+			assert t7.getX()==p1.getX();
+			assert t7.getY()==p1.getY();
 		} catch (Exception e) {
 			assert false;
 		}

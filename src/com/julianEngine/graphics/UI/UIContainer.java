@@ -41,11 +41,7 @@ public class UIContainer implements Shape, Parent{
 	Vector shift;
 	//CoordinateSpace relSpace;
 	
-	public UIContainer(Point t1, int width, int height, World world){
-		this(t1, width, height);
-	}
-	
-	public UIContainer(Point tl, int width, int height){
+	public UIContainer(Point tl, int width, int height, Parent parent){
 		m_frame = new Frame(width, height);
 		m_frame.setBackground(new Color(0, 0, 0, 0)); //transparent background
 		m_topLeft = tl;
@@ -54,6 +50,7 @@ public class UIContainer implements Shape, Parent{
 		ids++;
 		id = ids;
 		shift = new Vector(0, 0, 0);
+		this.parent = parent;
 		
 		//relSpace = new CoordinateSpace(SystemType.CARTESIAN, AxisType.XAXIS_RIGHT_POS, AxisType.YAXIS_UP_POS); //just to have a system until it is changed by setting the parent
 	}
@@ -125,7 +122,7 @@ public class UIContainer implements Shape, Parent{
 		((Graphics2D)graphics).setColor(borderColor);
 		graphics.drawRoundRect(xPos, yPos, m_width, m_height, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
 		
-		boolean useBuffer = false; //TODO: make a use buffer setting
+		boolean useBuffer = UserConfiguration.getBool("useContainerBuffers", false); //TODO: make a use buffer setting
 		
 		if(!useBuffer){
 			AffineTransform at = ((Graphics2D)graphics).getTransform();
@@ -170,26 +167,22 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public int getTopLeftX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)m_topLeft.getX();
 	}
 
 	@Override
 	public int getTopLeftY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)m_topLeft.getY();
 	}
 
 	@Override
 	public int getTopLeftZ() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)m_topLeft.getZ();
 	}
 
 	@Override
 	public Point getTopLeft() {
-		// TODO Auto-generated method stub
-		return null;
+		return m_topLeft;
 	}
 
 	@Override
@@ -246,11 +239,12 @@ public class UIContainer implements Shape, Parent{
 	
 	public void zoomOnPoint(Point focus, double scale){
 		try {
-			focus = CoordinateSpace.convertPointToSystem(focus, Engine2D.frameRootSystem, this.getRelativeSpace());
+			focus = CoordinateSpace.convertPointToSystem(focus, Engine2D.getInstance().mouseEventSpace, this.getRelativeSpace());
 			CoordinateSpace oldSpace = this.getRelativeSpace();
 			focus = new Point (m_width/2, m_height/2, 0);
+			Point framePoint = CoordinateSpace.convertPointToSystem(focus, this.getRelativeSpace(), Engine2D.getInstance().mouseEventSpace);
 			this.zoom += scale;
-			Point end = CoordinateSpace.convertPointToSystem(focus, oldSpace, this.getRelativeSpace());
+			Point end = CoordinateSpace.convertPointToSystem(framePoint, Engine2D.getInstance().mouseEventSpace, this.getRelativeSpace());
 			Vector shift = end.vectorTo(focus);
 			Log.info("<"+shift.getX()+", "+shift.getY()+">");
 			this.shift.addVectorToThis(shift);
@@ -258,56 +252,6 @@ public class UIContainer implements Shape, Parent{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public Point getContainerRelativePointForFrameRelativePoint(Point framePoint){
-		Point containerPoint = new Point((framePoint.getX()-this.shift.getX())/zoom, (framePoint.getY()-this.shift.getY())/zoom, framePoint.getZ());
-		return framePoint;
-	}
-	
-	/*
-	//OLD POINT CONVERSION METHOODS
-	@Override
-	public Point getRealPointForRelativePoint(Point p) {
-		Point origin = getOrigin();
-		return new Point(((p.getX()+shift.getX()+origin.getX())*zoom), ((p.getY()+shift.getY()+origin.getY())*zoom), (p.getY())+origin.getZ());
-	}
-	
-	@Override
-	public Point getRelativePointForRealPoint(Point p){
-		Point origin = getOrigin();
-		return new Point(((p.getX()-origin.getX()-shift.getX())/zoom), ((p.getY()-origin.getY()-shift.getY())/zoom), p.getZ()-origin.getZ());
-	}
-	
-	/**
-	 * calculates the point in the frame a given world-relative point equates to. Not effected by zoom/shift, so that certain math can be done on this point
-	 * @return
-	 */
-	/*
-	public Point getRasterPointForFramePoint(Point p){
-		Point origin = getUnalteredOrigin();
-		return new Point(((p.getX()-origin.getX())), ((p.getY()-origin.getY())), p.getZ()-origin.getZ());
-	}
-	*/
-	
-	/*
-	@Override
-	public Point getOrigin(){
-		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-(m_height*zoom), m_topLeft.getZ());
-		origin = parent.getRealPointForRelativePoint(origin);
-		//origin.setX(origin.getX()*parent.getZoom());
-		//origin.setY(origin.getY()*parent.getZoom());
-		return origin;
-	}
-	*/
-	
-	/*
-	public Point getUnalteredOrigin(){
-		Point origin = new Point(m_topLeft.getX(), m_topLeft.getY()-(m_height), m_topLeft.getZ());
-		origin = parent.getRealPointForRelativePoint(origin);
-		return origin;
-	}
-	*/
 	
 	@Override
 	public World getWorld(){
@@ -343,7 +287,6 @@ public class UIContainer implements Shape, Parent{
 
 	@Override
 	public void preLoad() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -351,7 +294,7 @@ public class UIContainer implements Shape, Parent{
 	public CoordinateSpace getRelativeSpace() {
 		//since our parent's space might change at any time, don't store it in a variable, just calculate it for every request
 		//there may be a way to make this more efficient, but it's fine for now.
-		return new CoordinateSpace(parent.getRelativeSpace(), false, false, this.getTopLeftX()+this.shift.getX(), (this.getTopLeftY()-m_height)+this.shift.getY(), this.zoom);
+		return new CoordinateSpace(parent.getRelativeSpace(), false, false, this.m_topLeft.getX()+this.shift.getX(), (this.m_topLeft.getY()-m_height)+this.shift.getY(), this.zoom);
 	}
 	
 	@Override

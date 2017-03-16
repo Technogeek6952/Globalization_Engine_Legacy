@@ -119,7 +119,7 @@ public class UIBitmapMask extends UIMask{
 	public void mouseMoved(MouseEvent e) {
 		//only respond to events once this has been added to a container (parent set), and if the active world is the one we should respond to
 		if(parentSet&&Engine2D.getInstance().camera.getWorld().equals(parent.getWorld())){
-			Point mousePoint = CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.frameRootSystem, parent.getRelativeSpace());
+			Point mousePoint = CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.getInstance().mouseEventSpace, parent.getRelativeSpace());
 			if(this.isPointInside(mousePoint)){
 				//mose moved inside mask
 				if(mouseInside){

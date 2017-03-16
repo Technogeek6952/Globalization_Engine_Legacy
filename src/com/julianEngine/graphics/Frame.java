@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -40,6 +41,7 @@ public class Frame extends JPanel{
 	private int titleBorder = 0;
 	private boolean listenerWaiting = false;
 	private Lock lock = new ReentrantLock();
+	private AffineTransform origninalTransform; //the original transform for the graphics object
 	//private ArrayList<MouseListener> mouseListeners = new ArrayList<MouseListener>();
 	//private ArrayList<MouseMotionListener> mouseMotionListeners = new ArrayList<MouseMotionListener>();
 	/*--------Code--------------------------*/
@@ -63,6 +65,10 @@ public class Frame extends JPanel{
 		}else{
 			unlockFPS();
 		}
+	}
+	
+	public AffineTransform getOriginalTransform(){
+		return origninalTransform;
 	}
 	
 	public void unlockFPS(){
@@ -156,6 +162,7 @@ public class Frame extends JPanel{
 		}
 		//long start = System.nanoTime(); //get the system time in nanoseconds when starting the render
 		Graphics graphics = bufferStrategy.getDrawGraphics(); //get a graphics object to draw to the buffer
+		this.origninalTransform = ((Graphics2D)graphics).getTransform();
 		
 		((Graphics2D)graphics).setBackground(backgroundColor);
 		graphics.clearRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
@@ -175,6 +182,8 @@ public class Frame extends JPanel{
 	public void drawFrame(Graphics2D graphics, boolean forceDraw){
 		((Graphics2D)graphics).setBackground(backgroundColor);
 		((Graphics2D)graphics).setColor(backgroundColor);
+		((Graphics2D)graphics).translate(this.sideBorder, this.titleBorder);
+		((Graphics2D)graphics).clipRect(0, 0, this.width, this.height);
 		graphics.fillRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
 		synchronized(this){
 			shapes.sort(new Comparator<Shape>(){
