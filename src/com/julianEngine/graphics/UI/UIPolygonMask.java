@@ -122,10 +122,7 @@ public class UIPolygonMask extends UIMask {
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		if (parent!=null&&parent.getWorld().equals(Engine2D.getInstance().camera.getWorld())){
-			Point mousePoint = /*new Point(e.getX(), e.getY(), 0);//*/CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.getInstance().mouseEventSpace, parent.getRelativeSpace());
-			if (UIButton.class.isInstance(parent)&&((UIButton)parent).getText()=="NEW GAME"){
-				Log.trace("("+mousePoint.getX()+", "+mousePoint.getY()+")");
-			}
+			Point mousePoint = CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.getInstance().mouseEventSpace, parent.getRelativeSpace());
 			if(isPointInside(mousePoint)){
 				//mose moved inside mask
 				if(mouseInside){

@@ -119,8 +119,8 @@ public class CoordinateSpace {
 			boolean flipx = parent.getDomainAxis().getReverseAxis().equals(lastSpace.getDomainAxis());
 			boolean flipy = parent.getRangeAxis().getReverseAxis().equals(lastSpace.getRangeAxis());
 			//Point newPoint = new Point(((flipx?-1:1)*(toConvert.getX()/scaleFactor))+system.originx, ((flipy?-1:1)*(toConvert.getY()/scaleFactor))+system.originy, toConvert.getZ());
-			point.setX(((flipx?-1:1)*(point.getX()/scaleFactor))+lastSpace.originx);
-			point.setY(((flipy?-1:1)*(point.getY()/scaleFactor))+lastSpace.originy);
+			point.setX(((flipx?-1f:1f)*(point.getX()/scaleFactor))+lastSpace.originx);
+			point.setY(((flipy?-1f:1f)*(point.getY()/scaleFactor))+lastSpace.originy);
 			lastSpace = parent;
 		}while((parent=parent.getParent())!=null);
 		
@@ -140,8 +140,8 @@ public class CoordinateSpace {
 		boolean flipx = system.getParent().getDomainAxis().getReverseAxis().equals(system.getDomainAxis());
 		boolean flipy = system.getParent().getRangeAxis().getReverseAxis().equals(system.getRangeAxis());
 		//Point newPoint = new Point((flipx?-1:1)*(point.getX()-system.originx)/scaleFactor, (flipy?-1:1)*(toConvert.getY()-system.originy)/scaleFactor, toConvert.getZ());
-		point.setX((flipx?-1:1)*(point.getX()-system.originx)/scaleFactor);
-		point.setY((flipy?-1:1)*(point.getY()-system.originy)/scaleFactor);
+		point.setX((flipx?-1f:1f)*((point.getX()-system.originx)/scaleFactor));
+		point.setY((flipy?-1f:1f)*((point.getY()-system.originy)/scaleFactor));
 		return point;
 		
 		/*

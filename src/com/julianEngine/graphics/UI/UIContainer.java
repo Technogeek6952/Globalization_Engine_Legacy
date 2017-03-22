@@ -129,8 +129,9 @@ public class UIContainer implements Shape, Parent{
 			((Graphics2D)graphics).translate(gfxPoint.getX(), gfxPoint.getY());
 			((Graphics2D)graphics).clipRect(0, 0, m_width, m_height);
 			((Graphics2D)graphics).translate(0, -((m_height*zoom)-m_height));
+			((Graphics2D)graphics).translate(this.shift.getX(), this.shift.getY());
 			((Graphics2D)graphics).scale(zoom, zoom);
-			((Graphics2D)graphics).translate(this.shift.getX(), -this.shift.getY());
+			
 			
 			m_frame.setShapes(shapes);
 			m_frame.setBackground(new Color(0, 0, 0, 0));
@@ -211,16 +212,6 @@ public class UIContainer implements Shape, Parent{
 	public boolean isReady() {
 		return true;
 	}
-
-	/*
-	@Override
-	public Point getGFXPoint(Point p) {
-		Point newPoint = new Point();
-		newPoint.setX(p.getX());
-		newPoint.setY(m_height-p.getY());
-		return newPoint;
-	}
-	*/
 	
 	@Override
 	public Frame getContainingFrame() {
@@ -240,12 +231,13 @@ public class UIContainer implements Shape, Parent{
 	public void zoomOnPoint(Point focus, double scale){
 		try {
 			focus = CoordinateSpace.convertPointToSystem(focus, Engine2D.getInstance().mouseEventSpace, this.getRelativeSpace());
-			CoordinateSpace oldSpace = this.getRelativeSpace();
+			//CoordinateSpace oldSpace = this.getRelativeSpace();
 			focus = new Point (m_width/2, m_height/2, 0);
-			Point framePoint = CoordinateSpace.convertPointToSystem(focus, this.getRelativeSpace(), Engine2D.getInstance().mouseEventSpace);
+			Point startPoint = CoordinateSpace.convertPointToSystem(focus, this.getRelativeSpace(), Engine2D.frameRootSystem);
+			//Point framePoint = CoordinateSpace.convertPointToSystem(focus, this.getRelativeSpace(), Engine2D.getInstance().mouseEventSpace);
 			this.zoom += scale;
-			Point end = CoordinateSpace.convertPointToSystem(framePoint, Engine2D.getInstance().mouseEventSpace, this.getRelativeSpace());
-			Vector shift = end.vectorTo(focus);
+			Point endPoint = CoordinateSpace.convertPointToSystem(focus, this.getRelativeSpace(), Engine2D.frameRootSystem);
+			Vector shift = startPoint.vectorTo(endPoint);
 			Log.info("<"+shift.getX()+", "+shift.getY()+">");
 			this.shift.addVectorToThis(shift);
 		}catch (Exception e){
