@@ -4,8 +4,10 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.core.Parent.HookListener;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.utility.Log;
@@ -25,6 +27,7 @@ public class World implements Parent{
 	List<PreLoadListener> preLoadListeners = new ArrayList<PreLoadListener>();
 	int activeCamera = 0;
 	LoadExecutor onLoad = null;
+	
 	
 	/*--------Code--------------------------*/
 	//full constructor
@@ -105,6 +108,24 @@ public class World implements Parent{
 	
 	public ArrayList<Shape> getShapes(){
 		return shapes;
+	}
+	
+	//HOOKS
+	Map<String, List<HookListener>> hookListeners = new HashMap<String, List<HookListener>>(); // maps hookID to listeners
+	
+	@Override
+	public void triggerHook(String hookID, byte[] data){
+		for (HookListener l:hookListeners.get(hookID)){
+			l.hookTriggered(hookID, data);
+		}
+	}
+	
+	@Override
+	public void addHookListener(String hookID, HookListener listener){
+		if (!hookListeners.containsKey(hookID)){
+			hookListeners.put(hookID, new ArrayList<HookListener>());
+		}
+		hookListeners.get(hookID).add(listener);
 	}
 	
 	/**

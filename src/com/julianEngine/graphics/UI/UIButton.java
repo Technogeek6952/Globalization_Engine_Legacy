@@ -7,12 +7,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
+import com.julianEngine.core.Parent.HookListener;
 import com.julianEngine.graphics.CustomFont;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.graphics.UI.UIMask.UIMaskListener;
@@ -216,6 +219,24 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		buttonMask.draw(graphics, shift);
 		
 		((Graphics2D)graphics).setComposite(originalComposite); //reset the composite at the end to avoid accidental side effects.
+	}
+	
+	//HOOKS
+	Map<String, List<HookListener>> hookListeners = new HashMap<String, List<HookListener>>(); // maps hookID to listeners
+	
+	@Override
+	public void triggerHook(String hookID, byte[] data){
+		for (HookListener l:hookListeners.get(hookID)){
+			l.hookTriggered(hookID, data);
+		}
+	}
+	
+	@Override
+	public void addHookListener(String hookID, HookListener listener){
+		if (!hookListeners.containsKey(hookID)){
+			hookListeners.put(hookID, new ArrayList<HookListener>());
+		}
+		hookListeners.get(hookID).add(listener);
 	}
 	
 	public boolean isReady(){

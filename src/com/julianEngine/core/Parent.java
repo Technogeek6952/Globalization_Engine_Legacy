@@ -14,4 +14,11 @@ public interface Parent extends Shape{
 	public Point getOrigin();
 	public World getWorld();
 	public double getZoom();
+	
+	public void triggerHook(String hookID, byte[] data);
+	public void addHookListener(String hookID, HookListener listener);
+	
+	public static interface HookListener{
+		public void hookTriggered(String hookID, byte[] data);
+	}
 }
