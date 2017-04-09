@@ -229,6 +229,8 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 		for (HookListener l:hookListeners.get(hookID)){
 			l.hookTriggered(hookID, data);
 		}
+		//also notify parent
+		parent.triggerHook(hookID, data);
 	}
 	
 	@Override

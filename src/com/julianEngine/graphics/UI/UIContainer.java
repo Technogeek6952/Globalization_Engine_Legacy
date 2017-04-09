@@ -253,6 +253,8 @@ public class UIContainer implements Shape, Parent{
 		for (HookListener l:hookListeners.get(hookID)){
 			l.hookTriggered(hookID, data);
 		}
+		//also send the trigger to the parent
+		parent.triggerHook(hookID, data);
 	}
 	
 	@Override
