@@ -225,12 +225,14 @@ public class UIButton implements UIElement, UIMaskListener, Parent{
 	Map<String, List<HookListener>> hookListeners = new HashMap<String, List<HookListener>>(); // maps hookID to listeners
 	
 	@Override
-	public void triggerHook(String hookID, byte[] data){
-		for (HookListener l:hookListeners.get(hookID)){
-			l.hookTriggered(hookID, data);
+	public void triggerHook(String hookID, HookData data){
+		if (hookListeners.get(hookID)!=null){
+			for (HookListener l:hookListeners.get(hookID)){
+				l.hookTriggered(hookID, data);
+			}
 		}
 		//also notify parent
-		parent.triggerHook(hookID, data);
+		parent.triggerHook(hookID, new HookData(data, parent));
 	}
 	
 	@Override
