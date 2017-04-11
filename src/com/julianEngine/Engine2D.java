@@ -84,7 +84,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	
 	
 	/*--------Private Instance Variables----*/
-	private BufferStrategy bufferStrategy; //buffer strategy for the frame - renders two frames in advanced to improve performance
 	private boolean paused = false; //is the game paused?
 	private int fpsLock = -1; //default fps lock - used in constructor to set up render loop
 	private ArrayList<EngineLoadListener> loadListeners = new ArrayList<EngineLoadListener>(); //list of parties who are interested in the loading state of the game
@@ -99,7 +98,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		if(!paused){
 			try{
 				synchronized(engineLock){
-					camera.renderPerspective(rootFrame, bufferStrategy);
+					camera.renderPerspective(rootFrame);
 					renders++;
 					
 					if((System.nanoTime()-lastUpdateNano)>250000000){
@@ -113,14 +112,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			}catch(Exception e){
 				Log.error("Error in render loop: ");
 				e.printStackTrace();
-				if(e.getMessage().equals("Buffers have not been created")){
-					Log.warn("Elaina detected in the matrix... Attempting to eliminate...");
-					boolean preState = this.isVisible();
-					Engine2D.this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
-					Engine2D.this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering
-					bufferStrategy = this.getBufferStrategy(); //Set the public variable so the buffer strategy can be accessed by other classes
-					Engine2D.this.setVisible(preState);
-				}
 			}
 		}
 		
@@ -595,7 +586,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			this.setResizable(false); //Prevents the user from manually resizing the window, and messing up all our hard work
 			this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
 			this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering
-			bufferStrategy = this.getBufferStrategy(); //Set the public variable so the buffer strategy can be accessed by other classes
 			//this.getContentPane().add(mainView); //Add the main Frame object to the window, so we can actually draw stuff on it
 			this.add(rootFrame);
 			this.addWindowListener(this); //Tell the JFrame to send any window events to the methods below
@@ -609,11 +599,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			this.pack();
 			rootFrame.setTargetFPS(fpsLock);
 			//mainView.unlockFPS();
-			Dimension windowSize = this.getSize();
-			int sideBorder = (windowSize.width - width)/2; //px size of left, right, and bottom borders
-			int titleBorder = (windowSize.height - height)-sideBorder; //px size of top border (w/title)
-			rootFrame.setSideBorder(sideBorder);
-			rootFrame.setTitleBorder(titleBorder);
 			Log.trace("Main viewport set up");
 			
 			//Set up camera
@@ -702,17 +687,10 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				
 				this.setVisible(true); //the JFrame needs to be visible to set up the BufferStrategy - will be set to invisible later until ready
 				this.createBufferStrategy(2); //Set up a buffer strategy for the window - allows for better performance while rendering
-				bufferStrategy = this.getBufferStrategy(); //Set the public variable so the buffer strategy can be accessed by other classes
 				this.setVisible(false);
 				
 				rootFrame.resizeFrame(width, height);
 				this.pack();
-				
-				Dimension windowSize = this.getSize();
-				int sideBorder = (windowSize.width - width)/2; //px size of left, right, and bottom borders
-				int titleBorder = (windowSize.height - height)-sideBorder; //px size of top border (w/title)
-				rootFrame.setSideBorder(sideBorder);
-				rootFrame.setTitleBorder(titleBorder);
 				
 				camera.showFPS(UserConfiguration.getBool("ShowFPS", false));
 			} catch (Exception e) {
@@ -898,9 +876,16 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public BufferedImage pauseGame(){
 		BufferedImage frameSnap = new BufferedImage(rootFrame.getWidth(), rootFrame.getHeight(), BufferedImage.TYPE_INT_RGB);
 		Graphics2D snapGfx = (Graphics2D)frameSnap.getGraphics();
-		snapGfx.translate(-rootFrame.getSideBorder(), -rootFrame.getTitleBorder());
 		rootFrame.drawFrame(snapGfx, true);
 		return frameSnap;
+	}
+	
+	public int getFrameSideSize(){
+		return (this.getSize().width - rootFrame.getWidth())/2;
+	}
+	
+	public int getFrameTitleSize(){
+		return (this.getSize().height - rootFrame.getHeight())-getFrameSideSize();
 	}
 	
 	/**
