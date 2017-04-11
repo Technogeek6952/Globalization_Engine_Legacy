@@ -122,7 +122,7 @@ public class Camera {
 	}
 	
 	//Does calculations, then sends 2d shapes to the frame to be rendered
-	public void renderPerspective(Frame destination, BufferStrategy bufferStrategy){
+	public void renderPerspective(Frame destination){
 		destination.showFPS = showFPS;
 		destination.fps = fps;
 		World world = World.getWorldForID(currentID);

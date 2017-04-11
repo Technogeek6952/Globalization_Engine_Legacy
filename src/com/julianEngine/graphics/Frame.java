@@ -154,40 +154,6 @@ public class Frame extends JPanel{
 		//...
 	}
 	
-	//Render the frame
-	public void render(BufferStrategy bufferStrategy, boolean forceDraw){
-		/*
-		synchronized(lock){
-			if(listenerWaiting&&lock.tryLock()){
-				lock.unlock();
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Log.warn("Interrupted while waiting for render lock");
-					e.printStackTrace();
-				}
-				lock.lock();
-			}
-		}
-		//long start = System.nanoTime(); //get the system time in nanoseconds when starting the render
-		Graphics graphics = bufferStrategy.getDrawGraphics(); //get a graphics object to draw to the buffer
-		
-		((Graphics2D)graphics).setBackground(backgroundColor);
-		graphics.clearRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
-		//draw stuff
-		drawFrame((Graphics2D)graphics, forceDraw);
-		if(showFPS){
-			graphics.setColor(Color.YELLOW);
-			graphics.setFont(new Font("Ariel", Font.BOLD, 20));
-			graphics.drawString(String.format("FPS: %.2f", fps), 3, 50);
-		}
-		//...
-		bufferStrategy.show(); //tell the buffer that we're done drawing, and it can show the frame
-		//Toolkit.getDefaultToolkit().sync(); //sync the graphics - may reduce fps, but makes animation smoother?
-		graphics.dispose(); //release memory from the graphics object
-		*/
-	}
-	
 	public void drawFrame(Graphics2D graphics, boolean forceDraw){
 		((Graphics2D)graphics).setBackground(backgroundColor);
 		((Graphics2D)graphics).setColor(backgroundColor);
