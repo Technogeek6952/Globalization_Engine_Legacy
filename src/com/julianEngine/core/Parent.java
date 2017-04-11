@@ -14,4 +14,47 @@ public interface Parent extends Shape{
 	public Point getOrigin();
 	public World getWorld();
 	public double getZoom();
+	
+	public void triggerHook(String hookID, HookData data);
+	public void addHookListener(String hookID, HookListener listener);
+	
+	public static interface HookListener{
+		public void hookTriggered(String hookID, HookData data);
+	}
+	
+	public static class HookData{
+		HookData stack;
+		Parent container;
+		byte[] data;
+		boolean root;
+		
+		public HookData(HookData stack, Parent container){
+			this.stack = stack;
+			this.container = container;
+			this.root = false;
+		}
+		
+		public HookData(byte[] data, Parent origin){
+			this.container = origin;
+			this.data = data;
+			this.root = true;
+		}
+		
+		//returns the parent object that this event was triggered on
+		public Parent getRoot(){
+			if (root){
+				return container;
+			}else{
+				return stack.getRoot();
+			}
+		}
+		
+		public byte[] getData(){
+			if (root){
+				return data;
+			}else{
+				return stack.getData();
+			}
+		}
+	}
 }

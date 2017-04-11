@@ -7,6 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.julianEngine.Engine2D;
 import com.julianEngine.config.UserConfiguration;
@@ -15,6 +18,7 @@ import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
+import com.julianEngine.core.Parent.HookListener;
 import com.julianEngine.graphics.Frame;
 
 public class UIContainer implements Shape, Parent{
@@ -239,6 +243,28 @@ public class UIContainer implements Shape, Parent{
 	public Point getRelativePointForRealPoint(Point p){
 		Point origin = getOrigin();
 		return new Point(((p.getX()-origin.getX()-shift.getX())/zoom), ((p.getY()-origin.getY()-shift.getY())/zoom), p.getZ()-origin.getZ());
+	}
+	
+	//HOOKS
+	Map<String, List<HookListener>> hookListeners = new HashMap<String, List<HookListener>>(); // maps hookID to listeners
+	
+	@Override
+	public void triggerHook(String hookID, HookData data){
+		if (hookListeners.get(hookID)!=null){
+			for (HookListener l:hookListeners.get(hookID)){
+				l.hookTriggered(hookID, data);
+			}
+		}
+		//also send the trigger to the parent
+		parent.triggerHook(hookID, new HookData(data, this));
+	}
+	
+	@Override
+	public void addHookListener(String hookID, HookListener listener){
+		if (!hookListeners.containsKey(hookID)){
+			hookListeners.put(hookID, new ArrayList<HookListener>());
+		}
+		hookListeners.get(hookID).add(listener);
 	}
 	
 	/**
