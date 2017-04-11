@@ -70,22 +70,6 @@ public class Frame extends JPanel{
 		//renderTimeoutNano = 0;
 	}
 	
-	public void setSideBorder(int size){
-		sideBorder = size;
-	}
-	
-	public void setTitleBorder(int size){
-		titleBorder = size;
-	}
-	
-	public int getSideBorder(){
-		return sideBorder;
-	}
-	
-	public int getTitleBorder(){
-		return titleBorder;
-	}
-	
 	public Point convertPointJGFXtoJEGFX(Point point){
 		Point newPoint = new Point();
 		newPoint.setX(point.getX()-sideBorder);
@@ -140,8 +124,39 @@ public class Frame extends JPanel{
 		backgroundColor = newBackground;
 	}
 	
+	@Override
+	public void paintComponent(Graphics graphics){
+		//First get the render lock
+		synchronized(lock){
+			//if there are listeners waiting for the lock, and we hold it, release it for 100ms, 
+			//and then grab it again, and check again if there are listeners waiting for it
+			if(listenerWaiting&&lock.tryLock()){
+				lock.unlock();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					Log.warn("Interrupted while waiting for render lock");
+					e.printStackTrace();
+				}
+				lock.lock();
+			}
+		}
+		
+		((Graphics2D)graphics).setBackground(backgroundColor);
+		graphics.clearRect(0, 0, width, height);
+		//draw stuff
+		drawFrame((Graphics2D)graphics, true);
+		if(showFPS){
+			graphics.setColor(Color.YELLOW);
+			graphics.setFont(new Font("Ariel", Font.BOLD, 20));
+			graphics.drawString(String.format("FPS: %.2f", fps), 3, 50);
+		}
+		//...
+	}
+	
 	//Render the frame
 	public void render(BufferStrategy bufferStrategy, boolean forceDraw){
+		/*
 		synchronized(lock){
 			if(listenerWaiting&&lock.tryLock()){
 				lock.unlock();
@@ -170,12 +185,13 @@ public class Frame extends JPanel{
 		bufferStrategy.show(); //tell the buffer that we're done drawing, and it can show the frame
 		//Toolkit.getDefaultToolkit().sync(); //sync the graphics - may reduce fps, but makes animation smoother?
 		graphics.dispose(); //release memory from the graphics object
+		*/
 	}
 	
 	public void drawFrame(Graphics2D graphics, boolean forceDraw){
 		((Graphics2D)graphics).setBackground(backgroundColor);
 		((Graphics2D)graphics).setColor(backgroundColor);
-		graphics.fillRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
+		graphics.fillRect(0, 9, width, height);
 		synchronized(this){
 			shapes.sort(new Comparator<Shape>(){
 				public int compare(Shape o1, Shape o2) {

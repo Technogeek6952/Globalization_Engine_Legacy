@@ -138,7 +138,8 @@ public class Camera {
 			
 			destination.setShift(toOrigin);
 			
-			destination.render(bufferStrategy, render);
+			//destination.render(bufferStrategy, render);
+			destination.repaint();
 		}
 	}
 }

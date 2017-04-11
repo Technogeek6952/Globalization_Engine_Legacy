@@ -612,8 +612,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			Dimension windowSize = this.getSize();
 			int sideBorder = (windowSize.width - width)/2; //px size of left, right, and bottom borders
 			int titleBorder = (windowSize.height - height)-sideBorder; //px size of top border (w/title)
-			rootFrame.setSideBorder(sideBorder);
-			rootFrame.setTitleBorder(titleBorder);
 			Log.trace("Main viewport set up");
 			
 			//Set up camera
@@ -707,12 +705,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 				
 				rootFrame.resizeFrame(width, height);
 				this.pack();
-				
-				Dimension windowSize = this.getSize();
-				int sideBorder = (windowSize.width - width)/2; //px size of left, right, and bottom borders
-				int titleBorder = (windowSize.height - height)-sideBorder; //px size of top border (w/title)
-				rootFrame.setSideBorder(sideBorder);
-				rootFrame.setTitleBorder(titleBorder);
 				
 				camera.showFPS(UserConfiguration.getBool("ShowFPS", false));
 			} catch (Exception e) {
@@ -898,7 +890,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public BufferedImage pauseGame(){
 		BufferedImage frameSnap = new BufferedImage(rootFrame.getWidth(), rootFrame.getHeight(), BufferedImage.TYPE_INT_RGB);
 		Graphics2D snapGfx = (Graphics2D)frameSnap.getGraphics();
-		snapGfx.translate(-rootFrame.getSideBorder(), -rootFrame.getTitleBorder());
 		rootFrame.drawFrame(snapGfx, true);
 		return frameSnap;
 	}
