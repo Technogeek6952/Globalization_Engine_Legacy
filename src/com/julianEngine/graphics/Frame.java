@@ -5,7 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.locks.Lock;
@@ -13,9 +15,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.JPanel;
 
+import com.julianEngine.Engine2D;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
+import com.julianEngine.graphics.shapes.Sprite;
 import com.julianEngine.utility.Log;
 
 public class Frame extends JPanel{
@@ -124,6 +128,14 @@ public class Frame extends JPanel{
 		backgroundColor = newBackground;
 	}
 	
+	Sprite cursor;
+	public void setCursor(String cursorURI){
+		Dimension cursorSize = Toolkit.getDefaultToolkit().getBestCursorSize(32, 32);
+		cursor = new Sprite(new Point(0, 0, 100), cursorSize.width, cursorSize.height, cursorURI);
+		Engine2D.getInstance().rootWorld.addShape(cursor);
+		//Engine2D.getInstance().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new java.awt.Point(1, 1), "blank"));
+	}
+	
 	@Override
 	public void paintComponent(Graphics graphics){
 		//First get the render lock
@@ -158,6 +170,12 @@ public class Frame extends JPanel{
 		((Graphics2D)graphics).setBackground(backgroundColor);
 		((Graphics2D)graphics).setColor(backgroundColor);
 		graphics.fillRect(0, 9, width, height);
+		Point mousePoint = Engine2D.getMouseLocation();
+		if (cursor!=null && mousePoint!=null){
+			cursor.getTopLeft().setX(mousePoint.getX());
+			cursor.getTopLeft().setY(mousePoint.getY());
+			cursor.draw(graphics, new Vector(), true);
+		}
 		synchronized(this){
 			shapes.sort(new Comparator<Shape>(){
 				public int compare(Shape o1, Shape o2) {

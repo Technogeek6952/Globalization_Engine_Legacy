@@ -512,7 +512,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		if(!engineStarted){
 			try {
 				this.setWindowIcon("engine/icon.png");//loads the default icon image - this should stay in the data directory instead of being packaged into a jrf file
-				this.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(DataManager.getImageForURI("engine/cursor.png"), this.getLocation(), "cursor")); //loads the default cursor, see above
+				//this.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(DataManager.getImageForURI("engine/cursor.png"), this.getLocation(), "cursor")); //loads the default cursor, see above
+				
 			} catch (Exception e) {
 				Log.error("Error while loading default icons");
 				e.printStackTrace();
@@ -614,6 +615,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			
 			this.setVisible(false);
 			instance = this; //set the static variable so that the active engine can always be instanced
+			rootFrame.setCursor("engine/cursor.png");
 		}else{
 			throw new Exception("Engine Already Started"); //this should never be thrown, since the constructor is not public, and only the getInstance will call it
 		}
@@ -717,6 +719,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		java.awt.Point mousePoint = instance.getMousePosition(true);
 		if(mousePoint!=null)
 			//return new Point(mousePoint.getX(), mousePoint.getY(), 0);
+			
 			return instance.rootFrame.convertPointJGFXtoJEGFX(new Point(mousePoint.getX(), mousePoint.getY(), 0));
 		return null;
 	}
