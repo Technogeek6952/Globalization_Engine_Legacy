@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import com.julianEngine.config.EngineConstants;
 import com.julianEngine.config.UserConfiguration;
@@ -600,9 +601,6 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			Log.trace("Main window set up");
 			
 			//Set up 'mainView' frame
-			Dimension windowSize = this.getSize();
-			int sideBorder = (windowSize.width - width)/2; //px size of left, right, and bottom borders
-			int titleBorder = (windowSize.height - height)-sideBorder; //px size of top border (w/title)
 			rootFrame.setIgnoreRepaint(true); //Stop the internal frame from getting system updates as well
 			rootFrame.resizeFrame(width, height); //Resize frame to the size of the window
 			rootFrame.setBorder(null);
@@ -728,12 +726,14 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	
 	//Returns a point (com.julianEngine.core.Point) with the location of the mouse, in the
 	//julian engine coordinate space. null if not in window
+	@Deprecated
 	public static Point getMouseLocation(){
-		java.awt.Point mousePoint = instance.getMousePosition(true);
-		if(mousePoint!=null)
+		java.awt.Point mousePoint = instance.rootFrame.getMousePosition(true);
+		if(mousePoint!=null){
 			//return new Point(mousePoint.getX(), mousePoint.getY(), 0);
-			
-			return instance.rootFrame.convertPointJGFXtoJEGFX(new Point(mousePoint.getX(), mousePoint.getY(), 0));
+			return /*CoordinateSpace.convertPointToSystem(*/new Point(mousePoint.getX(), mousePoint.getY(), 0);//, instance.mouseEventSpace, frameRootSystem);
+			//return instance.rootFrame.convertPointJGFXtoJEGFX(new Point(mousePoint.getX(), mousePoint.getY(), 0));
+		}
 		return null;
 	}
 	

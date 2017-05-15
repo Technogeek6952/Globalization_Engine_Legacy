@@ -344,6 +344,7 @@ public class Sprite implements Shape{
 				lastSwitch = System.currentTimeMillis();
 			}
 		}
+		
 		((Graphics2D) graphics).setComposite(opaqueComp);
 	}
 	

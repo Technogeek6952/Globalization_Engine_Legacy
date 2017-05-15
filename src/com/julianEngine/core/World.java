@@ -80,6 +80,7 @@ public class World implements Parent{
 	}
 	
 	public void attachCamera(Camera c){
+		this.relativeSpace = new CoordinateSpace(Engine2D.frameRootSystem, false, true, c.getFrame().getSideBorder(), c.getFrame().getHeight()+c.getFrame().getTitleBorder(), 1); //the new system will have a flipped y axis, with an origin at the bottem left
 		attachedCameras.add(c);
 	}
 	
