@@ -6,8 +6,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.locks.Lock;
@@ -44,6 +44,7 @@ public class Frame extends JPanel{
 	private int titleBorder = 0;
 	private boolean listenerWaiting = false;
 	private Lock lock = new ReentrantLock();
+	private AffineTransform origninalTransform; //the original transform for the graphics object
 	//private ArrayList<MouseListener> mouseListeners = new ArrayList<MouseListener>();
 	//private ArrayList<MouseMotionListener> mouseMotionListeners = new ArrayList<MouseMotionListener>();
 	/*--------Code--------------------------*/
@@ -69,9 +70,29 @@ public class Frame extends JPanel{
 		}
 	}
 	
+	public AffineTransform getOriginalTransform(){
+		return origninalTransform;
+	}
+	
 	public void unlockFPS(){
 		//renderTimeout = 0;
 		//renderTimeoutNano = 0;
+	}
+	
+	public void setSideBorder(int size){
+		sideBorder = size;
+	}
+	
+	public void setTitleBorder(int size){
+		titleBorder = size;
+	}
+	
+	public int getSideBorder(){
+		return sideBorder;
+	}
+	
+	public int getTitleBorder(){
+		return titleBorder;
 	}
 	
 	public Point convertPointJGFXtoJEGFX(Point point){
@@ -128,14 +149,6 @@ public class Frame extends JPanel{
 		backgroundColor = newBackground;
 	}
 	
-	Sprite cursor;
-	public void setCursor(String cursorURI){
-		Dimension cursorSize = Toolkit.getDefaultToolkit().getBestCursorSize(32, 32);
-		cursor = new Sprite(new Point(0, 0, 100), cursorSize.width, cursorSize.height, cursorURI);
-		Engine2D.getInstance().rootWorld.addShape(cursor);
-		//Engine2D.getInstance().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new java.awt.Point(1, 1), "blank"));
-	}
-	
 	@Override
 	public void paintComponent(Graphics graphics){
 		//First get the render lock
@@ -166,10 +179,20 @@ public class Frame extends JPanel{
 		//...
 	}
 	
+	Sprite cursor;
+	public void setCursor(String cursorURI){
+		Dimension cursorSize = Toolkit.getDefaultToolkit().getBestCursorSize(32, 32);
+		cursor = new Sprite(new Point(0, 0, 100), cursorSize.width, cursorSize.height, cursorURI);
+		Engine2D.getInstance().rootWorld.addShape(cursor);
+		//Engine2D.getInstance().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new java.awt.Point(1, 1), "blank"));
+	}
+	
 	public void drawFrame(Graphics2D graphics, boolean forceDraw){
 		((Graphics2D)graphics).setBackground(backgroundColor);
 		((Graphics2D)graphics).setColor(backgroundColor);
-		graphics.fillRect(0, 9, width, height);
+		((Graphics2D)graphics).translate(this.sideBorder, this.titleBorder);
+		((Graphics2D)graphics).clipRect(0, 0, this.width, this.height);
+		graphics.fillRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
 		Point mousePoint = Engine2D.getMouseLocation();
 		if (cursor!=null && mousePoint!=null){
 			cursor.getTopLeft().setX(mousePoint.getX());

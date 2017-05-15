@@ -34,6 +34,9 @@ import javax.swing.JFrame;
 
 import com.julianEngine.config.EngineConstants;
 import com.julianEngine.config.UserConfiguration;
+import com.julianEngine.core.CoordinateSpace;
+import com.julianEngine.core.CoordinateSpace.AxisType;
+import com.julianEngine.core.CoordinateSpace.SystemType;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
 import com.julianEngine.core.World;
@@ -52,6 +55,7 @@ import com.julianEngine.graphics.gui.LauncherWindow;
 import com.julianEngine.graphics.shapes.ProgressBar;
 import com.julianEngine.graphics.shapes.Text;
 import com.julianEngine.utility.Log;
+import com.julianEngine.utility.Tests;
 
 /**
  * Julian Engine v1.2 - coded in Java with default libraries.
@@ -81,7 +85,8 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	public Camera camera; //Variable holder for the camera rendering the window
 	public Frame rootFrame = new Frame(1080, 720); //Variable holder for the frame that the camera renders to, and is displayed in the window
 	public static Object engineLock = new Object(); //this should be locked on when modifying the engine, or when the code must use the engine (in the render loop for example)
-	
+	public static CoordinateSpace frameRootSystem = new CoordinateSpace(SystemType.CARTESIAN, AxisType.XAXIS_RIGHT_POS, AxisType.YAXIS_DOWN_POS);
+	public CoordinateSpace mouseEventSpace;
 	
 	/*--------Private Instance Variables----*/
 	private boolean paused = false; //is the game paused?
@@ -128,6 +133,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 	 * @throws MultipleMasterFilesFoundException 
 	**/
 	public static void main(String[] args){
+		Tests.runTests();
 		System.out.println("Starting Engine in: "+System.getProperty("user.dir"));
 		//first set up anything needed to run
 		preLoadEngine();
@@ -326,7 +332,7 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		loadingScreen.loadingBar = new ProgressBar(new Point(0, loadContainer_height*2, 5), loadBar_width, loadBar_height); //create a progress bar for detailed loading progress
 		loadingScreen.loadingText = new Text(new Point(20, (int)(loadContainer_height*(.75f)), 5), " ", Color.WHITE, new Font("Ariel", Font.PLAIN, 12), engine.rootFrame); //text to display loading progress on
 		//loadingText.setCustomFont(new CustomFont(12, 0));
-		loadingScreen.loadingText.fitCustomFontToContainer(new UIContainer(new Point(), loadContainer_width, (int)(loadContainer_height*(.4f))));
+		loadingScreen.loadingText.fitCustomFontToContainer(new UIContainer(new Point(), loadContainer_width, (int)(loadContainer_height*(.4f)), loadingScreen));
 		loadingScreen.loadingText.useCustomFont(true);
 		//set up stylized loading bar and loading text
 		loadingScreen.loadingBar.setBarColor(Color.WHITE);
@@ -594,13 +600,20 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 			Log.trace("Main window set up");
 			
 			//Set up 'mainView' frame
+			Dimension windowSize = this.getSize();
+			int sideBorder = (windowSize.width - width)/2; //px size of left, right, and bottom borders
+			int titleBorder = (windowSize.height - height)-sideBorder; //px size of top border (w/title)
 			rootFrame.setIgnoreRepaint(true); //Stop the internal frame from getting system updates as well
 			rootFrame.resizeFrame(width, height); //Resize frame to the size of the window
 			rootFrame.setBorder(null);
 			this.pack();
 			rootFrame.setTargetFPS(fpsLock);
 			//mainView.unlockFPS();
+			
 			Log.trace("Main viewport set up");
+			
+			//TODO: This is copied from old code, probably can be changed (window border no longer used)
+			mouseEventSpace = new CoordinateSpace(Engine2D.frameRootSystem, false, false, 0, 0, 1);
 			
 			//Set up camera
 			//mainCamera.showFPS(true);
@@ -1062,4 +1075,5 @@ public class Engine2D extends JFrame implements WindowListener, KeyListener {
 		public void setLoadingPercentage(float percent);
 		public void waitForLoadComplete();
 	}
+
 }

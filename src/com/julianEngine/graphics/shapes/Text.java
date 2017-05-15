@@ -7,13 +7,16 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
 import com.julianEngine.graphics.CustomFont;
 import com.julianEngine.graphics.Frame;
+import com.julianEngine.graphics.UI.UIButton;
 import com.julianEngine.graphics.UI.UIContainer;
+import com.julianEngine.utility.Log;
 
 public class Text implements Shape{
 	/*--------Public Static Variables-------*/
@@ -135,6 +138,7 @@ public class Text implements Shape{
 	}
 	
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw) {
+		
 		if(anchored){
 			
 		}
@@ -143,7 +147,7 @@ public class Text implements Shape{
 			graphics.setFont(font);
 			//int xPos = Math.round((float)topLeft.getX() + ((anchored)?0:(float)shift.getX()));
 			//int yPos = Math.round((float)(height - topLeft.getY()) + ((anchored)?0:(float)shift.getY()) + (2*textHeight));
-			Point gfxPoint = parent.getGFXPoint(topLeft.addVector(shift));
+			Point gfxPoint = CoordinateSpace.convertPointToSystem(topLeft.addVector(shift), parent.getRelativeSpace(), parent.getDrawingSpace());
 			int xPos = (int) gfxPoint.getX();
 			int yPos = (int) gfxPoint.getY() + this.textHeight;
 			graphics.drawString(text, xPos, yPos);

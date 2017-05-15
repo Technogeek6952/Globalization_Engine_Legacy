@@ -6,14 +6,19 @@ public interface Parent extends Shape{
 	public void addShape(Shape s);
 	public void removeShape(Shape s);
 	public void preLoad(); //called before the camera switches to the world, or called from the parent, can be used to update values before the user sees the screen
-	public Point getGFXPoint(Point p);
+	//public Point getGFXPoint(Point p);
 	public Frame getContainingFrame();
 	public Frame getFrame();
-	public Point getRealPointForRelativePoint(Point p);
-	public Point getRelativePointForRealPoint(Point p);
-	public Point getOrigin();
+	//public Point getRealPointForRelativePoint(Point p);
+	//public Point getRelativePointForRealPoint(Point p);
+	//public Point getOrigin();
 	public World getWorld();
 	public double getZoom();
+	
+	//NEW POINT CONVERSION METHOD
+	//public Point convertPoint(Point p1, CoordinateSystem newSystem);
+	public CoordinateSpace getRelativeSpace();
+	public CoordinateSpace getDrawingSpace(); //a coordinate space similar to the relative space, but in which the y-axis is inverted for rendering to a graphics object
 	
 	public void triggerHook(String hookID, HookData data);
 	public void addHookListener(String hookID, HookListener listener);

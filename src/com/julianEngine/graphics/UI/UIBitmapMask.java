@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 
 import com.julianEngine.Engine2D;
 import com.julianEngine.config.UserConfiguration;
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Vector;
@@ -84,7 +85,7 @@ public class UIBitmapMask extends UIMask{
 	@Override
 	public void draw(Graphics graphics, Vector shift, boolean forceDraw){
 		if(this.height>0&&((mouseInside&&highlight)||draw||UserConfiguration.getBool("drawMasks", false))){
-			Point gfxPoint = parent.getGFXPoint(topLeft);
+			Point gfxPoint = CoordinateSpace.convertPointToSystem(topLeft, parent.getRelativeSpace(), parent.getDrawingSpace());
 			if(mouseInside&&!(draw||UserConfiguration.getBool("drawMasks", false))){
 				graphics.setColor(highlightColor);
 			}else{
@@ -118,7 +119,7 @@ public class UIBitmapMask extends UIMask{
 	public void mouseMoved(MouseEvent e) {
 		//only respond to events once this has been added to a container (parent set), and if the active world is the one we should respond to
 		if(parentSet&&Engine2D.getInstance().camera.getWorld().equals(parent.getWorld())){
-			Point mousePoint = parent.getRelativePointForRealPoint(referenceFrame.convertPointFGFXtoJEGFX(new Point(e.getX(), e.getY(), 0)));
+			Point mousePoint = CoordinateSpace.convertPointToSystem(new Point(e.getX(),  e.getY(),  0), Engine2D.getInstance().mouseEventSpace, parent.getRelativeSpace());
 			if(this.isPointInside(mousePoint)){
 				//mose moved inside mask
 				if(mouseInside){
