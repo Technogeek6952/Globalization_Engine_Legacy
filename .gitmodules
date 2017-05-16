@@ -1,0 +1,3 @@
+[submodule "tools/JRFManager"]
+	path = tools/JRFManager
+	url = ssh://git@tg6952-hydrogen.duckdns.org/~/JRFManager.git
