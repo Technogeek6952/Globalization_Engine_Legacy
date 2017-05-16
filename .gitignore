@@ -8,7 +8,7 @@
 !/.gitignore
 !/.project
 !/manifest
-!/tools/
+!/tools/JRFManager
 
 #Ignore files that can be built
 *.class
