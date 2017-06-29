@@ -121,9 +121,9 @@ public class UIContainer implements Shape, Parent{
 		int xPos = (int) gfxPoint.getX();
 		int yPos = (int) gfxPoint.getY();
 		((Graphics2D)graphics).setColor(background);
-		graphics.fillRoundRect(xPos, yPos, m_width, m_height, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
+		graphics.fillRect(xPos, yPos, m_width, m_height);//, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
 		((Graphics2D)graphics).setColor(borderColor);
-		graphics.drawRoundRect(xPos, yPos, m_width, m_height, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
+		graphics.drawRect(xPos, yPos, m_width, m_height);//, (m_width<m_height)?m_width/8:m_height/8, (m_width<m_height)?m_width/8:m_height/8);
 		
 		boolean useBuffer = UserConfiguration.getBool("useContainerBuffers", false); //TODO: make a use buffer setting
 		
