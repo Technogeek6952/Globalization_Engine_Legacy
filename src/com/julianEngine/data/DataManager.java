@@ -17,6 +17,7 @@ public class DataManager {
 	static HashMap<FileInformation, byte[]> data = new HashMap<FileInformation, byte[]>(); //file name, data
 	
 	public static void loadDataFile(String filePath) throws Exception{
+		int totalBytesLoaded = 0;
 		File dataFile = new File(System.getProperty("user.dir"), filePath);
 		if(dataFile.isFile()){
 			Log.trace("Loading resource file: " + dataFile.getPath());
@@ -68,6 +69,8 @@ public class DataManager {
 					long fileSize = DataTools.byteArrayToLong(fileSizeRaw); //!!THIS NEEDS TO BE CHECKED - IF IT IS LARGER THAN AN INT, FILE NEEDS TO BE BROKEN DOWN!!
 					Log.trace("Image read is "+fileSize+" bytes");
 					
+					totalBytesLoaded += fileSize;
+					
 					//read rest of data for file
 					byte[] fileData = new byte[(int) fileSize];
 					byteStream.read(fileData);
@@ -78,7 +81,8 @@ public class DataManager {
 					fileInfo.uri = fileName;
 					data.put(fileInfo, fileData);
 					if(!(byteStream.available()>0)){
-						Log.trace("finished parsing data file");
+						Log.info("finished parsing file: "+filePath);
+						Log.info("Loaded "+data.size()+" files - "+totalBytesLoaded+" Bytes");
 						read=false;
 					}
 				}

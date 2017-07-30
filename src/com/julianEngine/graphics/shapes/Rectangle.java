@@ -2,6 +2,7 @@ package com.julianEngine.graphics.shapes;
 
 import java.awt.Graphics;
 
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
@@ -40,7 +41,7 @@ public class Rectangle implements Shape{
 		//int xPos = Math.round((float)topLeft.getX() + ((anchored)?0:(float)shift.getX()));
 		//int yPos = Math.round((float)(winHeight - topLeft.getY()) + ((anchored)?0:(float)shift.getY()));
 		
-		Point gfxPoint = parent.getGFXPoint(topLeft);
+		Point gfxPoint = CoordinateSpace.convertPointToSystem(topLeft, parent.getRelativeSpace(), parent.getDrawingSpace());
 		int xPos = (int) gfxPoint.getX();
 		int yPos = (int) gfxPoint.getY();
 		

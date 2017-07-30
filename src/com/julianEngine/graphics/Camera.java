@@ -30,9 +30,9 @@ public class Camera {
 	
 	/*--------Code--------------------------*/
 	public Camera(Frame frame){
-		World.getWorldForID(currentID).attachCamera(this);
-		currentWorld = World.getWorldForID(currentID);
-		currentWorld.load();
+		//World.getWorldForID(currentID).attachCamera(this);
+		//currentWorld = World.getWorldForID(currentID);
+		//currentWorld.load();
 		this.frame = frame;
 	}
 	
@@ -122,7 +122,7 @@ public class Camera {
 	}
 	
 	//Does calculations, then sends 2d shapes to the frame to be rendered
-	public void renderPerspective(Frame destination, BufferStrategy bufferStrategy){
+	public void renderPerspective(Frame destination){
 		destination.showFPS = showFPS;
 		destination.fps = fps;
 		World world = World.getWorldForID(currentID);
@@ -138,7 +138,8 @@ public class Camera {
 			
 			destination.setShift(toOrigin);
 			
-			destination.render(bufferStrategy, render);
+			//destination.render(bufferStrategy, render);
+			destination.repaint();
 		}
 	}
 }

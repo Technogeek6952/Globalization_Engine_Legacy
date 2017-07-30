@@ -53,7 +53,7 @@ public synchronized void write(byte[] ba) {
 
 public synchronized void write(byte[] ba,int str,int len) {
 	try {
-		Engine2D.defaultOut.write(ba, str, len); //also write data to the default output stream
+		Engine2D.stdout.write(ba, str, len); //also write data to the default output stream
 	} catch (IOException e) {
 		Log.error("Error writing to default out");
 		e.printStackTrace();

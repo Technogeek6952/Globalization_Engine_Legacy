@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.data.DataManager;
@@ -35,7 +36,7 @@ public class CustomFont {
 		if(getWidthOfString(str)==0){
 			Log.trace("0 width");
 		}
-		Point point = parent.getGFXPoint(topLeft);
+		Point point = CoordinateSpace.convertPointToSystem(topLeft, parent.getRelativeSpace(), parent.getDrawingSpace());
 		int xPos = (int) point.getX();
 		int yPos = (int) point.getY();
 		if(preLoadedStrings.containsKey(str)){

@@ -4,8 +4,10 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.julianEngine.Engine2D;
+import com.julianEngine.core.Parent.HookListener;
 import com.julianEngine.graphics.Camera;
 import com.julianEngine.graphics.Frame;
 import com.julianEngine.utility.Log;
@@ -25,6 +27,7 @@ public class World implements Parent{
 	List<PreLoadListener> preLoadListeners = new ArrayList<PreLoadListener>();
 	int activeCamera = 0;
 	LoadExecutor onLoad = null;
+	CoordinateSpace relativeSpace;
 	
 	/*--------Code--------------------------*/
 	//full constructor
@@ -32,6 +35,10 @@ public class World implements Parent{
 		if(!worlds.containsKey(id)){
 			worldID = id;
 			worlds.put(id, this);
+			//create a temporary coordinate space rooted in the frame root. This is because some parts of the code expect all worlds - weather loaded or not - to have a valid coordinate system
+			//rooted in the main frame root. It doesn't matter if the origin is in the right spot until the world is actually loaded and drawn, so we don't need to load the
+			//height of the frame here, especially since this constructor can be called before that height is set, leading to an error prone situation
+			relativeSpace = new CoordinateSpace(Engine2D.frameRootSystem, false, true, 0, 0, 1);
 		}else{
 			throw new IDAlreadyInUseException();
 		}
@@ -73,6 +80,7 @@ public class World implements Parent{
 	}
 	
 	public void attachCamera(Camera c){
+		this.relativeSpace = new CoordinateSpace(Engine2D.frameRootSystem, false, true, c.getFrame().getSideBorder(), c.getFrame().getHeight()+c.getFrame().getTitleBorder(), 1); //the new system will have a flipped y axis, with an origin at the bottem left
 		attachedCameras.add(c);
 	}
 	
@@ -105,6 +113,26 @@ public class World implements Parent{
 	
 	public ArrayList<Shape> getShapes(){
 		return shapes;
+	}
+	
+	//HOOKS
+	Map<String, List<HookListener>> hookListeners = new HashMap<String, List<HookListener>>(); // maps hookID to listeners
+	
+	@Override
+	public void triggerHook(String hookID, HookData data){
+		if (hookListeners.get(hookID)!=null){
+			for (HookListener l:hookListeners.get(hookID)){
+				l.hookTriggered(hookID, data);
+			}
+		}
+	}
+	
+	@Override
+	public void addHookListener(String hookID, HookListener listener){
+		if (!hookListeners.containsKey(hookID)){
+			hookListeners.put(hookID, new ArrayList<HookListener>());
+		}
+		hookListeners.get(hookID).add(listener);
 	}
 	
 	/**
@@ -222,6 +250,7 @@ public class World implements Parent{
 		}
 	}
 	//Parent
+	/*
 	@Override
 	public Point getGFXPoint(Point p) {
 		Camera activeCamera = getActiveCamera();
@@ -232,10 +261,11 @@ public class World implements Parent{
 			return new Point(0, 0, 0);
 		}
 	}
-
+	*/
+	
 	@Override
 	public Frame getContainingFrame() {
-		return Engine2D.getInstance().mainView;
+		return Engine2D.getInstance().rootFrame;
 		/*
 		Camera activeCamera = getActiveCamera();
 		if(activeCamera!=null){
@@ -252,6 +282,7 @@ public class World implements Parent{
 		public void execute();
 	}
 
+	/*
 	@Override
 	public Point getRealPointForRelativePoint(Point p) {
 		return p;
@@ -266,6 +297,7 @@ public class World implements Parent{
 	public Point getOrigin(){
 		return new Point();
 	}
+	*/
 	
 	@Override
 	public World getWorld(){
@@ -302,5 +334,15 @@ public class World implements Parent{
 	
 	public static interface PreLoadListener{
 		public void preLoad();
+	}
+
+	@Override
+	public CoordinateSpace getRelativeSpace(){
+		return relativeSpace;
+	}
+	
+	@Override
+	public CoordinateSpace getDrawingSpace(){
+		return new CoordinateSpace(this.getRelativeSpace(), false, true, 0, Engine2D.getInstance().rootFrame.getHeight(), 1);
 	}
 }

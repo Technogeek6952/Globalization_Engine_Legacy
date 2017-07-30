@@ -31,7 +31,7 @@ public class Log {
 		int hours = (int) Math.floorDiv(rawTime, 3600000);
 		String output = String.format("[%02d:%02d:%02d][%s][%s] ", hours, minutes, seconds, Thread.currentThread().getName(), logLevel.flavoredName()) + object;
 		
-		switch ((logLevel.isHigherOrEqualTo(EngineConstants.Defaults.LOGLEVEL_CONSOLE)?0:1)+(logLevel.isHigherOrEqualTo(EngineConstants.Defaults.LOGLEVEL_FILE)?0:2)){
+		switch ((logLevel.isLowerOrEqualTo(EngineConstants.Defaults.LOGLEVEL_CONSOLE)?0:1)+(logLevel.isLowerOrEqualTo(EngineConstants.Defaults.LOGLEVEL_FILE)?0:2)){
 			case 0:
 				break;
 			case 1:
@@ -71,14 +71,14 @@ public class Log {
 	}
 	
 	public enum Level {
-		ALL(Integer.MAX_VALUE, "ALL", "ALL"),
+		OFF(Integer.MAX_VALUE, "ALL", "ALL"),
 		FATAL(6, "FATAL", "FATAL"),
 		ERROR(5, "ERROR", "ERROR"),
 		WARN(4, "WARNING", "WARNING"),
 		INFO(3, "INFO", "INFO"),
 		DEBUG(2, "DEBUG", "DEBUG"),
 		TRACE(1, "TRACE", "TRACE"),
-		OFF(Integer.MIN_VALUE, "OFF", "OFF");
+		ALL(Integer.MIN_VALUE, "OFF", "OFF");
 		
 		private final int level;
 		private final String string;

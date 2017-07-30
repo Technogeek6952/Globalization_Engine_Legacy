@@ -5,7 +5,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.locks.Lock;
@@ -13,9 +19,12 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.JPanel;
 
+import com.julianEngine.Engine2D;
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
 import com.julianEngine.core.Vector;
+import com.julianEngine.graphics.shapes.Sprite;
 import com.julianEngine.utility.Log;
 
 public class Frame extends JPanel{
@@ -40,6 +49,7 @@ public class Frame extends JPanel{
 	private int titleBorder = 0;
 	private boolean listenerWaiting = false;
 	private Lock lock = new ReentrantLock();
+	private AffineTransform origninalTransform; //the original transform for the graphics object
 	//private ArrayList<MouseListener> mouseListeners = new ArrayList<MouseListener>();
 	//private ArrayList<MouseMotionListener> mouseMotionListeners = new ArrayList<MouseMotionListener>();
 	/*--------Code--------------------------*/
@@ -63,6 +73,10 @@ public class Frame extends JPanel{
 		}else{
 			unlockFPS();
 		}
+	}
+	
+	public AffineTransform getOriginalTransform(){
+		return origninalTransform;
 	}
 	
 	public void unlockFPS(){
@@ -140,9 +154,12 @@ public class Frame extends JPanel{
 		backgroundColor = newBackground;
 	}
 	
-	//Render the frame
-	public void render(BufferStrategy bufferStrategy, boolean forceDraw){
+	@Override
+	public void paintComponent(Graphics graphics){
+		//First get the render lock
 		synchronized(lock){
+			//if there are listeners waiting for the lock, and we hold it, release it for 100ms, 
+			//and then grab it again, and check again if there are listeners waiting for it
 			if(listenerWaiting&&lock.tryLock()){
 				lock.unlock();
 				try {
@@ -154,27 +171,42 @@ public class Frame extends JPanel{
 				lock.lock();
 			}
 		}
-		//long start = System.nanoTime(); //get the system time in nanoseconds when starting the render
-		Graphics graphics = bufferStrategy.getDrawGraphics(); //get a graphics object to draw to the buffer
 		
 		((Graphics2D)graphics).setBackground(backgroundColor);
-		graphics.clearRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
+		graphics.clearRect(0, 0, width, height);
 		//draw stuff
-		drawFrame((Graphics2D)graphics, forceDraw);
+		drawFrame((Graphics2D)graphics, true);
 		if(showFPS){
 			graphics.setColor(Color.YELLOW);
 			graphics.setFont(new Font("Ariel", Font.BOLD, 20));
 			graphics.drawString(String.format("FPS: %.2f", fps), 3, 50);
 		}
 		//...
-		bufferStrategy.show(); //tell the buffer that we're done drawing, and it can show the frame
-		//Toolkit.getDefaultToolkit().sync(); //sync the graphics - may reduce fps, but makes animation smoother?
-		graphics.dispose(); //release memory from the graphics object
+	}
+	
+	Sprite cursor;
+	Point mousePoint = new Point(0, 0, 0);
+	public void setCursor(String cursorURI){
+		Dimension cursorSize = Toolkit.getDefaultToolkit().getBestCursorSize(32, 32);
+		cursor = new Sprite(new Point(0, 0, 100), cursorSize.width, cursorSize.height, cursorURI);
+		cursor.setParent(Engine2D.getInstance().rootWorld);
+		this.addMouseMotionListener(new MouseMotionListener(){
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+			}
+			@Override
+			public void mouseMoved(MouseEvent arg0) {
+				mousePoint = CoordinateSpace.convertPointToSystem(new Point(arg0.getX(), arg0.getY(), 0), Engine2D.frameRootSystem, Engine2D.getInstance().rootWorld.getRelativeSpace());
+			}
+		});
+		Engine2D.getInstance().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new java.awt.Point(1, 1), "blank"));
 	}
 	
 	public void drawFrame(Graphics2D graphics, boolean forceDraw){
 		((Graphics2D)graphics).setBackground(backgroundColor);
 		((Graphics2D)graphics).setColor(backgroundColor);
+		((Graphics2D)graphics).translate(this.sideBorder, this.titleBorder);
+		((Graphics2D)graphics).clipRect(0, 0, this.width, this.height);
 		graphics.fillRect(this.getX()+sideBorder, this.getY()+titleBorder, width, height);
 		synchronized(this){
 			shapes.sort(new Comparator<Shape>(){
@@ -188,6 +220,12 @@ public class Frame extends JPanel{
 					//s.setParent(this);
 					s.draw(graphics, shift, forceDraw); //Draw every shape we have in our list
 				}
+			}
+			
+			if (cursor != null){
+				cursor.getTopLeft().setX(mousePoint.getX());
+				cursor.getTopLeft().setY(mousePoint.getY());
+				cursor.draw(graphics, new Vector(), true);
 			}
 		}
 	}

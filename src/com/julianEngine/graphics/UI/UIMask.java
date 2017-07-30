@@ -18,6 +18,8 @@ public abstract class UIMask implements UIElement, MouseListener, MouseMotionLis
 	//created.
 	protected ArrayList<UIMaskListener> listeners = new ArrayList<UIMaskListener>();
 	
+	Parent parent;
+	
 	public UIMask(World parent){
 		//forces children to also take a world as a constructor argument. Should be used to figure out if the mask is actually visible, and if it should be rendered
 	}
@@ -80,6 +82,7 @@ public abstract class UIMask implements UIElement, MouseListener, MouseMotionLis
 	//Child overrides
 	@Override
 	public void setParent(Parent p) {
+		this.parent = p;
 	}
 
 	//MouseMotionListener & MouseListener Overrides
@@ -114,4 +117,3 @@ public abstract class UIMask implements UIElement, MouseListener, MouseMotionLis
 		public void mouseLeftMask();
 	}
 }
-

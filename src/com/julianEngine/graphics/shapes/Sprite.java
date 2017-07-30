@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
+
+import com.julianEngine.core.CoordinateSpace;
 import com.julianEngine.core.Parent;
 import com.julianEngine.core.Point;
 import com.julianEngine.core.Shape;
@@ -165,6 +167,12 @@ public class Sprite implements Shape{
 		}
 	}
 	
+	public void setImage(BufferedImage image){
+		this.image = image;
+		this.imgWidth = image.getWidth();
+		this.imgHeight = image.getHeight();
+	}
+	
 	public void setHeight(int newHeight, boolean scale){
 		if(scale){
 			double aspectRatio = (double)this.imgWidth/(double)this.imgHeight;
@@ -311,7 +319,7 @@ public class Sprite implements Shape{
 		//int xPos = Math.round((float)topLeft.getX() + ((anchored)?0:(float)shift.getX()));
 		//int yPos = Math.round((float)(windowHeight - topLeft.getY())+ ((anchored)?0:(float)shift.getY()));
 		
-		Point gfxPoint = parent.getGFXPoint(topLeft);
+		Point gfxPoint = CoordinateSpace.convertPointToSystem(topLeft, parent.getRelativeSpace(), parent.getDrawingSpace());
 		int xPos = (int) gfxPoint.getX();
 		int yPos = (int) gfxPoint.getY();
 		
@@ -336,6 +344,7 @@ public class Sprite implements Shape{
 				lastSwitch = System.currentTimeMillis();
 			}
 		}
+		
 		((Graphics2D) graphics).setComposite(opaqueComp);
 	}
 	

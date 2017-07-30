@@ -58,6 +58,13 @@ public class Line implements Shape{
 		//TODO: implement line draw function
 	}
 
+	public Point getStartPoint(){
+		return start;
+	}
+	public Point getEndPoint(){
+		return end;
+	}
+	
 	//Since a line doesn't have a top left, we're just going to use the start point - be aware of this functionality when using the line class
 	@Override
 	public int getTopLeftX() {
